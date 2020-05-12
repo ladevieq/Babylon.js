@@ -949,29 +949,25 @@ export class UvMapper {
     //     ctx.stroke();
     // }
 
-    public debugUvs(uvsArray: FloatArray[], indicesArray: IndicesArray[]) {
+    // Create a transparent canvas with uv drawn
+    public debugUvs(position: Vector2, size: Vector2, uvsArray: FloatArray[], indicesArray: IndicesArray[]) {
         let canvas = document.createElement("canvas");
         let ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-
         document.body.appendChild(canvas);
-        canvas.width = 300;
-        canvas.height = 300;
+        canvas.width = size.x;
+        canvas.height = size.y;
         canvas.style.position = "absolute";
+        canvas.style.transform = "rotateX(180deg)";
         canvas.style.zIndex = "10";
-        canvas.style.top = "0px";
-        canvas.style.left = "0px";
+        canvas.style.top = `${position.x}px`;
+        canvas.style.left = `${position.y}px`;
         canvas.onclick = () => {
             canvas.style.display = "none";
         };
 
-        ctx.clearRect(0, 0, 300, 300);
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, 300, 300);
-        ctx.fillStyle = "red";
-        ctx.scale(300, 300);
+        ctx.scale(size.x, size.y);
         ctx.lineWidth = 0.001;
-
-        ctx.strokeStyle = "green";
+        ctx.strokeStyle = "red";
         for (let j = 0; j < uvsArray.length; j++) {
             let uvs = uvsArray[j];
             let indices = indicesArray[j];
@@ -999,7 +995,6 @@ export class UvMapper {
                 ctx.lineTo(uvs[indices[i + 2] * 2], uvs[indices[i + 2] * 2 + 1]);
                 ctx.lineTo(uvs[indices[i] * 2], uvs[indices[i] * 2 + 1]);
                 ctx.stroke();
-                // ctx.fill();
             }
         }
 
