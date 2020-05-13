@@ -2240,8 +2240,8 @@ class BoxPacker {
                          * Assume no intersection...
                          */
                         intersection = false;
-                        // Assume boxes positions are positive (box.xmin_get() < 0 || box.ymin_get() < 0
-                        if (vertex.intersection_cache[quadrantIndex] && box.intersect(vertex.intersection_cache[quadrantIndex])) {
+                        if (box.xmin_get() < 0 || box.ymin_get() < 0
+                            || (vertex.intersection_cache[quadrantIndex] && box.intersect(vertex.intersection_cache[quadrantIndex]))) {
                             /**
                              * Here we check that the last intersected
                              * firstBox will intersect with this one using
@@ -2257,7 +2257,7 @@ class BoxPacker {
                              * data-structure would be better
                              */
                             // As boxes are sorted we know that only previous boxes already placed, so we can break once we find the current firstBox
-                            for (let testBoxIndex = 0; boxes[testBoxIndex].index !== box.index; testBoxIndex++) {
+                            for (let testBoxIndex = 0; boxes[testBoxIndex] !== box; testBoxIndex++) {
                                 if (box.intersect(boxes[testBoxIndex])) {
                                     vertex.intersection_cache[quadrantIndex] = boxes[testBoxIndex];
                                     intersection = true;
