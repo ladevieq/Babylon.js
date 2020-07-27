@@ -68609,6 +68609,7 @@ declare module BABYLON {
         probeInHouse: number;
         needIrradianceGradient: boolean;
         probeForIrradiance: ProbeIrradianceGradient;
+        sphere: Mesh;
         /**
          * Create the probe used to capture the irradiance at a point
          * @param position The position at which the probe is set
@@ -68655,6 +68656,8 @@ declare module BABYLON {
         isProbeReady(): boolean;
         private _isTempBounceReady;
         private _CPUcomputeSHCoeff;
+        private _computeProbeIrradiance;
+        createSphere(): void;
         private _weightSHCoeff;
         useIrradianceGradient(): void;
     }

@@ -10,7 +10,7 @@ import { SmartArray } from '../../Misc/smartArray';
 import { UniversalCamera } from '../../Cameras/universalCamera';
 import { CubeMapToSphericalPolynomialTools } from '../../Misc/HighDynamicRange/cubemapToSphericalPolynomial';
 import { SphericalHarmonics } from '../../Maths/sphericalPolynomial';
-// import { ShaderMaterial } from '../../Materials/shaderMaterial';
+import { ShaderMaterial } from '../../Materials/shaderMaterial';
 import { RenderTargetTexture } from '../../Materials/Textures/renderTargetTexture';
 
 import "../../Shaders/irradianceVolumeProbeEnv.vertex";
@@ -109,6 +109,8 @@ export class Probe {
 
     public needIrradianceGradient = false;
     public probeForIrradiance : ProbeIrradianceGradient;
+
+    public sphere : Mesh;
 
     /**
      * Create the probe used to capture the irradiance at a point
@@ -367,7 +369,6 @@ export class Probe {
         // this._computeProbeIrradiance();
     }
 
-    /*
     private _computeProbeIrradiance() : void {
         //We use a shader to add this texture to the probe
         let shaderMaterial = new ShaderMaterial("irradianceOnSphere", this._scene,  "irradianceVolumeComputeIrradiance", {
@@ -385,10 +386,17 @@ export class Probe {
         shaderMaterial.setVector3("L22", this.sphericalHarmonic.l22);
         shaderMaterial.setVector3("L2m1", this.sphericalHarmonic.l2_1);
         shaderMaterial.setVector3("L2m2", this.sphericalHarmonic.l2_2);
+        if (this.probeInHouse == 1) {
         this.sphere.material = shaderMaterial;
+        }
 
     }
-    */
+
+    public createSphere() : void {
+        this.sphere = Mesh.CreateSphere("sphere", 32, 30, this._scene);
+        this.sphere.position = this.position;
+        this._computeProbeIrradiance();
+    }
 
     private _weightSHCoeff() {
         let weight = 0.1;
