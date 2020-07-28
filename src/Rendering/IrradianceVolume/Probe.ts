@@ -393,9 +393,11 @@ export class Probe {
     }
 
     public createSphere() : void {
-        this.sphere = Mesh.CreateSphere("sphere", 32, 30, this._scene);
-        this.sphere.position = this.position;
-        this._computeProbeIrradiance();
+        if (this.probeInHouse != Probe.OUTSIDE_HOUSE) {
+            this.sphere = Mesh.CreateSphere("sphere", 32, 30, this._scene);
+            this.sphere.position = this.position;
+            this._computeProbeIrradiance();
+        }
     }
 
     private _weightSHCoeff() {
