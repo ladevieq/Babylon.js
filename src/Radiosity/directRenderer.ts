@@ -252,6 +252,16 @@ export class DirectRenderer {
 
     private _directEffectsManager: DirectEffectsManager;
 
+    public get far(): number {
+        return this._far;
+    }
+    
+    public set far(newFar: number) {
+        this._far = newFar;
+
+        this.recomputeMatrices();
+    }
+
     /**
      * Instanciates a radiosity renderer
      * @param scene The current scene
@@ -265,6 +275,19 @@ export class DirectRenderer {
         this.meshes = meshes || [];
         this.lights = lights || [];
 
+        this.recomputeMatrices();
+
+        const engine = this._scene.getEngine();
+        const gl = engine._gl;
+        this._frambuffer0 = <WebGLFramebuffer>gl.createFramebuffer();
+
+        this._directEffectsManager = new DirectEffectsManager(this._scene);
+
+        while (!this._directEffectsManager.isReady()) {
+        }
+    }
+
+    public recomputeMatrices() {
         this._projectionMatrix = Matrix.PerspectiveFovLH(
             Math.PI / 2,
             1, // squared texture
@@ -299,15 +322,6 @@ export class DirectRenderer {
             0,  0, 1, 0,
             0, -1, 0, 1
         ));
-
-        const engine = this._scene.getEngine();
-        const gl = engine._gl;
-        this._frambuffer0 = <WebGLFramebuffer>gl.createFramebuffer();
-
-        this._directEffectsManager = new DirectEffectsManager(this._scene);
-
-        while (!this._directEffectsManager.isReady()) {
-        }
     }
 
     public renderNextSample() {
@@ -351,7 +365,11 @@ export class DirectRenderer {
             this.blur(mesh.directInfo.tempTexture, mesh.directInfo.shadowMap, false);
             this.blur(mesh.directInfo.shadowMap, mesh.directInfo.tempTexture);
 
-            this.dilate(mesh.directInfo.tempTexture, mesh.directInfo.shadowMap);
+            const temp = mesh.directInfo.shadowMap._texture;
+            mesh.directInfo.shadowMap._texture = mesh.directInfo.tempTexture._texture;
+            mesh.directInfo.tempTexture._texture = temp;
+
+            // this.dilate(mesh.directInfo.tempTexture, mesh.directInfo.shadowMap);
         }
     }
 
@@ -372,7 +390,7 @@ export class DirectRenderer {
 
             // Rendering shadow to tempTexture
             engine.setDirectViewport(0, 0, mesh.directInfo.shadowMapSize.width, mesh.directInfo.shadowMapSize.height);
-            engine.setState(false, 0, true);
+            engine.setState(mesh!.material!.backFaceCulling, 0, true, true);
 
             gl.bindFramebuffer(gl.FRAMEBUFFER, this._frambuffer0);
             gl.framebufferTexture2D(gl.DRAW_FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, <WebGLTexture>mesh.directInfo.tempTexture!._texture!._webGLTexture, 0);
@@ -452,7 +470,7 @@ export class DirectRenderer {
         engine.unBindFramebuffer(<InternalTexture>dest._texture);
     }
 
-    private blur(origin: Texture, dest: Texture, horizontal: boolean = true) {
+    public blur(origin: Texture, dest: Texture, horizontal: boolean = true) {
         const engine = this._scene.getEngine();
         const gl = engine._gl;
         const effect = horizontal ? this._directEffectsManager.horizontalBlurEffect : this._directEffectsManager.verticalBlurEffect;

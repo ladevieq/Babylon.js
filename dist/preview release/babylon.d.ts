@@ -68202,12 +68202,15 @@ declare module BABYLON {
         private _projectionMatrixPY;
         private _projectionMatrixNY;
         private _directEffectsManager;
+        get far(): number;
+        set far(newFar: number);
         /**
          * Instanciates a radiosity renderer
          * @param scene The current scene
          * @param meshes The meshes to include in the radiosity solver
          */
         constructor(scene: Scene, meshes?: Mesh[], lights?: Arealight[], options?: DirectRendererOptions);
+        recomputeMatrices(): void;
         renderNextSample(): void;
         render(): void;
         postProcesses(): void;
@@ -68220,7 +68223,7 @@ declare module BABYLON {
         isReady(): boolean;
         isRenderFinished(): boolean;
         toneMap(origin: Texture, dest: Texture): void;
-        private blur;
+        blur(origin: Texture, dest: Texture, horizontal?: boolean): void;
         private renderSubMesh;
         private _setCubeVisibilityUniforms;
         private renderVisibilityMapCubeSample;
@@ -68503,8 +68506,8 @@ declare module BABYLON {
         render(): void;
         renderValue(value: IMeshesGroup): void;
         private _sumOfBothRendering;
-        private _toneMappingRendering;
-        private _dilateRendering;
+        _toneMappingRendering(value: IMeshesGroup): void;
+        _dilateRendering(value: IMeshesGroup): void;
         /**
          * Functions called to check if the materials are ready for rendering
          */

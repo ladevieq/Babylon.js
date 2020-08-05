@@ -14,7 +14,7 @@ if (debug) {
 }
 
 const uvm = new BABYLON.UvMapper();
-const quality = 2;
+const quality = 3;
 const qualitySettings = [
     {
         objectLightmapSize: {
@@ -81,7 +81,7 @@ const prepareUvs = (meshes, scene) => {
     return meshesToProcess;
 }
 
-const addArealight = (position, normal, size, scene) => {
+const addArealight = (position, normal, size, sampleCount, bias, normalBias, scene) => {
     return new BABYLON.Arealight(
         position,
         normal,
@@ -90,10 +90,14 @@ const addArealight = (position, normal, size, scene) => {
             height: 180,
         },
         {
-            width: 1024,
-            height: 1024,
+            width: 2048,
+            height: 2048,
         },
-        32,
+        {
+            sampleCount,
+            bias,
+            normalBias,
+        },
         scene,
     );
 }
@@ -110,8 +114,8 @@ const createScene = () => {
 
     const lights = [];
     // lights.push(addArealight(new BABYLON.Vector3(-150, 160, 135), new BABYLON.Vector3(1, 0, 0), 70, scene));
-    // lights.push(addArealight(new BABYLON.Vector3(10, 160, 200), new BABYLON.Vector3(0, 0, -1), 60, scene));
-    // lights.push(addArealight(new BABYLON.Vector3(350, 120, 200), new BABYLON.Vector3(0, 0, -1), 80, scene));
+    lights.push(addArealight(new BABYLON.Vector3(10, 160, 200), new BABYLON.Vector3(0, 0, -1), 60, 16, 1e-5, 1e-9, scene));
+    lights.push(addArealight(new BABYLON.Vector3(350, 120, 200), new BABYLON.Vector3(0, 0, -1), 80, 16, 1e-5, 1e-9, scene));
 
     BABYLON.SceneLoader.ImportMesh("", sceneFolder, sceneFilename, scene, (meshes) => {
         for (const mesh of meshes) {
@@ -133,25 +137,27 @@ const createScene = () => {
         const normalBias = 1e-9;
 
         console.log("Start shadow mapping");
-        // const pr = new BABYLON.DirectRenderer(scene, meshesLightmapped, lights, { near, far, bias, normalBias });
+        const pr = new BABYLON.DirectRenderer(scene, meshesLightmapped, lights, { near, far, bias, normalBias });
 
-        // for (const mesh of meshesLightmapped) {
-        //     mesh.material.lightmapTexture = mesh.getShadowMap();
-        //     mesh.material.useLightmapAsShadowmap = true;
-        //     mesh.material.lightmapTexture.coordinatesIndex = 1;
-        // }
+        for (const mesh of meshesLightmapped) {
+            mesh.material.lightmapTexture = mesh.getShadowMap();
+            mesh.material.useLightmapAsShadowmap = true;
+            mesh.material.lightmapTexture.coordinatesIndex = 1;
+        }
 
-        // const observer = scene.onAfterRenderObservable.add(() => {
-        //     pr.renderNextSample();
+        const observer = scene.onAfterRenderObservable.add(() => {
+            if (scene._frameId % 10 === 0) {
+                pr.renderNextSample();
 
-        //     if (!pr.isRenderFinished()) {
-        //         return;
-        //     }
+                if (!pr.isRenderFinished()) {
+                    return;
+                }
 
-        //     console.log("Shadow mapping finished");
-        //     scene.onAfterRenderObservable.remove(observer);
-        //     // scene.ambientColor = new BABYLON.Color3(1, 1, 1);
-        // });
+                console.log("Shadow mapping finished");
+                scene.onAfterRenderObservable.remove(observer);
+                // scene.ambientColor = new BABYLON.Color3(1, 1, 1);
+            }
+        });
 
         // const obs = scene.onBeforeRenderObservable.add(() => {
         //     window.spector.startCapture(scene.getEngine().getRenderingCanvas(), 10000, false);

@@ -85,7 +85,6 @@ export class MeshDictionary {
     }
 
     public renderValue(value : IMeshesGroup) {
-
         this._dilateRendering(value);
         this._sumOfBothRendering(value);
         this._toneMappingRendering(value);
@@ -126,7 +125,7 @@ export class MeshDictionary {
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     }
 
-    private _toneMappingRendering(value : IMeshesGroup) {
+    public _toneMappingRendering(value : IMeshesGroup) {
         let mrt = value.postProcessLightmap;
         let engine = this._scene.getEngine();
         let effect = this._postProcessManager.toneMappingEffect;
@@ -151,7 +150,7 @@ export class MeshDictionary {
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     }
 
-    private _dilateRendering(value : IMeshesGroup) {
+    public _dilateRendering(value : IMeshesGroup) {
         let mrt = value.postProcessLightmap;
         let engine = this._scene.getEngine();
         let effect = this._postProcessManager.dilateEffect;
