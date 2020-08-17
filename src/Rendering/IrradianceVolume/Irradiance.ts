@@ -13,7 +13,6 @@ import { Color4 } from '../../Maths/math.color';
 
 import "./../../Shaders/irradianceVolumeIrradianceLightmap.fragment";
 import "./../../Shaders/irradianceVolumeIrradianceLightmap.vertex";
-import { ProbeIrradianceGradient } from './ProbeIrradianceGradient';
 import { InternalTexture } from '../../Materials/Textures/internalTexture';
 /**
  * Class that aims to take care of everything with regard to the irradiance for the irradiance volume
@@ -30,8 +29,6 @@ export class Irradiance {
      * The list of probes that are part of this irradiance volume
      */
     public probeList : Array<Probe>;
-
-    public probeIrradianceGradientList : Array<ProbeIrradianceGradient>;
 
     /**
      * The meshes that are render by the probes
@@ -83,11 +80,10 @@ export class Irradiance {
      * @param bottomLeft    A position representing the position of the probe on the bottom left of the irradiance volume
      * @param volumeSize A vec3 containing the volume width, height and depth
      */
-    constructor(scene : Scene, probes : Array<Probe>, probesForGradient : Array<ProbeIrradianceGradient>, meshes : Array<Mesh>, dictionary : MeshDictionary, numberBounces : number,
+    constructor(scene : Scene, probes : Array<Probe>, meshes : Array<Mesh>, dictionary : MeshDictionary, numberBounces : number,
         probeDisposition : Vector3, bottomLeft : Vector3, volumeSize : Vector3) {
         this._scene = scene;
         this.probeList = probes;
-        this.probeIrradianceGradientList = probesForGradient;
         this.meshes = [];
         for (let mesh of meshes) {
             this.meshes.push(mesh);
@@ -118,18 +114,9 @@ export class Irradiance {
                 probe.render(this.meshes, this.dictionary, this.uvEffect, this.bounceEffect);
                 probe.renderBounce(this.meshes);
             }
-            for (let probe of this.probeIrradianceGradientList) {
-                // Init the renderTargetTexture needed for each probes
-                probe.render(this.meshes, this.dictionary, this.uvEffect, this.bounceEffect);
-                probe.renderBounce(this.meshes);
-            }
-
             let currentBounce = 0;
             for (let probe of this.probeList) {
                 // Set these value to false to ensure that the promess will finish when we want it too
-                probe.sphericalHarmonicChanged = false;
-            }
-            for (let probe of this.probeIrradianceGradientList) {
                 probe.sphericalHarmonicChanged = false;
             }
             if (this.numberBounces > 0) {
@@ -158,42 +145,17 @@ export class Irradiance {
                 shTime += probe.shTime;
             }
         }
-
-        for (let probe of this.probeIrradianceGradientList) {
-            if (probe.probeInHouse == Probe.INSIDE_HOUSE) {
-                probe.tempBounce.isCube = false;
-                probe.tempBounce.render();
-                probe.tempBounce.isCube = true;
-                renderTime += probe.renderTime;
-                shTime += probe.shTime;
-            }
-        }
-
-        for (let probe of this.probeList) {
-            probe.useIrradianceGradient();
-        }
-
-// Pour les probes dans la liste d'irradiance, on fait aussi le rendu. Mais le rendu est spécial
-// -> On rend toutes les probes, on fait le caclul des nouvelles sh + du gradient
-// Ensuite, on parcours les probes de nouveau, celles qui sont de type 2, ont leur affecte des sh en fonction de leur probe irradiance gradient associée
-
         let endProbeEnv = new Date().getTime();
 
         this.updateShTexture();
         this._renderIrradianceLightmap();
-        // for (let value of this.dictionary.values()) {
-        //     value.irradianceLightmap.render();
-        // }
-
         let endBounce = new Date().getTime();
-
         console.log("___________________ \n bounce : " + currentBounce);
         console.log("Temps total : " + (endBounce - beginBounce));
         console.log("Rendu de tous les environnements des probes : " + (endProbeEnv - beginBounce));
         console.log("Rendu de l'irradiance sur la scène : " + (endBounce - endProbeEnv));
         console.log("Temps total capture environnement : " + renderTime);
         console.log("Temps total sh coef : " + shTime);
-
         if (currentBounce < this.numberBounces) {
             this._renderBounce(currentBounce + 1);
         }
@@ -381,9 +343,6 @@ export class Irradiance {
         for (let probe of this.probeList) {
             probe.initPromise();
         }
-        for (let probe of this.probeIrradianceGradientList) {
-            probe.initPromise();
-        }
     }
 
     private _isRawTextSHCoefReady() : boolean {
@@ -397,12 +356,6 @@ export class Irradiance {
     private _areProbesReady() : boolean {
         let ready = true;
         for (let probe of this.probeList) {
-            ready = probe.isProbeReady() && ready;
-            if (!ready) {
-                return false;
-            }
-        }
-        for (let probe of this.probeIrradianceGradientList) {
             ready = probe.isProbeReady() && ready;
             if (!ready) {
                 return false;
@@ -510,7 +463,6 @@ export class Irradiance {
                     engine.unBindFramebuffer(internal);
                 }
             }
-
             if (this.numberBounces == 0) {
                 this.dictionary.render();
             }

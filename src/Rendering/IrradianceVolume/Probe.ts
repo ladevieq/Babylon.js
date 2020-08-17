@@ -22,7 +22,6 @@ import "../../Shaders/irradianceVolumeComputeIrradiance.vertex";
 import { PBRMaterial } from '../../Materials/PBR/pbrMaterial';
 
 import { MeshDictionary } from './meshDictionary';
-import { ProbeIrradianceGradient } from './ProbeIrradianceGradient';
 import { Constants } from '../../Engines/constants';
 import { TransformNode } from '../../Meshes/transformNode';
 
@@ -35,8 +34,6 @@ export class Probe {
 
     public static readonly OUTSIDE_HOUSE : number = 0;
     public static readonly INSIDE_HOUSE : number = 1;
-    public static readonly INSIDE_HOUSE_CLOSE_TO_WALL : number = 2;
-
     /**
      * Static number to access to the cameras with their direction
      */
@@ -108,7 +105,6 @@ export class Probe {
     public probeInHouse = Probe.OUTSIDE_HOUSE;
 
     public needIrradianceGradient = false;
-    public probeForIrradiance : ProbeIrradianceGradient;
 
     public sphere : Mesh;
 
@@ -124,9 +120,6 @@ export class Probe {
         this.position = position;
         this.transformNode = new TransformNode("node", this._scene);
         this.probeInHouse = inRoom;
-        if (inRoom == Probe.INSIDE_HOUSE_CLOSE_TO_WALL) {
-            this.needIrradianceGradient = true;
-        }
         this.cameraList = new Array<UniversalCamera>();
 
         //First Camera ( x axis )
@@ -184,16 +177,6 @@ export class Probe {
      */
     public setParent(parent : Mesh): void {
         this.transformNode.parent = parent;
-    }
-
-    /**
-     * Set the visibility of the probe
-     * @param visisble The visibility of the probe
-     */
-    public setVisibility(visisble : number) : void {
-        if (this.probeInHouse == Probe.INSIDE_HOUSE || this.probeInHouse == Probe.INSIDE_HOUSE_CLOSE_TO_WALL) {
-            // this.sphere.visibility = visisble;
-        }
     }
 
     protected _renderCubeTexture(subMeshes : SmartArray<SubMesh>) : void {
