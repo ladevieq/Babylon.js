@@ -2,6 +2,7 @@ import { Scene } from '../../scene';
 import { Probe } from './Probe';
 import { Mesh } from '../../Meshes/mesh';
 import { Material } from '../../Materials/material';
+import { InternalTexture } from '../../Materials/Textures/internalTexture';
 
 import { VertexBuffer } from '../../Meshes/buffer';
 import { Effect } from '../../Materials/effect';
@@ -13,20 +14,27 @@ import { Color4 } from '../../Maths/math.color';
 
 import "./../../Shaders/irradianceVolumeIrradianceLightmap.fragment";
 import "./../../Shaders/irradianceVolumeIrradianceLightmap.vertex";
-import { InternalTexture } from '../../Materials/Textures/internalTexture';
+
 /**
  * Class that aims to take care of everything with regard to the irradiance for the irradiance volume
+ * It will take care to intialize all the textures and effect
+ * It will launch the rendering of everything we need to render
  */
 export class Irradiance {
 
     private _scene : Scene;
-
     private _uniformNumberProbes: Vector3;
     private _uniformBottomLeft : Vector3;
     private _uniformBoxSize : Vector3;
     private _probesPosition : Float32Array;
+    private _promise : Promise<void>;
+    private _shTexture : RawTexture;
+    private _posProbesTexture : RawTexture;
+
     /**
      * The list of probes that are part of this irradiance volume
+     * This list is a 3 dimensions rectangle, transform into a list
+     * To know the dimension of each size, you have to check tje _uniformNumberProbes param 
      */
     public probeList : Array<Probe>;
 
@@ -35,18 +43,14 @@ export class Irradiance {
      */
     public meshes : Array<Mesh>;
 
-    private _promise : Promise<void>;
-
     /**
-     * The effect that will be use to render the environment of each probes. It will be given to every probes of the volume
-     */
-    public uvEffect : Effect;
-
-    /**
-     * The effect used to render the irradiance from each probe.
+     * The effect used to render the environment of each probe
      */
     public captureEnvironmentEffect : Effect;
 
+    /**
+     * The effect used to render the irradiance on each mesh
+     */
     public irradianceLightmapEffect : Effect;
 
     /**
@@ -56,27 +60,20 @@ export class Irradiance {
 
     /**
      * The number of bounces we want to add to the scene
+     * 0 == only direct lightning
+     * 1 == one bounce of light
      */
     public numberBounces : number;
 
-    /**
-     * Value that will be set to true once the rendering is finish.
-     * Can be used to check if the rendering is finished outiside of this class, because we use Promess
-     */
-    public finish = false;
-
-    private _shTexture : RawTexture;
-    private _posProbesTexture : RawTexture;
 
     /**
      * Initializer of the irradiance class
      * @param scene The scene of the meshes
      * @param probes The probes that are used to render irradiance
-     *
      * @param meshes The meshes that are used to render irradiance
      * @param dictionary The dictionary that contains information about meshes
      * @param numberBounces The number of bounces we want to render
-     * @param probeDisposition A vec3 representing the number of probes on each axis of the volume
+     * @param numberProbes A vec3 representing the number of probes on each axis of the volume
      * @param bottomLeft    A position representing the position of the probe on the bottom left of the irradiance volume
      * @param volumeSize A vec3 containing the volume width, height and depth
      */
@@ -88,30 +85,26 @@ export class Irradiance {
         for (let mesh of meshes) {
             this.meshes.push(mesh);
         }
-
         this.dictionary = dictionary;
         this.numberBounces = numberBounces;
         this._uniformNumberProbes = numberProbes;
         this._uniformBottomLeft = bottomLeft;
         this._uniformBoxSize = volumeSize;
-
         this._createProbePositionList();
-
         dictionary.initLightmapTextures();
-        //We can only initialize the irradiance lightmap after setting the uniforms attributes, as it is needed for the material
         this._promise = this._createPromise();
     }
 
     /**
-     * Function that launch the render process
+     * Function that launch the render process for the computation of the irradiance
      */
     public render() : void {
-
         // When all we need is ready
         this._promise.then(() => {
             for (let probe of this.probeList) {
                 // Init the renderTargetTexture needed for each probes
                 probe.initForRendering(this.dictionary, this.captureEnvironmentEffect);
+                // Render the env for each probe
                 probe.renderBounce(this.meshes);
             }
             let currentBounce = 0;
@@ -122,11 +115,14 @@ export class Irradiance {
             else {
                 // We are done with the rendering process, finish has to be set to true
                 this.dictionary.render();
-                this.finish = true;
             }
         });
     }
 
+    /**
+     * Render a bounce of light
+     * @param currentBounce 
+     */
     private _renderBounce(currentBounce : number) {
 
         for (let probe of this.probeList) {
@@ -143,7 +139,6 @@ export class Irradiance {
         }
         else {
             this.dictionary.render();
-            this.finish = true;
         }
 
     }
@@ -151,6 +146,8 @@ export class Irradiance {
     /**
      * Method called to store the spherical harmonics coefficient into a texture,
      * allowing to have less uniforms in our shader
+     * Has to be called envery time we want to compute irradiance on a mesh, because
+     * we have to update the sh coeff if it has changed
      */
     public updateShTexture() : void {
         let shArray = new Float32Array(this.probeList.length * 9  * 4);
@@ -214,8 +211,11 @@ export class Irradiance {
         this._shTexture.update(shArray);
     }
 
+    /**
+     * Method called to store in a list the positions and the states of the probes
+     * It will be then used to create a RawTexture to use as a uniform in a shader
+     */
     private _createProbePositionList() {
-
         this._probesPosition = new Float32Array(this.probeList.length * 4);
         for (let i = 0; i < this.probeList.length; i++) {
             let probe = this.probeList[i];
@@ -231,20 +231,18 @@ export class Irradiance {
         }
     }
 
+    /**
+     * Method called to render the irradiance on the lightmap corresponding to each mesh
+     */
     private _renderIrradianceLightmap() : void {
         let engine = this._scene.getEngine();
         let gl = engine._gl;
         let effect = this.irradianceLightmapEffect;
-
-        // this.irradianceLightmapEffect.backFaceCulling = false;
-
         for (let mesh of this.dictionary.keys()) {
             let value = this.dictionary.getValue(mesh);
             if (value != null) {
-                let mrt = value.postProcessLightmap;
-                let dest = mrt.textures[2];
+                let dest = value.irradianceLightmap;
                 engine.enableEffect(effect);
-
                 effect.setMatrix("world", mesh.getWorldMatrix());
                 effect.setInt("isUniform", 1);
                 effect.setVector3("numberProbesInSpace", this._uniformNumberProbes);
@@ -252,7 +250,6 @@ export class Irradiance {
                 effect.setVector3("bottomLeft", this._uniformBottomLeft);
                 effect.setTexture("shText", this._shTexture);
                 effect.setTexture("probePosition", this._posProbesTexture);
-
                 engine.setDirectViewport(0, 0, dest.getSize().width, dest.getSize().height);
                 engine.setState(false);
 
@@ -264,22 +261,23 @@ export class Irradiance {
                 for (let i = 0; i < subMeshes.length; i++) {
                     var subMesh = subMeshes[i];
                     var batch = mesh._getInstancesRenderList(subMesh._id);
-
                     if (batch.mustReturn) {
                         return;
                     }
-
                     var hardwareInstancedRendering = Boolean(engine.getCaps().instancedArrays && batch.visibleInstances[subMesh._id]);
                     mesh._bind(subMesh, effect, Material.TriangleFillMode);
                     mesh._processRendering(mesh, subMesh, effect, Material.TriangleFillMode, batch, hardwareInstancedRendering,
                         (isInstance, world) => effect.setMatrix("world", world));
                 }
-
                 gl.bindFramebuffer(gl.FRAMEBUFFER, null);
             }
         }
     }
 
+    /**
+     * Create the promise that is used to check if every thing we will need to render the irradiance
+     * is ready, when we will start the rendering
+     */
     private _createPromise() : Promise<void> {
         return new Promise((resolve, reject) => {
             this._initProbesPromise();
@@ -292,7 +290,6 @@ export class Irradiance {
                     this._isRawTextProbePosReady(),
                     this._areIrradianceLightMapReady(),
                     this._areProbesReady(),
-                    this._isUVEffectReady(),
                     this._isIrradianceLightmapEffectReady(),
                     this._isCaptureEnvironmentEffectReady(),
                     this.dictionary.areMaterialReady()
@@ -333,18 +330,6 @@ export class Irradiance {
         return true;
     }
 
-    private _isUVEffectReady() : boolean {
-        var attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind, VertexBuffer.UVKind, VertexBuffer.UV2Kind];
-        var uniforms = ["world", "projection", "view", "probePosition", "albedoColor", "hasTexture", "lightmapNumber"];
-        var samplers = ["albedoTexture"];
-        this.uvEffect = this._scene.getEngine().createEffect("irradianceVolumeProbeEnv",
-            attribs,
-            uniforms,
-            samplers);
-
-        return this.uvEffect.isReady();
-    }
-
     private _isIrradianceLightmapEffectReady() : boolean {
         var attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind, VertexBuffer.UV2Kind];
         var uniforms = ["world", "isUniform", "numberProbesInSpace", "boxSize", "bottomLeft"];
@@ -374,7 +359,8 @@ export class Irradiance {
 
     private _areIrradianceLightMapReady() : boolean {
         for (let value of this.dictionary.values()) {
-            if (!value.postProcessLightmap.isReady()) {
+            if (!value.irradianceLightmap.isReady() && !value.dilateLightmap.isReady() &&
+                !value.toneMapLightmap.isReady() && !value.sumOfBothLightmap.isReady()) {
                 return false;
             }
             if (value.directLightmap != null && !value.directLightmap.isReady()) {
@@ -386,21 +372,20 @@ export class Irradiance {
 
     /**
      * Method to call when you want to update the number of bounces, after the irradiance rendering has been done
-     * @param numberBounces
+     * It restart the rendering to take change into account
+     * @param numberBounces The new number of bounce we want
      */
     public updateNumberBounces(numberBounces : number) {
         if (this.numberBounces < numberBounces) {
-            this.finish = false;
             let currentBounce = this.numberBounces + 1;
             this.numberBounces = numberBounces;
             this._renderBounce(currentBounce);
         }
         else if (this.numberBounces > numberBounces) {
-            this.finish = false;
             this.numberBounces = numberBounces;
             let engine = this._scene.getEngine();
             for (let value of this.dictionary.values()) {
-                let internal = value.postProcessLightmap.getInternalTexture();
+                let internal = value.toneMapLightmap.getInternalTexture();
                 if (internal != null) {
                     engine.bindFramebuffer(internal);
                     engine.clear(new Color4(0., 0., 0., 1.), true, true, true);
@@ -419,6 +404,11 @@ export class Irradiance {
         }
     }
 
+    /**
+     * Method that has to be called when the render is finished
+     * It will update the multiplicator used to capture direct light in the probe environment and restart the rendering
+     * @param envMultiplicator 
+     */
     public updateDirectIllumForEnv(envMultiplicator : number) {
         for (let probe of this.probeList) {
             probe.envMultiplicator = envMultiplicator;
@@ -426,7 +416,7 @@ export class Irradiance {
         if (this.numberBounces > 0) {
             let engine = this._scene.getEngine();
             for (let value of this.dictionary.values()) {
-                let internal = value.postProcessLightmap.getInternalTexture();
+                let internal = value.toneMapLightmap.getInternalTexture();
                 if (internal != null) {
                     engine.bindFramebuffer(internal);
                     engine.clear(new Color4(0., 0., 0., 1.), true, true, true);

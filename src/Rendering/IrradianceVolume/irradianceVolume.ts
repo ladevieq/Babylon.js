@@ -18,15 +18,17 @@ export class IrradianceVolume {
     public probeList : Array<Probe>;
 
     /**
-     * The dictionary that contains the lightmaps for each scene
+     * The list of meshes that are rendered in the irradiance volume
      */
     public meshForIrradiance : Array<Mesh>;
+
     /**
      * Instance of the irradiance class that aims to comput irradiance
      */
     public irradiance : Irradiance;
+
     /**
-     * The dictionary that store the lightmaps
+     * The dictionary that store all the lightmaps
      */
     public dictionary : MeshDictionary;
 
@@ -38,9 +40,8 @@ export class IrradianceVolume {
      * Creation of the irradiance volume
      * @param meshes  The meshes that need to be rendered by the probes
      * @param scene  The scene
-     * @param probeRes The resolution that is used for rendering the probes
      * @param numberBounces the number of bounces wanted
-     * @param probeDisp The disposition of the probes in the scene
+     * @param probeDisposition The disposition of the probes in the scene
      * @param numberProbes The number of probes placed on each axis
      */
     constructor(meshes : Array<Mesh>, scene : Scene, 
@@ -59,6 +60,10 @@ export class IrradianceVolume {
             numberBounces, numberProbes, this._lowerLeft, this._volumeSize);
     }
 
+    /**
+     * Create the probes that are inside the volume
+     * @param probeDisposition The list of position of the probes
+     */
     private _createProbeFromProbeDisp(probeDisposition : Array<Vector4>) {
         for (let probePos of probeDisposition) {
             this.probeList.push(new Probe(new Vector3(probePos.x, probePos.y, probePos.z),
@@ -86,11 +91,20 @@ export class IrradianceVolume {
         this.irradiance.render();
     }
 
+    /**
+     * Update the value of the globalIllumination Strength,
+     * called after one rendering has been done
+     * @param value 
+     */
     public updateGlobalIllumStrength(value : number) {
         this.dictionary.globalIllumStrength = value;
         this.dictionary.render();
     }
-
+    /**
+     * Update the value of the directIllumination Strength,
+     * called after one rendering has been done
+     * @param value 
+     */
     public updateDirectIllumStrength(value : number) {
         this.dictionary.directIllumStrength = value;
         this.dictionary.render();

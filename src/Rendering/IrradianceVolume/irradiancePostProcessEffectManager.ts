@@ -10,12 +10,25 @@ import "../../Shaders/radiosityPostProcess.vertex";
 import "../../Shaders/dilate.fragment";
 import "../../Shaders/dilate.vertex";
 
+
+/**
+ * Class that takes care of initializing the effects used in the postProcess
+ */
 export class IrradiancePostProcessEffectManager {
 
+    /**
+     * The effect to sum the direct and indirect light
+     */
     public sumOfBothEffect : Effect;
 
+    /**
+     * The effect that applies tonemapping
+     */
     public toneMappingEffect : Effect;
 
+    /**
+     * The effect that dilate the lightmap
+     */
     public dilateEffect : Effect;
 
     private _scene : Scene;

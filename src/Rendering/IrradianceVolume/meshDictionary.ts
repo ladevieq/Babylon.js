@@ -9,6 +9,7 @@ import { IrradiancePostProcessEffectManager } from './irradiancePostProcessEffec
 import { VertexBuffer } from '../../Meshes/buffer';
 import { Material } from '../../Materials/material';
 import { InternalTexture } from '../../Materials/Textures/internalTexture';
+import { RenderTargetTexture } from '../../Materials/Textures/renderTargetTexture';
 
 /**
  * Interface that contains the different textures that are linked to a mesh
@@ -16,8 +17,15 @@ import { InternalTexture } from '../../Materials/Textures/internalTexture';
 export interface IMeshesGroup {
     //The lightmap that contains information about direct illumination
     directLightmap : Nullable<Texture>;
-    //MRT that contains the textures used for post process
-    postProcessLightmap : MultiRenderTarget;
+
+    irradianceLightmap : RenderTargetTexture;
+
+    dilateLightmap : RenderTargetTexture;
+
+    sumOfBothLightmap : RenderTargetTexture;
+
+    toneMapLightmap : RenderTargetTexture;
+
 }
 
 /**
@@ -70,9 +78,10 @@ export class MeshDictionary {
             let value = this.getValue(mesh);
             if (value != null) {
                 let size = 128;
-                value.postProcessLightmap = new MultiRenderTarget("postProcess", size, 3, this._scene, {
-                    samplingModes: [2, 2, 2, 2],
-                    types: [1, 1, 1, 1]});
+                value.irradianceLightmap = new RenderTargetTexture("irradiance", size, this._scene, false, true, 1, false, 2);
+                value.toneMapLightmap = new RenderTargetTexture("toneMap", size, this._scene, false, true, 1, false, 2);
+                value.dilateLightmap = new RenderTargetTexture("dilate", size, this._scene, false, true, 1, false, 2);
+                value.sumOfBothLightmap = new RenderTargetTexture("sumOfBoth", size, this._scene, false, true, 1, false, 2);
             }
         }
 
@@ -88,19 +97,18 @@ export class MeshDictionary {
         this._dilateRendering(value);
         this._sumOfBothRendering(value);
         this._toneMappingRendering(value);
-        value.postProcessLightmap.textures[1].coordinatesIndex = 1;
+        value.toneMapLightmap.coordinatesIndex = 1;
         let mesh = this._getMesh(value);
         if (mesh != null) {
-            (<PBRMaterial> mesh.material).lightmapTexture = value.postProcessLightmap.textures[1];
+            (<PBRMaterial> mesh.material).lightmapTexture = value.toneMapLightmap;
         }
     }
 
     private _sumOfBothRendering(value : IMeshesGroup) : void {
-        let mrt = value.postProcessLightmap;
         let engine = this._scene.getEngine();
         let effect = this._postProcessManager.sumOfBothEffect;
 
-        let dest = mrt.textures[0];
+        let dest = value.sumOfBothLightmap;
 
         engine.enableEffect(effect);
         engine.setState(false);
@@ -112,7 +120,7 @@ export class MeshDictionary {
         let vb: any = {};
         vb[VertexBuffer.PositionKind] = this._postProcessManager.screenQuadVB;
         effect.setTexture("texture1", value.directLightmap);
-        effect.setTexture("texture2", mrt.textures[1]);
+        effect.setTexture("texture2", value.dilateLightmap);
         effect.setFloat("directIllumStrength", this.directIllumStrength);
         effect.setFloat("globalIllumStrength", this.globalIllumStrength);
         engine.bindBuffers(vb, this._postProcessManager.screenQuadIB, effect);
@@ -123,11 +131,10 @@ export class MeshDictionary {
     }
 
     public _toneMappingRendering(value : IMeshesGroup) {
-        let mrt = value.postProcessLightmap;
         let engine = this._scene.getEngine();
         let effect = this._postProcessManager.toneMappingEffect;
 
-        let dest = mrt.textures[1];
+        let dest = value.toneMapLightmap;
 
         engine.enableEffect(effect);
         engine.setState(false);
@@ -138,7 +145,7 @@ export class MeshDictionary {
         engine.clear(new Color4(0.0, 0.0, 0.0, 0.0), true, true, true);
         let vb: any = {};
         vb[VertexBuffer.PositionKind] = this._postProcessManager.screenQuadVB;
-        effect.setTexture("inputTexture", mrt.textures[0]);
+        effect.setTexture("inputTexture", value.sumOfBothLightmap);
         effect.setFloat("exposure", 1);
         engine.bindBuffers(vb, this._postProcessManager.screenQuadIB, effect);
 
@@ -148,10 +155,9 @@ export class MeshDictionary {
     }
 
     public _dilateRendering(value : IMeshesGroup) {
-        let mrt = value.postProcessLightmap;
         let engine = this._scene.getEngine();
         let effect = this._postProcessManager.dilateEffect;
-        let dest = mrt.textures[1];
+        let dest = value.dilateLightmap;
 
         engine.enableEffect(effect);
         engine.setState(false);
@@ -163,7 +169,7 @@ export class MeshDictionary {
         gl.clearColor(1., 0., 0., 1.);
         let vb: any = {};
         vb[VertexBuffer.PositionKind] = this._postProcessManager.screenQuadVB;
-        effect.setTexture("inputTexture", mrt.textures[2]);
+        effect.setTexture("inputTexture", value.irradianceLightmap);
         effect.setFloat2("texelSize", 1 / dest.getSize().width, 1 / dest.getSize().height);
         engine.bindBuffers(vb, this._postProcessManager.screenQuadIB, effect);
 
