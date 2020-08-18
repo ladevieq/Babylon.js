@@ -217,7 +217,7 @@ export class Probe {
         let effect = this.captureEnvironmentEffect;
 
         gl.bindFramebuffer(gl.FRAMEBUFFER, internalTexture._framebuffer);
-        engine.setState(false, 0, true, scene.useRightHandedSystem);
+        engine.setState(true, 0, true, scene.useRightHandedSystem);
 
         let viewMatrices = [ this.cameraList[Probe.PX].getViewMatrix(),
             this.cameraList[Probe.NX].getViewMatrix(),
