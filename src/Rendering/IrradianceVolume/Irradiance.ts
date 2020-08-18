@@ -127,9 +127,8 @@ export class Irradiance {
 
         for (let probe of this.probeList) {
             if (probe.probeInHouse == Probe.INSIDE_HOUSE) {
-                probe.environmentProbeTexture.isCube = false;
                 probe.environmentProbeTexture.render();
-                probe.environmentProbeTexture.isCube = true;
+                probe.CPUcomputeSHCoeff();
             }
         }
         this.updateShTexture();

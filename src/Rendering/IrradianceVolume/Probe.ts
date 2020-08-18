@@ -166,7 +166,7 @@ export class Probe {
         this.transformNode.parent = parent;
     }
 
-    protected _renderCubeTexture(subMeshes : SmartArray<SubMesh>) : void {
+    protected _renderCubeTexture(subMeshes : SmartArray<SubMesh>, faceIndex : number) : void {
 
         var renderSubMesh = (subMesh : SubMesh, effect : Effect, view : Matrix, projection : Matrix ) => {
             let mesh = subMesh.getRenderingMesh();
@@ -240,15 +240,14 @@ export class Probe {
 
         engine.enableEffect(effect);
 
-        for (let j = 0; j < 6; j++) {
-            engine.setDirectViewport(0, 0, this.environmentProbeTexture.getRenderWidth(), this.environmentProbeTexture.getRenderHeight());
-            gl.framebufferTexture2D(gl.DRAW_FRAMEBUFFER, gl.COLOR_ATTACHMENT0, cubeSides[j], internalTexture._webGLTexture, 0);
+        engine.setDirectViewport(0, 0, this.environmentProbeTexture.getRenderWidth(), this.environmentProbeTexture.getRenderHeight());
+        gl.framebufferTexture2D(gl.DRAW_FRAMEBUFFER, gl.COLOR_ATTACHMENT0, cubeSides[faceIndex], internalTexture._webGLTexture, 0);
 
-            engine.clear(new Color4(0, 0, 0, 0), true, true);
-            for (let i = 0; i < subMeshes.length; i++) {
-                renderSubMesh(subMeshes.data[i], effect, viewMatrices[j], projectionMatrix);
-            }
+        engine.clear(new Color4(0, 0, 0, 0), true, true);
+        for (let i = 0; i < subMeshes.length; i++) {
+            renderSubMesh(subMeshes.data[i], effect, viewMatrices[faceIndex], projectionMatrix);
         }
+        
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     }
 
@@ -271,16 +270,14 @@ export class Probe {
         if (this.probeInHouse == Probe.INSIDE_HOUSE) {
             this.environmentProbeTexture.renderList = meshes;
             this.environmentProbeTexture.boundingBoxPosition = this.position;
-
-            this.environmentProbeTexture.onBeforeRenderObservable.add(() => {
-                    this.environmentProbeTexture.isCube = false; 
+            let faceIndexForRender = 0;
+            this.environmentProbeTexture.onBeforeRenderObservable.add((faceIndex) => {
+                    faceIndexForRender= faceIndex;
             });
             this.environmentProbeTexture.customRenderFunction =  (opaqueSubMeshes: SmartArray<SubMesh>, alphaTestSubMeshes: SmartArray<SubMesh>, transparentSubMeshes: SmartArray<SubMesh>, depthOnlySubMeshes: SmartArray<SubMesh>): void => {
-                    this._renderCubeTexture(opaqueSubMeshes);
+                    this._renderCubeTexture(opaqueSubMeshes, faceIndexForRender);
             };
             this.environmentProbeTexture.onAfterRenderObservable.add(() => {  
-                this.environmentProbeTexture.isCube = true;
-                this._CPUcomputeSHCoeff();
             });
         }
     }
@@ -310,10 +307,11 @@ export class Probe {
         return this.environmentProbeTexture.isReady();
     }
 
-    private _CPUcomputeSHCoeff() : void {
-
+    /**
+     * Compute the sh coefficient, coming from the environment texture capture by the probes
+     */
+    public CPUcomputeSHCoeff() : void {
         let sp = CubeMapToSphericalPolynomialTools.ConvertCubeMapTextureToSphericalPolynomial(this.environmentProbeTexture);
-
         if (sp != null) {
             this.sphericalHarmonic = SphericalHarmonics.FromPolynomial(sp);
             this._weightSHCoeff();
