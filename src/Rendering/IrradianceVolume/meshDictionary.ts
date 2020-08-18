@@ -92,8 +92,6 @@ export class MeshDictionary {
         let mesh = this._getMesh(value);
         if (mesh != null) {
             (<PBRMaterial> mesh.material).lightmapTexture = value.postProcessLightmap.textures[1];
-            // (<PBRMaterial> mesh.material).lightmapTexture = value.directLightmap;
-
         }
     }
 
@@ -115,7 +113,6 @@ export class MeshDictionary {
         vb[VertexBuffer.PositionKind] = this._postProcessManager.screenQuadVB;
         effect.setTexture("texture1", value.directLightmap);
         effect.setTexture("texture2", mrt.textures[1]);
-        // effect.setTexture("texture2", value.irradianceLightmap);
         effect.setFloat("directIllumStrength", this.directIllumStrength);
         effect.setFloat("globalIllumStrength", this.globalIllumStrength);
         engine.bindBuffers(vb, this._postProcessManager.screenQuadIB, effect);

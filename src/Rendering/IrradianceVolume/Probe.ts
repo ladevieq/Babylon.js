@@ -34,6 +34,8 @@ export class Probe {
 
     public static readonly OUTSIDE_HOUSE : number = 0;
     public static readonly INSIDE_HOUSE : number = 1;
+    public static readonly RESOLUTION : number = 16;
+
     /**
      * Static number to access to the cameras with their direction
      */
@@ -45,7 +47,6 @@ export class Probe {
     public static readonly NZ : number = 5;
 
     private _scene : Scene;
-    private _resolution : number;
 
     /**
      * The list of camera that are attached to the probe,
@@ -53,26 +54,11 @@ export class Probe {
      */
     public cameraList : Array<UniversalCamera>;
 
-    /**
-     * Boolean use to know if the texture we are using for rendering is cubic or not
-     */
-    public isCube : boolean;
-
-    /**
-     * The effect used for rendering the cube map
-     */
-    public uvEffect : Effect;
-
-    public bounceEffect : Effect;
+    public captureEnvironmentEffect : Effect;
 
     public position : Vector3;
 
     public transformNode : TransformNode;
-
-    /**
-     * The string representing the path to the texture that is used
-     */
-    public albedoStr : string;
 
     public dictionary : MeshDictionary;
 
@@ -84,27 +70,16 @@ export class Probe {
     /**
      * RenderTargetTexture that aims to copy the cubicMRT envCubeMap and add the irradiance compute previously to it, to simulate the bounces of the light
      */
-    public tempBounce : RenderTargetTexture;
+    public environmentProbeTexture : RenderTargetTexture;
 
     /**
      * Variable helpful and use to know when the environment cube map has been rendered to continue the process
      */
     public envCubeMapRendered = false;
 
-    /**
-     * Variable helpful and use to know when the spherical harmonic coefficient has been computed to continue the process
-     */
-    public sphericalHarmonicChanged : boolean;
-
-    public renderTime  = 0;
-
-    public shTime = 0;
-
     public envMultiplicator = 1.3;
 
     public probeInHouse = Probe.OUTSIDE_HOUSE;
-
-    public needIrradianceGradient = false;
 
     public sphere : Mesh;
 
@@ -113,9 +88,8 @@ export class Probe {
      * @param position The position at which the probe is set
      * @param scene the scene in which the probe is place
      * @param albedoName the path to the albedo
-     * @param isCube Is the texture we want to use a cube or not ?
      */
-    constructor(position : Vector3, scene : Scene, resolution : number, inRoom : number) {
+    constructor(position : Vector3, scene : Scene, inRoom : number) {
         this._scene = scene;
         this.position = position;
         this.transformNode = new TransformNode("node", this._scene);
@@ -159,16 +133,6 @@ export class Probe {
 
         this.transformNode.translate(position, 1);
         this.sphericalHarmonic = new SphericalHarmonics();
-        this.sphericalHarmonicChanged = false;
-        this._resolution = resolution;
-    }
-
-    /**
-     * Set the resolution used by the probe to render its surrounding
-     * @param resolution The resolution to use
-     */
-    public setResolution(resolution : number) : void {
-        this._resolution = resolution;
     }
 
     /**
@@ -181,7 +145,7 @@ export class Probe {
 
     protected _renderCubeTexture(subMeshes : SmartArray<SubMesh>) : void {
 
-        var renderSubMesh = (subMesh : SubMesh, effect : Effect, view : Matrix, projection : Matrix, rotation : Matrix) => {
+        var renderSubMesh = (subMesh : SubMesh, effect : Effect, view : Matrix, projection : Matrix ) => {
             let mesh = subMesh.getRenderingMesh();
 
             mesh._bind(subMesh, effect, Material.TriangleFillMode);
@@ -226,8 +190,8 @@ export class Probe {
         let engine = scene.getEngine();
         let gl = engine._gl;
 
-        let internalTexture = <InternalTexture>this.tempBounce.getInternalTexture();
-        let effect = this.bounceEffect;
+        let internalTexture = <InternalTexture>this.environmentProbeTexture.getInternalTexture();
+        let effect = this.captureEnvironmentEffect;
 
         gl.bindFramebuffer(gl.FRAMEBUFFER, internalTexture._framebuffer);
         engine.setState(false, 0, true, scene.useRightHandedSystem);
@@ -251,23 +215,15 @@ export class Probe {
             gl.TEXTURE_CUBE_MAP_NEGATIVE_Z
         ];
 
-        let rotationMatrices = [
-            Matrix.RotationZ(-Math.PI / 2).multiply(Matrix.RotationX(Math.PI / 2)),
-            Matrix.RotationZ(Math.PI / 2).multiply(Matrix.RotationX(Math.PI / 2)),
-            Matrix.RotationX(-Math.PI),
-            Matrix.Identity(),
-            Matrix.RotationX(Math.PI / 2),
-            Matrix.RotationZ(Math.PI).multiply(Matrix.RotationX(Math.PI / 2))
-        ];
         engine.enableEffect(effect);
 
         for (let j = 0; j < 6; j++) {
-            engine.setDirectViewport(0, 0, this.tempBounce.getRenderWidth(), this.tempBounce.getRenderHeight());
+            engine.setDirectViewport(0, 0, this.environmentProbeTexture.getRenderWidth(), this.environmentProbeTexture.getRenderHeight());
             gl.framebufferTexture2D(gl.DRAW_FRAMEBUFFER, gl.COLOR_ATTACHMENT0, cubeSides[j], internalTexture._webGLTexture, 0);
 
             engine.clear(new Color4(0, 0, 0, 0), true, true);
             for (let i = 0; i < subMeshes.length; i++) {
-                renderSubMesh(subMeshes.data[i], effect, viewMatrices[j], projectionMatrix, rotationMatrices[j]);
+                renderSubMesh(subMeshes.data[i], effect, viewMatrices[j], projectionMatrix);
             }
         }
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
@@ -277,10 +233,9 @@ export class Probe {
      * Render the 6 cameras of the probes with different effect to create the cube map we need
      * @param meshes The meshes we want to render
      */
-    public render(meshes : Array<Mesh>, dictionary : MeshDictionary, uvEffet : Effect, bounceEffect : Effect) : void {
+    public initForRendering(dictionary : MeshDictionary, captureEnvironmentEffect : Effect) : void {
         this.dictionary = dictionary;
-        this.uvEffect = uvEffet;
-        this.bounceEffect = bounceEffect;
+        this.captureEnvironmentEffect = captureEnvironmentEffect;
     }
 
     /**
@@ -290,27 +245,18 @@ export class Probe {
      */
     public renderBounce(meshes : Array<Mesh>) : void {
         if (this.probeInHouse == Probe.INSIDE_HOUSE) {
-            this.tempBounce.renderList = meshes;
-            this.tempBounce.boundingBoxPosition = this.position;
+            this.environmentProbeTexture.renderList = meshes;
+            this.environmentProbeTexture.boundingBoxPosition = this.position;
 
-            let begin = new Date().getTime();
-            let end =  new Date().getTime();
-
-            this.tempBounce.onBeforeRenderObservable.add(() => {
-                    this.tempBounce.isCube = true;
-                    begin = new Date().getTime();
+            this.environmentProbeTexture.onBeforeRenderObservable.add(() => {
+                    this.environmentProbeTexture.isCube = false; 
             });
-            this.tempBounce.customRenderFunction =  (opaqueSubMeshes: SmartArray<SubMesh>, alphaTestSubMeshes: SmartArray<SubMesh>, transparentSubMeshes: SmartArray<SubMesh>, depthOnlySubMeshes: SmartArray<SubMesh>): void => {
+            this.environmentProbeTexture.customRenderFunction =  (opaqueSubMeshes: SmartArray<SubMesh>, alphaTestSubMeshes: SmartArray<SubMesh>, transparentSubMeshes: SmartArray<SubMesh>, depthOnlySubMeshes: SmartArray<SubMesh>): void => {
                     this._renderCubeTexture(opaqueSubMeshes);
             };
-            this.tempBounce.onAfterRenderObservable.add(() => {
-                    end =  new Date().getTime();
-                    this.renderTime = end - begin;
-
-                    begin = new Date().getTime();
-                    this._CPUcomputeSHCoeff();
-                    end =  new Date().getTime();
-                    this.shTime = end - begin;
+            this.environmentProbeTexture.onAfterRenderObservable.add(() => {  
+                this.environmentProbeTexture.isCube = true;
+                this._CPUcomputeSHCoeff();
             });
         }
     }
@@ -321,7 +267,7 @@ export class Probe {
      */
     public initPromise() : void {
         if (this.probeInHouse == Probe.INSIDE_HOUSE) {
-            this.tempBounce = new RenderTargetTexture("tempLightBounce", this._resolution, this._scene, undefined, true, Constants.TEXTURETYPE_FLOAT, true);
+            this.environmentProbeTexture = new RenderTargetTexture("tempLightBounce", Probe.RESOLUTION, this._scene, undefined, true, Constants.TEXTURETYPE_FLOAT, true);
         }
     }
 
@@ -330,26 +276,24 @@ export class Probe {
      */
     public isProbeReady() : boolean {
         if (this.probeInHouse == Probe.INSIDE_HOUSE) {
-            return this._isTempBounceReady();
+            return this._isEnvironmentProbeTextureReady();
         }
         return true;
     }
 
-    private _isTempBounceReady() : boolean {
+    private _isEnvironmentProbeTextureReady() : boolean {
 
-        return this.tempBounce.isReady();
+        return this.environmentProbeTexture.isReady();
     }
 
     private _CPUcomputeSHCoeff() : void {
 
-        let sp = CubeMapToSphericalPolynomialTools.ConvertCubeMapTextureToSphericalPolynomial(this.tempBounce);
+        let sp = CubeMapToSphericalPolynomialTools.ConvertCubeMapTextureToSphericalPolynomial(this.environmentProbeTexture);
 
         if (sp != null) {
             this.sphericalHarmonic = SphericalHarmonics.FromPolynomial(sp);
             this._weightSHCoeff();
-            this.sphericalHarmonicChanged = true;
         }
-        // this._computeProbeIrradiance();
     }
 
     private _computeProbeIrradiance() : void {
@@ -396,95 +340,4 @@ export class Probe {
         this.sphericalHarmonic.l2_2 = this.sphericalHarmonic.l2_2.multiplyByFloats(weight, weight, weight);
     }
 
-    public useIrradianceGradient() {
-        let tempr : Vector3;
-        let tempg : Vector3;
-        let tempb : Vector3;
-        let d : Vector3;
-
-        let currentShCoef : Vector3;
-        let gradientShCoef : Vector3;
-
-        let modifCoef = () => {
-            currentShCoef.x  = gradientShCoef.x + Vector3.Dot(tempr, d);
-            currentShCoef.y = gradientShCoef.y + Vector3.Dot(tempg, d);
-            currentShCoef.z = gradientShCoef.z + Vector3.Dot(tempb, d);
-        };
-
-        if (this.probeInHouse == Probe.INSIDE_HOUSE_CLOSE_TO_WALL) {
-            d = this.position.subtract(this.probeForIrradiance.position);
-            // L00
-            currentShCoef = this.sphericalHarmonic.l00;
-            gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l00;
-            tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l00.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l00.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l00.x);
-            tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l00.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l00.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l00.y);
-            tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l00.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l00.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l00.z);
-            modifCoef();
-
-            // L10
-            currentShCoef = this.sphericalHarmonic.l10;
-            gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l10;
-            tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l10.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l10.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l10.x);
-            tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l10.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l10.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l10.y);
-            tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l10.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l10.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l10.z);
-            modifCoef();
-
-            // L11
-            currentShCoef = this.sphericalHarmonic.l11;
-            gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l11;
-            tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l11.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l11.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l11.x);
-            tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l11.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l11.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l11.y);
-            tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l11.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l11.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l11.z);
-            modifCoef();
-
-            // L1_1
-            currentShCoef = this.sphericalHarmonic.l1_1;
-            gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l1_1;
-            tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l1_1.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l1_1.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l1_1.x);
-            tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l1_1.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l1_1.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l1_1.y);
-            tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l1_1.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l1_1.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l1_1.z);
-            modifCoef();
-
-             // L20
-             currentShCoef = this.sphericalHarmonic.l20;
-             gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l20;
-             tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l20.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l20.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l20.x);
-             tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l20.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l20.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l20.y);
-             tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l20.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l20.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l20.z);
-             modifCoef();
-
-             // 221
-             currentShCoef = this.sphericalHarmonic.l21;
-             gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l21;
-             tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l21.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l21.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l21.x);
-             tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l21.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l21.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l21.y);
-             tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l21.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l21.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l21.z);
-             modifCoef();
-
-             // 22_1
-             currentShCoef = this.sphericalHarmonic.l2_1;
-             gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l2_1;
-             tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l2_1.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l2_1.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l2_1.x);
-             tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l2_1.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l2_1.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l2_1.y);
-             tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l2_1.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l2_1.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l2_1.z);
-             modifCoef();
-
-             // L22
-             currentShCoef = this.sphericalHarmonic.l22;
-             gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l22;
-             tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l22.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l22.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l22.x);
-             tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l22.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l22.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l22.y);
-             tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l22.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l22.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l22.z);
-             modifCoef();
-
-             // 22_1
-             currentShCoef = this.sphericalHarmonic.l2_2;
-             gradientShCoef = this.probeForIrradiance.sphericalHarmonic.l2_2;
-             tempr = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l2_2.x, this.probeForIrradiance.gradientSphericalHarmonics[1].l2_2.x, this.probeForIrradiance.gradientSphericalHarmonics[2].l2_2.x);
-             tempg = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l2_2.y, this.probeForIrradiance.gradientSphericalHarmonics[1].l2_2.y, this.probeForIrradiance.gradientSphericalHarmonics[2].l2_2.y);
-             tempb = new Vector3(this.probeForIrradiance.gradientSphericalHarmonics[0].l2_2.z, this.probeForIrradiance.gradientSphericalHarmonics[1].l2_2.z, this.probeForIrradiance.gradientSphericalHarmonics[2].l2_2.z);
-             modifCoef();
-        }
-        // this._computeProbeIrradiance();
-    }
 }

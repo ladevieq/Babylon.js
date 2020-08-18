@@ -45,7 +45,7 @@ export class Irradiance {
     /**
      * The effect used to render the irradiance from each probe.
      */
-    public bounceEffect : Effect;
+    public captureEnvironmentEffect : Effect;
 
     public irradianceLightmapEffect : Effect;
 
@@ -81,7 +81,7 @@ export class Irradiance {
      * @param volumeSize A vec3 containing the volume width, height and depth
      */
     constructor(scene : Scene, probes : Array<Probe>, meshes : Array<Mesh>, dictionary : MeshDictionary, numberBounces : number,
-        probeDisposition : Vector3, bottomLeft : Vector3, volumeSize : Vector3) {
+        numberProbes : Vector3, bottomLeft : Vector3, volumeSize : Vector3) {
         this._scene = scene;
         this.probeList = probes;
         this.meshes = [];
@@ -91,7 +91,7 @@ export class Irradiance {
 
         this.dictionary = dictionary;
         this.numberBounces = numberBounces;
-        this._uniformNumberProbes = probeDisposition;
+        this._uniformNumberProbes = numberProbes;
         this._uniformBottomLeft = bottomLeft;
         this._uniformBoxSize = volumeSize;
 
@@ -111,14 +111,10 @@ export class Irradiance {
         this._promise.then(() => {
             for (let probe of this.probeList) {
                 // Init the renderTargetTexture needed for each probes
-                probe.render(this.meshes, this.dictionary, this.uvEffect, this.bounceEffect);
+                probe.initForRendering(this.dictionary, this.captureEnvironmentEffect);
                 probe.renderBounce(this.meshes);
             }
             let currentBounce = 0;
-            for (let probe of this.probeList) {
-                // Set these value to false to ensure that the promess will finish when we want it too
-                probe.sphericalHarmonicChanged = false;
-            }
             if (this.numberBounces > 0) {
                 // Call the recursive function that will render each bounce
                 this._renderBounce(currentBounce + 1);
@@ -132,30 +128,16 @@ export class Irradiance {
     }
 
     private _renderBounce(currentBounce : number) {
-        let renderTime = 0;
-        let shTime = 0;
-        let beginBounce = new Date().getTime();
 
         for (let probe of this.probeList) {
             if (probe.probeInHouse == Probe.INSIDE_HOUSE) {
-                probe.tempBounce.isCube = false;
-                probe.tempBounce.render();
-                probe.tempBounce.isCube = true;
-                renderTime += probe.renderTime;
-                shTime += probe.shTime;
+                probe.environmentProbeTexture.isCube = false;
+                probe.environmentProbeTexture.render();
+                probe.environmentProbeTexture.isCube = true;
             }
         }
-        let endProbeEnv = new Date().getTime();
-
         this.updateShTexture();
         this._renderIrradianceLightmap();
-        let endBounce = new Date().getTime();
-        console.log("___________________ \n bounce : " + currentBounce);
-        console.log("Temps total : " + (endBounce - beginBounce));
-        console.log("Rendu de tous les environnements des probes : " + (endProbeEnv - beginBounce));
-        console.log("Rendu de l'irradiance sur la scène : " + (endBounce - endProbeEnv));
-        console.log("Temps total capture environnement : " + renderTime);
-        console.log("Temps total sh coef : " + shTime);
         if (currentBounce < this.numberBounces) {
             this._renderBounce(currentBounce + 1);
         }
@@ -294,19 +276,6 @@ export class Irradiance {
                 }
 
                 gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-
-                // engine.clear(new Color4(0.0, 0.0, 0.0, 0.0), true, true, true);
-                // let vb: any = {};
-                // vb[VertexBuffer.PositionKind] = mesh.getVertexBuffer(VertexBuffer.PositionKind);
-                // vb[VertexBuffer.NormalKind] = mesh.getVertexBuffer(VertexBuffer.NormalKind);
-                // vb[VertexBuffer.UV2Kind] = mesh.getVertexBuffer(VertexBuffer.UV2Kind);
-
-                // if (mesh._geometry != null) {
-                //     engine.bindBuffers(vb, mesh._geometry.getIndexBuffer(), effect);
-                // }
-
-                // engine.drawElementsType(Material.TriangleFillMode, 0, 6);
-
             }
         }
     }
@@ -325,7 +294,7 @@ export class Irradiance {
                     this._areProbesReady(),
                     this._isUVEffectReady(),
                     this._isIrradianceLightmapEffectReady(),
-                    this._isBounceEffectReady(),
+                    this._isCaptureEnvironmentEffectReady(),
                     this.dictionary.areMaterialReady()
                 ];
                 for (let i = 0 ; i < readyStates.length; i++) {
@@ -392,19 +361,15 @@ export class Irradiance {
         return this.irradianceLightmapEffect.isReady();
     }
 
-    private _isBounceEffectReady() : boolean {
-        // var attribs = [VertexBuffer.PositionKind, VertexBuffer.UVKind];
+    private _isCaptureEnvironmentEffectReady() : boolean {
         var attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind, VertexBuffer.UVKind, VertexBuffer.UV2Kind];
-        // var samplers = ["envMap", "envMapUV", "irradianceMapArray", "directIlluminationLightMapArray"];
         var samplers = ["envMap", "envMapUV", "irradianceMap", "albedoTexture", "directIlluminationLightmap"];
-
-        // var uniform = ["world", "rotation", "numberLightmap"];
         var uniform = ["projection", "view", "probePosition", "albedoColor", "hasTexture", "world",  "numberLightmap", "envMultiplicator"];
-        this.bounceEffect = this._scene.getEngine().createEffect("irradianceVolumeUpdateProbeBounceEnv",
+        this.captureEnvironmentEffect = this._scene.getEngine().createEffect("irradianceVolumeUpdateProbeBounceEnv",
             attribs, uniform,
             samplers);
 
-        return this.bounceEffect.isReady();
+        return this.captureEnvironmentEffect.isReady();
     }
 
     private _areIrradianceLightMapReady() : boolean {
@@ -418,27 +383,6 @@ export class Irradiance {
         }
         return true;
     }
-
-/*
-    private  _areProbesEnvMapReady() : boolean {
-        for (let probe of this.probeList) {
-            if (probe.envCubeMapRendered == false) {
-                return false;
-            }
-        }
-        return true;
-    }
-*/
-/*
-    private _areShCoeffReady() : boolean {
-        for (let probe of this.probeList) {
-            if (! probe.sphericalHarmonicChanged) {
-                return false;
-            }
-        }
-        return true;
-    }
-*/
 
     /**
      * Method to call when you want to update the number of bounces, after the irradiance rendering has been done
@@ -473,7 +417,6 @@ export class Irradiance {
         else {
             return;
         }
-
     }
 
     public updateDirectIllumForEnv(envMultiplicator : number) {

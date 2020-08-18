@@ -3,7 +3,6 @@ import { Vector3, Vector4 } from '../../Maths/math.vector';
 import { Probe } from './Probe';
 import { MeshDictionary } from './meshDictionary';
 import { Irradiance } from './Irradiance';
-import { ProbeIrradianceGradient } from './ProbeIrradianceGradient';
 import { Scene } from '../../scene';
 
 /**
@@ -35,8 +34,6 @@ export class IrradianceVolume {
     private _lowerLeft : Vector3;
     private _volumeSize : Vector3;
 
-    private _probesDisposition : Vector3;
-
     /**
      * Creation of the irradiance volume
      * @param meshes  The meshes that need to be rendered by the probes
@@ -46,27 +43,26 @@ export class IrradianceVolume {
      * @param probeDisp The disposition of the probes in the scene
      * @param numberProbes The number of probes placed on each axis
      */
-    constructor(meshes : Array<Mesh>, scene : Scene, probeRes : number,
-        numberBounces : number, probeDisp : Array<Vector4>, numberProbes : Vector3) {
+    constructor(meshes : Array<Mesh>, scene : Scene, 
+        numberBounces : number, probeDisposition : Array<Vector4>, numberProbes : Vector3) {
         this._scene = scene;
         this.meshForIrradiance = meshes;
         this.probeList = [];
-        this._probesDisposition = numberProbes;
         //Create and dispatch the probes inside the irradiance volume
-        this._createProbeFromProbeDisp(probeDisp);
-        this._lowerLeft = new Vector3(probeDisp[0].x, probeDisp[0].y, probeDisp[0].z);
-        this._volumeSize = new Vector3(probeDisp[probeDisp.length - 1].x - this._lowerLeft.x,
-            probeDisp[probeDisp.length - 1].y - this._lowerLeft.y,
-            probeDisp[probeDisp.length - 1].z - this._lowerLeft.z);
+        this._createProbeFromProbeDisp(probeDisposition);
+        this._lowerLeft = new Vector3(probeDisposition[0].x, probeDisposition[0].y, probeDisposition[0].z);
+        this._volumeSize = new Vector3(probeDisposition[probeDisposition.length - 1].x - this._lowerLeft.x,
+            probeDisposition[probeDisposition.length - 1].y - this._lowerLeft.y,
+            probeDisposition[probeDisposition.length - 1].z - this._lowerLeft.z);
         this.dictionary = new MeshDictionary(meshes, scene);
         this.irradiance = new Irradiance(this._scene, this.probeList, this.meshForIrradiance, this.dictionary,
-            numberBounces, this._probesDisposition, this._lowerLeft, this._volumeSize);
+            numberBounces, numberProbes, this._lowerLeft, this._volumeSize);
     }
 
-    private _createProbeFromProbeDisp(probeDisp : Array<Vector4>) {
-        for (let probePos of probeDisp) {
+    private _createProbeFromProbeDisp(probeDisposition : Array<Vector4>) {
+        for (let probePos of probeDisposition) {
             this.probeList.push(new Probe(new Vector3(probePos.x, probePos.y, probePos.z),
-            this._scene, 16, probePos.w));
+            this._scene, probePos.w));
         }
     }
 
