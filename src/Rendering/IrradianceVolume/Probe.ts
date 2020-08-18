@@ -32,8 +32,11 @@ import { TransformNode } from '../../Meshes/transformNode';
  */
 export class Probe {
 
+    // Status of the probe in the irradiance volume, according to the house
     public static readonly OUTSIDE_HOUSE : number = 0;
     public static readonly INSIDE_HOUSE : number = 1;
+
+    // Resolution of the RTT to render the probes
     public static readonly RESOLUTION : number = 16;
 
     /**
@@ -54,12 +57,24 @@ export class Probe {
      */
     public cameraList : Array<UniversalCamera>;
 
+    /**
+     * Effect that will capture the environment of the probes
+     */
     public captureEnvironmentEffect : Effect;
 
+    /**
+     * The position of the probe
+     */
     public position : Vector3;
 
+    /**
+     * The node which is the point that will represent the probe
+     */
     public transformNode : TransformNode;
 
+    /**
+     * Instance of the dictionary that stores all the lightmaps
+     */
     public dictionary : MeshDictionary;
 
     /**
@@ -77,17 +92,26 @@ export class Probe {
      */
     public envCubeMapRendered = false;
 
+    /**
+     * Factor with which the environment color is multiply when rendering the environment
+     */
     public envMultiplicator = 1.3;
 
+    /**
+     * Status of the probe in the irradiance volume, according to the house
+     */
     public probeInHouse = Probe.OUTSIDE_HOUSE;
 
+    /**
+     * The sphere that represents the probe if we want to display them
+     */
     public sphere : Mesh;
 
     /**
      * Create the probe used to capture the irradiance at a point
      * @param position The position at which the probe is set
      * @param scene the scene in which the probe is place
-     * @param albedoName the path to the albedo
+     * @param inRoom 1 if the probe is in the house, 0 otherwise 
      */
     constructor(position : Vector3, scene : Scene, inRoom : number) {
         this._scene = scene;
@@ -130,7 +154,6 @@ export class Probe {
         for (let camera of this.cameraList) {
             camera.parent = this.transformNode;
         }
-
         this.transformNode.translate(position, 1);
         this.sphericalHarmonic = new SphericalHarmonics();
     }
@@ -230,8 +253,9 @@ export class Probe {
     }
 
     /**
-     * Render the 6 cameras of the probes with different effect to create the cube map we need
-     * @param meshes The meshes we want to render
+     * Initialize the method that were created in a promise
+     * @param dictionary  The dictionary that contains all the lightmap
+     * @param captureEnvironmentEffect The effect that render the environment of the probes
      */
     public initForRendering(dictionary : MeshDictionary, captureEnvironmentEffect : Effect) : void {
         this.dictionary = dictionary;
@@ -239,9 +263,9 @@ export class Probe {
     }
 
     /**
-     * Render one bounce of the light from the point of view of a probe
-     *
-     * @param irradianceLightMap THe irradiance lightmap use to render the bounces
+     * Initialize the custom render function of the environmentProbeTexture
+     * It will be rendered once per bounce, per mesh
+     * @param meshes The meshes to be rendered in the irradiance volume
      */
     public renderBounce(meshes : Array<Mesh>) : void {
         if (this.probeInHouse == Probe.INSIDE_HOUSE) {

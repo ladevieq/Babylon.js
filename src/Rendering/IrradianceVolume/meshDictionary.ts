@@ -4,7 +4,6 @@ import { Texture } from '../../Materials/Textures/texture';
 import { Scene } from '../../scene';
 import { PBRMaterial } from '../../Materials/PBR/pbrMaterial';
 import { Color4 } from '../../Maths/math.color';
-import { MultiRenderTarget } from '../../Materials/Textures/multiRenderTarget';
 import { IrradiancePostProcessEffectManager } from './irradiancePostProcessEffectManager';
 import { VertexBuffer } from '../../Meshes/buffer';
 import { Material } from '../../Materials/material';
@@ -18,12 +17,17 @@ export interface IMeshesGroup {
     //The lightmap that contains information about direct illumination
     directLightmap : Nullable<Texture>;
 
+    // The lightmap used to store the irradiance
     irradianceLightmap : RenderTargetTexture;
 
+    // The lightmap used to store the dilated irradiance
     dilateLightmap : RenderTargetTexture;
 
+    // The lightmap used to store the sum of the directLightmap and
+    // the dilateLightmap 
     sumOfBothLightmap : RenderTargetTexture;
 
+    // The lightmap used to store the tonemapping of the dilate lightmap 
     toneMapLightmap : RenderTargetTexture;
 
 }
@@ -44,6 +48,7 @@ export class MeshDictionary {
     public globalIllumStrength = 1;
     public directIllumStrength = 1;
 
+    // The frame Buffer used to render all the textures
     public frameBuffer1 : WebGLFramebuffer;
 
     /**
@@ -87,12 +92,20 @@ export class MeshDictionary {
 
     }
 
+    /**
+     * Render all the postProcess lightmap of every mesh
+     * We do not render the irradianceLightmap and the direct Lightmap
+     */
     public render() {
         for (let value of this._values) {
             this.renderValue(value);
         }
     }
 
+    /**
+     * Render all the postProcess for a given mesh
+     * @param value 
+     */
     public renderValue(value : IMeshesGroup) {
         this._dilateRendering(value);
         this._sumOfBothRendering(value);
@@ -130,7 +143,7 @@ export class MeshDictionary {
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     }
 
-    public _toneMappingRendering(value : IMeshesGroup) {
+    private _toneMappingRendering(value : IMeshesGroup) {
         let engine = this._scene.getEngine();
         let effect = this._postProcessManager.toneMappingEffect;
 
@@ -154,7 +167,7 @@ export class MeshDictionary {
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     }
 
-    public _dilateRendering(value : IMeshesGroup) {
+    private _dilateRendering(value : IMeshesGroup) {
         let engine = this._scene.getEngine();
         let effect = this._postProcessManager.dilateEffect;
         let dest = value.dilateLightmap;
