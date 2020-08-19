@@ -11,10 +11,6 @@ import "../Shaders/radiosityPostProcess.fragment";
 import "../Shaders/radiosityPostProcess.vertex";
 import "../Shaders/shadowMapping.fragment";
 import "../Shaders/shadowMapping.vertex";
-import "../Shaders/horizontalBlur.fragment";
-import "../Shaders/horizontalBlur.vertex";
-import "../Shaders/verticalBlur.fragment";
-import "../Shaders/verticalBlur.vertex";
 
 /**
   * Creates various effects to solve radiosity.
@@ -25,32 +21,13 @@ export class DirectEffectsManager {
       */
     public visibilityEffect: Effect;
     /**
-      * Effect to dilate the lightmap. Useful to avoid seams.
-      */
-    public dilateEffect: Effect;
-    /**
       * Effect to tonemap the lightmap. Necessary to map the dynamic range into 0;1.
       */
     public radiosityPostProcessEffect: Effect;
 
-    public lightmapCombineEffect: Effect;
-
     public shadowMappingEffect: Effect;
 
-    /**
-      * Effect to blur the lightmap horizontally.
-      */
-    public horizontalBlurEffect: Effect;
-
-    /**
-      * Effect to blur the lightmap vertically.
-      */
-    public verticalBlurEffect: Effect;
-
     public effectPromise: Promise<void>;
-
-    private _vertexBuffer: VertexBuffer;
-    private _indexBuffer: DataBuffer;
 
     private _scene: Scene;
 
@@ -63,22 +40,7 @@ export class DirectEffectsManager {
     constructor(scene: Scene) {
         this._scene = scene;
 
-        this.prepareBuffers();
         this.effectPromise = this.createEffects();
-    }
-
-    /**
-      * Gets a screen quad vertex buffer
-      */
-    public get screenQuadVB(): VertexBuffer {
-        return this._vertexBuffer;
-    }
-
-    /**
-      * Gets a screen quad index buffer
-      */
-    public get screenQuadIB(): DataBuffer {
-        return this._indexBuffer;
     }
 
     private createEffects(): Promise<void> {
@@ -88,10 +50,6 @@ export class DirectEffectsManager {
                     this.isVisiblityEffectReady(),
                     this.isRadiosityPostProcessReady(),
                     this.isShadowMappingEffectReady(),
-                    this.isDilateEffectReady(),
-                    this.isLightmapCombineEffectReady(),
-                    this.isHorizontalBlurReady(),
-                    this.isVerticalBlurReady(),
                 ];
 
                 for (let i = 0; i < readyStates.length; i++) {
@@ -113,43 +71,9 @@ export class DirectEffectsManager {
     public isReady(): boolean {
         return  this.isVisiblityEffectReady() &&
                 this.isRadiosityPostProcessReady() &&
-                this.isShadowMappingEffectReady() &&
-                this.isDilateEffectReady() &&
-                this.isLightmapCombineEffectReady() &&
-                this.isHorizontalBlurReady() &&
-                this.isVerticalBlurReady();
+                this.isShadowMappingEffectReady();
     }
 
-    private prepareBuffers(): void {
-        if (this._vertexBuffer) {
-            return;
-        }
-
-        // VBO
-        var vertices = [];
-        vertices.push(1, 1);
-        vertices.push(-1, 1);
-        vertices.push(-1, -1);
-        vertices.push(1, -1);
-
-        this._vertexBuffer = new VertexBuffer(this._scene.getEngine(), vertices, VertexBuffer.PositionKind, false, false, 2);
-
-        this._buildIndexBuffer();
-    }
-
-    private _buildIndexBuffer(): void {
-        // Indices
-        var indices = [];
-        indices.push(0);
-        indices.push(1);
-        indices.push(2);
-
-        indices.push(0);
-        indices.push(2);
-        indices.push(3);
-
-        this._indexBuffer = this._scene.getEngine().createIndexBuffer(indices);
-    }
 
     /**
      * Checks the ready state of the visibility effect
@@ -168,19 +92,6 @@ export class DirectEffectsManager {
     }
 
     /**
-     * Checks the ready state of the dilate effect
-     * @returns true if the dilate effect is ready
-     */
-    public isDilateEffectReady(): boolean {
-        this.dilateEffect = this._scene.getEngine().createEffect("dilate",
-            [VertexBuffer.PositionKind],
-            ["offset", "texelSize"],
-            ["inputTexture"], "");
-
-        return this.dilateEffect.isReady();
-    }
-
-    /**
      * Checks the ready state of the tonemap effect
      * @returns true if the tonemap effect is ready
      */
@@ -191,32 +102,6 @@ export class DirectEffectsManager {
             ["inputTexture"], "");
 
         return this.radiosityPostProcessEffect.isReady();
-    }
-
-    /**
-     * Checks the ready state of the horizontal blur effect
-     * @returns true if the horizontal blur effect is ready
-     */
-    public isHorizontalBlurReady(): boolean {
-        this.horizontalBlurEffect = this._scene.getEngine().createEffect("horizontalBlur",
-            [VertexBuffer.PositionKind],
-            ["texelSize"],
-            ["inputTexture"], "");
-
-        return this.horizontalBlurEffect.isReady();
-    }
-
-    /**
-     * Checks the ready state of the vertical blur effect
-     * @returns true if the vertical blur effect is ready
-     */
-    public isVerticalBlurReady(): boolean {
-        this.verticalBlurEffect = this._scene.getEngine().createEffect("verticalBlur",
-            [VertexBuffer.PositionKind],
-            ["texelSize"],
-            ["inputTexture"], "");
-
-        return this.verticalBlurEffect.isReady();
     }
 
     /**
@@ -234,15 +119,5 @@ export class DirectEffectsManager {
             samplers, "");
 
         return this.radiosityPostProcessEffect.isReady();
-    }
-
-    public isLightmapCombineEffectReady(): boolean {
-        const attribs = [VertexBuffer.UV2Kind];
-        this.lightmapCombineEffect = this._scene.getEngine().createEffect("lightmapCombine",
-            attribs,
-            [],
-            ["inputTexture"]);
-
-        return this.lightmapCombineEffect.isReady();
     }
 }

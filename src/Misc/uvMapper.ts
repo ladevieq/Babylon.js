@@ -536,13 +536,14 @@ function projectMat(vector: Vector3) {
     return mat.transpose();
 }
 
-const USER_FILL_HOLES = 0;
-const USER_FILL_HOLES_QUALITY = 1;
-let USER_ISLAND_MARGIN = 0;
+const USER_FILL_HOLES: number = 0;
+const USER_FILL_HOLES_QUALITY: number = 1;
+let USER_ISLAND_MARGIN: number = 0;
+let USER_STRETCH_ASPECT: boolean = false;
 const USE_PACK_BIAS: boolean = true;
 const USE_FREE_STRIP: boolean = true;
 const USE_MERGE: boolean = true;
-const SMALL_NUM = 1e-12;
+const SMALL_NUM: number = 1e-12;
 
 /**
 * UV Mapper for lightmaps
@@ -597,6 +598,8 @@ export class UvMapper {
         let maxx = minx;
         let miny = faces[0].uv[0].y;
         let maxy = miny;
+        let min = faces[0].uv[0].clone();
+        let max = min.clone();
 
         for (let i = 0; i < faces.length; i++) {
             let f = faces[i];
@@ -616,10 +619,16 @@ export class UvMapper {
                 if (y > maxy) {
                     maxy = y;
                 }
+                min = Vector2.Minimize(min, uv);
+                max = Vector2.Maximize(max, uv);
             }
         }
 
         return [minx, miny, maxx, maxy];
+        // return {
+        //     min,
+        //     max
+        // };
     }
 
     private island2Edge(island: Island) {
@@ -869,86 +878,6 @@ export class UvMapper {
         return angle;
     }
 
-    // private debugFitAABB() {
-    //     let canvas = document.createElement("canvas");
-    //     let ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-
-    //     document.body.appendChild(canvas);
-    //     canvas.width = 300;
-    //     canvas.height = 300;
-    //     canvas.style.position = "absolute";
-    //     canvas.style.zIndex = "10";
-    //     canvas.style.top = "0px";
-    //     canvas.style.left = "0px";
-
-    //     ctx.clearRect(0, 0, 300, 300);
-    //     ctx.fillStyle = "white";
-    //     ctx.fillRect(0, 0, 300, 300);
-    //     ctx.fillStyle = "red";
-    //     ctx.translate(150, 150);
-
-    //     let points0 = [
-    //         // new Vector2(0, 0),
-    //         // new Vector2(25, 25),
-    //         // new Vector2(-50, -35),
-    //         // new Vector2(125, 32),
-    //         // new Vector2(-85, 82),
-    //         // new Vector2(0, 100),
-    //     ];
-
-    //     for (let i = 0; i < 16; i++) {
-    //         points0.push(new Vector2(Math.random() * 200 - 100, Math.random() * 200 - 100));
-    //     }
-
-    //     // Draw points
-    //     for (let i = 0; i < points0.length; i++) {
-    //         ctx.moveTo(points0[i].x, points0[i].y);
-    //         ctx.arc(points0[i].x, points0[i].y, 3, 0, 2 * Math.PI);
-    //         ctx.fill();
-    //     }
-
-    //     let hull = this.convexhull2d(points0);
-    //     let { angle, min, max } = this.fitAabb2d(hull);
-    //     let rotation = new Vector2(Math.cos(angle), Math.sin(angle));
-
-    //     ctx.strokeStyle = "green";
-    //     ctx.beginPath();
-    //     ctx.moveTo(hull[0].x, hull[0].y);
-    //     for (let i = 1; i < hull.length; i++) {
-    //         ctx.lineTo(hull[i].x, hull[i].y);
-    //     }
-    //     ctx.lineTo(hull[0].x, hull[0].y);
-
-    //     ctx.stroke();
-
-    //     ctx.strokeStyle = "blue";
-
-    //     let tl = new Vector2(min.x, min.y);
-    //     let bl = new Vector2(min.x, max.y);
-    //     let br = new Vector2(max.x, max.y);
-    //     let tr = new Vector2(max.x, min.y);
-    //     let base = new Vector2(0, 0);
-    //     let tip = new Vector2(50, 0);
-
-    //     tip = mulV2V2Cw(rotation, tip); //.addInPlace(offset);
-    //     tl = mulV2V2Cw(rotation, tl); //.addInPlace(offset);
-    //     bl = mulV2V2Cw(rotation, bl); //.addInPlace(offset);
-    //     br = mulV2V2Cw(rotation, br); //.addInPlace(offset);
-    //     tr = mulV2V2Cw(rotation, tr); //.addInPlace(offset);
-
-    //     ctx.beginPath();
-    //     ctx.moveTo(tip.x, tip.y);
-    //     ctx.lineTo(base.x, base.y);
-    //     ctx.stroke();
-
-    //     ctx.moveTo(tl.x, tl.y);
-    //     ctx.lineTo(bl.x, bl.y);
-    //     ctx.lineTo(br.x, br.y);
-    //     ctx.lineTo(tr.x, tr.y);
-    //     ctx.lineTo(tl.x, tl.y);
-    //     ctx.stroke();
-    // }
-
     // Create a transparent canvas with uv drawn
     public debugUvs(position: Vector2, size: Vector2, uvsArray: FloatArray[], indicesArray: IndicesArray[]) {
         let canvas = document.createElement("canvas");
@@ -1020,6 +949,9 @@ export class UvMapper {
         let [minx, miny, maxx, maxy] = this.boundsIslands(faces);
         let w = maxx - minx;
         let h = maxy - miny;
+        // let { min, max } = this.boundsIslands(faces);
+        // let w = max.x - min.x;
+        // let h = max.y - min.y;
 
         if (h + 1e-5 < w) {
             angle = Math.PI / 2;
@@ -1037,6 +969,9 @@ export class UvMapper {
             let [minx, miny, maxx, maxy] = this.boundsIslands(islandList[islandIdx]);
             let w = maxx - minx;
             let h = maxy - miny;
+            // let { min, max } = this.boundsIslands(islandList[islandIdx]);
+            // let w = max.x - min.x;
+            // let h = max.y - min.y;
 
             let totFaceArea = 0;
             let offset = new Vector2(minx, miny);
@@ -1415,60 +1350,56 @@ export class UvMapper {
 
     /**
      * Builds unique uvs in texture space, ready for lightmapping
-     * @param obList All the meshes to pack in the same uv space
+     * set to true to activate the vertex merging.
+     * @param meshes All the meshes to pack in the same uv space
+     * @param uvSet uv set to place the generated uvs on
      * @param islandMargin Relative margin between islands
      * @param projectionLimit Angle limit (in deg) to create a seam
      * @param userAreaWeight Add a weight on triangle areas to limit distortion
-     * @param useAspect Unused parameter (TODO)
-     * @param strechToBounds Unused parameter (TODO)
-     * @param removeDoubles If some vertices share the same position, mergin them reduces the number of islands in uv space, thus saving space and reducing seams
-     * set to true to activate the vertex merging.
-     * @returns An average world space to uv space ratio, resulting of the uv layout.
-     * @returns And an array of the input meshes areas in world unit
+     * @param userShareSpace Will try to fill holes to save some space
+     * @param strechToBounds If true stretches the uv's to maximize space usage otherwise keeps proportions
+     * @returns A vector of average world space to uv space ratio, resulting of the uv layout.
      */
-    public map(obList: Mesh[],
+    public map(
+        meshes: Mesh[],
+        uvSet: string = VertexBuffer.UV2Kind,
         islandMargin: number = 0,
         projectionLimit: number = 89,
         userAreaWeight: number = 0,
-        useAspect: boolean = false, // TODO
-        strechToBounds: boolean = false, // TODO
-        removeDoubles: boolean = true) : any[] {
-        const USER_PROJECTION_LIMIT_CONVERTED = Math.cos(projectionLimit * Math.PI / 180);
-        const USER_PROJECTION_LIMIT_HALF_CONVERTED = Math.cos(projectionLimit / 2 * Math.PI / 180);
-        const USER_SHARE_SPACE = true;
-        USER_ISLAND_MARGIN = islandMargin;
+        userShareSpace: boolean = true,
+        strechToBounds: boolean = false) : Vector2 {
 
+        const userProjectionLimitConverted: number = Math.cos(projectionLimit * Math.PI / 180);
+        const userProjectionLimitHalfConverted: number = Math.cos(projectionLimit / 2 * Math.PI / 180);
         let collectedIslandList: Island[] = [];
         let collectedIslandMesh: Mesh[] = [];
         let deletedFaces: Face[] = [];
         let equivalencies = [];
-        let xFactor = 0;
-        let yFactor = 0;
+        let factors: Vector2 = Vector2.Zero();
 
-        if (USER_SHARE_SPACE) {
+        USER_STRETCH_ASPECT = strechToBounds;
+        USER_ISLAND_MARGIN = islandMargin;
+
+
+        if (userShareSpace) {
             // Sort by name so we get consistent results
-            obList.sort((a: Mesh, b: Mesh) => a.name.localeCompare(b.name));
+            meshes.sort((a: Mesh, b: Mesh) => a.name.localeCompare(b.name));
         }
 
-        for (let i = 0; i < obList.length; i++) {
+        for (let i = 0; i < meshes.length; i++) {
             let meshFaces: Face[] = [];
-            let m = obList[i];
+            let m = meshes[i];
 
             if (!m.isVerticesDataPresent(VertexBuffer.PositionKind)) {
                 continue;
             }
 
             let indices = m.getIndices() as IndicesArray;
-
-            if (removeDoubles) {
-                let o = this.removeDoubles(m);
-                equivalencies[i] = o.equivalencies;
-            } else {
-                equivalencies[i] = [];
-            }
+            let o = this.removeDoubles(m);
+            equivalencies[i] = o.equivalencies;
 
             let matrix = m.getWorldMatrix();
-            let vertexData = VertexData.ExtractFromMesh(obList[i]);
+            let vertexData = VertexData.ExtractFromMesh(meshes[i]);
             for (let j = 0; j < indices.length; j += 3) {
                 meshFaces.push(new Face(j, vertexData, i, matrix, equivalencies[i]));
             }
@@ -1500,7 +1431,7 @@ export class UvMapper {
             // This while only gathers projection vecs, faces are assigned later on.
             while (true) {
                 for (let fIdx = tempMeshFaces.length - 1; fIdx >= 0; fIdx--) {
-                    if (Vector3.Dot(newProjectVec, tempMeshFaces[fIdx].no) > USER_PROJECTION_LIMIT_HALF_CONVERTED) {
+                    if (Vector3.Dot(newProjectVec, tempMeshFaces[fIdx].no) > userProjectionLimitHalfConverted) {
                         newProjectMeshFaces.push(tempMeshFaces.splice(fIdx, 1)[0]);
                     }
                 }
@@ -1550,7 +1481,7 @@ export class UvMapper {
                     }
                 }
 
-                if (mostUniqueAngle < USER_PROJECTION_LIMIT_CONVERTED) {
+                if (mostUniqueAngle < userProjectionLimitConverted) {
                     newProjectVec = tempMeshFaces[mostUniqueIndex].no;
                     newProjectMeshFaces = tempMeshFaces.splice(mostUniqueIndex, 1);
                 } else {
@@ -1561,8 +1492,7 @@ export class UvMapper {
             }
 
             if (!projectVecs.length) {
-                // Error
-                console.log("error, no projection vecs where generated, 0 area faces can cause this.");
+                console.warn("error, no projection vecs where generated, 0 area faces can cause this.");
             }
 
             let faceProjectionGroupList: Face[][] = [];
@@ -1606,7 +1536,7 @@ export class UvMapper {
                 }
             }
 
-            if (USER_SHARE_SPACE) {
+            if (userShareSpace) {
                 let islandList = this.getUvIslands(faceProjectionGroupList, deletedFaces);
                 collectedIslandList = collectedIslandList.concat(islandList);
 
@@ -1628,52 +1558,61 @@ export class UvMapper {
                     collectedIslandMesh[meshIndex] = m;
                 }
 
-                [xFactor, yFactor] = this.packIslands(collectedIslandList, collectedIslandMesh);
+                if (collectedIslandList.length > 0) {
+                    factors = this.packIslands(collectedIslandList);
+                }
             }
         }
 
-        if (USER_SHARE_SPACE) {
-            [xFactor, yFactor] = this.packIslands(collectedIslandList, collectedIslandMesh);
+        if (userShareSpace) {
+            if (collectedIslandList.length > 0) {
+                factors = this.packIslands(collectedIslandList);
+            }
         }
 
-        let newUvs: FloatArray[] = [];
-        let indices: IndicesArray[] = [];
-        let vertices: FloatArray[] = [];
+        this._updateUVs(meshes, collectedIslandList, uvChannel);
+
+        return factors;
+    }
+
+    private _updateUVs(meshes: Mesh[], islands: Island[], uvChannel: string) {
+        const newUvs: FloatArray[] = [];
+        const indices: IndicesArray[] = [];
+        const vertices: FloatArray[] = [];
         let additionnalVertexData: VertexData[] = [];
         let additionnalUvs : Vector2[][] = [];
         let additionnalVertices : Vector3[][] = [];
 
-        for (let i = 0; i < obList.length; i++) {
-            newUvs.push(new Float32Array(obList[i].getTotalVertices() * 2));
+        meshes.forEach((mesh) => {
+            newUvs.push(new Float32Array(mesh.getTotalVertices() * 2));
             // Init to -1
             for (let j = 0; j < newUvs[newUvs.length - 1].length; j++) {
                 newUvs[newUvs.length - 1][j] = -1;
             }
-            indices.push(<IndicesArray>obList[i].getIndices());
-            vertices.push(<FloatArray>obList[i].getVerticesData(VertexBuffer.PositionKind));
-            additionnalVertexData.push(this.initVertexDataFromAvailableData(VertexData.ExtractFromMesh(obList[i])));
+            indices.push(<IndicesArray>mesh.getIndices());
+            vertices.push(<FloatArray>mesh.getVerticesData(VertexBuffer.PositionKind));
+            additionnalVertexData.push(this.initVertexDataFromAvailableData(VertexData.ExtractFromMesh(mesh)));
             additionnalUvs.push([]);
             additionnalVertices.push([]);
-        }
+        });
 
-        for (let i = 0; i < collectedIslandList.length; i++) {
-            for (let j = 0; j < collectedIslandList[i].length; j++) {
-                let f = collectedIslandList[i][j];
-                for (let k = 0; k < 3; k++) {
-                    if (newUvs[f.meshIndex][indices[f.meshIndex][(f.index + k)] * 2] < 0) {
+        for (const island of islands) {
+            for (const face of island) {
+                for (let vertexIndex = 0; vertexIndex < 3; vertexIndex++) {
+                    if (newUvs[face.meshIndex][indices[face.meshIndex][(face.index + vertexIndex)] * 2] < 0) {
                         // this vertex doesn't have uv yet, we assign them
-                        newUvs[f.meshIndex][indices[f.meshIndex][(f.index + k)] * 2] = f.uv[k].x;
-                        newUvs[f.meshIndex][indices[f.meshIndex][(f.index + k)] * 2 + 1] = f.uv[k].y;
+                        newUvs[face.meshIndex][indices[face.meshIndex][(face.index + vertexIndex)] * 2] = face.uv[vertexIndex].x;
+                        newUvs[face.meshIndex][indices[face.meshIndex][(face.index + vertexIndex)] * 2 + 1] = face.uv[vertexIndex].y;
                     } else {
                         // This vertex already has uvs, we create a seam
 
                         // Search existing created vertices
-                        let newUv = new Vector2(f.uv[k].x, f.uv[k].y);
-                        let newPosition = new Vector3(f.v[k].v.x, f.v[k].v.y, f.v[k].v.z);
+                        let newUv = new Vector2(face.uv[vertexIndex].x, face.uv[vertexIndex].y);
+                        let newPosition = new Vector3(face.v[vertexIndex].v.x, face.v[vertexIndex].v.y, face.v[vertexIndex].v.z);
                         let index = -1;
-                        for (let h = 0; h < additionnalUvs[f.meshIndex].length; h++) {
-                            if (additionnalUvs[f.meshIndex][h].equals(newUv) &&
-                                additionnalVertices[f.meshIndex][h].equals(newPosition)) {
+                        for (let h = 0; h < additionnalUvs[face.meshIndex].length; h++) {
+                            if (additionnalUvs[face.meshIndex][h].equals(newUv) &&
+                                additionnalVertices[face.meshIndex][h].equals(newPosition)) {
                                 index = h;
                                 break;
                             }
@@ -1681,13 +1620,13 @@ export class UvMapper {
 
                         if (index === -1) {
                             // could not find one, we add to the list
-                            additionnalUvs[f.meshIndex].push(newUv);
-                            additionnalVertices[f.meshIndex].push(newPosition);
-                            f.pushVertexToVertexData(additionnalVertexData[f.meshIndex], k);
-                            index = additionnalUvs[f.meshIndex].length - 1;
+                            additionnalUvs[face.meshIndex].push(newUv);
+                            additionnalVertices[face.meshIndex].push(newPosition);
+                            face.pushVertexToVertexData(additionnalVertexData[face.meshIndex], vertexIndex);
+                            index = additionnalUvs[face.meshIndex].length - 1;
                         }
 
-                        indices[f.meshIndex][f.index + k] = index + vertices[f.meshIndex].length / 3;
+                        indices[face.meshIndex][face.index + vertexIndex] = index + vertices[face.meshIndex].length / 3;
                     }
                 }
             }
@@ -1699,8 +1638,8 @@ export class UvMapper {
                 let tempUvs = new Float32Array(additionnalUvs[meshIndex].length * 2);
                 let tempVertices = new Float32Array(additionnalUvs[meshIndex].length * 3);
 
-                let mat = obList[meshIndex].getWorldMatrix();
-                mat = mat.clone().invert();
+                let invertedWorld = meshes[meshIndex].getWorldMatrix();
+                invertedWorld = invertedWorld.clone().invert();
 
                 for (let i = 0; i < additionnalUvs[meshIndex].length; i++) {
                     tempUvs[i * 2] = additionnalUvs[meshIndex][i].x;
@@ -1708,44 +1647,45 @@ export class UvMapper {
                 }
 
                 for (let i = 0; i < additionnalVertices[meshIndex].length; i++) {
-                    additionnalVertices[meshIndex][i] = Vector3.TransformCoordinates(additionnalVertices[meshIndex][i], mat);
+                    additionnalVertices[meshIndex][i] = Vector3.TransformCoordinates(additionnalVertices[meshIndex][i], invertedWorld);
                     tempVertices[i * 3] = additionnalVertices[meshIndex][i].x;
                     tempVertices[i * 3 + 1] = additionnalVertices[meshIndex][i].y;
                     tempVertices[i * 3 + 2] = additionnalVertices[meshIndex][i].z;
                 }
 
                 additionnalVertexData[meshIndex].positions = tempVertices;
-                additionnalVertexData[meshIndex].uvs2 = tempUvs; // TODO let the possibility to choose which uv channel to replace, or straight return uv array
+                additionnalVertexData[meshIndex].set(tempUvs, uvChannel);
                 additionnalVertexData[meshIndex].indices = [];
             }
 
-            let verticesData = VertexData.ExtractFromMesh(obList[meshIndex]);
+            let verticesData = VertexData.ExtractFromMesh(meshes[meshIndex]);
             verticesData.indices = indices[meshIndex];
-            verticesData.uvs2 = newUvs[meshIndex];
+            // verticesData.uvs2 = newUvs[meshIndex];
+            verticesData.set(newUvs[meshIndex], uvChannel);
             if (additionnalUvs[meshIndex].length) {
                 verticesData.merge(additionnalVertexData[meshIndex]);
             }
 
-            verticesData.applyToMesh(obList[meshIndex]);
-            newUvs[meshIndex] = verticesData.uvs2;
+            verticesData.applyToMesh(meshes[meshIndex]);
+            newUvs[meshIndex] = <Float32Array>meshes[meshIndex].getVerticesData(uvChannel);
         }
-
-        // this.debugUvs(Vector2.Zero(), new Vector2(256, 256), newUvs, indices);
-
-        return [xFactor, yFactor];
     }
 
-    private packIslands(islandList: Island[], islandMeshes: Mesh[]) : [number, number] {
+    /**
+     * Generates bounding boxes for each island and tight them in a pack
+     * @param {Island[]} islandList
+     * @returns {Vector2} scale factors
+     */
+    private packIslands(islandList: Island[]): Vector2 {
         if (USER_FILL_HOLES) {
             this.mergeUvIslands(islandList);
         }
 
         let packBoxes = [];
         let islandOffsetList = [];
-        let islandIdx = 0;
 
-        while (islandIdx < islandList.length) {
-            let [minx, miny, maxx, maxy] = this.boundsIslands(islandList[islandIdx]);
+        for (let islandIdx = 0; islandIdx < islandList.length; islandIdx++) {
+            let [ minx, miny, maxx, maxy ] = this.boundsIslands(islandList[islandIdx]);
             let w = maxx - minx;
             let h = maxy - miny;
 
@@ -1768,146 +1708,140 @@ export class UvMapper {
             }
 
             islandOffsetList.push(new Vector2(minx, miny));
-
-            // Legacy uv packer
-            // packBoxes.push({
-            //     x: 0,
-            //     y: 0,
-            //     w,
-            //     h,
-            //     islandIdx: islandIdx
-            // });
-            packBoxes.push(new BoxBlender(0, 0, w, h, islandIdx));
-            islandIdx++;
+            packBoxes.push(new IslandBoundingBox(Vector2.Zero(), new Vector2(w, h), islandIdx));
         }
 
-        // Legacy uv packer
-        // let packDimension = BoxPacker.BoxPack2d(packBoxes);
-        let packDimension = BoxPacker.BoxPack2dBlender(packBoxes);
+        const packDimension = BoxPacker.BoxPack2d(packBoxes);
+        let factors = null;
 
-        islandIdx = islandList.length;
-        let xFactor = 1, yFactor = 1;
-
-        if (islandIdx) {
-            xFactor = 1.0 / packDimension.w;
-            yFactor = 1.0 / packDimension.h;
-            // yFactor = xFactor;
+        if (USER_STRETCH_ASPECT) {
+            // Maximize to uv area?? Will write a normalize function.
+            factors = new Vector2(1.0 / packDimension.x, 1.0 / packDimension.y);
+        } else {
+            // Keep proportions.
+            const factor = 1.0 / Math.max(packDimension.x, packDimension.y)
+            factors = new Vector2(factor, factor);
         }
 
-        for (let boxIdx = 0; boxIdx < packBoxes.length; boxIdx++) {
-            let box = packBoxes[boxIdx];
-            let islandIdx = box.index;
-
-            // Legacy uv packer
-            // let islandIdx = box.islandIdx
-
-            let xOffset = box.x - islandOffsetList[islandIdx].x;
-            let yOffset = box.y - islandOffsetList[islandIdx].y;
+        for (const box of packBoxes) {
+            const islandIdx = box.islandIndex;
+            let offset = new Vector2(box.position.x - islandOffsetList[islandIdx].x, box.position.y - islandOffsetList[islandIdx].y);
 
             for (let i = 0; i < islandList[islandIdx].length; i++) {
                 let f = islandList[islandIdx][i];
                 for (let j = 0; j < f.uv.length; j++) {
                     let uv = f.uv[j];
-                    uv.x = (uv.x + xOffset) * xFactor;
-                    uv.y = (uv.y + yOffset) * yFactor;
+                    uv.x = (uv.x + offset.x) * factors.x;
+                    uv.y = (uv.y + offset.y) * factors.y;
                 }
             }
 
         }
 
-        return [xFactor, yFactor];
+        return factors;
     }
 }
 
-declare interface Box {
-    x: number;
-    y: number;
-    w: number;
-    h: number;
-    islandIdx?: number;
-}
 
-class BoxBlender {
-    x: number;
-    y: number;
-    w: number;
-    h: number;
+/**
+ * Bounding box of an island
+ */
+class IslandBoundingBox {
+    /**
+     * Position of the bounding box
+     */
+    position: Vector2;
 
-    // Box vertices
-    v: BoxVert[] = [ new BoxVert(), new BoxVert(), new BoxVert(), new BoxVert()];
+    /**
+     * Size of the bounding box
+     */
+    private _size: Vector2;
 
-    index: number;
-
-    constructor(x: number, y: number, w: number, h: number, index: number) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.index = index;
+    public get size(): Vector2 {
+        return this._size;
     }
 
-    // Change original names
-    public v34x_update()
-    {
-        this.v[CORNERINDEX.TL].x = this.v[CORNERINDEX.BL].x;
-        this.v[CORNERINDEX.BR].x = this.v[CORNERINDEX.TR].x;
+    /**
+     * The four vertices of the bounding box
+     */
+    v: BoxVert[];
+
+    /**
+     * The area of the bouding box
+     */
+    area: number;
+
+    islandIndex: number;
+
+    constructor(position: Vector2, size: Vector2, index: number) {
+        this.position = position.clone();
+        this._size = size;
+        this.v = new Array(4);
+        this.islandIndex = index;
+        this.area = this.size.x * this.size.y;
     }
 
-    public v34y_update()
+    public updateX()
     {
-        this.v[CORNERINDEX.TL].y = this.v[CORNERINDEX.TR].y;
-        this.v[CORNERINDEX.BR].y = this.v[CORNERINDEX.BL].y;
+        this.v[CORNERINDEX.TL].position.x = this.v[CORNERINDEX.BL].position.x;
+        this.v[CORNERINDEX.BR].position.x = this.v[CORNERINDEX.TR].position.x;
+    }
+
+    public updateY()
+    {
+        this.v[CORNERINDEX.TL].position.y = this.v[CORNERINDEX.TR].position.y;
+        this.v[CORNERINDEX.BR].position.y = this.v[CORNERINDEX.BL].position.y;
     }
 
     public xmin_set(f: number)
     {
-        this.v[CORNERINDEX.TR].x = f + this.w;
-        this.v[CORNERINDEX.BL].x = f;
-        this.v34x_update();
+        this.v[CORNERINDEX.TR].position.x = f + this._size.x;
+        this.v[CORNERINDEX.BL].position.x = f;
+        this.updateX();
     }
 
     public xmax_set(f: number)
     {
-        this.v[CORNERINDEX.BL].x = f - this.w;
-        this.v[CORNERINDEX.TR].x = f;
-        this.v34x_update();
+        this.v[CORNERINDEX.BL].position.x = f - this._size.x;
+        this.v[CORNERINDEX.TR].position.x = f;
+        this.updateX();
     }
 
     public ymin_set(f: number)
     {
-        this.v[CORNERINDEX.TR].y = f + this.h;
-        this.v[CORNERINDEX.BL].y = f;
-        this.v34y_update();
+        this.v[CORNERINDEX.TR].position.y = f + this._size.y;
+        this.v[CORNERINDEX.BL].position.y = f;
+        this.updateY();
     }
 
     public ymax_set(f: number)
     {
-        this.v[CORNERINDEX.BL].y = f - this.h;
-        this.v[CORNERINDEX.TR].y = f;
-        this.v34y_update();
+        this.v[CORNERINDEX.BL].position.y = f - this._size.y;
+        this.v[CORNERINDEX.TR].position.y = f;
+        this.updateY();
     }
 
     public xmin_get() : number
     {
-        return this.v[CORNERINDEX.BL].x;
+        return this.v[CORNERINDEX.BL].position.x;
     }
 
     public xmax_get() : number
     {
-        return this.v[CORNERINDEX.TR].x;
+        return this.v[CORNERINDEX.TR].position.x;
     }
 
     public ymin_get() : number
     {
-        return this.v[CORNERINDEX.BL].y;
+        return this.v[CORNERINDEX.BL].position.y;
     }
 
     public ymax_get() : number
     {
-        return this.v[CORNERINDEX.TR].y;
+        return this.v[CORNERINDEX.TR].position.y;
     }
 
-    public intersect(box: BoxBlender) {
+    public intersect(box: IslandBoundingBox) {
         return !(this.xmin_get() + 1e-7 >= box.xmax_get() ||
             this.ymin_get() + 1e-7 >= box.ymax_get() ||
             this.xmax_get() - 1e-7 <= box.xmin_get() ||
@@ -1915,7 +1849,9 @@ class BoxBlender {
     }
 }
 
-// Corner indices
+/**
+ * Corner indices
+ */
 enum CORNERINDEX {
     BL = 0,
     TR = 1,
@@ -1930,7 +1866,7 @@ enum CORNERFLAGS {
     TRF = 2,
     TLF = 4,
     BRF = 8,
-    MAX = 15,
+    ALL = 15,
 }
 
 /**
@@ -1943,32 +1879,62 @@ function toFlag(index: number) : number {
 }
 
 class BoxVert {
-    x: number;
-    y: number;
+    position: Vector2;
 
-    free : number = CORNERFLAGS.MAX;  /* vert status */
-    used : boolean = false;
-    _pad : number = 23;
+    /**
+     * Vertex status
+     * Define which corner box is still free
+     */
+    free : number;
+
+    used : boolean;
+
+    /**
+     * Vertex index within all the vertices of all the boxes being packed
+     */
     index : number;
 
-    trb : BoxBlender; /* top right box */
-    blb : BoxBlender; /* bottom left box */
-    brb : BoxBlender; /* bottom right box */
-    tlb : BoxBlender; /* top left box */
+    /**
+     * top right box
+     */
+    trb : IslandBoundingBox;
+    /**
+     * bottom left box
+     */
+    blb : IslandBoundingBox;
+    /**
+     * bottom right box
+     */
+    brb : IslandBoundingBox;
+    /**
+     * top left box
+     */
+    tlb : IslandBoundingBox;
 
-    /* Store last intersecting boxes here
-     * speedup intersection testing */
-    intersection_cache: BoxBlender[] = [];
+    /**
+     * Store last intersecting boxes here speedup intersection testing
+     */
+    intersection_cache: IslandBoundingBox[];
 
-    bias : number = 0;
-    _pad2 : number;
+    bias : number;
+
+    constructor(index: number) {
+        this.index = index;
+        this.position = Vector2.Zero();
+        this.bias = 0;
+        this.intersection_cache = new Array(4);
+
+        // By default a vertex is not used and all it's coners are free
+        this.free = CORNERFLAGS.ALL;
+        this.used = false;
+    }
 
     public updateBias() {
         if (!this.used) {
             console.warn("Vertex must be used before updating it's bias !");
         }
 
-        this.bias = this.x * this.y * 1e-6;
+        this.bias = this.position.x * this.position.y * 1e-6;
     }
 }
 
@@ -1978,142 +1944,37 @@ class BoxVert {
 class BoxPacker {
 
     /**
-     * Pack boxes into texture space
-     * @param boxes Boxes
+     * Pack boxes into texture space to the lower left hand corner
+     * @param {IslandBoundingBox} boxes
      */
-    public static BoxPack2d(boxes: Box[]) {
-        // calculate total box area and maximum box width
-        let area = 0;
-        let maxWidth = 0;
-
-        for (const box of boxes) {
-            area += box.w * box.h;
-            maxWidth = Math.max(maxWidth, box.w);
-        }
-
-        // sort the boxes for insertion by height, descending
-        boxes.sort((a, b) => b.h - a.h);
-
-        // aim for a squarish resulting container,
-        // slightly adjusted for sub-100% space utilization
-        const startWidth = Math.max(Math.ceil(Math.sqrt(area / 0.95)), maxWidth);
-
-        // start with a single empty space, unbounded at the bottom
-        const spaces : Box[] = [{x: 0, y: 0, w: startWidth, h: Infinity}];
-
-        let width = 0;
-        let height = 0;
-
-        for (const box of boxes) {
-            // look through spaces backwards so that we check smaller spaces first
-            for (let i = spaces.length - 1; i >= 0; i--) {
-                const space = spaces[i];
-
-                // look for empty spaces that can accommodate the current box
-                if (box.w > space.w || box.h > space.h) { continue; }
-
-                // found the space; add the box to its top-left corner
-                // |-------|-------|
-                // |  box  |       |
-                // |_______|       |
-                // |         space |
-                // |_______________|
-                box.x = space.x;
-                box.y = space.y;
-
-                height = Math.max(height, box.y + box.h);
-                width = Math.max(width, box.x + box.w);
-
-                if (box.w === space.w && box.h === space.h) {
-                    // space matches the box exactly; remove it
-                    const last = spaces.pop();
-                    if (i < spaces.length) { spaces[i] = last as Box; }
-
-                } else if (box.h === space.h) {
-                    // space matches the box height; update it accordingly
-                    // |-------|---------------|
-                    // |  box  | updated space |
-                    // |_______|_______________|
-                    space.x += box.w;
-                    space.w -= box.w;
-
-                } else if (box.w === space.w) {
-                    // space matches the box width; update it accordingly
-                    // |---------------|
-                    // |      box      |
-                    // |_______________|
-                    // | updated space |
-                    // |_______________|
-                    space.y += box.h;
-                    space.h -= box.h;
-
-                } else {
-                    // otherwise the box splits the space into two spaces
-                    // |-------|-----------|
-                    // |  box  | new space |
-                    // |_______|___________|
-                    // | updated space     |
-                    // |___________________|
-                    spaces.push({
-                        x: space.x + box.w,
-                        y: space.y,
-                        w: space.w - box.w,
-                        h: box.h
-                    });
-                    space.y += box.h;
-                    space.h -= box.h;
-                }
-                break;
-            }
-        }
-
-        return {
-            w: width, // container width
-            h: height, // container height
-            fill: (area / (width * height)) || 0 // space utilization
-        };
-    }
-
-    /**
-     * Pack boxes to the lower left hand corner
-     * TODO : use must be fixed
-     */
-    static BoxPack2dBlender(boxes: BoxBlender[]) {
-        // Sort boxes by area
-        boxes.sort((a, b) => (b.w * b.h) - (a.w * a.h));
-
-        // total
-        let tot = Vector2.Zero();
-
+    static BoxPack2d(boxes: IslandBoundingBox[]) {
         const vertices: BoxVert[] = [];
         const vertexPackIndices : number[] = [];
+
+        boxes.sort((a, b) => b.area - a.area);
 
         // Initialize boxes vertices, and vertices boxes
         let index = 0;
         for (const box of boxes) {
-            const topRightVertex = new BoxVert();
-            topRightVertex.index = index++;
+            const topRightVertex = new BoxVert(index++);
             topRightVertex.trb = box;
             topRightVertex.free &= ~CORNERFLAGS.TRF;
             box.v[CORNERINDEX.BL] = topRightVertex;
             vertices.push(topRightVertex);
 
-            const bottomLeftVertex = new BoxVert();
-            bottomLeftVertex.index = index++;
+            const bottomLeftVertex = new BoxVert(index++);
             bottomLeftVertex.blb = box;
             bottomLeftVertex.free &= ~CORNERFLAGS.BLF;
             box.v[CORNERINDEX.TR] = bottomLeftVertex;
             vertices.push(bottomLeftVertex);
 
-            const bottomRightVertex = new BoxVert();
-            bottomRightVertex.index = index++;
+            const bottomRightVertex = new BoxVert(index++);
             bottomRightVertex.brb = box;
             bottomRightVertex.free &= ~CORNERFLAGS.BRF;
             box.v[CORNERINDEX.TL] = bottomRightVertex;
             vertices.push(bottomRightVertex);
 
-            const topLeftVertex = new BoxVert();
-            topLeftVertex.index = index++;
+            const topLeftVertex = new BoxVert(index++);
             topLeftVertex.tlb = box;
             topLeftVertex.free &= ~CORNERFLAGS.TLF;
             box.v[CORNERINDEX.BR] = topLeftVertex;
@@ -2121,24 +1982,22 @@ class BoxPacker {
         }
 
         // Fit the first before entering the firstBox fitting loop
-        let firstBox = boxes[0];
+        const firstBox = boxes[0];
 
         // Update free neighboors state
-        firstBox.v[CORNERINDEX.BL].free = 0; // No more adjacent space
+        // No more adjacent space
+        firstBox.v[CORNERINDEX.BL].free = 0;
         // This vextex stick to the left border
         firstBox.v[CORNERINDEX.TL].free &= ~(CORNERFLAGS.TLF | CORNERFLAGS.BLF);
         // This vextex stick to the bottom border
         firstBox.v[CORNERINDEX.BR].free &= ~(CORNERFLAGS.BLF | CORNERFLAGS.BRF);
 
         // Total used space
-        tot.x = firstBox.w;
-        tot.y = firstBox.h;
+        let packSize = firstBox.size;
 
         // Set firstBox vertices position
         firstBox.xmin_set(0);
         firstBox.ymin_set(0);
-        firstBox.x = 0;
-        firstBox.y = 0;
 
         for (const boxVertex of firstBox.v) {
             boxVertex.used = true;
@@ -2153,7 +2012,6 @@ class BoxPacker {
         }
 
         // Main firstBox fitting loop
-        // for (const box of boxes) {
         for (let boxIndex = 1; boxIndex < boxes.length; boxIndex++) {
             const box = boxes[boxIndex];
 
@@ -2173,8 +2031,8 @@ class BoxPacker {
                     }
                 }
 
-                a1 = Math.max(v1.x + box.w, v1.y + box.h);
-                a2 = Math.max(v2.x + box.w, v2.y + box.h);
+                a1 = Math.max(v1.position.x + box.size.x, v1.position.y + box.size.y);
+                a2 = Math.max(v2.position.x + box.size.x, v2.position.y + box.size.y);
 
                 if (USE_PACK_BIAS) {
                     a1 += v1.bias;
@@ -2216,23 +2074,23 @@ class BoxPacker {
                     if (vertex.free & toFlag(quadrantIndex)) {
                         switch (quadrantIndex) {
                             case CORNERINDEX.BL: {
-                                box.xmax_set(vertex.x);
-                                box.ymax_set(vertex.y);
+                                box.xmax_set(vertex.position.x);
+                                box.ymax_set(vertex.position.y);
                                 break;
                             }
                             case CORNERINDEX.TR: {
-                                box.xmin_set(vertex.x);
-                                box.ymin_set(vertex.y);
+                                box.xmin_set(vertex.position.x);
+                                box.ymin_set(vertex.position.y);
                                 break;
                             }
                             case CORNERINDEX.TL: {
-                                box.xmax_set(vertex.x);
-                                box.ymin_set(vertex.y);
+                                box.xmax_set(vertex.position.x);
+                                box.ymin_set(vertex.position.y);
                                 break;
                             }
                             case CORNERINDEX.BR: {
-                                box.xmin_set(vertex.x);
-                                box.ymax_set(vertex.y);
+                                box.xmin_set(vertex.position.x);
+                                box.ymax_set(vertex.position.y);
                                 break;
                             }
                         }
@@ -2270,7 +2128,7 @@ class BoxPacker {
                         }
 
                         if (!intersection) {
-                            tot = Vector2.Maximize(tot, new Vector2(box.xmax_get(), box.ymax_get()));
+                            packSize = Vector2.Maximize(packSize, new Vector2(box.xmax_get(), box.ymax_get()));
 
                             // Update the free quadrants states
                             vertex.free &= ~toFlag(quadrantIndex);
@@ -2325,7 +2183,7 @@ class BoxPacker {
                              * Vertically
                              */
                             if (vertex.trb && vertex.tlb && (box === vertex.trb || box === vertex.tlb)) {
-                                if (Math.abs(vertex.tlb.h - vertex.trb.h) < 1e-6) {
+                                if (Math.abs(vertex.tlb.size.y - vertex.trb.size.y) < 1e-6) {
                                     if (USE_MERGE) {
                                         const mask = CORNERFLAGS.BLF | CORNERFLAGS.BRF;
 
@@ -2340,7 +2198,7 @@ class BoxPacker {
                                         vertex.tlb.v[CORNERINDEX.TR].free &= ~CORNERFLAGS.BLF;
                                         vertex.trb.v[CORNERINDEX.TL].free &= ~CORNERFLAGS.BRF;
                                     }
-                                } else if (vertex.tlb.h > vertex.trb.h) {
+                                } else if (vertex.tlb.size.y > vertex.trb.size.y) {
                                     vertex.trb.v[CORNERINDEX.TL].free &= ~(CORNERFLAGS.BLF | CORNERFLAGS.TLF);
                                 } else {
                                     vertex.tlb.v[CORNERINDEX.TR].free &= ~(CORNERFLAGS.BRF | CORNERFLAGS.TRF);
@@ -2348,7 +2206,7 @@ class BoxPacker {
                             }
 
                             else if (vertex.brb && vertex.blb && (box === vertex.brb || box === vertex.blb)) {
-                                if (Math.abs(vertex.blb.h - vertex.brb.h) < 1e-6) {
+                                if (Math.abs(vertex.blb.size.y - vertex.brb.size.y) < 1e-6) {
                                     if (USE_MERGE) {
                                         const mask = CORNERFLAGS.TLF | CORNERFLAGS.TRF;
 
@@ -2363,7 +2221,7 @@ class BoxPacker {
                                         vertex.blb.v[CORNERINDEX.BR].free &= ~CORNERFLAGS.TRF;
                                         vertex.brb.v[CORNERINDEX.BL].free &= ~CORNERFLAGS.TLF;
                                     }
-                                } else if (vertex.blb.h > vertex.brb.h) {
+                                } else if (vertex.blb.size.y > vertex.brb.size.y) {
                                     vertex.brb.v[CORNERINDEX.BL].free &= ~(CORNERFLAGS.BLF | CORNERFLAGS.TLF);
                                 } else {
                                     vertex.blb.v[CORNERINDEX.BR].free &= ~(CORNERFLAGS.BRF | CORNERFLAGS.TRF);
@@ -2372,7 +2230,7 @@ class BoxPacker {
 
                             // Horizontally
                             else if (vertex.tlb && vertex.blb && (box === vertex.tlb || box === vertex.blb)) {
-                                if (Math.abs(vertex.tlb.w - vertex.blb.w) < 1e-6) {
+                                if (Math.abs(vertex.tlb.size.x - vertex.blb.size.x) < 1e-6) {
                                     if (USE_MERGE) {
                                         const mask = CORNERFLAGS.TRF | CORNERFLAGS.BRF;
 
@@ -2387,14 +2245,14 @@ class BoxPacker {
                                         vertex.blb.v[CORNERINDEX.TL].free &= ~CORNERFLAGS.TRF;
                                         vertex.tlb.v[CORNERINDEX.BL].free &= ~CORNERFLAGS.BRF;
                                     }
-                                } else if (vertex.tlb.w > vertex.blb.w) {
+                                } else if (vertex.tlb.size.x > vertex.blb.size.x) {
                                     vertex.blb.v[CORNERINDEX.TL].free &= ~(CORNERFLAGS.TLF | CORNERFLAGS.TRF);
                                 } else {
                                     vertex.tlb.v[CORNERINDEX.BL].free &= ~(CORNERFLAGS.BLF | CORNERFLAGS.BRF);
                                 }
                             }
                             else if (vertex.trb && vertex.brb && (box === vertex.trb || box === vertex.brb)) {
-                                if (Math.abs(vertex.trb.w - vertex.brb.w) < 1e-6) {
+                                if (Math.abs(vertex.trb.size.x - vertex.brb.size.x) < 1e-6) {
                                     if (USE_MERGE) {
                                         const mask = CORNERFLAGS.TLF | CORNERFLAGS.BLF;
 
@@ -2409,7 +2267,7 @@ class BoxPacker {
                                         vertex.brb.v[CORNERINDEX.TR].free &= ~CORNERFLAGS.TLF;
                                         vertex.trb.v[CORNERINDEX.BR].free &= ~CORNERFLAGS.BLF;
                                     }
-                                } else if (vertex.trb.w > vertex.brb.w) {
+                                } else if (vertex.trb.size.x > vertex.brb.size.x) {
                                     vertex.brb.v[CORNERINDEX.TR].free &= ~(CORNERFLAGS.TLF | CORNERFLAGS.TRF);
                                 } else {
                                     vertex.trb.v[CORNERINDEX.BR].free &= ~(CORNERFLAGS.BLF | CORNERFLAGS.BRF);
@@ -2428,64 +2286,13 @@ class BoxPacker {
                                 }
                             }
 
-                            box.x = box.xmin_get();
-                            box.y = box.ymin_get();
+                            box.position = new Vector2(box.xmin_get(), box.ymin_get());
                         }
                     }
                 }
             }
         }
 
-        // BoxPacker.debugFitAABB(boxes, tot.x, tot.y);
-
-        return {
-            w: tot.x,
-            h: tot.y,
-            fill: 1
-        };
-    }
-
-    static debugFitAABB(boxes: BoxBlender[], w: number, h: number) {
-        let canvas = document.createElement("canvas");
-        let ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-        const width = 1024;
-        const height = 1024;
-
-        document.body.appendChild(canvas);
-        canvas.width = width;
-        canvas.height = height;
-        canvas.style.position = "absolute";
-        canvas.style.zIndex = "10";
-        canvas.style.top = "0px";
-        canvas.style.left = "0px";
-        canvas.onclick = () => {
-            canvas.style.display = "none";
-        };
-
-        ctx.clearRect(0, 0, width, height);
-        // ctx.fillStyle = "white";
-        // ctx.fillRect(0, 0, width, height);
-        ctx.scale(width, height);
-        ctx.lineWidth = 0.001;
-
-        for (const box of boxes) {
-            ctx.beginPath();
-            ctx.moveTo((box.x / w), (box.y / h));
-
-            ctx.lineTo(((box.x + box.w) / w), (box.y / h));
-            ctx.moveTo(((box.x + box.w) / w), (box.y / h));
-
-            ctx.lineTo(((box.x + box.w) / w), ((box.y + box.h) / h));
-            ctx.moveTo(((box.x + box.w) / w), ((box.y + box.h) / h));
-
-            ctx.lineTo((box.x / w), ((box.y + box.h) / h));
-            ctx.moveTo((box.x / w), ((box.y + box.h) / h));
-
-            ctx.lineTo((box.x / w), (box.y / h));
-            ctx.closePath();
-
-            ctx.strokeStyle = "green";
-            ctx.stroke();
-        }
+        return packSize;
     }
 }
