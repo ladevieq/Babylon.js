@@ -95,7 +95,7 @@ export class Probe {
     /**
      * Factor with which the environment color is multiply when rendering the environment
      */
-    public envMultiplicator = 1.3;
+    public envMultiplicator = 1;
 
     /**
      * Status of the probe in the irradiance volume, according to the house
@@ -350,7 +350,7 @@ export class Probe {
     }
 
     private _weightSHCoeff() {
-        let weight = 0.1;
+        let weight = 0.5;
         this.sphericalHarmonic.l00 = this.sphericalHarmonic.l00.multiplyByFloats(weight, weight, weight);
         this.sphericalHarmonic.l10 = this.sphericalHarmonic.l10.multiplyByFloats(weight, weight, weight);
         this.sphericalHarmonic.l11 = this.sphericalHarmonic.l11.multiplyByFloats(weight, weight, weight);
