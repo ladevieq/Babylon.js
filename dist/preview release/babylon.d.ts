@@ -67497,80 +67497,6 @@ declare module BABYLON {
     }
 }
 declare module BABYLON {
-    /**
-     * Utilities for the radiosity solver
-     */
-    class RadiosityUtils {
-        private static _tempEdgeBuffer;
-        private static appendToNew;
-        /**
-         * Recursively subdivides triangles in a mesh, so their area is under a fixed threshold
-         * @param mesh The mesh
-         * @param areaThreshold Area threshold
-         * @param scene Current scene
-         * @returns Another mesh, with higher or equal level of tesselation
-         */
-        static RetesselateMesh(mesh: AbstractMesh, areaThreshold: number, scene: Scene): AbstractMesh;
-        private static subdiviseRec;
-        private static findBiggestSide;
-        private static triangleArea;
-        /**
-         * Encodes a number into a Vector3
-         * @param n Numeric id
-         * @returns Encoded id
-         */
-        static EncodeId(n: number): Vector3;
-        /**
-         * Decodes a number from a Vector3
-         * @param v Encoded number
-         * @returns Decoded id
-         */
-        static DecodeId(v: Vector3): number;
-    }
-}
-declare module BABYLON {
-    /** @hidden */
-    export var nextShooterPixelShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var nextShooterVertexShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var buildRadiosityPixelShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var buildRadiosityVertexShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var radiosityPixelShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var radiosityVertexShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
     /** @hidden */
     export var visibilityPixelShader: {
         name: string;
@@ -67593,13 +67519,6 @@ declare module BABYLON {
 }
 declare module BABYLON {
     /** @hidden */
-    export var dilateVertexShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
     export var radiosityPostProcessPixelShader: {
         name: string;
         shader: string;
@@ -67611,372 +67530,6 @@ declare module BABYLON {
         name: string;
         shader: string;
     };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var lightmapCombinePixelShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var lightmapCombineVertexShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /**
-      * Creates various effects to solve radiosity.
-      */
-    export class RadiosityEffectsManager {
-        /**
-          * Effect for visibility
-          */
-        visibilityEffect: Effect;
-        /**
-          * Effect for building radiosity info for surfaces
-          */
-        radiosityEffect: Effect;
-        /**
-          * Effect to shoot radiosity on surface from a patch
-          */
-        shootEffect: Effect;
-        /**
-          * Effect to determinate the next shooter (the one that currently retains the most radiance)
-          */
-        nextShooterEffect: Effect;
-        /**
-          * Effect to dilate the lightmap. Useful to avoid seams.
-          */
-        dilateEffect: Effect;
-        /**
-          * Effect to tonemap the lightmap. Necessary to map the dynamic range into 0;1.
-          */
-        radiosityPostProcessEffect: Effect;
-        lightmapCombineEffect: Effect;
-        private _vertexBuffer;
-        private _indexBuffer;
-        private _scene;
-        /**
-          * Creates the manager
-          * @param scene The current scene
-          * @param useHemicube If true, uses hemicube instead of hemispherical projection
-          * @param useDepthCompare If true, uses depth instead of surface id for visibility
-          */
-        constructor(scene: Scene);
-        /**
-          * Gets a screen quad vertex buffer
-          */
-        get screenQuadVB(): VertexBuffer;
-        /**
-          * Gets a screen quad index buffer
-          */
-        get screenQuadIB(): DataBuffer;
-        private createEffects;
-        /**
-          * Checks the ready state of all the effets
-          * @returns true if all the effects are ready
-          */
-        isReady(): boolean;
-        private prepareBuffers;
-        private _buildIndexBuffer;
-        /**
-         * Checks the ready state of the visibility effect
-         * @returns true if the visibility effect is ready
-         */
-        isVisiblityEffectReady(): boolean;
-        /**
-         * Checks the ready state of the shoot effect
-         * @returns true if the shoot effect is ready
-         */
-        isShootEffectReady(): boolean;
-        /**
-         * Checks the ready state of the radiosity data effect
-         * @returns true if the radiosity data effect is ready
-         */
-        isRadiosityDataEffectReady(): boolean;
-        /**
-         * Checks the ready state of the next shooter effect
-         * @returns true if the next shooter effect is ready
-         */
-        isNextShooterEffectReady(): boolean;
-        /**
-         * Checks the ready state of the dilate effect
-         * @returns true if the dilate effect is ready
-         */
-        isDilateEffectReady(): boolean;
-        /**
-         * Checks the ready state of the tonemap effect
-         * @returns true if the tonemap effect is ready
-         */
-        isRadiosityPostProcessReady(): boolean;
-        isLightmapCombineEffectReady(): boolean;
-    }
-}
-declare module BABYLON {
-    /**
-     * Patch, infinitesimal unit when discretizing surfaces
-     */
-    class Patch {
-        /**
-         * Creates a patch from surface data
-         * @param p World position
-         * @param n World normal
-         * @param id Surface id
-         * @param residualEnergy Unshot radiosity energy within this patch
-         */
-        constructor(p: Vector3, n: Vector3, id: number, residualEnergy: Vector3);
-        /**
-         * Gets the sum of residual energy 3 color channels
-         * @returns Total energy r+g+b
-         */
-        getResidualEnergySum(): number;
-        /**
-         * Prints the patch
-         * @returns Position, normal and id as a string
-         */
-        toString(): string;
-        perturbPosition(): Vector3;
-        /**
-          * Size of the patch
-          */
-        size: {
-            width: number;
-            height: number;
-        };
-        /**
-         * Parent surface id
-         */
-        id: number;
-        /**
-         * World position
-         */
-        position: Vector3;
-        /**
-         * World normal
-         */
-        normal: Vector3;
-        /**
-         * View matrix for a camera on this patch, directed by `this.normal`
-         */
-        viewMatrix: Matrix;
-        /**
-         * View matrix for a camera on this patch, facing the local positive X axis
-         */
-        viewMatrixPX: Matrix;
-        /**
-         * View matrix for a camera on this patch, facing the local negative X axis
-         */
-        viewMatrixNX: Matrix;
-        /**
-         * View matrix for a camera on this patch, facing the local positive Y axis
-         */
-        viewMatrixPY: Matrix;
-        /**
-         * View matrix for a camera on this patch, facing the local negative Y axis
-         */
-        viewMatrixNY: Matrix;
-        /**
-         * Unshot radiosity energy
-         */
-        residualEnergy: Vector3;
-        /**
-         * Field of view of the patch. Must be Math.PI / 2
-         */
-        static readonly Fov: number;
-        /**
-         * Projection matrix for a camera on a patch
-         */
-        static ProjectionMatrix: Matrix;
-        /**
-         * Projection matrix for a camera on a patch, facing the local positive X axis.
-         */
-        static ProjectionMatrixPX: Matrix;
-        /**
-         * Projection matrix for a camera on a patch, facing the local negative X axis.
-         */
-        static ProjectionMatrixNX: Matrix;
-        /**
-         * Projection matrix for a camera on a patch, facing the local positive Y axis.
-         */
-        static ProjectionMatrixPY: Matrix;
-        /**
-         * Projection matrix for a camera on a patch, facing the local negative X axis.
-         */
-        static ProjectionMatrixNY: Matrix;
-    }
-        interface Mesh {
-            /** Object containing radiosity information for this mesh */
-            radiosityInfo: {
-                /** Size of the lightmap texture */
-                lightmapSize: {
-                    width: number;
-                    height: number;
-                };
-                /** How much world units a texel represents */
-                texelWorldSize: {
-                    width: number;
-                    height: number;
-                };
-                /** Encoded id of the surface as a color. Internal */
-                _lightMapId: Vector3;
-                /** Internal */
-                _patchOffset: number;
-                /** Emissive color of the surface */
-                color: Vector3;
-                /** Unused for now. Color multiplier. */
-                lightStrength: Vector3;
-                /** Multi render target containing all textures used for radiosity calculations */
-                residualTexture: Nullable<MultiRenderTarget>;
-                /** Radiosity patches */
-                radiosityPatches: Patch[];
-                /** Total area of the polygon in world unit */
-                polygonWorldArea: number;
-            };
-            /** Inits the `radiosityInfo` object */
-            initForRadiosity(): void;
-            /** Gets radiosity texture
-             * @return the radiosity texture. Can be fully black if the radiosity process has not been run yet.
-             */
-            getRadiosityTexture(): Nullable<Texture>;
-        }
-    interface RadiosityRendererOptions {
-        near?: number;
-        far?: number;
-        bias?: number;
-        normalBias?: number;
-    }
-    /**
-     * Radiosity Renderer
-     * Creates patches from uv-mapped (lightmapped) geometry.
-     * Renders hemicubes or spheres from patches
-     * Shoots light from emissive patches
-     * Can be used as direct light baking, or radiosity light baking solution
-     */
-    export class RadiosityRenderer {
-        /**
-         * Meshes involved in the radiosity solution process. Scene meshes that are not in this list will be ignored,
-         * and therefore will not occlude or receive radiance.
-         */
-        meshes: Mesh[];
-        randomizePosition: boolean;
-        private _cachePatches;
-        private _filterMinEnergy;
-        private _patchMapResolution;
-        private _options;
-        /**
-         * Verbosity level for performance of the renderer
-         * Accepted values are 0, 1, 2 or 3
-         */
-        static PERFORMANCE_LOGS_LEVEL: number;
-        /**
-         * Verbosity level for information about current radiosity solving
-         * Accepted values are 0, 1 or 2
-         */
-        static RADIOSITY_INFO_LOGS_LEVEL: number;
-        /**
-         * Verbosity level for warnings
-         * Accepted values are 0 or 1
-         */
-        static WARNING_LOGS: number;
-        private static DIRECT_PASS;
-        private static INDIRECT_PASS;
-        private _activeShooters;
-        private _scene;
-        private _patchMap;
-        private _near;
-        private _far;
-        private _bias;
-        private _normalBias;
-        private _frameBuffer0;
-        private _frameBuffer1;
-        private _patchOffset;
-        private _patchedMeshes;
-        private _currentPatch;
-        private _currentRenderedMap;
-        private _nextShooterTexture;
-        private _patchMapsUnbuilt;
-        private _patchMaps;
-        private _meshMap;
-        private _isBuildingPatches;
-        private _radiosityEffectsManager;
-        private _renderState;
-        private getCurrentRenderWidth;
-        private getCurrentRenderHeight;
-        private rectangleToDiskArea;
-        /**
-         * Instanciates a radiosity renderer
-         * @param scene The current scene
-         * @param meshes The meshes to include in the radiosity solver
-         */
-        constructor(scene: Scene, meshes?: Mesh[], options?: RadiosityRendererOptions);
-        private resetRenderState;
-        /**
-         * Retesselates the meshes, so no triangle is above `areaThreshold`
-         * Useful for hemispherical visibilty rendering
-         * Meshes are replaced in `this.meshes` list
-         * @param areaThreshold Maximum area of a triangle in the resulting scene
-         */
-        createHTScene(areaThreshold: number): void;
-        private renderPatchInfo;
-        /**
-         * Prepare textures for radiosity
-         */
-        createMaps(): void;
-        private renderToCombineLightmaps;
-        /**
-         * Combine meshes lightmaps into one texture in order to debug the full lighting computations
-         * @param {Mesh[]} meshes the meshes you want the lightmaps to be combine in the returned RT
-         * @returns {RenderTargetTexture}
-         */
-        generateCombinedLightmap(meshes: Mesh[]): RenderTargetTexture;
-        private renderToRadiosityTexture;
-        private swap;
-        private cleanAfterRender;
-        /**
-         * Gathers radiance for a limited duration
-         * @param duration duration
-         * @param energyLeftThreshold radiance threshold for stopping the process
-         * @returns true if there is still remaining radiance to shoot
-         */
-        gatherFor(duration: number, energyLeftThreshold?: number): boolean;
-        private getNextPatches;
-        private postProcessLightmap;
-        /**
-         * Bakes only direct light on lightmaps
-         * @returns true if energy has been shot. (false meaning that there was no emitter)
-         */
-        gatherDirectLightOnly(): boolean;
-        toneMapIrradianceLightmap(defTexture: Texture, i: number): void;
-        /**
-         * Gathers radiance the next "most bright" mesh
-         * @param energyLeftThreshold radiance threshold for stopping the process
-         * @returns true if there is still remaining radiance to shoot
-         */
-        gatherRadiosity(energyLeftThreshold?: number): boolean;
-        /**
-         * Checks if the renderer is ready
-         * @returns True if the renderer is ready
-         */
-        isReady(): boolean;
-        private renderPatches;
-        private consumeEnergyInTexture;
-        private nextShooter;
-        private dilate;
-        private toneMap;
-        private buildPatchesForSubMesh;
-        private updatePatches;
-        private renderSubMesh;
-        private buildVisibilityMapCube;
-        private _setCubeVisibilityUniforms;
-        private renderVisibilityMapCube;
-        /**
-         * Disposes of the radiosity renderer.
-         */
-        dispose(): void;
-    }
 }
 declare module BABYLON {
     /** @hidden */
@@ -67993,34 +67546,6 @@ declare module BABYLON {
     };
 }
 declare module BABYLON {
-    /** @hidden */
-    export var horizontalBlurPixelShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var horizontalBlurVertexShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var verticalBlurPixelShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
-    /** @hidden */
-    export var verticalBlurVertexShader: {
-        name: string;
-        shader: string;
-    };
-}
-declare module BABYLON {
     /**
       * Creates various effects to solve radiosity.
       */
@@ -68030,26 +67555,11 @@ declare module BABYLON {
           */
         visibilityEffect: Effect;
         /**
-          * Effect to dilate the lightmap. Useful to avoid seams.
-          */
-        dilateEffect: Effect;
-        /**
           * Effect to tonemap the lightmap. Necessary to map the dynamic range into 0;1.
           */
         radiosityPostProcessEffect: Effect;
-        lightmapCombineEffect: Effect;
         shadowMappingEffect: Effect;
-        /**
-          * Effect to blur the lightmap horizontally.
-          */
-        horizontalBlurEffect: Effect;
-        /**
-          * Effect to blur the lightmap vertically.
-          */
-        verticalBlurEffect: Effect;
         effectPromise: Promise<void>;
-        private _vertexBuffer;
-        private _indexBuffer;
         private _scene;
         /**
           * Creates the manager
@@ -68058,53 +67568,27 @@ declare module BABYLON {
           * @param useDepthCompare If true, uses depth instead of surface id for visibility
           */
         constructor(scene: Scene);
-        /**
-          * Gets a screen quad vertex buffer
-          */
-        get screenQuadVB(): VertexBuffer;
-        /**
-          * Gets a screen quad index buffer
-          */
-        get screenQuadIB(): DataBuffer;
         private createEffects;
         /**
           * Checks the ready state of all the effets
           * @returns true if all the effects are ready
           */
         isReady(): boolean;
-        private prepareBuffers;
-        private _buildIndexBuffer;
         /**
          * Checks the ready state of the visibility effect
          * @returns true if the visibility effect is ready
          */
         isVisiblityEffectReady(): boolean;
         /**
-         * Checks the ready state of the dilate effect
-         * @returns true if the dilate effect is ready
-         */
-        isDilateEffectReady(): boolean;
-        /**
          * Checks the ready state of the tonemap effect
          * @returns true if the tonemap effect is ready
          */
         isRadiosityPostProcessReady(): boolean;
         /**
-         * Checks the ready state of the horizontal blur effect
-         * @returns true if the horizontal blur effect is ready
-         */
-        isHorizontalBlurReady(): boolean;
-        /**
-         * Checks the ready state of the vertical blur effect
-         * @returns true if the vertical blur effect is ready
-         */
-        isVerticalBlurReady(): boolean;
-        /**
          * Checks the ready state of the tonemap effect
          * @returns true if the tonemap effect is ready
          */
         isShadowMappingEffectReady(): boolean;
-        isLightmapCombineEffectReady(): boolean;
     }
 }
 declare module BABYLON {
@@ -68116,8 +67600,8 @@ declare module BABYLON {
                     width: number;
                     height: number;
                 };
-                shadowMap: Texture;
-                tempTexture: Texture;
+                shadowMap: RenderTargetTexture;
+                tempTexture: RenderTargetTexture;
             };
             /** Inits the `directInfo` object */
             initForDirect(shadowMapSize: {
@@ -68133,6 +67617,12 @@ declare module BABYLON {
         sampleCount: number;
         bias: number;
         normalBias: number;
+        depthMapSize: {
+            width: number;
+            height: number;
+        };
+        near: number;
+        far: number;
     }
     export class Arealight {
         position: Vector3;
@@ -68144,22 +67634,36 @@ declare module BABYLON {
             height: number;
         };
         depthMap: RenderTargetTexture;
+        sampleCount: number;
         samples: Vector3[];
         sampleIndex: number;
         bias: number;
         normalBias: number;
-        constructor(position: Vector3, normal: Vector3, size: ISize, depthMapSize: {
-            width: number;
-            height: number;
-        }, lightOptions: ArealightOptions, scene: Scene);
+        private _near;
+        get near(): number;
+        set near(newNear: number);
+        private _far;
+        get far(): number;
+        set far(newFar: number);
+        /**
+         * Hemicube projection matrices
+         */
+        private _projectionMatrix;
+        get projectionMatrix(): Matrix;
+        private _projectionMatrixPX;
+        get projectionMatrixPX(): Matrix;
+        private _projectionMatrixNX;
+        get projectionMatrixNX(): Matrix;
+        private _projectionMatrixPY;
+        get projectionMatrixPY(): Matrix;
+        private _projectionMatrixNY;
+        get projectionMatrixNY(): Matrix;
+        constructor(position: Vector3, normal: Vector3, size: ISize, arealightOptions: ArealightOptions, scene: Scene);
         private _generateSamples;
-        private sampleRectangle;
-        private haltonEx;
-        private halton2d;
-    }
-    interface DirectRendererOptions {
-        near?: number;
-        far?: number;
+        private _sampleRectangle;
+        private _halton2d;
+        private _haltonEx;
+        private _updateMatrices;
     }
     /**
      * Radiosity Renderer
@@ -68175,57 +67679,38 @@ declare module BABYLON {
          */
         meshes: Mesh[];
         lights: Arealight[];
-        renderingPromise: Promise<void>;
-        private _frambuffer0;
-        private _options;
-        /**
-         * Verbosity level for performance of the renderer
-         * Accepted values are 0, 1, 2 or 3
-         */
-        static PERFORMANCE_LOGS_LEVEL: number;
-        /**
-         * Verbosity level for information about current radiosity solving
-         * Accepted values are 0, 1 or 2
-         */
-        static RADIOSITY_INFO_LOGS_LEVEL: number;
-        /**
-         * Verbosity level for warnings
-         * Accepted values are 0 or 1
-         */
-        static WARNING_LOGS: number;
+        blurKernel: number;
+        protected _transparencyShadow: boolean;
+        /** Gets or sets the ability to have transparent shadow  */
+        get transparencyShadow(): boolean;
+        set transparencyShadow(value: boolean);
         private _scene;
-        private _near;
-        private _far;
-        private _projectionMatrix;
-        private _projectionMatrixPX;
-        private _projectionMatrixNX;
-        private _projectionMatrixPY;
-        private _projectionMatrixNY;
         private _directEffectsManager;
-        get far(): number;
-        set far(newFar: number);
+        protected _kernelBlurXPostprocess: PostProcess;
+        protected _kernelBlurYPostprocess: PostProcess;
+        protected _dilatePostProcess: PostProcess;
+        protected _postProcesses: PostProcess[];
+        private _renderingMesh;
         /**
          * Instanciates a radiosity renderer
          * @param scene The current scene
          * @param meshes The meshes to include in the radiosity solver
          */
-        constructor(scene: Scene, meshes?: Mesh[], lights?: Arealight[], options?: DirectRendererOptions);
-        recomputeMatrices(): void;
+        constructor(scene: Scene, meshes?: Mesh[], lights?: Arealight[]);
+        private _initializeDilatePostProcess;
+        private _initializeBlurPostProcess;
         renderNextSample(): void;
         render(): void;
         postProcesses(): void;
         private renderSampleToShadowMapTexture;
-        dilate(origin: Texture, dest: Texture): void;
+        clearLightmaps(): void;
         /**
          * Checks if the renderer is ready
          * @returns True if the renderer is ready
          */
         isReady(): boolean;
         isRenderFinished(): boolean;
-        toneMap(origin: Texture, dest: Texture): void;
-        blur(origin: Texture, dest: Texture, horizontal?: boolean): void;
         private renderSubMesh;
-        private _setCubeVisibilityUniforms;
         private renderVisibilityMapCubeSample;
         /**
          * Disposes of the radiosity renderer.
@@ -68440,9 +67925,21 @@ declare module BABYLON {
     };
 }
 declare module BABYLON {
+    /**
+     * Class that takes care of initializing the effects used in the postProcess
+     */
     export class IrradiancePostProcessEffectManager {
+        /**
+         * The effect to sum the direct and indirect light
+         */
         sumOfBothEffect: Effect;
+        /**
+         * The effect that applies tonemapping
+         */
         toneMappingEffect: Effect;
+        /**
+         * The effect that dilate the lightmap
+         */
         dilateEffect: Effect;
         private _scene;
         private _vertexBuffer;
@@ -68475,7 +67972,10 @@ declare module BABYLON {
      */
     export interface IMeshesGroup {
         directLightmap: Nullable<Texture>;
-        postProcessLightmap: MultiRenderTarget;
+        irradianceLightmap: RenderTargetTexture;
+        dilateLightmap: RenderTargetTexture;
+        sumOfBothLightmap: RenderTargetTexture;
+        toneMapLightmap: RenderTargetTexture;
     }
     /**
      * This dictionary contains meshes as key and textures are value
@@ -68503,11 +68003,19 @@ declare module BABYLON {
          * Must be called once
          */
         initLightmapTextures(): void;
+        /**
+         * Render all the postProcess lightmap of every mesh
+         * We do not render the irradianceLightmap and the direct Lightmap
+         */
         render(): void;
+        /**
+         * Render all the postProcess for a given mesh
+         * @param value
+         */
         renderValue(value: IMeshesGroup): void;
         private _sumOfBothRendering;
-        _toneMappingRendering(value: IMeshesGroup): void;
-        _dilateRendering(value: IMeshesGroup): void;
+        private _toneMappingRendering;
+        private _dilateRendering;
         /**
          * Functions called to check if the materials are ready for rendering
          */
@@ -68536,19 +68044,6 @@ declare module BABYLON {
     }
 }
 declare module BABYLON {
-    export class ProbeIrradianceGradient extends Probe {
-        private adjacentProbesForIrradiance;
-        private distanceBetweenProbesForGradient;
-        gradientSphericalHarmonics: SphericalHarmonics[];
-        constructor(position: Vector3, scene: Scene, resolution: number, inRoom: number);
-        render(meshes: Array<Mesh>, dictionary: MeshDictionary, uvEffet: Effect, bounceEffect: Effect): void;
-        initPromise(): void;
-        renderBounce(meshes: Array<Mesh>): void;
-        setVisibility(visible: number): void;
-        private _computeIrradianceGradient;
-    }
-}
-declare module BABYLON {
     /**
      * The probe is what is used for irradiance volume
      * It aims to sample the irradiance at  a certain point of the scene
@@ -68557,7 +68052,7 @@ declare module BABYLON {
     export class Probe {
         static readonly OUTSIDE_HOUSE: number;
         static readonly INSIDE_HOUSE: number;
-        static readonly INSIDE_HOUSE_CLOSE_TO_WALL: number;
+        static readonly RESOLUTION: number;
         /**
          * Static number to access to the cameras with their direction
          */
@@ -68568,27 +68063,26 @@ declare module BABYLON {
         static readonly PZ: number;
         static readonly NZ: number;
         private _scene;
-        private _resolution;
         /**
          * The list of camera that are attached to the probe,
          * used to render the cube map
          */
         cameraList: Array<UniversalCamera>;
         /**
-         * Boolean use to know if the texture we are using for rendering is cubic or not
+         * Effect that will capture the environment of the probes
          */
-        isCube: boolean;
+        captureEnvironmentEffect: Effect;
         /**
-         * The effect used for rendering the cube map
+         * The position of the probe
          */
-        uvEffect: Effect;
-        bounceEffect: Effect;
         position: Vector3;
+        /**
+         * The node which is the point that will represent the probe
+         */
         transformNode: TransformNode;
         /**
-         * The string representing the path to the texture that is used
+         * Instance of the dictionary that stores all the lightmaps
          */
-        albedoStr: string;
         dictionary: MeshDictionary;
         /**
          * The spherical harmonic coefficients that represent the irradiance capture by the probe
@@ -68597,55 +68091,46 @@ declare module BABYLON {
         /**
          * RenderTargetTexture that aims to copy the cubicMRT envCubeMap and add the irradiance compute previously to it, to simulate the bounces of the light
          */
-        tempBounce: RenderTargetTexture;
+        environmentProbeTexture: RenderTargetTexture;
         /**
          * Variable helpful and use to know when the environment cube map has been rendered to continue the process
          */
         envCubeMapRendered: boolean;
         /**
-         * Variable helpful and use to know when the spherical harmonic coefficient has been computed to continue the process
+         * Factor with which the environment color is multiply when rendering the environment
          */
-        sphericalHarmonicChanged: boolean;
-        renderTime: number;
-        shTime: number;
         envMultiplicator: number;
+        /**
+         * Status of the probe in the irradiance volume, according to the house
+         */
         probeInHouse: number;
-        needIrradianceGradient: boolean;
-        probeForIrradiance: ProbeIrradianceGradient;
+        /**
+         * The sphere that represents the probe if we want to display them
+         */
         sphere: Mesh;
         /**
          * Create the probe used to capture the irradiance at a point
          * @param position The position at which the probe is set
          * @param scene the scene in which the probe is place
-         * @param albedoName the path to the albedo
-         * @param isCube Is the texture we want to use a cube or not ?
+         * @param inRoom 1 if the probe is in the house, 0 otherwise
          */
-        constructor(position: Vector3, scene: Scene, resolution: number, inRoom: number);
-        /**
-         * Set the resolution used by the probe to render its surrounding
-         * @param resolution The resolution to use
-         */
-        setResolution(resolution: number): void;
+        constructor(position: Vector3, scene: Scene, inRoom: number);
         /**
          * Add a parent to the probe
          * @param parent The parent to be added
          */
         setParent(parent: Mesh): void;
+        protected _renderCubeTexture(subMeshes: SmartArray<SubMesh>, faceIndex: number): void;
         /**
-         * Set the visibility of the probe
-         * @param visisble The visibility of the probe
+         * Initialize the method that were created in a promise
+         * @param dictionary  The dictionary that contains all the lightmap
+         * @param captureEnvironmentEffect The effect that render the environment of the probes
          */
-        setVisibility(visisble: number): void;
-        protected _renderCubeTexture(subMeshes: SmartArray<SubMesh>): void;
+        initForRendering(dictionary: MeshDictionary, captureEnvironmentEffect: Effect): void;
         /**
-         * Render the 6 cameras of the probes with different effect to create the cube map we need
-         * @param meshes The meshes we want to render
-         */
-        render(meshes: Array<Mesh>, dictionary: MeshDictionary, uvEffet: Effect, bounceEffect: Effect): void;
-        /**
-         * Render one bounce of the light from the point of view of a probe
-         *
-         * @param irradianceLightMap THe irradiance lightmap use to render the bounces
+         * Initialize the custom render function of the environmentProbeTexture
+         * It will be rendered once per bounce, per mesh
+         * @param meshes The meshes to be rendered in the irradiance volume
          */
         renderBounce(meshes: Array<Mesh>): void;
         /**
@@ -68657,12 +68142,14 @@ declare module BABYLON {
          * Return if the probe is ready to be render
          */
         isProbeReady(): boolean;
-        private _isTempBounceReady;
-        private _CPUcomputeSHCoeff;
+        private _isEnvironmentProbeTextureReady;
+        /**
+         * Compute the sh coefficient, coming from the environment texture capture by the probes
+         */
+        CPUcomputeSHCoeff(): void;
         private _computeProbeIrradiance;
         createSphere(): void;
         private _weightSHCoeff;
-        useIrradianceGradient(): void;
     }
 }
 declare module BABYLON {
@@ -68682,6 +68169,8 @@ declare module BABYLON {
 declare module BABYLON {
     /**
      * Class that aims to take care of everything with regard to the irradiance for the irradiance volume
+     * It will take care to intialize all the textures and effect
+     * It will launch the rendering of everything we need to render
      */
     export class Irradiance {
         private _scene;
@@ -68689,24 +68178,26 @@ declare module BABYLON {
         private _uniformBottomLeft;
         private _uniformBoxSize;
         private _probesPosition;
+        private _promise;
+        private _shTexture;
+        private _posProbesTexture;
         /**
          * The list of probes that are part of this irradiance volume
+         * This list is a 3 dimensions rectangle, transform into a list
+         * To know the dimension of each size, you have to check tje _uniformNumberProbes param
          */
         probeList: Array<Probe>;
-        probeIrradianceGradientList: Array<ProbeIrradianceGradient>;
         /**
          * The meshes that are render by the probes
          */
         meshes: Array<Mesh>;
-        private _promise;
         /**
-         * The effect that will be use to render the environment of each probes. It will be given to every probes of the volume
+         * The effect used to render the environment of each probe
          */
-        uvEffect: Effect;
+        captureEnvironmentEffect: Effect;
         /**
-         * The effect used to render the irradiance from each probe.
+         * The effect used to render the irradiance on each mesh
          */
-        bounceEffect: Effect;
         irradianceLightmapEffect: Effect;
         /**
          * The dictionary that stores the lightmaps linked to each mesh
@@ -68714,54 +68205,70 @@ declare module BABYLON {
         dictionary: MeshDictionary;
         /**
          * The number of bounces we want to add to the scene
+         * 0 == only direct lightning
+         * 1 == one bounce of light
          */
         numberBounces: number;
-        /**
-         * Value that will be set to true once the rendering is finish.
-         * Can be used to check if the rendering is finished outiside of this class, because we use Promess
-         */
-        finish: boolean;
-        private _shTexture;
-        private _posProbesTexture;
         /**
          * Initializer of the irradiance class
          * @param scene The scene of the meshes
          * @param probes The probes that are used to render irradiance
-         *
          * @param meshes The meshes that are used to render irradiance
          * @param dictionary The dictionary that contains information about meshes
          * @param numberBounces The number of bounces we want to render
-         * @param probeDisposition A vec3 representing the number of probes on each axis of the volume
+         * @param numberProbes A vec3 representing the number of probes on each axis of the volume
          * @param bottomLeft    A position representing the position of the probe on the bottom left of the irradiance volume
          * @param volumeSize A vec3 containing the volume width, height and depth
          */
-        constructor(scene: Scene, probes: Array<Probe>, probesForGradient: Array<ProbeIrradianceGradient>, meshes: Array<Mesh>, dictionary: MeshDictionary, numberBounces: number, probeDisposition: Vector3, bottomLeft: Vector3, volumeSize: Vector3);
+        constructor(scene: Scene, probes: Array<Probe>, meshes: Array<Mesh>, dictionary: MeshDictionary, numberBounces: number, numberProbes: Vector3, bottomLeft: Vector3, volumeSize: Vector3);
         /**
-         * Function that launch the render process
+         * Function that launch the render process for the computation of the irradiance
          */
         render(): void;
+        /**
+         * Render a bounce of light
+         * @param currentBounce
+         */
         private _renderBounce;
         /**
          * Method called to store the spherical harmonics coefficient into a texture,
          * allowing to have less uniforms in our shader
+         * Has to be called envery time we want to compute irradiance on a mesh, because
+         * we have to update the sh coeff if it has changed
          */
         updateShTexture(): void;
+        /**
+         * Method called to store in a list the positions and the states of the probes
+         * It will be then used to create a RawTexture to use as a uniform in a shader
+         */
         private _createProbePositionList;
+        /**
+         * Method called to render the irradiance on the lightmap corresponding to each mesh
+         */
         private _renderIrradianceLightmap;
+        /**
+         * Create the promise that is used to check if every thing we will need to render the irradiance
+         * is ready, when we will start the rendering
+         */
         private _createPromise;
         private _initProbesPromise;
         private _isRawTextSHCoefReady;
         private _isRawTextProbePosReady;
         private _areProbesReady;
-        private _isUVEffectReady;
         private _isIrradianceLightmapEffectReady;
-        private _isBounceEffectReady;
+        private _isCaptureEnvironmentEffectReady;
         private _areIrradianceLightMapReady;
         /**
          * Method to call when you want to update the number of bounces, after the irradiance rendering has been done
-         * @param numberBounces
+         * It restart the rendering to take change into account
+         * @param numberBounces The new number of bounce we want
          */
         updateNumberBounces(numberBounces: number): void;
+        /**
+         * Method that has to be called when the render is finished
+         * It will update the multiplicator used to capture direct light in the probe environment and restart the rendering
+         * @param envMultiplicator
+         */
         updateDirectIllumForEnv(envMultiplicator: number): void;
     }
 }
@@ -68776,9 +68283,8 @@ declare module BABYLON {
          * List of probes that are used to render the scene
          */
         probeList: Array<Probe>;
-        irradianceProbeList: Array<ProbeIrradianceGradient>;
         /**
-         * The dictionary that contains the lightmaps for each scene
+         * The list of meshes that are rendered in the irradiance volume
          */
         meshForIrradiance: Array<Mesh>;
         /**
@@ -68786,36 +68292,26 @@ declare module BABYLON {
          */
         irradiance: Irradiance;
         /**
-         * The dictionary that store the lightmaps
+         * The dictionary that store all the lightmaps
          */
         dictionary: MeshDictionary;
         private _scene;
         private _lowerLeft;
         private _volumeSize;
-        private _probesDisposition;
-        private _tempProbeIndexForIrradiance;
-        private _tempLastRect;
         /**
          * Creation of the irradiance volume
          * @param meshes  The meshes that need to be rendered by the probes
          * @param scene  The scene
-         * @param probeRes The resolution that is used for rendering the probes
          * @param numberBounces the number of bounces wanted
-         * @param probeDisp The disposition of the probes in the scene
+         * @param probeDisposition The disposition of the probes in the scene
          * @param numberProbes The number of probes placed on each axis
          */
-        constructor(meshes: Array<Mesh>, scene: Scene, probeRes: number, numberBounces: number, probeDisp: Array<Vector4>, numberProbes: Vector3);
-        private _createProbeFromProbeDisp;
-        private _moveRight;
-        private _moveDown;
-        private _moveUp;
-        private _moveLeft;
-        private _checkNewProbeInMovingSquare;
-        private _createNewGradientProbes;
+        constructor(meshes: Array<Mesh>, scene: Scene, numberBounces: number, probeDisposition: Array<Vector4>, numberProbes: Vector3);
         /**
-         * Function that will be use to see if we need to create probes to compute irradiance gradient at some places
+         * Create the probes that are inside the volume
+         * @param probeDisposition The list of position of the probes
          */
-        private _createIrradianceGradientProbes;
+        private _createProbeFromProbeDisp;
         /**
          * Called to change the directLightmap of the dictionary
          * Must ba called when the radiosity has been updates, othermwise, it does not do anything
@@ -68825,30 +68321,18 @@ declare module BABYLON {
          * Start rendering the irradiance volume
          */
         render(): void;
+        /**
+         * Update the value of the globalIllumination Strength,
+         * called after one rendering has been done
+         * @param value
+         */
         updateGlobalIllumStrength(value: number): void;
+        /**
+         * Update the value of the directIllumination Strength,
+         * called after one rendering has been done
+         * @param value
+         */
         updateDirectIllumStrength(value: number): void;
-        updateDirectIllumForEnv(envMultiplicator: number): void;
-    }
-}
-declare module BABYLON {
-    export class IrradianceVolumeManager {
-        private _scene;
-        private _lightSources;
-        private _meshForRadiance;
-        private _meshForIrradiance;
-        private _irradianceVolumes;
-        private _pr;
-        private _forbiddenNames;
-        constructor(meshes: Array<Mesh>, lights: Array<Mesh>, scene: Scene, numberProbesX: number, numberProbesY: number, numberProbesZ: number, numberBounces: number);
-        private _createMeshesArray;
-        private _mapNewUV;
-        private _createRadiosity;
-        private _renderIrradianceVolumes;
-        finished(): boolean;
-        updateNumberBounces(numberBounces: number): void;
-        setProbesVisibility(value: number): void;
-        updateDirectIllumStrength(directIllumStrength: number): void;
-        updateGlobalIllumStrength(globalIllumStrength: number): void;
         updateDirectIllumForEnv(envMultiplicator: number): void;
     }
 }
@@ -70726,20 +70210,23 @@ declare module BABYLON {
         private initVertexDataFromAvailableData;
         /**
          * Builds unique uvs in texture space, ready for lightmapping
-         * @param obList All the meshes to pack in the same uv space
+         * set to true to activate the vertex merging.
+         * @param meshes All the meshes to pack in the same uv space
+         * @param uvChannel uv set to place the generated uvs on
          * @param islandMargin Relative margin between islands
          * @param projectionLimit Angle limit (in deg) to create a seam
          * @param userAreaWeight Add a weight on triangle areas to limit distortion
-         * @param useAspect Unused parameter (TODO)
-         * @param strechToBounds Unused parameter (TODO)
-         * @param removeDoubles If some vertices share the same position, mergin them reduces the number of islands in uv space, thus saving space and reducing seams
-         * set to true to activate the vertex merging.
-         * @returns An average world space to uv space ratio, resulting of the uv layout.
-         * @returns And an array of the input meshes areas in world unit
+         * @param userShareSpace Will try to fill holes to save some space
+         * @param strechToBounds If true stretches the uv's to maximize space usage otherwise keeps proportions
+         * @returns A vector of average world space to uv space ratio, resulting of the uv layout.
          */
-        map(obList: Mesh[], islandMargin?: number, projectionLimit?: number, userAreaWeight?: number, useAspect?: boolean, // TODO
-        strechToBounds?: boolean, // TODO
-        removeDoubles?: boolean): any[];
+        map(meshes: Mesh[], uvChannel?: string, islandMargin?: number, projectionLimit?: number, userAreaWeight?: number, userShareSpace?: boolean, strechToBounds?: boolean): Vector2;
+        private _updateUVs;
+        /**
+         * Generates bounding boxes for each island and tight them in a pack
+         * @param {Island[]} islandList
+         * @returns {Vector2} scale factors
+         */
         private packIslands;
     }
 }
@@ -71921,6 +71408,20 @@ declare module BABYLON {
 }
 declare module BABYLON {
     /** @hidden */
+    export var buildRadiosityPixelShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
+    /** @hidden */
+    export var buildRadiosityVertexShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
+    /** @hidden */
     export var irradianceVolumeCompleteIlluminationPixelShader: {
         name: string;
         shader: string;
@@ -72013,6 +71514,48 @@ declare module BABYLON {
 declare module BABYLON {
     /** @hidden */
     export var irradianceVolumeShowAlbeCubeVertexShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
+    /** @hidden */
+    export var lightmapCombinePixelShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
+    /** @hidden */
+    export var lightmapCombineVertexShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
+    /** @hidden */
+    export var nextShooterPixelShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
+    /** @hidden */
+    export var nextShooterVertexShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
+    /** @hidden */
+    export var radiosityPixelShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
+    /** @hidden */
+    export var radiosityVertexShader: {
         name: string;
         shader: string;
     };
