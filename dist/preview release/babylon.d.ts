@@ -67925,6 +67925,13 @@ declare module BABYLON {
     };
 }
 declare module BABYLON {
+    /** @hidden */
+    export var dilateVertexShader: {
+        name: string;
+        shader: string;
+    };
+}
+declare module BABYLON {
     /**
      * Class that takes care of initializing the effects used in the postProcess
      */

@@ -7,6 +7,7 @@ import "../../Shaders/irradianceVolumeMixTwoTextures.fragment";
 import "../../Shaders/irradianceVolumeMixTwoTextures.vertex";
 import "../../Shaders/radiosityPostProcess.fragment";
 import "../../Shaders/radiosityPostProcess.vertex";
+import "../../Shaders/dilate.vertex";
 import "../../Shaders/dilate.fragment";
 
 
