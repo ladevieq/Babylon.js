@@ -1352,7 +1352,7 @@ export class UvMapper {
      * Builds unique uvs in texture space, ready for lightmapping
      * set to true to activate the vertex merging.
      * @param meshes All the meshes to pack in the same uv space
-     * @param uvSet uv set to place the generated uvs on
+     * @param uvChannel uv set to place the generated uvs on
      * @param islandMargin Relative margin between islands
      * @param projectionLimit Angle limit (in deg) to create a seam
      * @param userAreaWeight Add a weight on triangle areas to limit distortion
@@ -1362,7 +1362,7 @@ export class UvMapper {
      */
     public map(
         meshes: Mesh[],
-        uvSet: string = VertexBuffer.UV2Kind,
+        uvChannel: string = VertexBuffer.UV2Kind,
         islandMargin: number = 0,
         projectionLimit: number = 89,
         userAreaWeight: number = 0,

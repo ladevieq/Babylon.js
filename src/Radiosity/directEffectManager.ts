@@ -1,12 +1,10 @@
 import { Effect } from "../Materials/effect";
 import { VertexBuffer } from "../Meshes/buffer";
-import { DataBuffer } from "../Meshes/dataBuffer";
 import { Scene } from "../scene";
 
 import "../Shaders/visibility.fragment";
 import "../Shaders/visibility.vertex";
 import "../Shaders/dilate.fragment";
-import "../Shaders/dilate.vertex";
 import "../Shaders/radiosityPostProcess.fragment";
 import "../Shaders/radiosityPostProcess.vertex";
 import "../Shaders/shadowMapping.fragment";
