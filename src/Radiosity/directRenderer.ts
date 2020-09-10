@@ -9,7 +9,9 @@ import { Material } from "../Materials/material";
 
 import { PostProcess } from "../PostProcesses/postProcess";
 import { BlurPostProcess } from "../PostProcesses/blurPostProcess";
+// import { TonemapPostProcess, TonemappingOperator } from "../PostProcesses/tonemapPostProcess";
 import { Constants } from "../Engines/constants";
+import { VertexBuffer } from "../Meshes/buffer";
 
 import { StandardMaterial } from "../Materials/standardMaterial";
 import { ISize, Vector2, Vector3, Color3, Color4, Matrix } from "../Maths/math";
@@ -337,6 +339,7 @@ export class DirectRenderer {
     protected _kernelBlurXPostprocess: PostProcess;
     protected _kernelBlurYPostprocess: PostProcess;
     protected _dilatePostProcess: PostProcess;
+    protected _tonemapPostProcess: PostProcess;
     protected _postProcesses: PostProcess[];
 
     private _renderingMesh: Mesh;
@@ -392,6 +395,32 @@ export class DirectRenderer {
         this._postProcesses.push(this._kernelBlurXPostprocess, this._kernelBlurYPostprocess);
     }
 
+    // private _initializeTonemapPostProcess() {
+    //     const engine = this._scene.getEngine();
+
+    //      this._tonemapPostProcess = new TonemapPostProcess("tonemap", TonemappingOperator.Reinhard, 0.8, null, Texture.BILINEAR_SAMPLINGMODE, engine);
+    //      this._postProcesses.push(this._tonemapPostProcess);
+    // }
+
+    private _toneMappingRendering(origin : Texture, dest: Texture) {
+        let engine = this._scene.getEngine();
+        let effect = this._directEffectsManager.radiosityPostProcessEffect;
+
+        engine.enableEffect(effect);
+        engine.setState(false);
+        engine.bindFramebuffer(<InternalTexture>dest._texture);
+
+        let vb: any = {};
+        vb[VertexBuffer.PositionKind] = this._directEffectsManager.screenQuadVB;
+        effect.setTexture("inputTexture", origin);
+        effect.setFloat("exposure", 2);
+        engine.bindBuffers(vb, this._directEffectsManager.screenQuadIB, effect);
+
+        engine.setDirectViewport(0, 0, dest.getSize().width, dest.getSize().height);
+        engine.drawElementsType(Material.TriangleFillMode, 0, 6);
+
+        engine.unBindFramebuffer(<InternalTexture>dest._texture);
+    }
 
     public renderNextSample() {
         const light = this.lights.slice().sort((light1, light2) => {
@@ -437,9 +466,11 @@ export class DirectRenderer {
             this._dilatePostProcess.height = mesh.directInfo.shadowMapSize.height;
             this._scene.postProcessManager.directRender(this._postProcesses, mesh.directInfo.tempTexture.getInternalTexture(), true);
 
-            const temp = mesh.directInfo.shadowMap._texture;
-            mesh.directInfo.shadowMap._texture = mesh.directInfo.tempTexture._texture;
-            mesh.directInfo.tempTexture._texture = temp;
+            this._toneMappingRendering(mesh.directInfo.tempTexture, mesh.directInfo.shadowMap)
+
+            // const temp = mesh.directInfo.shadowMap._texture;
+            // mesh.directInfo.shadowMap._texture = mesh.directInfo.tempTexture._texture;
+            // mesh.directInfo.tempTexture._texture = temp;
         }
     }
 

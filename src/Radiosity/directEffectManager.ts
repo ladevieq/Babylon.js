@@ -1,6 +1,7 @@
 import { Effect } from "../Materials/effect";
 import { VertexBuffer } from "../Meshes/buffer";
 import { Scene } from "../scene";
+import { DataBuffer } from "../Meshes/dataBuffer";
 
 import "../Shaders/visibility.fragment";
 import "../Shaders/visibility.vertex";
@@ -28,6 +29,8 @@ export class DirectEffectsManager {
     public effectPromise: Promise<void>;
 
     private _scene: Scene;
+    private _vertexBuffer : VertexBuffer;
+    private _indexBuffer : DataBuffer;
 
     /**
       * Creates the manager
@@ -38,7 +41,53 @@ export class DirectEffectsManager {
     constructor(scene: Scene) {
         this._scene = scene;
 
+        this.prepareBuffers();
         this.effectPromise = this.createEffects();
+    }
+
+    /**
+      * Gets a screen quad vertex buffer
+      */
+     public get screenQuadVB(): VertexBuffer {
+        return this._vertexBuffer;
+    }
+
+    /**
+      * Gets a screen quad index buffer
+      */
+    public get screenQuadIB(): DataBuffer {
+        return this._indexBuffer;
+    }
+
+    private prepareBuffers(): void {
+        if (this._vertexBuffer) {
+            return;
+        }
+
+        // VBO
+        var vertices = [];
+        vertices.push(1, 1);
+        vertices.push(-1, 1);
+        vertices.push(-1, -1);
+        vertices.push(1, -1);
+
+        this._vertexBuffer = new VertexBuffer(this._scene.getEngine(), vertices, VertexBuffer.PositionKind, false, false, 2);
+
+        this._buildIndexBuffer();
+    }
+
+    private _buildIndexBuffer(): void {
+        // Indices
+        var indices = [];
+        indices.push(0);
+        indices.push(1);
+        indices.push(2);
+
+        indices.push(0);
+        indices.push(2);
+        indices.push(3);
+
+        this._indexBuffer = this._scene.getEngine().createIndexBuffer(indices);
     }
 
     private createEffects(): Promise<void> {

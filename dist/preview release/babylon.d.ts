@@ -67561,6 +67561,8 @@ declare module BABYLON {
         shadowMappingEffect: Effect;
         effectPromise: Promise<void>;
         private _scene;
+        private _vertexBuffer;
+        private _indexBuffer;
         /**
           * Creates the manager
           * @param scene The current scene
@@ -67568,6 +67570,16 @@ declare module BABYLON {
           * @param useDepthCompare If true, uses depth instead of surface id for visibility
           */
         constructor(scene: Scene);
+        /**
+          * Gets a screen quad vertex buffer
+          */
+        get screenQuadVB(): VertexBuffer;
+        /**
+          * Gets a screen quad index buffer
+          */
+        get screenQuadIB(): DataBuffer;
+        private prepareBuffers;
+        private _buildIndexBuffer;
         private createEffects;
         /**
           * Checks the ready state of all the effets
@@ -67689,6 +67701,7 @@ declare module BABYLON {
         protected _kernelBlurXPostprocess: PostProcess;
         protected _kernelBlurYPostprocess: PostProcess;
         protected _dilatePostProcess: PostProcess;
+        protected _tonemapPostProcess: PostProcess;
         protected _postProcesses: PostProcess[];
         private _renderingMesh;
         /**
@@ -67699,6 +67712,7 @@ declare module BABYLON {
         constructor(scene: Scene, meshes?: Mesh[], lights?: Arealight[]);
         private _initializeDilatePostProcess;
         private _initializeBlurPostProcess;
+        private _toneMappingRendering;
         renderNextSample(): void;
         render(): void;
         postProcesses(): void;
