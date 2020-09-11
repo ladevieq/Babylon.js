@@ -6,7 +6,7 @@ uniform float exposure;
 float gamma = 2.2;
 
 void main(void) {
-    vec3 color = texture2D(inputTexture, vUV).rgb;
+    vec3 color = vec3(0.01) + texture2D(inputTexture, vUV).rgb;
 
     vec3 mapped = vec3(1.0) - exp(-color * exposure);
     color = pow(mapped, vec3(1.0 / gamma));
