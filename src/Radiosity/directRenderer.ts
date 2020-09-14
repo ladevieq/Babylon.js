@@ -413,7 +413,7 @@ export class DirectRenderer {
         let vb: any = {};
         vb[VertexBuffer.PositionKind] = this._directEffectsManager.screenQuadVB;
         effect.setTexture("inputTexture", origin);
-        effect.setFloat("exposure", 5);
+        effect.setFloat("exposure", 4);
         engine.bindBuffers(vb, this._directEffectsManager.screenQuadIB, effect);
 
         engine.setDirectViewport(0, 0, dest.getSize().width, dest.getSize().height);
