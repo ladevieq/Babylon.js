@@ -241,8 +241,10 @@ export class GeometryBufferRenderer {
             if (needUv) {
                 defines.push("#define NEED_UV");
                 if (mesh.isVerticesDataPresent(VertexBuffer.UVKind)) {
-                    attribs.push(VertexBuffer.UVKind);
-                    defines.push("#define UV1");
+                    if (alphaTexture && alphaTexture.coordinatesIndex === 1) {
+                        attribs.push(VertexBuffer.UVKind);
+                        defines.push("#define UV1");
+                    }
                 }
                 if (mesh.isVerticesDataPresent(VertexBuffer.UV2Kind)) {
                     if (alphaTexture && alphaTexture.coordinatesIndex === 1) {
