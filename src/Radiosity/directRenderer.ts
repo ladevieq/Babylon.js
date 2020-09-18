@@ -85,7 +85,7 @@ export class Arealight {
 
     public depthMap: RenderTargetTexture;
 
-    public sampleCount: number; 
+    public sampleCount: number;
 
     // Samples world positions
     public samples: Vector3[];
@@ -180,7 +180,9 @@ export class Arealight {
             true,
             Constants.TEXTURE_BILINEAR_SAMPLINGMODE,
             true,
-            false
+            false,
+            false,
+            Constants.TEXTUREFORMAT_R
         );
 
         this._updateMatrices();

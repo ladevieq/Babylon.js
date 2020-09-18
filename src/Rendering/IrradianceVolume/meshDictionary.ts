@@ -104,7 +104,7 @@ export class MeshDictionary {
 
     /**
      * Render all the postProcess for a given mesh
-     * @param value 
+     * @param value
      */
     public renderValue(value : IMeshesGroup) {
         this._dilateRendering(value);

@@ -9,10 +9,14 @@ uniform mat4 world;
 
 uniform vec3 lightPos;
 
+uniform float bias;
 uniform float normalBias;
+
+uniform vec2 nearFar;
 
 // Outputs
 out vec4 vDepthMetric;
+out float vDepthMetricSM;
 
 void main(void) {
     vec4 worldPos = world * vec4(position, 1.0);
@@ -29,5 +33,7 @@ void main(void) {
 
     vec4 viewPos = projection * view * worldPos;
     gl_Position = viewPos;
+    // gl_Position.z += bias * gl_Position.w;
+    vDepthMetricSM = ((gl_Position.z + nearFar.x) / (nearFar.x + nearFar.y)) + bias;
     vDepthMetric = viewPos;
 }
