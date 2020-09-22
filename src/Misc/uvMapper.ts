@@ -1,4 +1,4 @@
-import { Vector2, Vector3, Matrix } from "../Maths/math";
+import { Vector2, Vector3, Matrix, ISize } from "../Maths/math";
 import { Nullable } from "../types";
 import { Mesh } from "../Meshes/mesh";
 import { VertexData } from "../Meshes/mesh.vertexData";
@@ -1352,8 +1352,9 @@ export class UvMapper {
      * Builds unique uvs in texture space, ready for lightmapping
      * set to true to activate the vertex merging.
      * @param meshes All the meshes to pack in the same uv space
-     * @param uvChannel uv set to place the generated uvs on
-     * @param islandMargin Relative margin between islands
+     * @param mapSize size of the future texture used with the uvs
+     * @param uvSet uv set to place the generated uvs on
+     * @param islandMargin Relative margin between islands in pixels
      * @param projectionLimit Angle limit (in deg) to create a seam
      * @param userAreaWeight Add a weight on triangle areas to limit distortion
      * @param userShareSpace Will try to fill holes to save some space
@@ -1362,7 +1363,8 @@ export class UvMapper {
      */
     public map(
         meshes: Mesh[],
-        uvChannel: string = VertexBuffer.UV2Kind,
+        mapSize: ISize,
+        uvSet: string = VertexBuffer.UV2Kind,
         islandMargin: number = 0,
         projectionLimit: number = 89,
         userAreaWeight: number = 0,
@@ -1379,7 +1381,6 @@ export class UvMapper {
 
         USER_STRETCH_ASPECT = strechToBounds;
         USER_ISLAND_MARGIN = islandMargin;
-
 
         if (userShareSpace) {
             // Sort by name so we get consistent results
@@ -1559,23 +1560,23 @@ export class UvMapper {
                 }
 
                 if (collectedIslandList.length > 0) {
-                    factors = this.packIslands(collectedIslandList);
+                    factors = this.packIslands(collectedIslandList, mapSize);
                 }
             }
         }
 
         if (userShareSpace) {
             if (collectedIslandList.length > 0) {
-                factors = this.packIslands(collectedIslandList);
+                factors = this.packIslands(collectedIslandList, mapSize);
             }
         }
 
-        this._updateUVs(meshes, collectedIslandList, uvChannel);
+        this._updateUVs(meshes, collectedIslandList, uvSet);
 
         return factors;
     }
 
-    private _updateUVs(meshes: Mesh[], islands: Island[], uvChannel: string) {
+    private _updateUVs(meshes: Mesh[], islands: Island[], uvSet: string) {
         const newUvs: FloatArray[] = [];
         const indices: IndicesArray[] = [];
         const vertices: FloatArray[] = [];
@@ -1654,29 +1655,30 @@ export class UvMapper {
                 }
 
                 additionnalVertexData[meshIndex].positions = tempVertices;
-                additionnalVertexData[meshIndex].set(tempUvs, uvChannel);
+                additionnalVertexData[meshIndex].set(tempUvs, uvSet);
                 additionnalVertexData[meshIndex].indices = [];
             }
 
             let verticesData = VertexData.ExtractFromMesh(meshes[meshIndex]);
             verticesData.indices = indices[meshIndex];
             // verticesData.uvs2 = newUvs[meshIndex];
-            verticesData.set(newUvs[meshIndex], uvChannel);
+            verticesData.set(newUvs[meshIndex], uvSet);
             if (additionnalUvs[meshIndex].length) {
                 verticesData.merge(additionnalVertexData[meshIndex]);
             }
 
             verticesData.applyToMesh(meshes[meshIndex]);
-            newUvs[meshIndex] = <Float32Array>meshes[meshIndex].getVerticesData(uvChannel);
+            newUvs[meshIndex] = <Float32Array>meshes[meshIndex].getVerticesData(uvSet);
         }
     }
 
     /**
      * Generates bounding boxes for each island and tight them in a pack
      * @param {Island[]} islandList
+     * @param {ISize} mapSize
      * @returns {Vector2} scale factors
      */
-    private packIslands(islandList: Island[]): Vector2 {
+    private packIslands(islandList: Island[], mapSize: ISize): Vector2 {
         if (USER_FILL_HOLES) {
             this.mergeUvIslands(islandList);
         }
@@ -1690,11 +1692,11 @@ export class UvMapper {
             let h = maxy - miny;
 
             if (USER_ISLAND_MARGIN) {
-                // Uses margin as a world unit number
-                minx -= USER_ISLAND_MARGIN;
-                miny -= USER_ISLAND_MARGIN;
-                maxx += USER_ISLAND_MARGIN;
-                maxy += USER_ISLAND_MARGIN;
+                // Uses margin as a pixel number
+                minx -= USER_ISLAND_MARGIN / mapSize.width;
+                miny -= USER_ISLAND_MARGIN / mapSize.height;
+                maxx += USER_ISLAND_MARGIN / mapSize.width;
+                maxy += USER_ISLAND_MARGIN / mapSize.height;
 
                 w = maxx - minx;
                 h = maxy - miny;
@@ -1719,7 +1721,7 @@ export class UvMapper {
             factors = new Vector2(1.0 / packDimension.x, 1.0 / packDimension.y);
         } else {
             // Keep proportions.
-            const factor = 1.0 / Math.max(packDimension.x, packDimension.y)
+            const factor = 1.0 / Math.max(packDimension.x, packDimension.y);
             factors = new Vector2(factor, factor);
         }
 
@@ -1741,7 +1743,6 @@ export class UvMapper {
         return factors;
     }
 }
-
 
 /**
  * Bounding box of an island

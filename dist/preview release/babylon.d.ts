@@ -70239,19 +70239,21 @@ declare module BABYLON {
          * Builds unique uvs in texture space, ready for lightmapping
          * set to true to activate the vertex merging.
          * @param meshes All the meshes to pack in the same uv space
-         * @param uvChannel uv set to place the generated uvs on
-         * @param islandMargin Relative margin between islands
+         * @param mapSize size of the future texture used with the uvs
+         * @param uvSet uv set to place the generated uvs on
+         * @param islandMargin Relative margin between islands in pixels
          * @param projectionLimit Angle limit (in deg) to create a seam
          * @param userAreaWeight Add a weight on triangle areas to limit distortion
          * @param userShareSpace Will try to fill holes to save some space
          * @param strechToBounds If true stretches the uv's to maximize space usage otherwise keeps proportions
          * @returns A vector of average world space to uv space ratio, resulting of the uv layout.
          */
-        map(meshes: Mesh[], uvChannel?: string, islandMargin?: number, projectionLimit?: number, userAreaWeight?: number, userShareSpace?: boolean, strechToBounds?: boolean): Vector2;
+        map(meshes: Mesh[], mapSize: ISize, uvSet?: string, islandMargin?: number, projectionLimit?: number, userAreaWeight?: number, userShareSpace?: boolean, strechToBounds?: boolean): Vector2;
         private _updateUVs;
         /**
          * Generates bounding boxes for each island and tight them in a pack
          * @param {Island[]} islandList
+         * @param {ISize} mapSize
          * @returns {Vector2} scale factors
          */
         private packIslands;
