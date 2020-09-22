@@ -18,7 +18,9 @@ export class DirectEffectsManager {
     /**
       * Effect for visibility
       */
-    public visibilityEffect: Effect;
+    public opaqueVisibilityEffect: Effect;
+    public alphaVisibilityEffect: Effect;
+
     /**
       * Effect to tonemap the lightmap. Necessary to map the dynamic range into 0;1.
       */
@@ -94,7 +96,8 @@ export class DirectEffectsManager {
         return new Promise((resolve, reject) => {
             let interval = setInterval(() => {
                 let readyStates = [
-                    this.isVisiblityEffectReady(),
+                    this.isOpaqueVisiblityEffectReady(),
+                    this.isAlphaVisiblityEffectReady(),
                     this.isRadiosityPostProcessReady(),
                     this.isShadowMappingEffectReady(),
                 ];
@@ -116,26 +119,44 @@ export class DirectEffectsManager {
       * @returns true if all the effects are ready
       */
     public isReady(): boolean {
-        return  this.isVisiblityEffectReady() &&
+        return  this.isOpaqueVisiblityEffectReady() &&
+                this.isAlphaVisiblityEffectReady() &&
                 this.isRadiosityPostProcessReady() &&
                 this.isShadowMappingEffectReady();
     }
-
 
     /**
      * Checks the ready state of the visibility effect
      * @returns true if the visibility effect is ready
      */
-    public isVisiblityEffectReady(): boolean {
+    public isOpaqueVisiblityEffectReady(): boolean {
         const attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind];
         const uniforms = ["world", "view", "projection", "nearFar", "bias", "lightPos", "normalBias"];
 
-        this.visibilityEffect = this._scene.getEngine().createEffect("visibility",
+        this.opaqueVisibilityEffect = this._scene.getEngine().createEffect("visibility",
             attribs,
             uniforms,
             [], "");
 
-        return this.visibilityEffect.isReady();
+        return this.opaqueVisibilityEffect.isReady();
+    }
+
+    /**
+     * Checks the ready state of the visibility effect
+     * @returns true if the visibility effect is ready
+     */
+    public isAlphaVisiblityEffectReady(): boolean {
+        const attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind, VertexBuffer.UVKind];
+        const uniforms = ["world", "view", "projection", "nearFar", "bias", "lightPos", "normalBias"];
+        const samplers = ["alphaTexture"];
+
+        this.alphaVisibilityEffect = this._scene.getEngine().createEffect("visibility",
+            attribs,
+            uniforms,
+            samplers,
+            "#define ALPHA\n");
+
+        return this.alphaVisibilityEffect.isReady();
     }
 
     /**

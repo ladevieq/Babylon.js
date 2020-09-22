@@ -67553,7 +67553,8 @@ declare module BABYLON {
         /**
           * Effect for visibility
           */
-        visibilityEffect: Effect;
+        opaqueVisibilityEffect: Effect;
+        alphaVisibilityEffect: Effect;
         /**
           * Effect to tonemap the lightmap. Necessary to map the dynamic range into 0;1.
           */
@@ -67590,7 +67591,12 @@ declare module BABYLON {
          * Checks the ready state of the visibility effect
          * @returns true if the visibility effect is ready
          */
-        isVisiblityEffectReady(): boolean;
+        isOpaqueVisiblityEffectReady(): boolean;
+        /**
+         * Checks the ready state of the visibility effect
+         * @returns true if the visibility effect is ready
+         */
+        isAlphaVisiblityEffectReady(): boolean;
         /**
          * Checks the ready state of the tonemap effect
          * @returns true if the tonemap effect is ready

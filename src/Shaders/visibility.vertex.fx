@@ -2,6 +2,10 @@
 in vec3 position;
 in vec3 normal;
 
+#ifdef ALPHA
+in vec2 uv;
+#endif
+
 // Uniforms
 uniform mat4 projection;
 uniform mat4 view;
@@ -17,6 +21,9 @@ uniform vec2 nearFar;
 // Outputs
 out vec4 vDepthMetric;
 out float vDepthMetricSM;
+#ifdef ALPHA
+out vec2 vUV;
+#endif
 
 void main(void) {
     vec4 worldPos = world * vec4(position, 1.0);
@@ -36,4 +43,7 @@ void main(void) {
     // gl_Position.z += bias * gl_Position.w;
     vDepthMetricSM = ((gl_Position.z + nearFar.x) / (nearFar.x + nearFar.y)) + bias;
     vDepthMetric = viewPos;
+#ifdef ALPHA
+    vUV = uv;
+#endif
 }

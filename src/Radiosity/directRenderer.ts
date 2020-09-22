@@ -153,7 +153,6 @@ export class Arealight {
         return this._projectionMatrixNY;
     }
 
-
     constructor(position: Vector3, normal: Vector3, size: ISize, arealightOptions: ArealightOptions, scene: Scene) {
         this.position = position.clone();
         this.normal = normal.clone().normalize();
@@ -187,7 +186,6 @@ export class Arealight {
 
         this._updateMatrices();
         this._generateSamples(arealightOptions.sampleCount);
-
 
         for (const sample of this.samples) {
             const mat = new StandardMaterial("", scene);
@@ -468,7 +466,7 @@ export class DirectRenderer {
             this._dilatePostProcess.height = mesh.directInfo.shadowMapSize.height;
             this._scene.postProcessManager.directRender(this._postProcesses, mesh.directInfo.tempTexture.getInternalTexture(), true);
 
-            this._toneMappingRendering(mesh.directInfo.tempTexture, mesh.directInfo.shadowMap)
+            this._toneMappingRendering(mesh.directInfo.tempTexture, mesh.directInfo.shadowMap);
 
             // const temp = mesh.directInfo.shadowMap._texture;
             // mesh.directInfo.shadowMap._texture = mesh.directInfo.tempTexture._texture;
@@ -494,7 +492,6 @@ export class DirectRenderer {
             engine.setDirectViewport(0, 0, mesh.directInfo.shadowMapSize.width, mesh.directInfo.shadowMapSize.height);
             engine.setState(mesh!.material!.backFaceCulling, 0, true, true);
             engine.bindFramebuffer(<InternalTexture>mesh.directInfo.tempTexture.getInternalTexture());
-
 
             for (const subMesh of mesh.subMeshes) {
                 var batch = mesh._getInstancesRenderList(subMesh._id);
@@ -692,6 +689,14 @@ export class DirectRenderer {
         mesh._bind(subMesh, effect, Material.TriangleFillMode);
         engine.setState(material.backFaceCulling);
 
+        if (material.needAlphaTesting()) {
+            const alphaTexture = material.getAlphaTestTexture();
+
+            if (alphaTexture) {
+                effect.setTexture("alphaTexture", alphaTexture);
+            }
+        }
+
         var batch = mesh._getInstancesRenderList(subMesh._id);
 
         if (batch.mustReturn) {
@@ -707,7 +712,8 @@ export class DirectRenderer {
     private renderVisibilityMapCubeSample(light: Arealight, samplePosition: Vector3) {
         const engine = this._scene.getEngine();
         const gl = engine._gl;
-        const effect = this._directEffectsManager.visibilityEffect;
+        const opaqueEffect = this._directEffectsManager.opaqueVisibilityEffect;
+        const alphaEffect = this._directEffectsManager.alphaVisibilityEffect;
 
         const viewMatrix = Matrix.LookAtLH(samplePosition, samplePosition.add(light.normal), Vector3.Up());
         let xAxis = new Vector3(viewMatrix.m[0], viewMatrix.m[4], viewMatrix.m[8]); // Tangent
@@ -759,8 +765,6 @@ export class DirectRenderer {
             gl.TEXTURE_CUBE_MAP_POSITIVE_Y,
         ];
 
-        engine.enableEffect(effect);
-
         // Hemi cube rendering
         for (let viewIndex = 0; viewIndex < cubeSides.length; viewIndex++) {
             // Render on each face of the hemicube
@@ -776,16 +780,20 @@ export class DirectRenderer {
 
             engine.clear(new Color4(0, 0, 0, 0), true, true);
 
-            effect.setMatrix("view", viewMatrices[viewIndex]);
-            effect.setMatrix("projection", projectionMatrices[viewIndex]);
-            effect.setVector3("lightPos", samplePosition);
-            effect.setFloat("bias", light.bias);
-            effect.setFloat("normalBias", light.normalBias);
-            effect.setFloat2("nearFar", light.near, light.far);
-
             for (const mesh of this.meshes) {
                 for (const subMesh of mesh.subMeshes) {
-                    this.renderSubMesh(subMesh, this._directEffectsManager.visibilityEffect);
+                    const material = subMesh.getMaterial();
+                    const effect = material?.needAlphaTesting() && material.getAlphaTestTexture() ? alphaEffect : opaqueEffect;
+                    engine.enableEffect(effect);
+
+                    effect.setMatrix("view", viewMatrices[viewIndex]);
+                    effect.setMatrix("projection", projectionMatrices[viewIndex]);
+                    effect.setVector3("lightPos", samplePosition);
+                    effect.setFloat("bias", light.bias);
+                    effect.setFloat("normalBias", light.normalBias);
+                    effect.setFloat2("nearFar", light.near, light.far);
+
+                    this.renderSubMesh(subMesh, effect);
                 }
             }
 
