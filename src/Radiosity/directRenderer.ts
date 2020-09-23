@@ -46,19 +46,14 @@ declare module "../Meshes/mesh" {
 Mesh.prototype.initForDirect = function(shadowMapSize: { width: number, height: number }, scene: Scene) {
     this.directInfo = {
         shadowMapSize,
-        shadowMap: new RenderTargetTexture("shadowMap", shadowMapSize, scene, false, true, Constants.TEXTURE_BILINEAR_SAMPLINGMODE, false, undefined, false, false),
-        tempTexture: new RenderTargetTexture("tempMap", shadowMapSize, scene, false, true, Constants.TEXTURE_BILINEAR_SAMPLINGMODE, false, undefined, false, false),
+        shadowMap: new RenderTargetTexture("shadowMap", shadowMapSize, scene, false, true, Constants.TEXTURETYPE_FLOAT, false, Constants.TEXTURE_BILINEAR_SAMPLINGMODE, false, false),
+        tempTexture: new RenderTargetTexture("tempMap", shadowMapSize, scene, false, true, Constants.TEXTURETYPE_FLOAT, false, Constants.TEXTURE_BILINEAR_SAMPLINGMODE, false, false),
     };
-    this.directInfo.shadowMap.ignoreCameraViewport = true;
-    this.directInfo.shadowMap.anisotropicFilteringLevel = 1;
-    this.directInfo.tempTexture.ignoreCameraViewport = true;
-    this.directInfo.tempTexture.anisotropicFilteringLevel = 1;
 };
 
 Mesh.prototype.getShadowMap = function() {
     return this.directInfo.shadowMap;
 };
-
 
 declare interface ArealightOptions {
     sampleCount: number;
@@ -509,9 +504,9 @@ export class DirectRenderer {
             engine.unBindFramebuffer(<InternalTexture>mesh.directInfo.tempTexture.getInternalTexture());
 
             // Swap temp and shadow texture
-            const temp = mesh.directInfo.tempTexture;
-            mesh.directInfo.tempTexture = mesh.directInfo.shadowMap;
-            mesh.directInfo.shadowMap = temp;
+            const temp = mesh.directInfo.shadowMap._texture;
+            mesh.directInfo.shadowMap._texture = mesh.directInfo.tempTexture._texture;
+            mesh.directInfo.tempTexture._texture = temp;
         }
     }
 
@@ -522,6 +517,11 @@ export class DirectRenderer {
             engine.bindFramebuffer(<InternalTexture>mesh.directInfo.shadowMap._texture);
             engine.clear(new Color4(0, 0, 0, 0), true, true);
             engine.unBindFramebuffer(<InternalTexture>mesh.directInfo.shadowMap._texture);
+
+            engine.setDirectViewport(0, 0, mesh.directInfo.shadowMapSize.width, mesh.directInfo.shadowMapSize.height);
+            engine.bindFramebuffer(<InternalTexture>mesh.directInfo.tempTexture._texture);
+            engine.clear(new Color4(0, 0, 0, 0), true, true);
+            engine.unBindFramebuffer(<InternalTexture>mesh.directInfo.tempTexture._texture);
         }
     }
 

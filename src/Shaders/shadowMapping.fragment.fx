@@ -29,7 +29,7 @@ void main(void) {
     float farMinusNear = nearFar.y - nearFar.x;
     depth = ((nearFar.y + nearFar.x) - 2.0 * nearFar.y * nearFar.x / depth) / farMinusNear;
 
-    float sampledDepth = texture(depthMap, directionToLight).x;
+    float sampledDepth = texture(depthMap, directionToLight).r;
     // float esm = 1.0 - clamp(exp(min(87., depthScale * depth)) * sampledDepth, 0., 1.);
     // float visible = esm / sampleCount;
     // float visible = step(depth * depthScale, sampledDepth) / sampleCount;
