@@ -1,4 +1,4 @@
-import { Vector2, Vector3, Matrix, ISize } from "../Maths/math";
+import { Vector2, Vector3, Matrix } from "../Maths/math";
 import { Nullable } from "../types";
 import { Mesh } from "../Meshes/mesh";
 import { VertexData } from "../Meshes/mesh.vertexData";
@@ -1352,7 +1352,6 @@ export class UvMapper {
      * Builds unique uvs in texture space, ready for lightmapping
      * set to true to activate the vertex merging.
      * @param meshes All the meshes to pack in the same uv space
-     * @param mapSize size of the future texture used with the uvs
      * @param uvSet uv set to place the generated uvs on
      * @param islandMargin Relative margin between islands in pixels
      * @param projectionLimit Angle limit (in deg) to create a seam
@@ -1363,7 +1362,6 @@ export class UvMapper {
      */
     public map(
         meshes: Mesh[],
-        mapSize: ISize,
         uvSet: string = VertexBuffer.UV2Kind,
         islandMargin: number = 0,
         projectionLimit: number = 89,
@@ -1560,14 +1558,14 @@ export class UvMapper {
                 }
 
                 if (collectedIslandList.length > 0) {
-                    factors = this.packIslands(collectedIslandList, mapSize);
+                    factors = this.packIslands(collectedIslandList);
                 }
             }
         }
 
         if (userShareSpace) {
             if (collectedIslandList.length > 0) {
-                factors = this.packIslands(collectedIslandList, mapSize);
+                factors = this.packIslands(collectedIslandList);
             }
         }
 
@@ -1675,10 +1673,9 @@ export class UvMapper {
     /**
      * Generates bounding boxes for each island and tight them in a pack
      * @param {Island[]} islandList
-     * @param {ISize} mapSize
      * @returns {Vector2} scale factors
      */
-    private packIslands(islandList: Island[], mapSize: ISize): Vector2 {
+    private packIslands(islandList: Island[]): Vector2 {
         if (USER_FILL_HOLES) {
             this.mergeUvIslands(islandList);
         }
@@ -1692,11 +1689,10 @@ export class UvMapper {
             let h = maxy - miny;
 
             if (USER_ISLAND_MARGIN) {
-                // Uses margin as a pixel number
-                minx -= USER_ISLAND_MARGIN / mapSize.width;
-                miny -= USER_ISLAND_MARGIN / mapSize.height;
-                maxx += USER_ISLAND_MARGIN / mapSize.width;
-                maxy += USER_ISLAND_MARGIN / mapSize.height;
+                minx -= USER_ISLAND_MARGIN;
+                miny -= USER_ISLAND_MARGIN;
+                maxx += USER_ISLAND_MARGIN;
+                maxy += USER_ISLAND_MARGIN;
 
                 w = maxx - minx;
                 h = maxy - miny;
