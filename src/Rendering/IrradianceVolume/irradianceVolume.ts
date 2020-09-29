@@ -44,7 +44,7 @@ export class IrradianceVolume {
      * @param probeDisposition The disposition of the probes in the scene
      * @param numberProbes The number of probes placed on each axis
      */
-    constructor(meshes : Array<Mesh>, scene : Scene, 
+    constructor(meshes : Array<Mesh>, scene : Scene,
         numberBounces : number, probeDisposition : Array<Vector4>, numberProbes : Vector3) {
         this._scene = scene;
         this.meshForIrradiance = meshes;
