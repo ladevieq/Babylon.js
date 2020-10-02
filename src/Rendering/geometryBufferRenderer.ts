@@ -241,7 +241,7 @@ export class GeometryBufferRenderer {
             if (needUv) {
                 defines.push("#define NEED_UV");
                 if (mesh.isVerticesDataPresent(VertexBuffer.UVKind)) {
-                    if (alphaTexture && alphaTexture.coordinatesIndex === 1) {
+                    if (alphaTexture && alphaTexture.coordinatesIndex === 0) {
                         attribs.push(VertexBuffer.UVKind);
                         defines.push("#define UV1");
                     }
