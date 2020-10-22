@@ -168,7 +168,7 @@ export class Probe {
 
     protected _renderCubeTexture(subMeshes : SmartArray<SubMesh>, faceIndex : number) : void {
 
-        var renderSubMesh = (subMesh : SubMesh, effect : Effect, view : Matrix, projection : Matrix ) => {
+        var renderSubMesh = (subMesh : SubMesh, effect : Effect, view : Matrix, projection : Matrix) => {
             let mesh = subMesh.getRenderingMesh();
 
             mesh._bind(subMesh, effect, Material.TriangleFillMode);

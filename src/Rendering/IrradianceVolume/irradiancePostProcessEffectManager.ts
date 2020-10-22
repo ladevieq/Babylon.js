@@ -139,7 +139,7 @@ export class IrradiancePostProcessEffectManager {
         this.dilateEffect = this._scene.getEngine().createEffect("dilate",
             [VertexBuffer.PositionKind],
             ["offset", "texelSize"],
-            ["inputTexture"], "");
+            ["textureSampler"], "");
 
         return this.dilateEffect.isReady();
     }

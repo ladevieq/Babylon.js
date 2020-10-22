@@ -170,6 +170,7 @@ export class MeshDictionary {
     private _dilateRendering(value : IMeshesGroup) {
         let engine = this._scene.getEngine();
         let effect = this._postProcessManager.dilateEffect;
+
         let dest = value.dilateLightmap;
 
         engine.enableEffect(effect);
@@ -178,11 +179,10 @@ export class MeshDictionary {
         gl.bindFramebuffer(gl.FRAMEBUFFER, this.frameBuffer1);
         gl.framebufferTexture2D(gl.DRAW_FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, (<InternalTexture>dest._texture)._webGLTexture, 0);
 
-        engine.clear(new Color4(1.0, 0.0, 0.0, 1.0), true, true, true);
-        gl.clearColor(1., 0., 0., 1.);
+        engine.clear(new Color4(0.0, 0.0, 0.0, 1.0), true, true, true);
         let vb: any = {};
         vb[VertexBuffer.PositionKind] = this._postProcessManager.screenQuadVB;
-        effect.setTexture("inputTexture", value.irradianceLightmap);
+        effect.setTexture("textureSampler", value.irradianceLightmap);
         effect.setFloat2("texelSize", 1 / dest.getSize().width, 1 / dest.getSize().height);
         engine.bindBuffers(vb, this._postProcessManager.screenQuadIB, effect);
 
