@@ -1201,7 +1201,7 @@ var p = config.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMA
   mark: noop$1,
   measure: noop$1
 };
-var preamble = "FA \"5.13.0\"";
+var preamble = "FA \"5.13.1\"";
 
 var begin = function begin(name) {
   p.mark("".concat(preamble, " ").concat(name, " begins"));
@@ -52733,21 +52733,22 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "../../node_modules/split.js/dist/split.es.js":
-/*!********************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/split.js/dist/split.es.js ***!
-  \********************************************************************************/
+/***/ "../../node_modules/split.js/dist/split.mjs":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/split.js/dist/split.mjs ***!
+  \******************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // The programming goals of Split.js are to deliver readable, understandable and
 // maintainable code, while at the same time manually optimizing for tiny minified file size,
-// browser compatibility without additional requirements, graceful fallback (IE8 is supported)
+// browser compatibility without additional requirements
 // and very few assumptions about the user's page layout.
-var global = window;
-var document = global.document;
+var global = typeof window !== 'undefined' ? window : null;
+var ssr = global === null;
+var document = !ssr ? global.document : undefined;
 
 // Save a couple long function names that are used frequently.
 // This optimization saves around 400 bytes.
@@ -52760,23 +52761,21 @@ var bGutterSize = '_c';
 var HORIZONTAL = 'horizontal';
 var NOOP = function () { return false; };
 
-// Figure out if we're in IE8 or not. IE8 will still render correctly,
-// but will be static instead of draggable.
-var isIE8 = global.attachEvent && !global[addEventListener];
-
 // Helper function determines which prefixes of CSS calc we need.
 // We only need to do this once on startup, when this anonymous function is called.
 //
 // Tests -webkit, -moz and -o prefixes. Modified from StackOverflow:
 // http://stackoverflow.com/questions/16625140/js-feature-detection-to-detect-the-usage-of-webkit-calc-over-calc/16625167#16625167
-var calc = (['', '-webkit-', '-moz-', '-o-']
-    .filter(function (prefix) {
-        var el = document.createElement('div');
-        el.style.cssText = "width:" + prefix + "calc(9px)";
+var calc = ssr
+    ? 'calc'
+    : ((['', '-webkit-', '-moz-', '-o-']
+          .filter(function (prefix) {
+              var el = document.createElement('div');
+              el.style.cssText = "width:" + prefix + "calc(9px)";
 
-        return !!el.style.length
-    })
-    .shift()) + "calc";
+              return !!el.style.length
+          })
+          .shift()) + "calc");
 
 // Helper function checks if its argument is a string-like type
 var isString = function (v) { return typeof v === 'string' || v instanceof String; };
@@ -52836,11 +52835,7 @@ var defaultElementStyleFn = function (dim, size, gutSize) {
     var style = {};
 
     if (!isString(size)) {
-        if (!isIE8) {
-            style[dim] = calc + "(" + size + "% - " + gutSize + "px)";
-        } else {
-            style[dim] = size + "%";
-        }
+        style[dim] = calc + "(" + size + "% - " + gutSize + "px)";
     } else {
         style[dim] = size;
     }
@@ -52883,6 +52878,8 @@ var defaultGutterStyleFn = function (dim, gutSize) {
 // 5. Actually size the pair elements, insert gutters and attach event listeners.
 var Split = function (idsOption, options) {
     if ( options === void 0 ) options = {};
+
+    if (ssr) { return {} }
 
     var ids = idsOption;
     var dimension;
@@ -53373,30 +53370,27 @@ var Split = function (idsOption, options) {
         // staticly assigning sizes without draggable gutters. Assigns a string
         // to `size`.
         //
-        // IE9 and above
-        if (!isIE8) {
-            // Create gutter elements for each pair.
-            if (i > 0) {
-                var gutterElement = gutter(i, direction, element.element);
-                setGutterSize(gutterElement, gutterSize, i);
+        // Create gutter elements for each pair.
+        if (i > 0) {
+            var gutterElement = gutter(i, direction, element.element);
+            setGutterSize(gutterElement, gutterSize, i);
 
-                // Save bound event listener for removal later
-                pair[gutterStartDragging] = startDragging.bind(pair);
+            // Save bound event listener for removal later
+            pair[gutterStartDragging] = startDragging.bind(pair);
 
-                // Attach bound event listener
-                gutterElement[addEventListener](
-                    'mousedown',
-                    pair[gutterStartDragging]
-                );
-                gutterElement[addEventListener](
-                    'touchstart',
-                    pair[gutterStartDragging]
-                );
+            // Attach bound event listener
+            gutterElement[addEventListener](
+                'mousedown',
+                pair[gutterStartDragging]
+            );
+            gutterElement[addEventListener](
+                'touchstart',
+                pair[gutterStartDragging]
+            );
 
-                parent.insertBefore(gutterElement, element.element);
+            parent.insertBefore(gutterElement, element.element);
 
-                pair.gutter = gutterElement;
-            }
+            pair.gutter = gutterElement;
         }
 
         setElementSize(
@@ -53492,13 +53486,6 @@ var Split = function (idsOption, options) {
                 });
             }
         });
-    }
-
-    if (isIE8) {
-        return {
-            setSizes: setSizes,
-            destroy: destroy,
-        }
     }
 
     return {
@@ -64910,7 +64897,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Split = __webpack_require__(/*! split.js */ "../../node_modules/split.js/dist/split.es.js").default;
+var Split = __webpack_require__(/*! split.js */ "../../node_modules/split.js/dist/split.mjs").default;
 __webpack_require__(/*! ./embedHost.scss */ "./components/embedHost/embedHost.scss");
 var EmbedHostComponent = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(EmbedHostComponent, _super);
