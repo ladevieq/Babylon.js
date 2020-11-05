@@ -1,9 +1,10 @@
-import { Mesh } from '../../Meshes/mesh';
-import { Vector3, Vector4 } from '../../Maths/math.vector';
+import { Scene } from '../..';
+import { Mesh } from '../../Meshes';
+import { Vector3, Vector4 } from '../../Maths';
+
 import { Probe } from './Probe';
 import { MeshDictionary } from './meshDictionary';
 import { Irradiance } from './Irradiance';
-import { Scene } from '../../scene';
 
 /**
  * Class that represent the irradiance volume
@@ -32,6 +33,8 @@ export class IrradianceVolume {
      */
     public dictionary : MeshDictionary;
 
+    private sphericalHarmonicsWeigth: number;
+
     private _scene : Scene;
     private _lowerLeft : Vector3;
     private _volumeSize : Vector3;
@@ -45,16 +48,24 @@ export class IrradianceVolume {
      * @param numberProbes The number of probes placed on each axis
      */
     constructor(meshes : Array<Mesh>, scene : Scene,
-        numberBounces : number, probeDisposition : Array<Vector4>, numberProbes : Vector3) {
+        numberBounces : number,
+        probeDisposition : Array<Vector4>,
+        numberProbes : Vector3,
+        sphericalHarmonicsWeight: number) {
         this._scene = scene;
         this.meshForIrradiance = meshes;
         this.probeList = [];
+        this.sphericalHarmonicsWeigth = sphericalHarmonicsWeight;
+
         //Create and dispatch the probes inside the irradiance volume
         this._createProbeFromProbeDisp(probeDisposition);
         this._lowerLeft = new Vector3(probeDisposition[0].x, probeDisposition[0].y, probeDisposition[0].z);
-        this._volumeSize = new Vector3(probeDisposition[probeDisposition.length - 1].x - this._lowerLeft.x,
+        this._volumeSize = new Vector3(
+            probeDisposition[probeDisposition.length - 1].x - this._lowerLeft.x,
             probeDisposition[probeDisposition.length - 1].y - this._lowerLeft.y,
-            probeDisposition[probeDisposition.length - 1].z - this._lowerLeft.z);
+            probeDisposition[probeDisposition.length - 1].z - this._lowerLeft.z
+        );
+
         this.dictionary = new MeshDictionary(meshes, scene);
         this.irradiance = new Irradiance(this._scene, this.probeList, this.meshForIrradiance, this.dictionary,
             numberBounces, numberProbes, this._lowerLeft, this._volumeSize);
@@ -67,7 +78,7 @@ export class IrradianceVolume {
     private _createProbeFromProbeDisp(probeDisposition : Array<Vector4>) {
         for (let probePos of probeDisposition) {
             this.probeList.push(new Probe(new Vector3(probePos.x, probePos.y, probePos.z),
-            this._scene, probePos.w));
+            this._scene, probePos.w, this.sphericalHarmonicsWeigth));
         }
     }
 
@@ -76,12 +87,9 @@ export class IrradianceVolume {
      * Must ba called when the radiosity has been updates, othermwise, it does not do anything
      */
     public updateDicoDirectLightmap() {
-        for (let mesh of this.dictionary.keys()) {
-            let value = this.dictionary.getValue(mesh);
-            if (value != null) {
-                value.directLightmap = mesh.getShadowMap();
-            }
-        }
+        this.dictionary.keys().forEach(mesh => {
+            this.dictionary.addDirectLightmap(mesh, mesh.getShadowMap());
+        });
     }
 
     /**

@@ -1,29 +1,15 @@
-import { Mesh } from "../../Meshes/mesh";
-import { Vector3, Matrix } from '../../Maths/math.vector';
-import { Scene } from '../../scene';
-import { Color4 } from '../../Maths/math.color';
-import { InternalTexture } from '../../Materials/Textures/internalTexture';
-import { SubMesh } from '../../Meshes/subMesh';
-import { Material } from '../../Materials/material';
-import { Effect } from '../../Materials/effect';
-import { SmartArray } from '../../Misc/smartArray';
-import { UniversalCamera } from '../../Cameras/universalCamera';
-import { CubeMapToSphericalPolynomialTools } from '../../Misc/HighDynamicRange/cubemapToSphericalPolynomial';
-import { SphericalHarmonics } from '../../Maths/sphericalPolynomial';
-import { ShaderMaterial } from '../../Materials/shaderMaterial';
-import { RenderTargetTexture } from '../../Materials/Textures/renderTargetTexture';
+import { Scene } from '../..';
+import { Color4, SphericalHarmonics, Vector3, Matrix } from '../../Maths';
+import { Material, StandardMaterial, PBRMaterial, Effect, InternalTexture, RenderTargetTexture, ShaderMaterial } from '../../Materials';
+import { SmartArray, CubeMapToSphericalPolynomialTools } from '../../Misc';
+import { UniversalCamera } from '../../Cameras';
+import { Constants } from '../../Engines';
+import { VertexBuffer, Mesh, SubMesh, TransformNode } from '../../Meshes';
 
-import "../../Shaders/irradianceVolumeProbeEnv.vertex";
-import "../../Shaders/irradianceVolumeProbeEnv.fragment";
-import "../../Shaders/irradianceVolumeUpdateProbeBounceEnv.vertex";
-import "../../Shaders/irradianceVolumeUpdateProbeBounceEnv.fragment";
-import "../../Shaders/irradianceVolumeComputeIrradiance.fragment";
-import "../../Shaders/irradianceVolumeComputeIrradiance.vertex";
-import { PBRMaterial } from '../../Materials/PBR/pbrMaterial';
+import '../../Shaders/irradianceVolumeComputeIrradiance.vertex';
+import '../../Shaders/irradianceVolumeComputeIrradiance.fragment';
 
 import { MeshDictionary } from './meshDictionary';
-import { Constants } from '../../Engines/constants';
-import { TransformNode } from '../../Meshes/transformNode';
 
 /**
  * The probe is what is used for irradiance volume
@@ -83,6 +69,11 @@ export class Probe {
     public sphericalHarmonic : SphericalHarmonics;
 
     /**
+     * The spherical harmonic weight
+     */
+    public sphericalHarmonicsWeight: number = 1;
+
+    /**
      * RenderTargetTexture that aims to copy the cubicMRT envCubeMap and add the irradiance compute previously to it, to simulate the bounces of the light
      */
     public environmentProbeTexture : RenderTargetTexture;
@@ -113,12 +104,13 @@ export class Probe {
      * @param scene the scene in which the probe is place
      * @param inRoom 1 if the probe is in the house, 0 otherwise 
      */
-    constructor(position : Vector3, scene : Scene, inRoom : number) {
+    constructor(position : Vector3, scene : Scene, inRoom : number, sphericalHaromicsWeight: number) {
         this._scene = scene;
         this.position = position;
         this.transformNode = new TransformNode("node", this._scene);
         this.probeInHouse = inRoom;
         this.cameraList = new Array<UniversalCamera>();
+        this.sphericalHarmonicsWeight = sphericalHaromicsWeight;
 
         //First Camera ( x axis )
         let cameraPX = new UniversalCamera("px", Vector3.Zero(), scene);
@@ -156,6 +148,8 @@ export class Probe {
         }
         this.transformNode.translate(position, 1);
         this.sphericalHarmonic = new SphericalHarmonics();
+
+        this._initEnvironmentProbeTexture();
     }
 
     /**
@@ -167,12 +161,11 @@ export class Probe {
     }
 
     protected _renderCubeTexture(subMeshes : SmartArray<SubMesh>, faceIndex : number) : void {
-
         var renderSubMesh = (subMesh : SubMesh, effect : Effect, view : Matrix, projection : Matrix) => {
             let mesh = subMesh.getRenderingMesh();
-
             mesh._bind(subMesh, effect, Material.TriangleFillMode);
-            mesh.cullingStrategy = 2;
+            mesh.cullingStrategy = Constants.MESHES_CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+
             if (subMesh.verticesCount === 0) {
                 return;
             }
@@ -180,33 +173,44 @@ export class Probe {
             effect.setMatrix("view", view);
             effect.setMatrix("projection", projection);
             if (mesh.material != null) {
-                let color = (<PBRMaterial> (mesh.material)).albedoColor;
-                effect.setVector3("albedoColor", new Vector3(color.r, color.g, color.b));
-                if ((<PBRMaterial> (mesh.material)).albedoTexture != null) {
-                    effect.setBool("hasTexture", true);
-                    effect.setTexture("albedoTexture", (<PBRMaterial> (mesh.material)).albedoTexture);
+                if (mesh.material instanceof PBRMaterial) {
+                    const hasTexture = Boolean(mesh.material?.albedoTexture);
+                    effect.setColor3("albedoColor", mesh.material.albedoColor);
+                    effect.setBool("hasTexture", hasTexture);
+                    if (hasTexture) {
+                        effect.setTexture("albedoTexture", mesh.material.albedoTexture);
+                    }
+                } else if (mesh.material instanceof StandardMaterial) {
+                    const hasTexture = Boolean(mesh.material?.diffuseTexture);
+                    effect.setColor3("albedbounceoColor", mesh.material.diffuseColor);
+                    effect.setBool("hasTexture", hasTexture);
+                    if (hasTexture) {
+                        effect.setTexture("albedoTexture", mesh.material.diffuseTexture);
+                    }
                 }
-                else {
-                    effect.setBool("hasTexture", false);
-                }
+            } else {
+                console.warn("No material present on the mesh : ", mesh);
             }
+
             effect.setFloat("envMultiplicator", this.envMultiplicator);
             effect.setVector3("probePosition", this.position);
+
             let value = this.dictionary.getValue(mesh);
             if (value != null) {
-
-                effect.setTexture("irradianceMap", value.toneMapLightmap);
+                // TODO: May cause troubles
+                // Is fully black on first run
+                effect.setTexture("irradianceMap", value.irradianceLightmap);
                 effect.setTexture("directIlluminationLightmap", value.directLightmap);
             }
 
             var batch = mesh._getInstancesRenderList(subMesh._id);
             if (batch.mustReturn) {
-                return ;
+                return;
             }
-            var hardwareInstanceRendering = (engine.getCaps().instancedArrays) &&
-            (batch.visibleInstances[subMesh._id] !== null);
+
+            var hardwareInstanceRendering = (engine.getCaps().instancedArrays) && (batch.visibleInstances[subMesh._id] !== null);
             mesh._processRendering(mesh, subMesh, effect, Material.TriangleFillMode, batch, hardwareInstanceRendering,
-                (isInstance, world) => effect.setMatrix("world", world));
+                (_, world) => effect.setMatrix("world", world));
         };
 
         let scene = this._scene;
@@ -266,19 +270,23 @@ export class Probe {
      * It will be rendered once per bounce, per mesh
      * @param meshes The meshes to be rendered in the irradiance volume
      */
-    public renderBounce(meshes : Array<Mesh>) : void {
+    public initEnvironmentRenderer(meshes : Array<Mesh>) : void {
         if (this.probeInHouse == Probe.INSIDE_HOUSE) {
             this.environmentProbeTexture.renderList = meshes;
             this.environmentProbeTexture.boundingBoxPosition = this.position;
             let faceIndexForRender = 0;
+
             this.environmentProbeTexture.onBeforeRenderObservable.add((faceIndex) => {
-                    faceIndexForRender= faceIndex;
+                faceIndexForRender = faceIndex;
             });
-            this.environmentProbeTexture.customRenderFunction =  (opaqueSubMeshes: SmartArray<SubMesh>, alphaTestSubMeshes: SmartArray<SubMesh>, transparentSubMeshes: SmartArray<SubMesh>, depthOnlySubMeshes: SmartArray<SubMesh>): void => {
+
+            this.environmentProbeTexture.customRenderFunction = (
+                opaqueSubMeshes: SmartArray<SubMesh>,
+                _alphaTestSubMeshes: SmartArray<SubMesh>,
+                _transparentSubMeshes: SmartArray<SubMesh>,
+                _depthOnlySubMeshes: SmartArray<SubMesh>): void => {
                     this._renderCubeTexture(opaqueSubMeshes, faceIndexForRender);
             };
-            this.environmentProbeTexture.onAfterRenderObservable.add(() => {  
-            });
         }
     }
 
@@ -286,25 +294,10 @@ export class Probe {
      * Initialise what need time to be ready
      * Is called in irradiance for the creation of the promise
      */
-    public initPromise() : void {
+    private _initEnvironmentProbeTexture() : void {
         if (this.probeInHouse == Probe.INSIDE_HOUSE) {
             this.environmentProbeTexture = new RenderTargetTexture("tempLightBounce", Probe.RESOLUTION, this._scene, undefined, true, Constants.TEXTURETYPE_FLOAT, true);
         }
-    }
-
-    /**
-     * Return if the probe is ready to be render
-     */
-    public isProbeReady() : boolean {
-        if (this.probeInHouse == Probe.INSIDE_HOUSE) {
-            return this._isEnvironmentProbeTextureReady();
-        }
-        return true;
-    }
-
-    private _isEnvironmentProbeTextureReady() : boolean {
-
-        return this.environmentProbeTexture.isReady();
     }
 
     /**
@@ -314,14 +307,14 @@ export class Probe {
         let sp = CubeMapToSphericalPolynomialTools.ConvertCubeMapTextureToSphericalPolynomial(this.environmentProbeTexture);
         if (sp != null) {
             this.sphericalHarmonic = SphericalHarmonics.FromPolynomial(sp);
-            this._weightSHCoeff();
+            this.sphericalHarmonic.scaleInPlace(this.sphericalHarmonicsWeight);
         }
     }
 
     private _computeProbeIrradiance() : void {
         //We use a shader to add this texture to the probe
-        let shaderMaterial = new ShaderMaterial("irradianceOnSphere", this._scene,  "irradianceVolumeComputeIrradiance", {
-            attributes : ["position", "normal"],
+        let shaderMaterial = new ShaderMaterial("irradianceOnSphere", this._scene, "irradianceVolumeComputeIrradiance", {
+            attributes : [VertexBuffer.PositionKind, VertexBuffer.NormalKind],
             uniforms : ["worldViewProjection", "L00", "L10", "L11", "L1m1", "L20", "L21", "L22", "L2m1", "L2m2"]
         });
         shaderMaterial.setVector3("L00", this.sphericalHarmonic.l00);
@@ -335,8 +328,9 @@ export class Probe {
         shaderMaterial.setVector3("L22", this.sphericalHarmonic.l22);
         shaderMaterial.setVector3("L2m1", this.sphericalHarmonic.l2_1);
         shaderMaterial.setVector3("L2m2", this.sphericalHarmonic.l2_2);
-        if (this.probeInHouse == 1) {
-        this.sphere.material = shaderMaterial;
+
+        if (this.probeInHouse == Probe.INSIDE_HOUSE) {
+            this.sphere.material = shaderMaterial;
         }
 
     }
@@ -347,19 +341,6 @@ export class Probe {
             this.sphere.position = this.position;
             this._computeProbeIrradiance();
         }
-    }
-
-    private _weightSHCoeff() {
-        let weight = 0.5;
-        this.sphericalHarmonic.l00 = this.sphericalHarmonic.l00.multiplyByFloats(weight, weight, weight);
-        this.sphericalHarmonic.l10 = this.sphericalHarmonic.l10.multiplyByFloats(weight, weight, weight);
-        this.sphericalHarmonic.l11 = this.sphericalHarmonic.l11.multiplyByFloats(weight, weight, weight);
-        this.sphericalHarmonic.l1_1 = this.sphericalHarmonic.l1_1.multiplyByFloats(weight, weight, weight);
-        this.sphericalHarmonic.l20 = this.sphericalHarmonic.l20.multiplyByFloats(weight, weight, weight);
-        this.sphericalHarmonic.l21 = this.sphericalHarmonic.l21.multiplyByFloats(weight, weight, weight);
-        this.sphericalHarmonic.l22 = this.sphericalHarmonic.l22.multiplyByFloats(weight, weight, weight);
-        this.sphericalHarmonic.l2_1 = this.sphericalHarmonic.l2_1.multiplyByFloats(weight, weight, weight);
-        this.sphericalHarmonic.l2_2 = this.sphericalHarmonic.l2_2.multiplyByFloats(weight, weight, weight);
     }
 
 }

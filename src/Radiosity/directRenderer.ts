@@ -1,21 +1,11 @@
-import { Mesh } from "../Meshes/mesh";
-import { SubMesh } from "../Meshes/subMesh";
-import { Scene } from "../scene";
-import { Texture } from "../Materials/Textures/texture";
-import { InternalTexture } from "../Materials/Textures/internalTexture";
-import { RenderTargetTexture } from "../Materials/Textures/renderTargetTexture";
-import { Effect } from "../Materials/effect";
-import { Material } from "../Materials/material";
+import { Constants } from '../Engines';
+import { Scene } from '../scene';
+import { Mesh, SubMesh } from '../Meshes';
+import { Effect, Material, Texture, RenderTargetTexture, InternalTexture } from '../Materials';
+import { PostProcess, BlurPostProcess } from '../PostProcesses';
+import { ISize, Vector2, Vector3, Color4, Matrix } from '../Maths';
 
-import { PostProcess } from "../PostProcesses/postProcess";
-import { BlurPostProcess } from "../PostProcesses/blurPostProcess";
-// import { TonemapPostProcess, TonemappingOperator } from "../PostProcesses/tonemapPostProcess";
-import { Constants } from "../Engines/constants";
-import { VertexBuffer } from "../Meshes/buffer";
-
-// import { StandardMaterial } from "../Materials/standardMaterial";
-import { ISize, Vector2, Vector3, Color4, Matrix } from "../Maths/math";
-import { DirectEffectsManager } from "./directEffectManager";
+import { DirectEffectsManager } from './directEffectManager';
 
 declare module "../Meshes/mesh" {
     export interface Mesh {
@@ -27,8 +17,6 @@ declare module "../Meshes/mesh" {
                 height: number
             };
 
-            // shadowMap: Texture;
-            // tempTexture: Texture;
             shadowMap: RenderTargetTexture;
             tempTexture: RenderTargetTexture;
         };
@@ -55,7 +43,7 @@ Mesh.prototype.getShadowMap = function() {
     return this.directInfo.shadowMap;
 };
 
-declare interface ArealightOptions {
+declare interface LightOptions {
     sampleCount: number;
     bias: number;
     normalBias: number;
@@ -64,14 +52,30 @@ declare interface ArealightOptions {
     far: number;
 }
 
-export class Arealight {
+export class CubeLight {
     public position: Vector3;
 
     public normal: Vector3;
 
+    public size: ISize;
+
     public radius: number;
 
-    public size: ISize;
+    /**
+     * Local intensity stored in candela
+     */
+    protected _intensity: number;
+
+    /**
+     * Intensity of the light (expect lumen)
+     */
+    public get intensity(): number {
+        return this._intensity * Math.PI * 4;
+    }
+
+    public set intensity(intensity: number) {
+        this._intensity = intensity / (Math.PI * 4);
+    }
 
     public depthMapSize: {
         width: number,
@@ -91,7 +95,7 @@ export class Arealight {
 
     public normalBias: number;
 
-    private _near: number;
+    protected _near: number;
 
     public get near(): number {
         return this._near;
@@ -103,7 +107,7 @@ export class Arealight {
         this._updateMatrices();
     }
 
-    private _far: number;
+    protected _far: number;
 
     public get far(): number {
         return this._far;
@@ -118,11 +122,135 @@ export class Arealight {
     /**
      * Hemicube projection matrices
      */
-    private _projectionMatrix: Matrix;
+    protected _projectionMatrix: Matrix;
 
     public get projectionMatrix(): Matrix {
         return this._projectionMatrix;
     }
+
+    constructor(position: Vector3, normal: Vector3, size: ISize, lightOptions: LightOptions, scene: Scene) {
+        this.position = position.clone();
+        this.normal = normal.clone().normalize();
+        this.size = size;
+        this.sampleCount = lightOptions.sampleCount || 64;
+        this.bias = lightOptions.bias || 1e-5;
+        this.normalBias = lightOptions.normalBias || 1e-5;
+        this.near = lightOptions.near || 0.1;
+        this.far = lightOptions.far || 10000;
+        this.depthMapSize = lightOptions.depthMapSize ||
+            {
+                width: 512,
+                height: 512
+            };
+        this.sampleIndex = 0;
+
+        this.depthMap = new RenderTargetTexture(
+            "depthMap",
+            this.depthMapSize,
+            scene,
+            false,
+            true,
+            Constants.TEXTURETYPE_FLOAT,
+            true,
+            Constants.TEXTURE_BILINEAR_SAMPLINGMODE,
+            true,
+            false,
+            false,
+            Constants.TEXTUREFORMAT_R
+        );
+
+        this._updateMatrices();
+        this._generateSamples(lightOptions.sampleCount);
+
+        // for (const sample of this.samples) {
+        //     const mat = new StandardMaterial("", scene);
+        //     mat.emissiveColor = new Color3(1, 0, 0);
+        //     const box = Mesh.CreateBox("", 1.5, scene);
+        //     box.position = sample;
+        //     box.material = mat;
+        // }
+    }
+
+    protected _generateSamples(sampleCount: number) {
+        this.samples = [];
+
+        const viewMatrix = Matrix.LookAtLH(this.position, this.position.add(this.normal), Vector3.Up());
+        viewMatrix.invert();
+
+        for (let sampleIndex = 0; sampleIndex < sampleCount; sampleIndex++) {
+            const [u, v] = this._sampleRectangle(sampleIndex);
+            const x = u * this.size.width;
+            const y = v * this.size.height;
+
+            const localPosition = new Vector3(x, y, 0);
+            const worldPosition = Vector3.TransformCoordinates(localPosition, viewMatrix);
+            this.samples.push(worldPosition);
+        }
+    }
+
+    // Blender approach for arealights samples generation
+    protected _sampleRectangle(sampleIndex: number) {
+        const htOffset = [0.0, 0.0];
+        const htPrimes = [2, 3];
+
+        let htPoint = this._halton2d(htPrimes, htOffset, sampleIndex);
+
+        /* Decorelate AA and shadow samples. (see T68594) */
+        htPoint[0] = htPoint[0] * 1151.0 % 1.0;
+        htPoint[1] = htPoint[1] * 1069.0 % 1.0;
+
+        /* Change ditribution center to be 0,0 */
+        htPoint[0] = htPoint[0] > 0.5 ? htPoint[0] - 1 : htPoint[0];
+        htPoint[1] = htPoint[1] > 0.5 ? htPoint[1] - 1 : htPoint[1];
+
+        return htPoint;
+    }
+
+    protected _halton2d(prime: number[], offset: number[], n: number): number[]
+    {
+        const invprimes = [1.0 / prime[0], 1.0 / prime[1]];
+        const r = [0, 0];
+
+        for (let s = 0; s < n; s++) {
+            for (let i = 0; i < 2; i++) {
+              r[i] = offset[i] = this._haltonEx(invprimes[i], offset[i]);
+            }
+        }
+
+        return r;
+    }
+
+    protected _haltonEx(invprimes: number, offset: number): number
+    {
+        const e = Math.abs((1.0 - offset) - 1e-10);
+
+      if (invprimes >= e) {
+        let lasth;
+        let h = invprimes;
+
+        do {
+          lasth = h;
+          h *= invprimes;
+        } while (h >= e);
+
+        return offset + ((lasth + h) - 1.0);
+      }
+      else {
+        return offset + invprimes;
+      }
+    }
+
+    protected _updateMatrices() {
+        this._projectionMatrix = Matrix.PerspectiveFovLH(
+            Math.PI / 2,
+            1, // squared texture
+            this._near,
+            this._far,
+        );
+    }
+}
+
+export class Arealight extends CubeLight {
 
     private _projectionMatrixPX: Matrix;
 
@@ -148,125 +276,14 @@ export class Arealight {
         return this._projectionMatrixNY;
     }
 
-    constructor(position: Vector3, normal: Vector3, size: ISize, arealightOptions: ArealightOptions, scene: Scene) {
-        this.position = position.clone();
-        this.normal = normal.clone().normalize();
-        this.size = size;
-        this.sampleCount = arealightOptions.sampleCount || 64;
-        this.bias = arealightOptions.bias || 1e-5;
-        this.normalBias = arealightOptions.normalBias || 1e-5;
-        this.near = arealightOptions.near || 0.1;
-        this.far = arealightOptions.far || 10000;
-        this.depthMapSize = arealightOptions.depthMapSize ||
-            {
-                width: 512,
-                height: 512
-            };
-        this.sampleIndex = 0;
-
-        this.depthMap = new RenderTargetTexture(
-            "depthMap",
-            this.depthMapSize,
-            scene,
-            false,
-            true,
-            Constants.TEXTURETYPE_FLOAT,
-            true,
-            Constants.TEXTURE_BILINEAR_SAMPLINGMODE,
-            true,
-            false,
-            false,
-            Constants.TEXTUREFORMAT_R
-        );
+    constructor(position: Vector3, normal: Vector3, size: ISize, lightOptions: LightOptions, scene: Scene) {
+        super(position, normal, size, lightOptions, scene);
 
         this._updateMatrices();
-        this._generateSamples(arealightOptions.sampleCount);
-
-        // for (const sample of this.samples) {
-        //     const mat = new StandardMaterial("", scene);
-        //     mat.emissiveColor = new Color3(1, 0, 0);
-        //     const box = Mesh.CreateBox("", 1.5, scene);
-        //     box.position = sample;
-        //     box.material = mat;
-        // }
     }
 
-    private _generateSamples(sampleCount: number) {
-        this.samples = [];
-
-        const viewMatrix = Matrix.LookAtLH(this.position, this.position.add(this.normal), Vector3.Up());
-        viewMatrix.invert();
-
-        for (let sampleIndex = 0; sampleIndex < sampleCount; sampleIndex++) {
-            const [u, v] = this._sampleRectangle(sampleIndex);
-            const x = u * this.size.width;
-            const y = v * this.size.height;
-
-            const localPosition = new Vector3(x, y, 0);
-            const worldPosition = Vector3.TransformCoordinates(localPosition, viewMatrix);
-            this.samples.push(worldPosition);
-        }
-    }
-
-    // Blender approach for arealights samples generation
-    private _sampleRectangle(sampleIndex: number) {
-        const htOffset = [0.0, 0.0];
-        const htPrimes = [2, 3];
-
-        let htPoint = this._halton2d(htPrimes, htOffset, sampleIndex);
-
-        /* Decorelate AA and shadow samples. (see T68594) */
-        htPoint[0] = htPoint[0] * 1151.0 % 1.0;
-        htPoint[1] = htPoint[1] * 1069.0 % 1.0;
-
-        /* Change ditribution center to be 0,0 */
-        htPoint[0] = htPoint[0] > 0.5 ? htPoint[0] - 1 : htPoint[0];
-        htPoint[1] = htPoint[1] > 0.5 ? htPoint[1] - 1 : htPoint[1];
-
-        return htPoint;
-    }
-
-    private _halton2d(prime: number[], offset: number[], n: number): number[]
-    {
-        const invprimes = [1.0 / prime[0], 1.0 / prime[1]];
-        const r = [0, 0];
-
-        for (let s = 0; s < n; s++) {
-            for (let i = 0; i < 2; i++) {
-              r[i] = offset[i] = this._haltonEx(invprimes[i], offset[i]);
-            }
-        }
-
-        return r;
-    }
-
-    private _haltonEx(invprimes: number, offset: number): number
-    {
-        const e = Math.abs((1.0 - offset) - 1e-10);
-
-      if (invprimes >= e) {
-        let lasth;
-        let h = invprimes;
-
-        do {
-          lasth = h;
-          h *= invprimes;
-        } while (h >= e);
-
-        return offset + ((lasth + h) - 1.0);
-      }
-      else {
-        return offset + invprimes;
-      }
-    }
-
-    private _updateMatrices() {
-        this._projectionMatrix = Matrix.PerspectiveFovLH(
-            Math.PI / 2,
-            1, // squared texture
-            this._near,
-            this._far,
-        );
+    protected _updateMatrices() {
+        super._updateMatrices();
 
         this._projectionMatrixPX = this._projectionMatrix.multiply(Matrix.FromValues(
             2, 0, 0, 0,
@@ -312,7 +329,7 @@ export class DirectRenderer {
      */
     public meshes: Mesh[];
 
-    public lights: Arealight[];
+    public lights: Array<CubeLight>;
 
     public blurKernel: number = 5;
 
@@ -327,6 +344,14 @@ export class DirectRenderer {
         this._transparencyShadow = value;
     }
 
+    protected _isReadyPromise: Promise<any>;
+
+    public isReady(): Promise<any> {
+        return this._isReadyPromise;
+    }
+
+    public postProcessesRatio = 1.0;
+
     private _scene: Scene;
 
     private _directEffectsManager: DirectEffectsManager;
@@ -334,10 +359,7 @@ export class DirectRenderer {
     protected _kernelBlurXPostprocess: PostProcess;
     protected _kernelBlurYPostprocess: PostProcess;
     protected _dilatePostProcess: PostProcess;
-    protected _tonemapPostProcess: PostProcess;
-    protected _postProcesses: PostProcess[];
-
-    private _renderingMesh: Mesh;
+    protected _postProcesses: PostProcess[] = [];
 
     /**
      * Instanciates a radiosity renderer
@@ -349,29 +371,21 @@ export class DirectRenderer {
         this.meshes = meshes || [];
         this.lights = lights || [];
 
-        this._directEffectsManager = new DirectEffectsManager(this._scene);
-        this._postProcesses = [];
-
         this._initializeDilatePostProcess();
         this._initializeBlurPostProcess();
 
-        while (!this._directEffectsManager.isReady() ||
-            !this._dilatePostProcess.isReady() ||
-            !this._kernelBlurXPostprocess.isReady() ||
-            !this._kernelBlurYPostprocess.isReady()) {
-        }
+        this._directEffectsManager = new DirectEffectsManager(this._scene);
+        this._isReadyPromise = this._directEffectsManager.isReady();
     }
 
     private _initializeDilatePostProcess() {
         const engine = this._scene.getEngine();
         const uniforms = ["texelSize"];
-        const samplers = ["textureSampler"];
+        const samplers: Array<string> = [];
 
-        this._dilatePostProcess = new PostProcess("dilate", "dilate", uniforms, samplers, 1.0, null, Texture.BILINEAR_SAMPLINGMODE, engine, false, "", Constants.TEXTURETYPE_FLOAT);
-        this._dilatePostProcess.onApplyObservable.add((effect) => {
-            const texture = this._renderingMesh.directInfo.shadowMap;
-            effect.setTexture("textureSampler", texture);
-            effect.setFloat2("texelSize", 1 / texture.getSize().width, 1 / texture.getSize().height);
+        this._dilatePostProcess = new PostProcess("dilate", "dilate", uniforms, samplers, this.postProcessesRatio, null, Texture.BILINEAR_SAMPLINGMODE, engine, false, "", Constants.TEXTURETYPE_FLOAT);
+        this._dilatePostProcess.onApplyObservable.add((effect: Effect) => {
+            effect.setFloat2("texelSize", 1 / this._dilatePostProcess.width, 1 / this._dilatePostProcess.height);
         });
         this._dilatePostProcess.autoClear = false;
 
@@ -381,40 +395,13 @@ export class DirectRenderer {
     private _initializeBlurPostProcess() {
         const engine = this._scene.getEngine();
 
-        this._kernelBlurXPostprocess = new BlurPostProcess("KernelBlurX", new Vector2(1, 0), this.blurKernel, 1.0, null, Texture.BILINEAR_SAMPLINGMODE, engine, false, Constants.TEXTURETYPE_FLOAT);
-        this._kernelBlurYPostprocess = new BlurPostProcess("KernelBlurY", new Vector2(0, 1), this.blurKernel, 1.0, null, Texture.BILINEAR_SAMPLINGMODE, engine, false, Constants.TEXTURETYPE_FLOAT);
+        this._kernelBlurXPostprocess = new BlurPostProcess("KernelBlurX", new Vector2(1, 0), this.blurKernel, this.postProcessesRatio, null, Texture.BILINEAR_SAMPLINGMODE, engine, false, Constants.TEXTURETYPE_FLOAT);
+        this._kernelBlurYPostprocess = new BlurPostProcess("KernelBlurY", new Vector2(0, 1), this.blurKernel, this.postProcessesRatio, null, Texture.BILINEAR_SAMPLINGMODE, engine, false, Constants.TEXTURETYPE_FLOAT);
 
         this._kernelBlurXPostprocess.autoClear = false;
         this._kernelBlurYPostprocess.autoClear = false;
 
         this._postProcesses.push(this._kernelBlurXPostprocess, this._kernelBlurYPostprocess);
-    }
-
-    // private _initializeTonemapPostProcess() {
-    //     const engine = this._scene.getEngine();
-
-    //      this._tonemapPostProcess = new TonemapPostProcess("tonemap", TonemappingOperator.Reinhard, 0.8, null, Texture.BILINEAR_SAMPLINGMODE, engine);
-    //      this._postProcesses.push(this._tonemapPostProcess);
-    // }
-
-    private _toneMappingRendering(origin : Texture, dest: Texture) {
-        let engine = this._scene.getEngine();
-        let effect = this._directEffectsManager.radiosityPostProcessEffect;
-
-        engine.enableEffect(effect);
-        engine.setState(false);
-        engine.bindFramebuffer(<InternalTexture>dest._texture);
-
-        let vb: any = {};
-        vb[VertexBuffer.PositionKind] = this._directEffectsManager.screenQuadVB;
-        effect.setTexture("inputTexture", origin);
-        effect.setFloat("exposure", 4);
-        engine.bindBuffers(vb, this._directEffectsManager.screenQuadIB, effect);
-
-        engine.setDirectViewport(0, 0, dest.getSize().width, dest.getSize().height);
-        engine.drawElementsType(Material.TriangleFillMode, 0, 6);
-
-        engine.unBindFramebuffer(<InternalTexture>dest._texture);
     }
 
     public renderNextSample() {
@@ -434,9 +421,13 @@ export class DirectRenderer {
         })[0];
         const sampleIndex = light.sampleIndex;
 
-        this.renderVisibilityMapCubeSample(light, light.samples[sampleIndex]);
+        if (light instanceof Arealight) {
+            this._renderArealightVisibilityMap(light, light.samples[sampleIndex]);
+        } else {
+            this._renderPointlightVisibilityMap(light, light.samples[sampleIndex]);
+        }
 
-        this.renderSampleToShadowMapTexture(light, light.samples[sampleIndex]);
+        this._renderSampleToShadowMapTexture(light, light.samples[sampleIndex]);
     }
 
     public render() {
@@ -444,9 +435,13 @@ export class DirectRenderer {
 
         for (const light of this.lights) {
             for (const sample of light.samples) {
-                this.renderVisibilityMapCubeSample(light, sample);
+                if (light instanceof Arealight) {
+                    this._renderArealightVisibilityMap(light, sample);
+                } else {
+                    this._renderPointlightVisibilityMap(light, sample);
+                }
 
-                this.renderSampleToShadowMapTexture(light, sample);
+                this._renderSampleToShadowMapTexture(light, sample);
             }
         }
 
@@ -455,21 +450,19 @@ export class DirectRenderer {
 
     public postProcesses() {
         for (const mesh of this.meshes) {
-            this._renderingMesh = mesh;
-
+            this._dilatePostProcess.inputTexture = <InternalTexture>mesh.getShadowMap().getInternalTexture();
             this._dilatePostProcess.width = mesh.directInfo.shadowMapSize.width;
             this._dilatePostProcess.height = mesh.directInfo.shadowMapSize.height;
+
             this._scene.postProcessManager.directRender(this._postProcesses, mesh.directInfo.tempTexture.getInternalTexture(), true);
 
-            this._toneMappingRendering(mesh.directInfo.tempTexture, mesh.directInfo.shadowMap);
-
-            // const temp = mesh.directInfo.shadowMap._texture;
-            // mesh.directInfo.shadowMap._texture = mesh.directInfo.tempTexture._texture;
-            // mesh.directInfo.tempTexture._texture = temp;
+            const temp = mesh.directInfo.shadowMap._texture;
+            mesh.directInfo.shadowMap._texture = mesh.directInfo.tempTexture._texture;
+            mesh.directInfo.tempTexture._texture = temp;
         }
     }
 
-    private renderSampleToShadowMapTexture(light: Arealight, samplePosition: Vector3) {
+    private _renderSampleToShadowMapTexture(light: CubeLight, samplePosition: Vector3) {
         const viewMatrix = Matrix.LookAtLH(samplePosition, samplePosition.add(light.normal), Vector3.Up());
         const engine = this._scene.getEngine();
         const effect = this._directEffectsManager.shadowMappingEffect;
@@ -482,6 +475,8 @@ export class DirectRenderer {
             effect.setVector3("lightPos", samplePosition);
             effect.setFloat("sampleCount", light.samples.length);
             effect.setTexture("gatherTexture", mesh.directInfo.shadowMap);
+            effect.setFloat("intensity", light.intensity);
+            effect.setFloat("radius", light.radius);
 
             // Rendering shadow to tempTexture
             engine.setDirectViewport(0, 0, mesh.directInfo.shadowMapSize.width, mesh.directInfo.shadowMapSize.height);
@@ -497,8 +492,8 @@ export class DirectRenderer {
 
                 var hardwareInstancedRendering = Boolean(engine.getCaps().instancedArrays && batch.visibleInstances[subMesh._id]);
                 mesh._bind(subMesh, this._directEffectsManager.shadowMappingEffect, Material.TriangleFillMode);
-                mesh._processRendering(mesh, subMesh, this._directEffectsManager.shadowMappingEffect, Material.TriangleFillMode, batch, hardwareInstancedRendering,
-                    (isInstance, world) => this._directEffectsManager.shadowMappingEffect.setMatrix("world", world));
+                mesh._processRendering(mesh, subMesh, effect, Material.TriangleFillMode, batch, hardwareInstancedRendering,
+                    (_, world) => effect.setMatrix("world", world));
             }
 
             engine.unBindFramebuffer(<InternalTexture>mesh.directInfo.tempTexture.getInternalTexture());
@@ -525,159 +520,11 @@ export class DirectRenderer {
         }
     }
 
-    /**
-     * Checks if the renderer is ready
-     * @returns True if the renderer is ready
-     */
-    public isReady() {
-        return this._directEffectsManager.isReady();
-    }
-
     public isRenderFinished() {
         return this.lights.every((light) => light.sampleIndex === light.samples.length);
     }
 
-    // Copied for shadowGenerator
-    // protected _renderForShadowMap(opaqueSubMeshes: SmartArray<SubMesh>, alphaTestSubMeshes: SmartArray<SubMesh>, transparentSubMeshes: SmartArray<SubMesh>, depthOnlySubMeshes: SmartArray<SubMesh>): void {
-    //     var index: number;
-    //     let engine = this._scene.getEngine();
-
-    //     const colorWrite = engine.getColorWrite();
-    //     if (depthOnlySubMeshes.length) {
-    //         engine.setColorWrite(false);
-    //         for (index = 0; index < depthOnlySubMeshes.length; index++) {
-    //             this._renderSubMeshForShadowMap(depthOnlySubMeshes.data[index]);
-    //         }
-    //         engine.setColorWrite(colorWrite);
-    //     }
-
-    //     for (index = 0; index < opaqueSubMeshes.length; index++) {
-    //         this._renderSubMeshForShadowMap(opaqueSubMeshes.data[index]);
-    //     }
-
-    //     for (index = 0; index < alphaTestSubMeshes.length; index++) {
-    //         this._renderSubMeshForShadowMap(alphaTestSubMeshes.data[index]);
-    //     }
-
-    //     if (this._transparencyShadow) {
-    //         for (index = 0; index < transparentSubMeshes.length; index++) {
-    //             this._renderSubMeshForShadowMap(transparentSubMeshes.data[index]);
-    //         }
-    //     }
-    // }
-
-    // Copied for shadowGenerator
-    // protected _renderSubMeshForShadowMap(subMesh: SubMesh): void {
-    //     var ownerMesh = subMesh.getMesh();
-    //     var replacementMesh = ownerMesh._internalAbstractMeshDataInfo._actAsRegularMesh ? ownerMesh : null;
-    //     var renderingMesh = subMesh.getRenderingMesh();
-    //     var effectiveMesh = replacementMesh ? replacementMesh : renderingMesh;
-    //     var scene = this._scene;
-    //     var engine = scene.getEngine();
-    //     let material = subMesh.getMaterial();
-
-    //     effectiveMesh._internalAbstractMeshDataInfo._isActiveIntermediate = false;
-
-    //     if (!material || subMesh.verticesCount === 0) {
-    //         return;
-    //     }
-
-    //     // Culling
-    //     engine.setState(material.backFaceCulling);
-
-    //     // Managing instances
-    //     var batch = renderingMesh._getInstancesRenderList(subMesh._id, !!replacementMesh);
-    //     if (batch.mustReturn) {
-    //         return;
-    //     }
-
-    //     var hardwareInstancedRendering = (engine.getCaps().instancedArrays) && (batch.visibleInstances[subMesh._id] !== null) && (batch.visibleInstances[subMesh._id] !== undefined);
-    //     if (this.isReady()) {
-    //         const shadowDepthWrapper = renderingMesh.material?.shadowDepthWrapper;
-
-    //         let effect = shadowDepthWrapper?.getEffect(subMesh, this) ?? this.;
-
-    //         engine.enableEffect(effect);
-
-    //         renderingMesh._bind(subMesh, effect, material.fillMode);
-
-    //         this.getTransformMatrix(); // make sur _cachedDirection et _cachedPosition are up to date
-
-    //         effect.setFloat3("biasAndScaleSM", this.bias, this.normalBias, this.depthScale);
-
-    //         if (scene.activeCamera) {
-    //             effect.setFloat2("depthValuesSM", this.getLight().getDepthMinZ(scene.activeCamera), this.getLight().getDepthMinZ(scene.activeCamera) + this.getLight().getDepthMaxZ(scene.activeCamera));
-    //         }
-
-    //         if (shadowDepthWrapper) {
-    //             subMesh._effectOverride = effect;
-    //             if (shadowDepthWrapper.standalone) {
-    //                 shadowDepthWrapper.baseMaterial.bindForSubMesh(effectiveMesh.getWorldMatrix(), renderingMesh, subMesh);
-    //             } else {
-    //                 material.bindForSubMesh(effectiveMesh.getWorldMatrix(), renderingMesh, subMesh);
-    //             }
-    //             subMesh._effectOverride = null;
-    //         } else {
-    //             effect.setMatrix("viewProjection", this.getTransformMatrix());
-    //             // Alpha test
-    //             if (material && material.needAlphaTesting()) {
-    //                 var alphaTexture = material.getAlphaTestTexture();
-    //                 if (alphaTexture) {
-    //                     effect.setTexture("diffuseSampler", alphaTexture);
-    //                     effect.setMatrix("diffuseMatrix", alphaTexture.getTextureMatrix() || this._defaultTextureMatrix);
-    //                 }
-    //             }
-
-    //             // Bones
-    //             if (renderingMesh.useBones && renderingMesh.computeBonesUsingShaders && renderingMesh.skeleton) {
-    //                 const skeleton = renderingMesh.skeleton;
-
-    //                 if (skeleton.isUsingTextureForMatrices) {
-    //                     const boneTexture = skeleton.getTransformMatrixTexture(renderingMesh);
-
-    //                     if (!boneTexture) {
-    //                         return;
-    //                     }
-
-    //                     effect.setTexture("boneSampler", boneTexture);
-    //                     effect.setFloat("boneTextureWidth", 4.0 * (skeleton.bones.length + 1));
-    //                 } else {
-    //                     effect.setMatrices("mBones", skeleton.getTransformMatrices((renderingMesh)));
-    //                 }
-    //             }
-
-    //             // Morph targets
-    //             MaterialHelper.BindMorphTargetParameters(renderingMesh, effect);
-
-    //             // Clip planes
-    //             MaterialHelper.BindClipPlane(effect, scene);
-    //         }
-
-    //         this._bindCustomEffectForRenderSubMeshForShadowMap(subMesh, effect, shadowDepthWrapper?._matriceNames, effectiveMesh);
-
-    //         if (this.forceBackFacesOnly) {
-    //             engine.setState(true, 0, false, true);
-    //         }
-
-    //         // Observables
-    //         this.onBeforeShadowMapRenderMeshObservable.notifyObservers(renderingMesh);
-    //         this.onBeforeShadowMapRenderObservable.notifyObservers(effect);
-
-    //         // Draw
-    //         renderingMesh._processRendering(effectiveMesh, subMesh, effect, material.fillMode, batch, hardwareInstancedRendering,
-    //             (isInstance, world) => effect.setMatrix("world", world));
-
-    //         if (this.forceBackFacesOnly) {
-    //             engine.setState(true, 0, false, false);
-    //         }
-
-    //         // Observables
-    //         this.onAfterShadowMapRenderObservable.notifyObservers(effect);
-    //         this.onAfterShadowMapRenderMeshObservable.notifyObservers(renderingMesh);
-    //     }
-    // }
-
-    private renderSubMesh = (subMesh: SubMesh, effect: Effect) => {
+    private renderSubMesh(subMesh: SubMesh, effect: Effect) {
         let engine = this._scene.getEngine();
         let mesh = subMesh.getRenderingMesh();
         let material = subMesh.getMaterial();
@@ -706,10 +553,10 @@ export class DirectRenderer {
         // Draw triangles
         const hardwareInstancedRendering = Boolean(engine.getCaps().instancedArrays && batch.visibleInstances[subMesh._id]);
         mesh._processRendering(mesh, subMesh, effect, Material.TriangleFillMode, batch, hardwareInstancedRendering,
-            (isInstance, world) => effect.setMatrix("world", world));
+            (_, world) => effect.setMatrix("world", world));
     }
 
-    private renderVisibilityMapCubeSample(light: Arealight, samplePosition: Vector3) {
+    private _renderArealightVisibilityMap(light: Arealight, samplePosition: Vector3) {
         const engine = this._scene.getEngine();
         const gl = engine._gl;
         const opaqueEffect = this._directEffectsManager.opaqueVisibilityEffect;
@@ -788,6 +635,79 @@ export class DirectRenderer {
 
                     effect.setMatrix("view", viewMatrices[viewIndex]);
                     effect.setMatrix("projection", projectionMatrices[viewIndex]);
+                    effect.setVector3("lightPos", samplePosition);
+                    effect.setFloat("bias", light.bias);
+                    effect.setFloat("normalBias", light.normalBias);
+                    effect.setFloat2("nearFar", light.near, light.far);
+
+                    this.renderSubMesh(subMesh, effect);
+                }
+            }
+
+            engine.unBindFramebuffer(<InternalTexture>light.depthMap._texture);
+        }
+
+        light.sampleIndex = light.samples.indexOf(samplePosition) + 1;
+    }
+
+    private _renderPointlightVisibilityMap(light: CubeLight, samplePosition: Vector3) {
+        const engine = this._scene.getEngine();
+        const gl = engine._gl;
+        const opaqueEffect = this._directEffectsManager.opaqueVisibilityEffect;
+        const alphaEffect = this._directEffectsManager.alphaVisibilityEffect;
+
+        const viewMatrix = Matrix.LookAtLH(samplePosition, samplePosition.add(light.normal), Vector3.Up());
+        let xAxis = new Vector3(viewMatrix.m[0], viewMatrix.m[4], viewMatrix.m[8]); // Tangent
+        let yAxis = new Vector3(viewMatrix.m[1], viewMatrix.m[5], viewMatrix.m[9]); // "Up"
+        let zAxis = new Vector3(viewMatrix.m[2], viewMatrix.m[6], viewMatrix.m[10]); // depth
+
+        const viewMatrixPX = Matrix.LookAtLH(samplePosition, samplePosition.add(xAxis), yAxis);
+        const viewMatrixNX = Matrix.LookAtLH(samplePosition, samplePosition.subtract(xAxis), yAxis);
+        const viewMatrixPY = Matrix.LookAtLH(samplePosition, samplePosition.add(yAxis), zAxis.scale(-1));
+        const viewMatrixNY = Matrix.LookAtLH(samplePosition, samplePosition.subtract(yAxis), zAxis);
+        const viewMatrixN = Matrix.LookAtLH(samplePosition, samplePosition.subtract(light.normal), Vector3.Up());
+
+        const viewMatrices = [
+            viewMatrix,
+            viewMatrixPX,
+            viewMatrixNX,
+            viewMatrixPY,
+            viewMatrixNY,
+            viewMatrixN,
+        ];
+
+        const cubeSides = [
+            gl.TEXTURE_CUBE_MAP_POSITIVE_Z,
+            gl.TEXTURE_CUBE_MAP_POSITIVE_X,
+            gl.TEXTURE_CUBE_MAP_NEGATIVE_X,
+            gl.TEXTURE_CUBE_MAP_NEGATIVE_Y,
+            gl.TEXTURE_CUBE_MAP_POSITIVE_Y,
+            gl.TEXTURE_CUBE_MAP_NEGATIVE_Z,
+        ];
+
+        // Hemi cube rendering
+        for (let viewIndex = 0; viewIndex < cubeSides.length; viewIndex++) {
+            // Render on each face of the hemicube
+            engine.bindFramebuffer(<InternalTexture>light.depthMap._texture, cubeSides[viewIndex] - gl.TEXTURE_CUBE_MAP_POSITIVE_X);
+
+            // Full cube viewport when rendering the front face
+            engine.setDirectViewport(
+                0,
+                0,
+                light.depthMapSize.width,
+                light.depthMapSize.height
+            );
+
+            engine.clear(new Color4(0, 0, 0, 0), true, true);
+
+            for (const mesh of this.meshes) {
+                for (const subMesh of mesh.subMeshes) {
+                    const material = subMesh.getMaterial();
+                    const effect = material?.needAlphaTesting() && material.getAlphaTestTexture() ? alphaEffect : opaqueEffect;
+                    engine.enableEffect(effect);
+
+                    effect.setMatrix("view", viewMatrices[viewIndex]);
+                    effect.setMatrix("projection", light.projectionMatrix);
                     effect.setVector3("lightPos", samplePosition);
                     effect.setFloat("bias", light.bias);
                     effect.setFloat("normalBias", light.normalBias);

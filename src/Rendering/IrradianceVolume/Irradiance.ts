@@ -1,19 +1,16 @@
-import { Scene } from '../../scene';
+import { Scene } from '../..';
+import { Mesh, VertexBuffer } from '../../Meshes';
+import { Material, Effect, RawTexture, InternalTexture } from '../../Materials';
+import { Color4, Vector3 } from '../../Maths';
+import { Engine } from '../../Engines';
+
+import './../../Shaders/irradianceVolumeIrradianceLightmap.fragment';
+import './../../Shaders/irradianceVolumeIrradianceLightmap.vertex';
+import '../../Shaders/irradianceVolumeUpdateProbeBounceEnv.vertex';
+import '../../Shaders/irradianceVolumeUpdateProbeBounceEnv.fragment';
+
 import { Probe } from './Probe';
-import { Mesh } from '../../Meshes/mesh';
-import { Material } from '../../Materials/material';
-import { InternalTexture } from '../../Materials/Textures/internalTexture';
-
-import { VertexBuffer } from '../../Meshes/buffer';
-import { Effect } from '../../Materials/effect';
-import { Vector3 } from '../../Maths/math.vector';
 import { MeshDictionary } from './meshDictionary';
-import { RawTexture } from '../../Materials/Textures/rawTexture';
-import { Engine } from '../../Engines/engine';
-import { Color4 } from '../../Maths/math.color';
-
-import "./../../Shaders/irradianceVolumeIrradianceLightmap.fragment";
-import "./../../Shaders/irradianceVolumeIrradianceLightmap.vertex";
 
 /**
  * Class that aims to take care of everything with regard to the irradiance for the irradiance volume
@@ -27,9 +24,14 @@ export class Irradiance {
     private _uniformBottomLeft : Vector3;
     private _uniformBoxSize : Vector3;
     private _probesPosition : Float32Array;
-    private _promise : Promise<void>;
     private _shTexture : RawTexture;
     private _posProbesTexture : RawTexture;
+
+    private _isReadyPromise : Promise<any>;
+
+    public isReady(): Promise<any> {
+        return this._isReadyPromise;
+    }
 
     /**
      * The list of probes that are part of this irradiance volume
@@ -81,18 +83,23 @@ export class Irradiance {
         numberProbes : Vector3, bottomLeft : Vector3, volumeSize : Vector3) {
         this._scene = scene;
         this.probeList = probes;
-        this.meshes = [];
-        for (let mesh of meshes) {
-            this.meshes.push(mesh);
-        }
+        this.meshes = meshes.slice();
+
         this.dictionary = dictionary;
         this.numberBounces = numberBounces;
         this._uniformNumberProbes = numberProbes;
         this._uniformBottomLeft = bottomLeft;
         this._uniformBoxSize = volumeSize;
+
         this._createProbePositionList();
-        dictionary.initLightmapTextures();
-        this._promise = this._createPromise();
+        this._initDataTextures();
+
+        dictionary.initIrradianceTextures();
+
+        this._isReadyPromise = Promise.all([
+            this._isCaptureEnvironmentEffectReady(),
+            this._isIrradianceLightmapEffectReady(),
+        ]);
     }
 
     /**
@@ -100,20 +107,16 @@ export class Irradiance {
      */
     public render() : void {
         // When all we need is ready
-        this._promise.then(() => {
+        this._isReadyPromise = this._isReadyPromise.then(() => {
             for (let probe of this.probeList) {
-                // Init the renderTargetTexture needed for each probes
                 probe.initForRendering(this.dictionary, this.captureEnvironmentEffect);
-                // Render the env for each probe
-                probe.renderBounce(this.meshes);
+                probe.initEnvironmentRenderer(this.meshes);
             }
-            let currentBounce = 0;
+
             if (this.numberBounces > 0) {
                 // Call the recursive function that will render each bounce
-                this._renderBounce(currentBounce + 1);
-            }
-            else {
-                // We are done with the rendering process, finish has to be set to true
+                this._renderBounce(1);
+            } else {
                 this.dictionary.render();
             }
         });
@@ -124,22 +127,21 @@ export class Irradiance {
      * @param currentBounce 
      */
     private _renderBounce(currentBounce : number) {
-
         for (let probe of this.probeList) {
             if (probe.probeInHouse == Probe.INSIDE_HOUSE) {
                 probe.environmentProbeTexture.render();
                 probe.CPUcomputeSHCoeff();
             }
         }
+
         this.updateShTexture();
         this._renderIrradianceLightmap();
+
         if (currentBounce < this.numberBounces) {
             this._renderBounce(currentBounce + 1);
-        }
-        else {
+        } else {
             this.dictionary.render();
         }
-
     }
 
     /**
@@ -150,8 +152,7 @@ export class Irradiance {
      */
     public updateShTexture() : void {
         let shArray = new Float32Array(this.probeList.length * 9  * 4);
-        for (let i = 0; i < this.probeList.length; i++) {
-            let probe = this.probeList[i];
+        this.probeList.forEach((probe, i) => {
             if (probe.probeInHouse != Probe.OUTSIDE_HOUSE) {
                 let index = i * 9 * 4;
 
@@ -199,14 +200,14 @@ export class Irradiance {
                 shArray[index + 33] =  probe.sphericalHarmonic.l2_2.y;
                 shArray[index + 34] =  probe.sphericalHarmonic.l2_2.z;
                 shArray[index + 35] =  1;
-            }
-            else {
+            } else {
                 let index = i * 9 * 4;
                 for (let j = 0; j < 36; j++) {
                     shArray[index + j] = 0.;
                 }
             }
-        }
+        });
+
         this._shTexture.update(shArray);
     }
 
@@ -235,14 +236,15 @@ export class Irradiance {
      */
     private _renderIrradianceLightmap() : void {
         let engine = this._scene.getEngine();
-        let gl = engine._gl;
         let effect = this.irradianceLightmapEffect;
         for (let mesh of this.dictionary.keys()) {
             let value = this.dictionary.getValue(mesh);
             if (value != null) {
                 let dest = value.irradianceLightmap;
+
                 engine.enableEffect(effect);
-                effect.setMatrix("world", mesh.getWorldMatrix());
+                // TODO: May be useless
+                // effect.setMatrix("world", mesh.getWorldMatrix());
                 effect.setInt("isUniform", 1);
                 effect.setVector3("numberProbesInSpace", this._uniformNumberProbes);
                 effect.setVector3("boxSize", this._uniformBoxSize);
@@ -252,9 +254,7 @@ export class Irradiance {
                 engine.setDirectViewport(0, 0, dest.getSize().width, dest.getSize().height);
                 engine.setState(false);
 
-                let fb = this.dictionary.frameBuffer1;
-                gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
-                gl.framebufferTexture2D(gl.DRAW_FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D,  (<InternalTexture>dest._texture)._webGLTexture, 0);
+                engine.bindFramebuffer(<InternalTexture>dest.getInternalTexture());
 
                 var subMeshes = mesh.subMeshes;
                 for (let i = 0; i < subMeshes.length; i++) {
@@ -266,107 +266,58 @@ export class Irradiance {
                     var hardwareInstancedRendering = Boolean(engine.getCaps().instancedArrays && batch.visibleInstances[subMesh._id]);
                     mesh._bind(subMesh, effect, Material.TriangleFillMode);
                     mesh._processRendering(mesh, subMesh, effect, Material.TriangleFillMode, batch, hardwareInstancedRendering,
-                        (isInstance, world) => effect.setMatrix("world", world));
+                        (_, world) => effect.setMatrix("world", world));
                 }
-                gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+
+                engine.unBindFramebuffer(<InternalTexture>dest.getInternalTexture());
             }
         }
     }
 
     /**
+        });
      * Create the promise that is used to check if every thing we will need to render the irradiance
      * is ready, when we will start the rendering
      */
-    private _createPromise() : Promise<void> {
-        return new Promise((resolve, reject) => {
-            this._initProbesPromise();
-            let initArray = new Float32Array(this.probeList.length * 9 * 4);
-            this._shTexture = new RawTexture(initArray, 9, this.probeList.length, Engine.TEXTUREFORMAT_RGBA, this._scene, false, false, 0, Engine.TEXTURETYPE_FLOAT);
-            this._posProbesTexture = new RawTexture(this._probesPosition, 1, this.probeList.length, Engine.TEXTUREFORMAT_RGBA, this._scene, false, false, 0, Engine.TEXTURETYPE_FLOAT);
-            let interval = setInterval(() => {
-                let readyStates = [
-                    this._isRawTextSHCoefReady(),
-                    this._isRawTextProbePosReady(),
-                    this._areIrradianceLightMapReady(),
-                    this._areProbesReady(),
-                    this._isIrradianceLightmapEffectReady(),
-                    this._isCaptureEnvironmentEffectReady(),
-                    this.dictionary.areMaterialReady()
-                ];
-                for (let i = 0 ; i < readyStates.length; i++) {
-                    if (!readyStates[i]) {
-                        return ;
-                    }
-                }
-                clearInterval(interval);
-                resolve();
-            }, 200);
+    private _initDataTextures(): void {
+        let initArray = new Float32Array(this.probeList.length * 9 * 4).fill(0);
+        this._shTexture = new RawTexture(initArray, 9, this.probeList.length, Engine.TEXTUREFORMAT_RGBA, this._scene, false, false, 0, Engine.TEXTURETYPE_FLOAT);
+        this._posProbesTexture = new RawTexture(this._probesPosition, 1, this.probeList.length, Engine.TEXTUREFORMAT_RGBA, this._scene, false, false, 0, Engine.TEXTURETYPE_FLOAT);
+    }
+
+    private _isIrradianceLightmapEffectReady(): Promise<void> {
+        return new Promise((resolve) => {
+            var attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind, VertexBuffer.UV2Kind];
+            var uniforms = ["world", "isUniform", "numberProbesInSpace", "boxSize", "bottomLeft"];
+            var samplers = ["shText", "probePosition"];
+            var defines = "#define NUM_PROBES " + this.probeList.length;
+
+            this.irradianceLightmapEffect = this._scene.getEngine().createEffect("irradianceVolumeIrradianceLightmap",
+                attribs,
+                uniforms,
+                samplers,
+                defines,
+                undefined,
+                () => resolve(),
+            );
         });
     }
 
-    private _initProbesPromise() : void {
-        for (let probe of this.probeList) {
-            probe.initPromise();
-        }
-    }
-
-    private _isRawTextSHCoefReady() : boolean {
-        return this._shTexture.isReady();
-    }
-
-    private _isRawTextProbePosReady() : boolean {
-        return this._posProbesTexture.isReady();
-    }
-
-    private _areProbesReady() : boolean {
-        let ready = true;
-        for (let probe of this.probeList) {
-            ready = probe.isProbeReady() && ready;
-            if (!ready) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private _isIrradianceLightmapEffectReady() : boolean {
-        var attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind, VertexBuffer.UV2Kind];
-        var uniforms = ["world", "isUniform", "numberProbesInSpace", "boxSize", "bottomLeft"];
-        var samplers = ["shText", "probePosition"];
-        var defines = "#define NUM_PROBES " + this.probeList.length;
-
-        this.irradianceLightmapEffect = this._scene.getEngine().createEffect("irradianceVolumeIrradianceLightmap",
-            attribs,
-            uniforms,
-            samplers,
-            defines
-        );
-
-        return this.irradianceLightmapEffect.isReady();
-    }
-
-    private _isCaptureEnvironmentEffectReady() : boolean {
-        var attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind, VertexBuffer.UVKind, VertexBuffer.UV2Kind];
-        var samplers = ["envMap", "envMapUV", "irradianceMap", "albedoTexture", "directIlluminationLightmap"];
-        var uniform = ["projection", "view", "probePosition", "albedoColor", "hasTexture", "world",  "numberLightmap", "envMultiplicator"];
-        this.captureEnvironmentEffect = this._scene.getEngine().createEffect("irradianceVolumeUpdateProbeBounceEnv",
-            attribs, uniform,
-            samplers);
-
-        return this.captureEnvironmentEffect.isReady();
-    }
-
-    private _areIrradianceLightMapReady() : boolean {
-        for (let value of this.dictionary.values()) {
-            if (!value.irradianceLightmap.isReady() && !value.dilateLightmap.isReady() &&
-                !value.toneMapLightmap.isReady() && !value.sumOfBothLightmap.isReady()) {
-                return false;
-            }
-            if (value.directLightmap != null && !value.directLightmap.isReady()) {
-                return false;
-            }
-        }
-        return true;
+    private _isCaptureEnvironmentEffectReady(): Promise<void> {
+        return new Promise((resolve) => {
+            var attribs = [VertexBuffer.PositionKind, VertexBuffer.NormalKind, VertexBuffer.UVKind, VertexBuffer.UV2Kind];
+            var samplers = ["irradianceMap", "albedoTexture", "directIlluminationLightmap"];
+            var uniform = ["world", "view", "projection", "probePosition", "albedoColor", "hasTexture", "envMultiplicator"];
+            this.captureEnvironmentEffect = this._scene.getEngine().createEffect(
+                "irradianceVolumeUpdateProbeBounceEnv",
+                attribs,
+                uniform,
+                samplers,
+                "",
+                undefined,
+                () => resolve(),
+            );
+        });
     }
 
     /**
@@ -376,30 +327,15 @@ export class Irradiance {
      */
     public updateNumberBounces(numberBounces : number) {
         if (this.numberBounces < numberBounces) {
+            // Render more bounces
             let currentBounce = this.numberBounces + 1;
             this.numberBounces = numberBounces;
             this._renderBounce(currentBounce);
-        }
-        else if (this.numberBounces > numberBounces) {
+        } else if (this.numberBounces > numberBounces) {
+            // Rerender from first bounce
             this.numberBounces = numberBounces;
-            let engine = this._scene.getEngine();
-            for (let value of this.dictionary.values()) {
-                let internal = value.toneMapLightmap.getInternalTexture();
-                if (internal != null) {
-                    engine.bindFramebuffer(internal);
-                    engine.clear(new Color4(0., 0., 0., 1.), true, true, true);
-                    engine.unBindFramebuffer(internal);
-                }
-            }
-            if (this.numberBounces == 0) {
-                this.dictionary.render();
-            }
-            else {
-                this._renderBounce(1);
-            }
-        }
-        else {
-            return;
+            this._clearIrradianceLightmaps();
+            this.render();
         }
     }
 
@@ -409,20 +345,25 @@ export class Irradiance {
      * @param envMultiplicator 
      */
     public updateDirectIllumForEnv(envMultiplicator : number) {
-        for (let probe of this.probeList) {
+        this.probeList.forEach(probe => {
             probe.envMultiplicator = envMultiplicator;
-        }
+        });
+
         if (this.numberBounces > 0) {
-            let engine = this._scene.getEngine();
-            for (let value of this.dictionary.values()) {
-                let internal = value.toneMapLightmap.getInternalTexture();
-                if (internal != null) {
-                    engine.bindFramebuffer(internal);
-                    engine.clear(new Color4(0., 0., 0., 1.), true, true, true);
-                    engine.unBindFramebuffer(internal);
-                }
-            }
+            this._clearIrradianceLightmaps()
             this._renderBounce(1);
+        }
+    }
+
+    private _clearIrradianceLightmaps() {
+        let engine = this._scene.getEngine();
+        for (let value of this.dictionary.values()) {
+            let internal = value.result.getInternalTexture();
+            if (internal != null) {
+                engine.bindFramebuffer(internal);
+                engine.clear(new Color4(0., 0., 0., 1.), true, true, true);
+                engine.unBindFramebuffer(internal);
+            }
         }
     }
 

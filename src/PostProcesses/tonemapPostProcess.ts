@@ -1,4 +1,5 @@
 import { Camera } from "../Cameras/camera";
+import { Nullable } from '../types';
 import { Effect } from "../Materials/effect";
 import { PostProcess } from "./postProcess";
 import { Constants } from "../Engines/constants";
@@ -36,7 +37,7 @@ export class TonemapPostProcess extends PostProcess {
      */
     constructor(name: string, private _operator: TonemappingOperator,
         /** Defines the required exposure adjustement */
-        public exposureAdjustment: number, camera: Camera, samplingMode: number = Constants.TEXTURE_BILINEAR_SAMPLINGMODE, engine?: Engine, textureFormat = Constants.TEXTURETYPE_UNSIGNED_INT) {
+        public exposureAdjustment: number, camera: Nullable<Camera>, samplingMode: number = Constants.TEXTURE_BILINEAR_SAMPLINGMODE, engine?: Engine, textureFormat = Constants.TEXTURETYPE_UNSIGNED_INT) {
         super(name, "tonemap", ["_ExposureAdjustment"], null, 1.0, camera, samplingMode, engine, true, null, textureFormat);
 
         var defines = "#define ";
