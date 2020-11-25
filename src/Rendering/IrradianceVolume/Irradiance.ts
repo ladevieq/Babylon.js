@@ -102,6 +102,15 @@ export class Irradiance {
         ]);
     }
 
+    public dispose() {
+        this.probeList.forEach(p => p.dispose());
+
+        this._shTexture.dispose();
+        this._posProbesTexture.dispose();
+
+        this.dictionary.dispose();
+    }
+
     /**
      * Function that launch the render process for the computation of the irradiance
      */

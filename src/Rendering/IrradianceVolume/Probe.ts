@@ -152,6 +152,14 @@ export class Probe {
         this._initEnvironmentProbeTexture();
     }
 
+    public dispose() {
+        this.cameraList.forEach(c => c.dispose());
+
+        if (this.probeInHouse == Probe.INSIDE_HOUSE) {
+            this.environmentProbeTexture.dispose();
+        }
+    }
+
     /**
      * Add a parent to the probe
      * @param parent The parent to be added

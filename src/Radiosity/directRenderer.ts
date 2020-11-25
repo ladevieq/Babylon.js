@@ -171,6 +171,10 @@ export class CubeLight {
         // }
     }
 
+    public dispose() {
+        this.depthMap.dispose();
+    }
+
     protected _generateSamples(sampleCount: number) {
         this.samples = [];
 

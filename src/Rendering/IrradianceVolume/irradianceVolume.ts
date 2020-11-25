@@ -71,6 +71,10 @@ export class IrradianceVolume {
             numberBounces, numberProbes, this._lowerLeft, this._volumeSize);
     }
 
+    public dispose() {
+        this.irradiance.dispose();
+    }
+
     /**
      * Create the probes that are inside the volume
      * @param probeDisposition The list of position of the probes

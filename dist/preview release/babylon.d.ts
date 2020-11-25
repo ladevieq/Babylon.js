@@ -67648,6 +67648,7 @@ declare module BABYLON {
         protected _projectionMatrix: Matrix;
         get projectionMatrix(): Matrix;
         constructor(position: Vector3, normal: Vector3, size: ISize, lightOptions: LightOptions, scene: Scene);
+        dispose(): void;
         protected _generateSamples(sampleCount: number): void;
         protected _sampleRectangle(sampleIndex: number): number[];
         protected _halton2d(prime: number[], offset: number[], n: number): number[];
@@ -69674,6 +69675,7 @@ declare module BABYLON {
          * @param scene The scene
          */
         constructor(meshes: Mesh[], scene: Scene);
+        dispose(): void;
         initIrradianceTextures(): void;
         private _initializeDilatePostProcess;
         private _initializeSumOfBothPostProcess;
@@ -69782,6 +69784,7 @@ declare module BABYLON {
          * @param inRoom 1 if the probe is in the house, 0 otherwise
          */
         constructor(position: Vector3, scene: Scene, inRoom: number, sphericalHaromicsWeight: number);
+        dispose(): void;
         /**
          * Add a parent to the probe
          * @param parent The parent to be added
@@ -69897,6 +69900,7 @@ declare module BABYLON {
          * @param volumeSize A vec3 containing the volume width, height and depth
          */
         constructor(scene: Scene, probes: Array<Probe>, meshes: Array<Mesh>, dictionary: MeshDictionary, numberBounces: number, numberProbes: Vector3, bottomLeft: Vector3, volumeSize: Vector3);
+        dispose(): void;
         /**
          * Function that launch the render process for the computation of the irradiance
          */
@@ -69981,6 +69985,7 @@ declare module BABYLON {
          * @param numberProbes The number of probes placed on each axis
          */
         constructor(meshes: Array<Mesh>, scene: Scene, numberBounces: number, probeDisposition: Array<Vector4>, numberProbes: Vector3, sphericalHarmonicsWeight: number);
+        dispose(): void;
         /**
          * Create the probes that are inside the volume
          * @param probeDisposition The list of position of the probes

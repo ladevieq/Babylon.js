@@ -62,6 +62,21 @@ export class MeshDictionary {
         }
     }
 
+    public dispose() {
+        this._values.forEach((textures) => {
+            if (textures.irradianceLightmap) {
+                textures.irradianceLightmap.dispose();
+            }
+            if (textures.directLightmap) {
+                textures.directLightmap.dispose();
+            }
+
+            if (textures.result) {
+                textures.result.dispose();
+            }
+        });
+    }
+
     public initIrradianceTextures(): void {
         this._keys.forEach(mesh => {
             const textures = this.getValue(mesh);
