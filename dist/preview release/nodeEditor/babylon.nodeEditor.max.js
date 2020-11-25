@@ -10455,6 +10455,6932 @@ module.exports = '2.1.8';
 
 /***/ }),
 
+/***/ "../../node_modules/lodash-es/_DataView.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_DataView.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getNative_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getNative.js */ "../../node_modules/lodash-es/_getNative.js");
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+
+/* Built-in method references that are verified to be native. */
+var DataView = Object(_getNative_js__WEBPACK_IMPORTED_MODULE_0__["default"])(_root_js__WEBPACK_IMPORTED_MODULE_1__["default"], 'DataView');
+
+/* harmony default export */ __webpack_exports__["default"] = (DataView);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_Hash.js":
+/*!*************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_Hash.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _hashClear_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_hashClear.js */ "../../node_modules/lodash-es/_hashClear.js");
+/* harmony import */ var _hashDelete_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_hashDelete.js */ "../../node_modules/lodash-es/_hashDelete.js");
+/* harmony import */ var _hashGet_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_hashGet.js */ "../../node_modules/lodash-es/_hashGet.js");
+/* harmony import */ var _hashHas_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_hashHas.js */ "../../node_modules/lodash-es/_hashHas.js");
+/* harmony import */ var _hashSet_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_hashSet.js */ "../../node_modules/lodash-es/_hashSet.js");
+
+
+
+
+
+
+/**
+ * Creates a hash object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Hash(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+// Add methods to `Hash`.
+Hash.prototype.clear = _hashClear_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+Hash.prototype['delete'] = _hashDelete_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+Hash.prototype.get = _hashGet_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+Hash.prototype.has = _hashHas_js__WEBPACK_IMPORTED_MODULE_3__["default"];
+Hash.prototype.set = _hashSet_js__WEBPACK_IMPORTED_MODULE_4__["default"];
+
+/* harmony default export */ __webpack_exports__["default"] = (Hash);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_ListCache.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_ListCache.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _listCacheClear_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_listCacheClear.js */ "../../node_modules/lodash-es/_listCacheClear.js");
+/* harmony import */ var _listCacheDelete_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_listCacheDelete.js */ "../../node_modules/lodash-es/_listCacheDelete.js");
+/* harmony import */ var _listCacheGet_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_listCacheGet.js */ "../../node_modules/lodash-es/_listCacheGet.js");
+/* harmony import */ var _listCacheHas_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_listCacheHas.js */ "../../node_modules/lodash-es/_listCacheHas.js");
+/* harmony import */ var _listCacheSet_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_listCacheSet.js */ "../../node_modules/lodash-es/_listCacheSet.js");
+
+
+
+
+
+
+/**
+ * Creates an list cache object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function ListCache(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+// Add methods to `ListCache`.
+ListCache.prototype.clear = _listCacheClear_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+ListCache.prototype['delete'] = _listCacheDelete_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+ListCache.prototype.get = _listCacheGet_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+ListCache.prototype.has = _listCacheHas_js__WEBPACK_IMPORTED_MODULE_3__["default"];
+ListCache.prototype.set = _listCacheSet_js__WEBPACK_IMPORTED_MODULE_4__["default"];
+
+/* harmony default export */ __webpack_exports__["default"] = (ListCache);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_Map.js":
+/*!************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_Map.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getNative_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getNative.js */ "../../node_modules/lodash-es/_getNative.js");
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+
+/* Built-in method references that are verified to be native. */
+var Map = Object(_getNative_js__WEBPACK_IMPORTED_MODULE_0__["default"])(_root_js__WEBPACK_IMPORTED_MODULE_1__["default"], 'Map');
+
+/* harmony default export */ __webpack_exports__["default"] = (Map);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_MapCache.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_MapCache.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mapCacheClear_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_mapCacheClear.js */ "../../node_modules/lodash-es/_mapCacheClear.js");
+/* harmony import */ var _mapCacheDelete_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_mapCacheDelete.js */ "../../node_modules/lodash-es/_mapCacheDelete.js");
+/* harmony import */ var _mapCacheGet_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_mapCacheGet.js */ "../../node_modules/lodash-es/_mapCacheGet.js");
+/* harmony import */ var _mapCacheHas_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_mapCacheHas.js */ "../../node_modules/lodash-es/_mapCacheHas.js");
+/* harmony import */ var _mapCacheSet_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_mapCacheSet.js */ "../../node_modules/lodash-es/_mapCacheSet.js");
+
+
+
+
+
+
+/**
+ * Creates a map cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function MapCache(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+// Add methods to `MapCache`.
+MapCache.prototype.clear = _mapCacheClear_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+MapCache.prototype['delete'] = _mapCacheDelete_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+MapCache.prototype.get = _mapCacheGet_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+MapCache.prototype.has = _mapCacheHas_js__WEBPACK_IMPORTED_MODULE_3__["default"];
+MapCache.prototype.set = _mapCacheSet_js__WEBPACK_IMPORTED_MODULE_4__["default"];
+
+/* harmony default export */ __webpack_exports__["default"] = (MapCache);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_Promise.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_Promise.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getNative_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getNative.js */ "../../node_modules/lodash-es/_getNative.js");
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+
+/* Built-in method references that are verified to be native. */
+var Promise = Object(_getNative_js__WEBPACK_IMPORTED_MODULE_0__["default"])(_root_js__WEBPACK_IMPORTED_MODULE_1__["default"], 'Promise');
+
+/* harmony default export */ __webpack_exports__["default"] = (Promise);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_Set.js":
+/*!************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_Set.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getNative_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getNative.js */ "../../node_modules/lodash-es/_getNative.js");
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+
+/* Built-in method references that are verified to be native. */
+var Set = Object(_getNative_js__WEBPACK_IMPORTED_MODULE_0__["default"])(_root_js__WEBPACK_IMPORTED_MODULE_1__["default"], 'Set');
+
+/* harmony default export */ __webpack_exports__["default"] = (Set);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_SetCache.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_SetCache.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MapCache_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_MapCache.js */ "../../node_modules/lodash-es/_MapCache.js");
+/* harmony import */ var _setCacheAdd_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_setCacheAdd.js */ "../../node_modules/lodash-es/_setCacheAdd.js");
+/* harmony import */ var _setCacheHas_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_setCacheHas.js */ "../../node_modules/lodash-es/_setCacheHas.js");
+
+
+
+
+/**
+ *
+ * Creates an array cache object to store unique values.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [values] The values to cache.
+ */
+function SetCache(values) {
+  var index = -1,
+      length = values == null ? 0 : values.length;
+
+  this.__data__ = new _MapCache_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+  while (++index < length) {
+    this.add(values[index]);
+  }
+}
+
+// Add methods to `SetCache`.
+SetCache.prototype.add = SetCache.prototype.push = _setCacheAdd_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+SetCache.prototype.has = _setCacheHas_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+
+/* harmony default export */ __webpack_exports__["default"] = (SetCache);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_Stack.js":
+/*!**************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_Stack.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListCache_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_ListCache.js */ "../../node_modules/lodash-es/_ListCache.js");
+/* harmony import */ var _stackClear_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_stackClear.js */ "../../node_modules/lodash-es/_stackClear.js");
+/* harmony import */ var _stackDelete_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_stackDelete.js */ "../../node_modules/lodash-es/_stackDelete.js");
+/* harmony import */ var _stackGet_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_stackGet.js */ "../../node_modules/lodash-es/_stackGet.js");
+/* harmony import */ var _stackHas_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_stackHas.js */ "../../node_modules/lodash-es/_stackHas.js");
+/* harmony import */ var _stackSet_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_stackSet.js */ "../../node_modules/lodash-es/_stackSet.js");
+
+
+
+
+
+
+
+/**
+ * Creates a stack cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Stack(entries) {
+  var data = this.__data__ = new _ListCache_js__WEBPACK_IMPORTED_MODULE_0__["default"](entries);
+  this.size = data.size;
+}
+
+// Add methods to `Stack`.
+Stack.prototype.clear = _stackClear_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+Stack.prototype['delete'] = _stackDelete_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+Stack.prototype.get = _stackGet_js__WEBPACK_IMPORTED_MODULE_3__["default"];
+Stack.prototype.has = _stackHas_js__WEBPACK_IMPORTED_MODULE_4__["default"];
+Stack.prototype.set = _stackSet_js__WEBPACK_IMPORTED_MODULE_5__["default"];
+
+/* harmony default export */ __webpack_exports__["default"] = (Stack);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_Symbol.js":
+/*!***************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_Symbol.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+/** Built-in value references. */
+var Symbol = _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Symbol;
+
+/* harmony default export */ __webpack_exports__["default"] = (Symbol);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_Uint8Array.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_Uint8Array.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+/** Built-in value references. */
+var Uint8Array = _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Uint8Array;
+
+/* harmony default export */ __webpack_exports__["default"] = (Uint8Array);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_WeakMap.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_WeakMap.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getNative_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getNative.js */ "../../node_modules/lodash-es/_getNative.js");
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+
+/* Built-in method references that are verified to be native. */
+var WeakMap = Object(_getNative_js__WEBPACK_IMPORTED_MODULE_0__["default"])(_root_js__WEBPACK_IMPORTED_MODULE_1__["default"], 'WeakMap');
+
+/* harmony default export */ __webpack_exports__["default"] = (WeakMap);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_apply.js":
+/*!**************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_apply.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * A faster alternative to `Function#apply`, this function invokes `func`
+ * with the `this` binding of `thisArg` and the arguments of `args`.
+ *
+ * @private
+ * @param {Function} func The function to invoke.
+ * @param {*} thisArg The `this` binding of `func`.
+ * @param {Array} args The arguments to invoke `func` with.
+ * @returns {*} Returns the result of `func`.
+ */
+function apply(func, thisArg, args) {
+  switch (args.length) {
+    case 0: return func.call(thisArg);
+    case 1: return func.call(thisArg, args[0]);
+    case 2: return func.call(thisArg, args[0], args[1]);
+    case 3: return func.call(thisArg, args[0], args[1], args[2]);
+  }
+  return func.apply(thisArg, args);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (apply);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_arrayEach.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_arrayEach.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * A specialized version of `_.forEach` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns `array`.
+ */
+function arrayEach(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length;
+
+  while (++index < length) {
+    if (iteratee(array[index], index, array) === false) {
+      break;
+    }
+  }
+  return array;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (arrayEach);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_arrayFilter.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_arrayFilter.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * A specialized version of `_.filter` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} predicate The function invoked per iteration.
+ * @returns {Array} Returns the new filtered array.
+ */
+function arrayFilter(array, predicate) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      resIndex = 0,
+      result = [];
+
+  while (++index < length) {
+    var value = array[index];
+    if (predicate(value, index, array)) {
+      result[resIndex++] = value;
+    }
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (arrayFilter);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_arrayLikeKeys.js":
+/*!**********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_arrayLikeKeys.js ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseTimes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseTimes.js */ "../../node_modules/lodash-es/_baseTimes.js");
+/* harmony import */ var _isArguments_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isArguments.js */ "../../node_modules/lodash-es/isArguments.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+/* harmony import */ var _isBuffer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./isBuffer.js */ "../../node_modules/lodash-es/isBuffer.js");
+/* harmony import */ var _isIndex_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_isIndex.js */ "../../node_modules/lodash-es/_isIndex.js");
+/* harmony import */ var _isTypedArray_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./isTypedArray.js */ "../../node_modules/lodash-es/isTypedArray.js");
+
+
+
+
+
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Creates an array of the enumerable property names of the array-like `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @param {boolean} inherited Specify returning inherited property names.
+ * @returns {Array} Returns the array of property names.
+ */
+function arrayLikeKeys(value, inherited) {
+  var isArr = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value),
+      isArg = !isArr && Object(_isArguments_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value),
+      isBuff = !isArr && !isArg && Object(_isBuffer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(value),
+      isType = !isArr && !isArg && !isBuff && Object(_isTypedArray_js__WEBPACK_IMPORTED_MODULE_5__["default"])(value),
+      skipIndexes = isArr || isArg || isBuff || isType,
+      result = skipIndexes ? Object(_baseTimes_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value.length, String) : [],
+      length = result.length;
+
+  for (var key in value) {
+    if ((inherited || hasOwnProperty.call(value, key)) &&
+        !(skipIndexes && (
+           // Safari 9 has enumerable `arguments.length` in strict mode.
+           key == 'length' ||
+           // Node.js 0.10 has enumerable non-index properties on buffers.
+           (isBuff && (key == 'offset' || key == 'parent')) ||
+           // PhantomJS 2 has enumerable non-index properties on typed arrays.
+           (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
+           // Skip index properties.
+           Object(_isIndex_js__WEBPACK_IMPORTED_MODULE_4__["default"])(key, length)
+        ))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (arrayLikeKeys);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_arrayMap.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_arrayMap.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (arrayMap);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_arrayPush.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_arrayPush.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Appends the elements of `values` to `array`.
+ *
+ * @private
+ * @param {Array} array The array to modify.
+ * @param {Array} values The values to append.
+ * @returns {Array} Returns `array`.
+ */
+function arrayPush(array, values) {
+  var index = -1,
+      length = values.length,
+      offset = array.length;
+
+  while (++index < length) {
+    array[offset + index] = values[index];
+  }
+  return array;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (arrayPush);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_arraySome.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_arraySome.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * A specialized version of `_.some` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} predicate The function invoked per iteration.
+ * @returns {boolean} Returns `true` if any element passes the predicate check,
+ *  else `false`.
+ */
+function arraySome(array, predicate) {
+  var index = -1,
+      length = array == null ? 0 : array.length;
+
+  while (++index < length) {
+    if (predicate(array[index], index, array)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (arraySome);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_assignMergeValue.js":
+/*!*************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_assignMergeValue.js ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseAssignValue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseAssignValue.js */ "../../node_modules/lodash-es/_baseAssignValue.js");
+/* harmony import */ var _eq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eq.js */ "../../node_modules/lodash-es/eq.js");
+
+
+
+/**
+ * This function is like `assignValue` except that it doesn't assign
+ * `undefined` values.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function assignMergeValue(object, key, value) {
+  if ((value !== undefined && !Object(_eq_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object[key], value)) ||
+      (value === undefined && !(key in object))) {
+    Object(_baseAssignValue_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, key, value);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (assignMergeValue);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_assignValue.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_assignValue.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseAssignValue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseAssignValue.js */ "../../node_modules/lodash-es/_baseAssignValue.js");
+/* harmony import */ var _eq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eq.js */ "../../node_modules/lodash-es/eq.js");
+
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Assigns `value` to `key` of `object` if the existing value is not equivalent
+ * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * for equality comparisons.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function assignValue(object, key, value) {
+  var objValue = object[key];
+  if (!(hasOwnProperty.call(object, key) && Object(_eq_js__WEBPACK_IMPORTED_MODULE_1__["default"])(objValue, value)) ||
+      (value === undefined && !(key in object))) {
+    Object(_baseAssignValue_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, key, value);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (assignValue);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_assocIndexOf.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_assocIndexOf.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _eq_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./eq.js */ "../../node_modules/lodash-es/eq.js");
+
+
+/**
+ * Gets the index at which the `key` is found in `array` of key-value pairs.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} key The key to search for.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function assocIndexOf(array, key) {
+  var length = array.length;
+  while (length--) {
+    if (Object(_eq_js__WEBPACK_IMPORTED_MODULE_0__["default"])(array[length][0], key)) {
+      return length;
+    }
+  }
+  return -1;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (assocIndexOf);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseAssignValue.js":
+/*!************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseAssignValue.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _defineProperty_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_defineProperty.js */ "../../node_modules/lodash-es/_defineProperty.js");
+
+
+/**
+ * The base implementation of `assignValue` and `assignMergeValue` without
+ * value checks.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function baseAssignValue(object, key, value) {
+  if (key == '__proto__' && _defineProperty_js__WEBPACK_IMPORTED_MODULE_0__["default"]) {
+    Object(_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, key, {
+      'configurable': true,
+      'enumerable': true,
+      'value': value,
+      'writable': true
+    });
+  } else {
+    object[key] = value;
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseAssignValue);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseCreate.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseCreate.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+
+
+/** Built-in value references. */
+var objectCreate = Object.create;
+
+/**
+ * The base implementation of `_.create` without support for assigning
+ * properties to the created object.
+ *
+ * @private
+ * @param {Object} proto The object to inherit from.
+ * @returns {Object} Returns the new object.
+ */
+var baseCreate = (function() {
+  function object() {}
+  return function(proto) {
+    if (!Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(proto)) {
+      return {};
+    }
+    if (objectCreate) {
+      return objectCreate(proto);
+    }
+    object.prototype = proto;
+    var result = new object;
+    object.prototype = undefined;
+    return result;
+  };
+}());
+
+/* harmony default export */ __webpack_exports__["default"] = (baseCreate);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseEach.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseEach.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseForOwn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseForOwn.js */ "../../node_modules/lodash-es/_baseForOwn.js");
+/* harmony import */ var _createBaseEach_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_createBaseEach.js */ "../../node_modules/lodash-es/_createBaseEach.js");
+
+
+
+/**
+ * The base implementation of `_.forEach` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array|Object} Returns `collection`.
+ */
+var baseEach = Object(_createBaseEach_js__WEBPACK_IMPORTED_MODULE_1__["default"])(_baseForOwn_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (baseEach);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseFor.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseFor.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _createBaseFor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_createBaseFor.js */ "../../node_modules/lodash-es/_createBaseFor.js");
+
+
+/**
+ * The base implementation of `baseForOwn` which iterates over `object`
+ * properties returned by `keysFunc` and invokes `iteratee` for each property.
+ * Iteratee functions may exit iteration early by explicitly returning `false`.
+ *
+ * @private
+ * @param {Object} object The object to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @param {Function} keysFunc The function to get the keys of `object`.
+ * @returns {Object} Returns `object`.
+ */
+var baseFor = Object(_createBaseFor_js__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
+/* harmony default export */ __webpack_exports__["default"] = (baseFor);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseForOwn.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseForOwn.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseFor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseFor.js */ "../../node_modules/lodash-es/_baseFor.js");
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./keys.js */ "../../node_modules/lodash-es/keys.js");
+
+
+
+/**
+ * The base implementation of `_.forOwn` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Object} object The object to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Object} Returns `object`.
+ */
+function baseForOwn(object, iteratee) {
+  return object && Object(_baseFor_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, iteratee, _keys_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseForOwn);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseGet.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseGet.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _castPath_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_castPath.js */ "../../node_modules/lodash-es/_castPath.js");
+/* harmony import */ var _toKey_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_toKey.js */ "../../node_modules/lodash-es/_toKey.js");
+
+
+
+/**
+ * The base implementation of `_.get` without support for default values.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path of the property to get.
+ * @returns {*} Returns the resolved value.
+ */
+function baseGet(object, path) {
+  path = Object(_castPath_js__WEBPACK_IMPORTED_MODULE_0__["default"])(path, object);
+
+  var index = 0,
+      length = path.length;
+
+  while (object != null && index < length) {
+    object = object[Object(_toKey_js__WEBPACK_IMPORTED_MODULE_1__["default"])(path[index++])];
+  }
+  return (index && index == length) ? object : undefined;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseGet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseGetAllKeys.js":
+/*!***********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseGetAllKeys.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _arrayPush_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayPush.js */ "../../node_modules/lodash-es/_arrayPush.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+
+
+
+/**
+ * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
+ * `keysFunc` and `symbolsFunc` to get the enumerable property names and
+ * symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Function} keysFunc The function to get the keys of `object`.
+ * @param {Function} symbolsFunc The function to get the symbols of `object`.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function baseGetAllKeys(object, keysFunc, symbolsFunc) {
+  var result = keysFunc(object);
+  return Object(_isArray_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object) ? result : Object(_arrayPush_js__WEBPACK_IMPORTED_MODULE_0__["default"])(result, symbolsFunc(object));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseGetAllKeys);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseGetTag.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseGetTag.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Symbol.js */ "../../node_modules/lodash-es/_Symbol.js");
+/* harmony import */ var _getRawTag_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_getRawTag.js */ "../../node_modules/lodash-es/_getRawTag.js");
+/* harmony import */ var _objectToString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_objectToString.js */ "../../node_modules/lodash-es/_objectToString.js");
+
+
+
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"].toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? Object(_getRawTag_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)
+    : Object(_objectToString_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseGetTag);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseHasIn.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseHasIn.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * The base implementation of `_.hasIn` without support for deep paths.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {Array|string} key The key to check.
+ * @returns {boolean} Returns `true` if `key` exists, else `false`.
+ */
+function baseHasIn(object, key) {
+  return object != null && key in Object(object);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseHasIn);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseIsArguments.js":
+/*!************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseIsArguments.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseGetTag.js */ "../../node_modules/lodash-es/_baseGetTag.js");
+/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObjectLike.js */ "../../node_modules/lodash-es/isObjectLike.js");
+
+
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]';
+
+/**
+ * The base implementation of `_.isArguments`.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ */
+function baseIsArguments(value) {
+  return Object(_isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value) && Object(_baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value) == argsTag;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseIsArguments);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseIsEqual.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseIsEqual.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseIsEqualDeep_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseIsEqualDeep.js */ "../../node_modules/lodash-es/_baseIsEqualDeep.js");
+/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObjectLike.js */ "../../node_modules/lodash-es/isObjectLike.js");
+
+
+
+/**
+ * The base implementation of `_.isEqual` which supports partial comparisons
+ * and tracks traversed objects.
+ *
+ * @private
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @param {boolean} bitmask The bitmask flags.
+ *  1 - Unordered comparison
+ *  2 - Partial comparison
+ * @param {Function} [customizer] The function to customize comparisons.
+ * @param {Object} [stack] Tracks traversed `value` and `other` objects.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ */
+function baseIsEqual(value, other, bitmask, customizer, stack) {
+  if (value === other) {
+    return true;
+  }
+  if (value == null || other == null || (!Object(_isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value) && !Object(_isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__["default"])(other))) {
+    return value !== value && other !== other;
+  }
+  return Object(_baseIsEqualDeep_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value, other, bitmask, customizer, baseIsEqual, stack);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseIsEqual);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseIsEqualDeep.js":
+/*!************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseIsEqualDeep.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Stack_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Stack.js */ "../../node_modules/lodash-es/_Stack.js");
+/* harmony import */ var _equalArrays_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_equalArrays.js */ "../../node_modules/lodash-es/_equalArrays.js");
+/* harmony import */ var _equalByTag_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_equalByTag.js */ "../../node_modules/lodash-es/_equalByTag.js");
+/* harmony import */ var _equalObjects_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_equalObjects.js */ "../../node_modules/lodash-es/_equalObjects.js");
+/* harmony import */ var _getTag_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_getTag.js */ "../../node_modules/lodash-es/_getTag.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+/* harmony import */ var _isBuffer_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./isBuffer.js */ "../../node_modules/lodash-es/isBuffer.js");
+/* harmony import */ var _isTypedArray_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./isTypedArray.js */ "../../node_modules/lodash-es/isTypedArray.js");
+
+
+
+
+
+
+
+
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1;
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]',
+    arrayTag = '[object Array]',
+    objectTag = '[object Object]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * A specialized version of `baseIsEqual` for arrays and objects which performs
+ * deep comparisons and tracks traversed objects enabling objects with circular
+ * references to be compared.
+ *
+ * @private
+ * @param {Object} object The object to compare.
+ * @param {Object} other The other object to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} [stack] Tracks traversed `object` and `other` objects.
+ * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+ */
+function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
+  var objIsArr = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_5__["default"])(object),
+      othIsArr = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_5__["default"])(other),
+      objTag = objIsArr ? arrayTag : Object(_getTag_js__WEBPACK_IMPORTED_MODULE_4__["default"])(object),
+      othTag = othIsArr ? arrayTag : Object(_getTag_js__WEBPACK_IMPORTED_MODULE_4__["default"])(other);
+
+  objTag = objTag == argsTag ? objectTag : objTag;
+  othTag = othTag == argsTag ? objectTag : othTag;
+
+  var objIsObj = objTag == objectTag,
+      othIsObj = othTag == objectTag,
+      isSameTag = objTag == othTag;
+
+  if (isSameTag && Object(_isBuffer_js__WEBPACK_IMPORTED_MODULE_6__["default"])(object)) {
+    if (!Object(_isBuffer_js__WEBPACK_IMPORTED_MODULE_6__["default"])(other)) {
+      return false;
+    }
+    objIsArr = true;
+    objIsObj = false;
+  }
+  if (isSameTag && !objIsObj) {
+    stack || (stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    return (objIsArr || Object(_isTypedArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(object))
+      ? Object(_equalArrays_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object, other, bitmask, customizer, equalFunc, stack)
+      : Object(_equalByTag_js__WEBPACK_IMPORTED_MODULE_2__["default"])(object, other, objTag, bitmask, customizer, equalFunc, stack);
+  }
+  if (!(bitmask & COMPARE_PARTIAL_FLAG)) {
+    var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
+        othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
+
+    if (objIsWrapped || othIsWrapped) {
+      var objUnwrapped = objIsWrapped ? object.value() : object,
+          othUnwrapped = othIsWrapped ? other.value() : other;
+
+      stack || (stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
+      return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);
+    }
+  }
+  if (!isSameTag) {
+    return false;
+  }
+  stack || (stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  return Object(_equalObjects_js__WEBPACK_IMPORTED_MODULE_3__["default"])(object, other, bitmask, customizer, equalFunc, stack);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseIsEqualDeep);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseIsMatch.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseIsMatch.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Stack_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Stack.js */ "../../node_modules/lodash-es/_Stack.js");
+/* harmony import */ var _baseIsEqual_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseIsEqual.js */ "../../node_modules/lodash-es/_baseIsEqual.js");
+
+
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/**
+ * The base implementation of `_.isMatch` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Object} object The object to inspect.
+ * @param {Object} source The object of property values to match.
+ * @param {Array} matchData The property names, values, and compare flags to match.
+ * @param {Function} [customizer] The function to customize comparisons.
+ * @returns {boolean} Returns `true` if `object` is a match, else `false`.
+ */
+function baseIsMatch(object, source, matchData, customizer) {
+  var index = matchData.length,
+      length = index,
+      noCustomizer = !customizer;
+
+  if (object == null) {
+    return !length;
+  }
+  object = Object(object);
+  while (index--) {
+    var data = matchData[index];
+    if ((noCustomizer && data[2])
+          ? data[1] !== object[data[0]]
+          : !(data[0] in object)
+        ) {
+      return false;
+    }
+  }
+  while (++index < length) {
+    data = matchData[index];
+    var key = data[0],
+        objValue = object[key],
+        srcValue = data[1];
+
+    if (noCustomizer && data[2]) {
+      if (objValue === undefined && !(key in object)) {
+        return false;
+      }
+    } else {
+      var stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+      if (customizer) {
+        var result = customizer(objValue, srcValue, key, object, source, stack);
+      }
+      if (!(result === undefined
+            ? Object(_baseIsEqual_js__WEBPACK_IMPORTED_MODULE_1__["default"])(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG, customizer, stack)
+            : result
+          )) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseIsMatch);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseIsNative.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseIsNative.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isFunction.js */ "../../node_modules/lodash-es/isFunction.js");
+/* harmony import */ var _isMasked_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_isMasked.js */ "../../node_modules/lodash-es/_isMasked.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+/* harmony import */ var _toSource_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_toSource.js */ "../../node_modules/lodash-es/_toSource.js");
+
+
+
+
+
+/**
+ * Used to match `RegExp`
+ * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+ */
+var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+
+/** Used to detect host constructors (Safari). */
+var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+/** Used for built-in method references. */
+var funcProto = Function.prototype,
+    objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to detect if a method is native. */
+var reIsNative = RegExp('^' +
+  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
+  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+);
+
+/**
+ * The base implementation of `_.isNative` without bad shim checks.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function,
+ *  else `false`.
+ */
+function baseIsNative(value) {
+  if (!Object(_isObject_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value) || Object(_isMasked_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+    return false;
+  }
+  var pattern = Object(_isFunction_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value) ? reIsNative : reIsHostCtor;
+  return pattern.test(Object(_toSource_js__WEBPACK_IMPORTED_MODULE_3__["default"])(value));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseIsNative);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseIsTypedArray.js":
+/*!*************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseIsTypedArray.js ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseGetTag.js */ "../../node_modules/lodash-es/_baseGetTag.js");
+/* harmony import */ var _isLength_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isLength.js */ "../../node_modules/lodash-es/isLength.js");
+/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isObjectLike.js */ "../../node_modules/lodash-es/isObjectLike.js");
+
+
+
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]',
+    arrayTag = '[object Array]',
+    boolTag = '[object Boolean]',
+    dateTag = '[object Date]',
+    errorTag = '[object Error]',
+    funcTag = '[object Function]',
+    mapTag = '[object Map]',
+    numberTag = '[object Number]',
+    objectTag = '[object Object]',
+    regexpTag = '[object RegExp]',
+    setTag = '[object Set]',
+    stringTag = '[object String]',
+    weakMapTag = '[object WeakMap]';
+
+var arrayBufferTag = '[object ArrayBuffer]',
+    dataViewTag = '[object DataView]',
+    float32Tag = '[object Float32Array]',
+    float64Tag = '[object Float64Array]',
+    int8Tag = '[object Int8Array]',
+    int16Tag = '[object Int16Array]',
+    int32Tag = '[object Int32Array]',
+    uint8Tag = '[object Uint8Array]',
+    uint8ClampedTag = '[object Uint8ClampedArray]',
+    uint16Tag = '[object Uint16Array]',
+    uint32Tag = '[object Uint32Array]';
+
+/** Used to identify `toStringTag` values of typed arrays. */
+var typedArrayTags = {};
+typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
+typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
+typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
+typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
+typedArrayTags[uint32Tag] = true;
+typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
+typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
+typedArrayTags[dataViewTag] = typedArrayTags[dateTag] =
+typedArrayTags[errorTag] = typedArrayTags[funcTag] =
+typedArrayTags[mapTag] = typedArrayTags[numberTag] =
+typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
+typedArrayTags[setTag] = typedArrayTags[stringTag] =
+typedArrayTags[weakMapTag] = false;
+
+/**
+ * The base implementation of `_.isTypedArray` without Node.js optimizations.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ */
+function baseIsTypedArray(value) {
+  return Object(_isObjectLike_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value) &&
+    Object(_isLength_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value.length) && !!typedArrayTags[Object(_baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)];
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseIsTypedArray);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseIteratee.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseIteratee.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseMatches_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseMatches.js */ "../../node_modules/lodash-es/_baseMatches.js");
+/* harmony import */ var _baseMatchesProperty_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseMatchesProperty.js */ "../../node_modules/lodash-es/_baseMatchesProperty.js");
+/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./identity.js */ "../../node_modules/lodash-es/identity.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+/* harmony import */ var _property_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./property.js */ "../../node_modules/lodash-es/property.js");
+
+
+
+
+
+
+/**
+ * The base implementation of `_.iteratee`.
+ *
+ * @private
+ * @param {*} [value=_.identity] The value to convert to an iteratee.
+ * @returns {Function} Returns the iteratee.
+ */
+function baseIteratee(value) {
+  // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
+  // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
+  if (typeof value == 'function') {
+    return value;
+  }
+  if (value == null) {
+    return _identity_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+  }
+  if (typeof value == 'object') {
+    return Object(_isArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(value)
+      ? Object(_baseMatchesProperty_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value[0], value[1])
+      : Object(_baseMatches_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value);
+  }
+  return Object(_property_js__WEBPACK_IMPORTED_MODULE_4__["default"])(value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseIteratee);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseKeys.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseKeys.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isPrototype_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_isPrototype.js */ "../../node_modules/lodash-es/_isPrototype.js");
+/* harmony import */ var _nativeKeys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_nativeKeys.js */ "../../node_modules/lodash-es/_nativeKeys.js");
+
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!Object(_isPrototype_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object)) {
+    return Object(_nativeKeys_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseKeys);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseKeysIn.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseKeysIn.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+/* harmony import */ var _isPrototype_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_isPrototype.js */ "../../node_modules/lodash-es/_isPrototype.js");
+/* harmony import */ var _nativeKeysIn_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_nativeKeysIn.js */ "../../node_modules/lodash-es/_nativeKeysIn.js");
+
+
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeysIn(object) {
+  if (!Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object)) {
+    return Object(_nativeKeysIn_js__WEBPACK_IMPORTED_MODULE_2__["default"])(object);
+  }
+  var isProto = Object(_isPrototype_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object),
+      result = [];
+
+  for (var key in object) {
+    if (!(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseKeysIn);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseMap.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseMap.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseEach_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseEach.js */ "../../node_modules/lodash-es/_baseEach.js");
+/* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isArrayLike.js */ "../../node_modules/lodash-es/isArrayLike.js");
+
+
+
+/**
+ * The base implementation of `_.map` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function baseMap(collection, iteratee) {
+  var index = -1,
+      result = Object(_isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__["default"])(collection) ? Array(collection.length) : [];
+
+  Object(_baseEach_js__WEBPACK_IMPORTED_MODULE_0__["default"])(collection, function(value, key, collection) {
+    result[++index] = iteratee(value, key, collection);
+  });
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseMap);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseMatches.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseMatches.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseIsMatch_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseIsMatch.js */ "../../node_modules/lodash-es/_baseIsMatch.js");
+/* harmony import */ var _getMatchData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_getMatchData.js */ "../../node_modules/lodash-es/_getMatchData.js");
+/* harmony import */ var _matchesStrictComparable_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_matchesStrictComparable.js */ "../../node_modules/lodash-es/_matchesStrictComparable.js");
+
+
+
+
+/**
+ * The base implementation of `_.matches` which doesn't clone `source`.
+ *
+ * @private
+ * @param {Object} source The object of property values to match.
+ * @returns {Function} Returns the new spec function.
+ */
+function baseMatches(source) {
+  var matchData = Object(_getMatchData_js__WEBPACK_IMPORTED_MODULE_1__["default"])(source);
+  if (matchData.length == 1 && matchData[0][2]) {
+    return Object(_matchesStrictComparable_js__WEBPACK_IMPORTED_MODULE_2__["default"])(matchData[0][0], matchData[0][1]);
+  }
+  return function(object) {
+    return object === source || Object(_baseIsMatch_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, source, matchData);
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseMatches);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseMatchesProperty.js":
+/*!****************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseMatchesProperty.js ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseIsEqual_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseIsEqual.js */ "../../node_modules/lodash-es/_baseIsEqual.js");
+/* harmony import */ var _get_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./get.js */ "../../node_modules/lodash-es/get.js");
+/* harmony import */ var _hasIn_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hasIn.js */ "../../node_modules/lodash-es/hasIn.js");
+/* harmony import */ var _isKey_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_isKey.js */ "../../node_modules/lodash-es/_isKey.js");
+/* harmony import */ var _isStrictComparable_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_isStrictComparable.js */ "../../node_modules/lodash-es/_isStrictComparable.js");
+/* harmony import */ var _matchesStrictComparable_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_matchesStrictComparable.js */ "../../node_modules/lodash-es/_matchesStrictComparable.js");
+/* harmony import */ var _toKey_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_toKey.js */ "../../node_modules/lodash-es/_toKey.js");
+
+
+
+
+
+
+
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/**
+ * The base implementation of `_.matchesProperty` which doesn't clone `srcValue`.
+ *
+ * @private
+ * @param {string} path The path of the property to get.
+ * @param {*} srcValue The value to match.
+ * @returns {Function} Returns the new spec function.
+ */
+function baseMatchesProperty(path, srcValue) {
+  if (Object(_isKey_js__WEBPACK_IMPORTED_MODULE_3__["default"])(path) && Object(_isStrictComparable_js__WEBPACK_IMPORTED_MODULE_4__["default"])(srcValue)) {
+    return Object(_matchesStrictComparable_js__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_toKey_js__WEBPACK_IMPORTED_MODULE_6__["default"])(path), srcValue);
+  }
+  return function(object) {
+    var objValue = Object(_get_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object, path);
+    return (objValue === undefined && objValue === srcValue)
+      ? Object(_hasIn_js__WEBPACK_IMPORTED_MODULE_2__["default"])(object, path)
+      : Object(_baseIsEqual_js__WEBPACK_IMPORTED_MODULE_0__["default"])(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseMatchesProperty);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseMerge.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseMerge.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Stack_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Stack.js */ "../../node_modules/lodash-es/_Stack.js");
+/* harmony import */ var _assignMergeValue_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_assignMergeValue.js */ "../../node_modules/lodash-es/_assignMergeValue.js");
+/* harmony import */ var _baseFor_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseFor.js */ "../../node_modules/lodash-es/_baseFor.js");
+/* harmony import */ var _baseMergeDeep_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_baseMergeDeep.js */ "../../node_modules/lodash-es/_baseMergeDeep.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+/* harmony import */ var _keysIn_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./keysIn.js */ "../../node_modules/lodash-es/keysIn.js");
+/* harmony import */ var _safeGet_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_safeGet.js */ "../../node_modules/lodash-es/_safeGet.js");
+
+
+
+
+
+
+
+
+/**
+ * The base implementation of `_.merge` without support for multiple sources.
+ *
+ * @private
+ * @param {Object} object The destination object.
+ * @param {Object} source The source object.
+ * @param {number} srcIndex The index of `source`.
+ * @param {Function} [customizer] The function to customize merged values.
+ * @param {Object} [stack] Tracks traversed source values and their merged
+ *  counterparts.
+ */
+function baseMerge(object, source, srcIndex, customizer, stack) {
+  if (object === source) {
+    return;
+  }
+  Object(_baseFor_js__WEBPACK_IMPORTED_MODULE_2__["default"])(source, function(srcValue, key) {
+    stack || (stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_4__["default"])(srcValue)) {
+      Object(_baseMergeDeep_js__WEBPACK_IMPORTED_MODULE_3__["default"])(object, source, key, srcIndex, baseMerge, customizer, stack);
+    }
+    else {
+      var newValue = customizer
+        ? customizer(Object(_safeGet_js__WEBPACK_IMPORTED_MODULE_6__["default"])(object, key), srcValue, (key + ''), object, source, stack)
+        : undefined;
+
+      if (newValue === undefined) {
+        newValue = srcValue;
+      }
+      Object(_assignMergeValue_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object, key, newValue);
+    }
+  }, _keysIn_js__WEBPACK_IMPORTED_MODULE_5__["default"]);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseMerge);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseMergeDeep.js":
+/*!**********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseMergeDeep.js ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assignMergeValue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_assignMergeValue.js */ "../../node_modules/lodash-es/_assignMergeValue.js");
+/* harmony import */ var _cloneBuffer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_cloneBuffer.js */ "../../node_modules/lodash-es/_cloneBuffer.js");
+/* harmony import */ var _cloneTypedArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_cloneTypedArray.js */ "../../node_modules/lodash-es/_cloneTypedArray.js");
+/* harmony import */ var _copyArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_copyArray.js */ "../../node_modules/lodash-es/_copyArray.js");
+/* harmony import */ var _initCloneObject_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_initCloneObject.js */ "../../node_modules/lodash-es/_initCloneObject.js");
+/* harmony import */ var _isArguments_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./isArguments.js */ "../../node_modules/lodash-es/isArguments.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+/* harmony import */ var _isArrayLikeObject_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./isArrayLikeObject.js */ "../../node_modules/lodash-es/isArrayLikeObject.js");
+/* harmony import */ var _isBuffer_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./isBuffer.js */ "../../node_modules/lodash-es/isBuffer.js");
+/* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./isFunction.js */ "../../node_modules/lodash-es/isFunction.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+/* harmony import */ var _isPlainObject_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./isPlainObject.js */ "../../node_modules/lodash-es/isPlainObject.js");
+/* harmony import */ var _isTypedArray_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./isTypedArray.js */ "../../node_modules/lodash-es/isTypedArray.js");
+/* harmony import */ var _safeGet_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./_safeGet.js */ "../../node_modules/lodash-es/_safeGet.js");
+/* harmony import */ var _toPlainObject_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./toPlainObject.js */ "../../node_modules/lodash-es/toPlainObject.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * A specialized version of `baseMerge` for arrays and objects which performs
+ * deep merges and tracks traversed objects enabling objects with circular
+ * references to be merged.
+ *
+ * @private
+ * @param {Object} object The destination object.
+ * @param {Object} source The source object.
+ * @param {string} key The key of the value to merge.
+ * @param {number} srcIndex The index of `source`.
+ * @param {Function} mergeFunc The function to merge values.
+ * @param {Function} [customizer] The function to customize assigned values.
+ * @param {Object} [stack] Tracks traversed source values and their merged
+ *  counterparts.
+ */
+function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
+  var objValue = Object(_safeGet_js__WEBPACK_IMPORTED_MODULE_13__["default"])(object, key),
+      srcValue = Object(_safeGet_js__WEBPACK_IMPORTED_MODULE_13__["default"])(source, key),
+      stacked = stack.get(srcValue);
+
+  if (stacked) {
+    Object(_assignMergeValue_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, key, stacked);
+    return;
+  }
+  var newValue = customizer
+    ? customizer(objValue, srcValue, (key + ''), object, source, stack)
+    : undefined;
+
+  var isCommon = newValue === undefined;
+
+  if (isCommon) {
+    var isArr = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_6__["default"])(srcValue),
+        isBuff = !isArr && Object(_isBuffer_js__WEBPACK_IMPORTED_MODULE_8__["default"])(srcValue),
+        isTyped = !isArr && !isBuff && Object(_isTypedArray_js__WEBPACK_IMPORTED_MODULE_12__["default"])(srcValue);
+
+    newValue = srcValue;
+    if (isArr || isBuff || isTyped) {
+      if (Object(_isArray_js__WEBPACK_IMPORTED_MODULE_6__["default"])(objValue)) {
+        newValue = objValue;
+      }
+      else if (Object(_isArrayLikeObject_js__WEBPACK_IMPORTED_MODULE_7__["default"])(objValue)) {
+        newValue = Object(_copyArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(objValue);
+      }
+      else if (isBuff) {
+        isCommon = false;
+        newValue = Object(_cloneBuffer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(srcValue, true);
+      }
+      else if (isTyped) {
+        isCommon = false;
+        newValue = Object(_cloneTypedArray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(srcValue, true);
+      }
+      else {
+        newValue = [];
+      }
+    }
+    else if (Object(_isPlainObject_js__WEBPACK_IMPORTED_MODULE_11__["default"])(srcValue) || Object(_isArguments_js__WEBPACK_IMPORTED_MODULE_5__["default"])(srcValue)) {
+      newValue = objValue;
+      if (Object(_isArguments_js__WEBPACK_IMPORTED_MODULE_5__["default"])(objValue)) {
+        newValue = Object(_toPlainObject_js__WEBPACK_IMPORTED_MODULE_14__["default"])(objValue);
+      }
+      else if (!Object(_isObject_js__WEBPACK_IMPORTED_MODULE_10__["default"])(objValue) || Object(_isFunction_js__WEBPACK_IMPORTED_MODULE_9__["default"])(objValue)) {
+        newValue = Object(_initCloneObject_js__WEBPACK_IMPORTED_MODULE_4__["default"])(srcValue);
+      }
+    }
+    else {
+      isCommon = false;
+    }
+  }
+  if (isCommon) {
+    // Recursively merge objects and arrays (susceptible to call stack limits).
+    stack.set(srcValue, newValue);
+    mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
+    stack['delete'](srcValue);
+  }
+  Object(_assignMergeValue_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, key, newValue);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseMergeDeep);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseProperty.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseProperty.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * The base implementation of `_.property` without support for deep paths.
+ *
+ * @private
+ * @param {string} key The key of the property to get.
+ * @returns {Function} Returns the new accessor function.
+ */
+function baseProperty(key) {
+  return function(object) {
+    return object == null ? undefined : object[key];
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseProperty);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_basePropertyDeep.js":
+/*!*************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_basePropertyDeep.js ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseGet_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseGet.js */ "../../node_modules/lodash-es/_baseGet.js");
+
+
+/**
+ * A specialized version of `baseProperty` which supports deep paths.
+ *
+ * @private
+ * @param {Array|string} path The path of the property to get.
+ * @returns {Function} Returns the new accessor function.
+ */
+function basePropertyDeep(path) {
+  return function(object) {
+    return Object(_baseGet_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, path);
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (basePropertyDeep);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseRest.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseRest.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./identity.js */ "../../node_modules/lodash-es/identity.js");
+/* harmony import */ var _overRest_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_overRest.js */ "../../node_modules/lodash-es/_overRest.js");
+/* harmony import */ var _setToString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_setToString.js */ "../../node_modules/lodash-es/_setToString.js");
+
+
+
+
+/**
+ * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+ *
+ * @private
+ * @param {Function} func The function to apply a rest parameter to.
+ * @param {number} [start=func.length-1] The start position of the rest parameter.
+ * @returns {Function} Returns the new function.
+ */
+function baseRest(func, start) {
+  return Object(_setToString_js__WEBPACK_IMPORTED_MODULE_2__["default"])(Object(_overRest_js__WEBPACK_IMPORTED_MODULE_1__["default"])(func, start, _identity_js__WEBPACK_IMPORTED_MODULE_0__["default"]), func + '');
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseRest);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseSetToString.js":
+/*!************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseSetToString.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constant_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constant.js */ "../../node_modules/lodash-es/constant.js");
+/* harmony import */ var _defineProperty_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_defineProperty.js */ "../../node_modules/lodash-es/_defineProperty.js");
+/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./identity.js */ "../../node_modules/lodash-es/identity.js");
+
+
+
+
+/**
+ * The base implementation of `setToString` without support for hot loop shorting.
+ *
+ * @private
+ * @param {Function} func The function to modify.
+ * @param {Function} string The `toString` result.
+ * @returns {Function} Returns `func`.
+ */
+var baseSetToString = !_defineProperty_js__WEBPACK_IMPORTED_MODULE_1__["default"] ? _identity_js__WEBPACK_IMPORTED_MODULE_2__["default"] : function(func, string) {
+  return Object(_defineProperty_js__WEBPACK_IMPORTED_MODULE_1__["default"])(func, 'toString', {
+    'configurable': true,
+    'enumerable': false,
+    'value': Object(_constant_js__WEBPACK_IMPORTED_MODULE_0__["default"])(string),
+    'writable': true
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (baseSetToString);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseTimes.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseTimes.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */
+function baseTimes(n, iteratee) {
+  var index = -1,
+      result = Array(n);
+
+  while (++index < n) {
+    result[index] = iteratee(index);
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseTimes);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseToString.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseToString.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Symbol.js */ "../../node_modules/lodash-es/_Symbol.js");
+/* harmony import */ var _arrayMap_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_arrayMap.js */ "../../node_modules/lodash-es/_arrayMap.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./isSymbol.js */ "../../node_modules/lodash-es/isSymbol.js");
+
+
+
+
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0;
+
+/** Used to convert symbols to primitives and strings. */
+var symbolProto = _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype : undefined,
+    symbolToString = symbolProto ? symbolProto.toString : undefined;
+
+/**
+ * The base implementation of `_.toString` which doesn't convert nullish
+ * values to empty strings.
+ *
+ * @private
+ * @param {*} value The value to process.
+ * @returns {string} Returns the string.
+ */
+function baseToString(value) {
+  // Exit early for strings to avoid a performance hit in some environments.
+  if (typeof value == 'string') {
+    return value;
+  }
+  if (Object(_isArray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value)) {
+    // Recursively convert values (susceptible to call stack limits).
+    return Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value, baseToString) + '';
+  }
+  if (Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_3__["default"])(value)) {
+    return symbolToString ? symbolToString.call(value) : '';
+  }
+  var result = (value + '');
+  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseToString);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_baseUnary.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_baseUnary.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * The base implementation of `_.unary` without support for storing metadata.
+ *
+ * @private
+ * @param {Function} func The function to cap arguments for.
+ * @returns {Function} Returns the new capped function.
+ */
+function baseUnary(func) {
+  return function(value) {
+    return func(value);
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseUnary);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_cacheHas.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_cacheHas.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Checks if a `cache` value for `key` exists.
+ *
+ * @private
+ * @param {Object} cache The cache to query.
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function cacheHas(cache, key) {
+  return cache.has(key);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (cacheHas);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_castFunction.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_castFunction.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./identity.js */ "../../node_modules/lodash-es/identity.js");
+
+
+/**
+ * Casts `value` to `identity` if it's not a function.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @returns {Function} Returns cast function.
+ */
+function castFunction(value) {
+  return typeof value == 'function' ? value : _identity_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (castFunction);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_castPath.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_castPath.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+/* harmony import */ var _isKey_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_isKey.js */ "../../node_modules/lodash-es/_isKey.js");
+/* harmony import */ var _stringToPath_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_stringToPath.js */ "../../node_modules/lodash-es/_stringToPath.js");
+/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./toString.js */ "../../node_modules/lodash-es/toString.js");
+
+
+
+
+
+/**
+ * Casts `value` to a path array if it's not one.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @param {Object} [object] The object to query keys on.
+ * @returns {Array} Returns the cast property path array.
+ */
+function castPath(value, object) {
+  if (Object(_isArray_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+    return value;
+  }
+  return Object(_isKey_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value, object) ? [value] : Object(_stringToPath_js__WEBPACK_IMPORTED_MODULE_2__["default"])(Object(_toString_js__WEBPACK_IMPORTED_MODULE_3__["default"])(value));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (castPath);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_cloneArrayBuffer.js":
+/*!*************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_cloneArrayBuffer.js ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Uint8Array_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Uint8Array.js */ "../../node_modules/lodash-es/_Uint8Array.js");
+
+
+/**
+ * Creates a clone of `arrayBuffer`.
+ *
+ * @private
+ * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
+ * @returns {ArrayBuffer} Returns the cloned array buffer.
+ */
+function cloneArrayBuffer(arrayBuffer) {
+  var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
+  new _Uint8Array_js__WEBPACK_IMPORTED_MODULE_0__["default"](result).set(new _Uint8Array_js__WEBPACK_IMPORTED_MODULE_0__["default"](arrayBuffer));
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (cloneArrayBuffer);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_cloneBuffer.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_cloneBuffer.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+/** Detect free variable `exports`. */
+var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/** Built-in value references. */
+var Buffer = moduleExports ? _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Buffer : undefined,
+    allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined;
+
+/**
+ * Creates a clone of  `buffer`.
+ *
+ * @private
+ * @param {Buffer} buffer The buffer to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Buffer} Returns the cloned buffer.
+ */
+function cloneBuffer(buffer, isDeep) {
+  if (isDeep) {
+    return buffer.slice();
+  }
+  var length = buffer.length,
+      result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length);
+
+  buffer.copy(result);
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (cloneBuffer);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/harmony-module.js */ "../../node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_cloneTypedArray.js":
+/*!************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_cloneTypedArray.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _cloneArrayBuffer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_cloneArrayBuffer.js */ "../../node_modules/lodash-es/_cloneArrayBuffer.js");
+
+
+/**
+ * Creates a clone of `typedArray`.
+ *
+ * @private
+ * @param {Object} typedArray The typed array to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the cloned typed array.
+ */
+function cloneTypedArray(typedArray, isDeep) {
+  var buffer = isDeep ? Object(_cloneArrayBuffer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(typedArray.buffer) : typedArray.buffer;
+  return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (cloneTypedArray);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_copyArray.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_copyArray.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Copies the values of `source` to `array`.
+ *
+ * @private
+ * @param {Array} source The array to copy values from.
+ * @param {Array} [array=[]] The array to copy values to.
+ * @returns {Array} Returns `array`.
+ */
+function copyArray(source, array) {
+  var index = -1,
+      length = source.length;
+
+  array || (array = Array(length));
+  while (++index < length) {
+    array[index] = source[index];
+  }
+  return array;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (copyArray);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_copyObject.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_copyObject.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assignValue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_assignValue.js */ "../../node_modules/lodash-es/_assignValue.js");
+/* harmony import */ var _baseAssignValue_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseAssignValue.js */ "../../node_modules/lodash-es/_baseAssignValue.js");
+
+
+
+/**
+ * Copies properties of `source` to `object`.
+ *
+ * @private
+ * @param {Object} source The object to copy properties from.
+ * @param {Array} props The property identifiers to copy.
+ * @param {Object} [object={}] The object to copy properties to.
+ * @param {Function} [customizer] The function to customize copied values.
+ * @returns {Object} Returns `object`.
+ */
+function copyObject(source, props, object, customizer) {
+  var isNew = !object;
+  object || (object = {});
+
+  var index = -1,
+      length = props.length;
+
+  while (++index < length) {
+    var key = props[index];
+
+    var newValue = customizer
+      ? customizer(object[key], source[key], key, object, source)
+      : undefined;
+
+    if (newValue === undefined) {
+      newValue = source[key];
+    }
+    if (isNew) {
+      Object(_baseAssignValue_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object, key, newValue);
+    } else {
+      Object(_assignValue_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, key, newValue);
+    }
+  }
+  return object;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (copyObject);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_coreJsData.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_coreJsData.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+/** Used to detect overreaching core-js shims. */
+var coreJsData = _root_js__WEBPACK_IMPORTED_MODULE_0__["default"]['__core-js_shared__'];
+
+/* harmony default export */ __webpack_exports__["default"] = (coreJsData);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_createAssigner.js":
+/*!***********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_createAssigner.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseRest_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseRest.js */ "../../node_modules/lodash-es/_baseRest.js");
+/* harmony import */ var _isIterateeCall_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_isIterateeCall.js */ "../../node_modules/lodash-es/_isIterateeCall.js");
+
+
+
+/**
+ * Creates a function like `_.assign`.
+ *
+ * @private
+ * @param {Function} assigner The function to assign values.
+ * @returns {Function} Returns the new assigner function.
+ */
+function createAssigner(assigner) {
+  return Object(_baseRest_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function(object, sources) {
+    var index = -1,
+        length = sources.length,
+        customizer = length > 1 ? sources[length - 1] : undefined,
+        guard = length > 2 ? sources[2] : undefined;
+
+    customizer = (assigner.length > 3 && typeof customizer == 'function')
+      ? (length--, customizer)
+      : undefined;
+
+    if (guard && Object(_isIterateeCall_js__WEBPACK_IMPORTED_MODULE_1__["default"])(sources[0], sources[1], guard)) {
+      customizer = length < 3 ? undefined : customizer;
+      length = 1;
+    }
+    object = Object(object);
+    while (++index < length) {
+      var source = sources[index];
+      if (source) {
+        assigner(object, source, index, customizer);
+      }
+    }
+    return object;
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (createAssigner);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_createBaseEach.js":
+/*!***********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_createBaseEach.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isArrayLike.js */ "../../node_modules/lodash-es/isArrayLike.js");
+
+
+/**
+ * Creates a `baseEach` or `baseEachRight` function.
+ *
+ * @private
+ * @param {Function} eachFunc The function to iterate over a collection.
+ * @param {boolean} [fromRight] Specify iterating from right to left.
+ * @returns {Function} Returns the new base function.
+ */
+function createBaseEach(eachFunc, fromRight) {
+  return function(collection, iteratee) {
+    if (collection == null) {
+      return collection;
+    }
+    if (!Object(_isArrayLike_js__WEBPACK_IMPORTED_MODULE_0__["default"])(collection)) {
+      return eachFunc(collection, iteratee);
+    }
+    var length = collection.length,
+        index = fromRight ? length : -1,
+        iterable = Object(collection);
+
+    while ((fromRight ? index-- : ++index < length)) {
+      if (iteratee(iterable[index], index, iterable) === false) {
+        break;
+      }
+    }
+    return collection;
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (createBaseEach);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_createBaseFor.js":
+/*!**********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_createBaseFor.js ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Creates a base function for methods like `_.forIn` and `_.forOwn`.
+ *
+ * @private
+ * @param {boolean} [fromRight] Specify iterating from right to left.
+ * @returns {Function} Returns the new base function.
+ */
+function createBaseFor(fromRight) {
+  return function(object, iteratee, keysFunc) {
+    var index = -1,
+        iterable = Object(object),
+        props = keysFunc(object),
+        length = props.length;
+
+    while (length--) {
+      var key = props[fromRight ? length : ++index];
+      if (iteratee(iterable[key], key, iterable) === false) {
+        break;
+      }
+    }
+    return object;
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (createBaseFor);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_defineProperty.js":
+/*!***********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_defineProperty.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getNative_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getNative.js */ "../../node_modules/lodash-es/_getNative.js");
+
+
+var defineProperty = (function() {
+  try {
+    var func = Object(_getNative_js__WEBPACK_IMPORTED_MODULE_0__["default"])(Object, 'defineProperty');
+    func({}, '', {});
+    return func;
+  } catch (e) {}
+}());
+
+/* harmony default export */ __webpack_exports__["default"] = (defineProperty);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_equalArrays.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_equalArrays.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SetCache_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_SetCache.js */ "../../node_modules/lodash-es/_SetCache.js");
+/* harmony import */ var _arraySome_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_arraySome.js */ "../../node_modules/lodash-es/_arraySome.js");
+/* harmony import */ var _cacheHas_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_cacheHas.js */ "../../node_modules/lodash-es/_cacheHas.js");
+
+
+
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/**
+ * A specialized version of `baseIsEqualDeep` for arrays with support for
+ * partial deep comparisons.
+ *
+ * @private
+ * @param {Array} array The array to compare.
+ * @param {Array} other The other array to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} stack Tracks traversed `array` and `other` objects.
+ * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
+ */
+function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
+  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
+      arrLength = array.length,
+      othLength = other.length;
+
+  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
+    return false;
+  }
+  // Assume cyclic values are equal.
+  var stacked = stack.get(array);
+  if (stacked && stack.get(other)) {
+    return stacked == other;
+  }
+  var index = -1,
+      result = true,
+      seen = (bitmask & COMPARE_UNORDERED_FLAG) ? new _SetCache_js__WEBPACK_IMPORTED_MODULE_0__["default"] : undefined;
+
+  stack.set(array, other);
+  stack.set(other, array);
+
+  // Ignore non-index properties.
+  while (++index < arrLength) {
+    var arrValue = array[index],
+        othValue = other[index];
+
+    if (customizer) {
+      var compared = isPartial
+        ? customizer(othValue, arrValue, index, other, array, stack)
+        : customizer(arrValue, othValue, index, array, other, stack);
+    }
+    if (compared !== undefined) {
+      if (compared) {
+        continue;
+      }
+      result = false;
+      break;
+    }
+    // Recursively compare arrays (susceptible to call stack limits).
+    if (seen) {
+      if (!Object(_arraySome_js__WEBPACK_IMPORTED_MODULE_1__["default"])(other, function(othValue, othIndex) {
+            if (!Object(_cacheHas_js__WEBPACK_IMPORTED_MODULE_2__["default"])(seen, othIndex) &&
+                (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
+              return seen.push(othIndex);
+            }
+          })) {
+        result = false;
+        break;
+      }
+    } else if (!(
+          arrValue === othValue ||
+            equalFunc(arrValue, othValue, bitmask, customizer, stack)
+        )) {
+      result = false;
+      break;
+    }
+  }
+  stack['delete'](array);
+  stack['delete'](other);
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (equalArrays);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_equalByTag.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_equalByTag.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Symbol.js */ "../../node_modules/lodash-es/_Symbol.js");
+/* harmony import */ var _Uint8Array_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_Uint8Array.js */ "../../node_modules/lodash-es/_Uint8Array.js");
+/* harmony import */ var _eq_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./eq.js */ "../../node_modules/lodash-es/eq.js");
+/* harmony import */ var _equalArrays_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_equalArrays.js */ "../../node_modules/lodash-es/_equalArrays.js");
+/* harmony import */ var _mapToArray_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_mapToArray.js */ "../../node_modules/lodash-es/_mapToArray.js");
+/* harmony import */ var _setToArray_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_setToArray.js */ "../../node_modules/lodash-es/_setToArray.js");
+
+
+
+
+
+
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/** `Object#toString` result references. */
+var boolTag = '[object Boolean]',
+    dateTag = '[object Date]',
+    errorTag = '[object Error]',
+    mapTag = '[object Map]',
+    numberTag = '[object Number]',
+    regexpTag = '[object RegExp]',
+    setTag = '[object Set]',
+    stringTag = '[object String]',
+    symbolTag = '[object Symbol]';
+
+var arrayBufferTag = '[object ArrayBuffer]',
+    dataViewTag = '[object DataView]';
+
+/** Used to convert symbols to primitives and strings. */
+var symbolProto = _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype : undefined,
+    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;
+
+/**
+ * A specialized version of `baseIsEqualDeep` for comparing objects of
+ * the same `toStringTag`.
+ *
+ * **Note:** This function only supports comparing values with tags of
+ * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+ *
+ * @private
+ * @param {Object} object The object to compare.
+ * @param {Object} other The other object to compare.
+ * @param {string} tag The `toStringTag` of the objects to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} stack Tracks traversed `object` and `other` objects.
+ * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+ */
+function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
+  switch (tag) {
+    case dataViewTag:
+      if ((object.byteLength != other.byteLength) ||
+          (object.byteOffset != other.byteOffset)) {
+        return false;
+      }
+      object = object.buffer;
+      other = other.buffer;
+
+    case arrayBufferTag:
+      if ((object.byteLength != other.byteLength) ||
+          !equalFunc(new _Uint8Array_js__WEBPACK_IMPORTED_MODULE_1__["default"](object), new _Uint8Array_js__WEBPACK_IMPORTED_MODULE_1__["default"](other))) {
+        return false;
+      }
+      return true;
+
+    case boolTag:
+    case dateTag:
+    case numberTag:
+      // Coerce booleans to `1` or `0` and dates to milliseconds.
+      // Invalid dates are coerced to `NaN`.
+      return Object(_eq_js__WEBPACK_IMPORTED_MODULE_2__["default"])(+object, +other);
+
+    case errorTag:
+      return object.name == other.name && object.message == other.message;
+
+    case regexpTag:
+    case stringTag:
+      // Coerce regexes to strings and treat strings, primitives and objects,
+      // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
+      // for more details.
+      return object == (other + '');
+
+    case mapTag:
+      var convert = _mapToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"];
+
+    case setTag:
+      var isPartial = bitmask & COMPARE_PARTIAL_FLAG;
+      convert || (convert = _setToArray_js__WEBPACK_IMPORTED_MODULE_5__["default"]);
+
+      if (object.size != other.size && !isPartial) {
+        return false;
+      }
+      // Assume cyclic values are equal.
+      var stacked = stack.get(object);
+      if (stacked) {
+        return stacked == other;
+      }
+      bitmask |= COMPARE_UNORDERED_FLAG;
+
+      // Recursively compare objects (susceptible to call stack limits).
+      stack.set(object, other);
+      var result = Object(_equalArrays_js__WEBPACK_IMPORTED_MODULE_3__["default"])(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
+      stack['delete'](object);
+      return result;
+
+    case symbolTag:
+      if (symbolValueOf) {
+        return symbolValueOf.call(object) == symbolValueOf.call(other);
+      }
+  }
+  return false;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (equalByTag);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_equalObjects.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_equalObjects.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getAllKeys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getAllKeys.js */ "../../node_modules/lodash-es/_getAllKeys.js");
+
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1;
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * A specialized version of `baseIsEqualDeep` for objects with support for
+ * partial deep comparisons.
+ *
+ * @private
+ * @param {Object} object The object to compare.
+ * @param {Object} other The other object to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} stack Tracks traversed `object` and `other` objects.
+ * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+ */
+function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
+  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
+      objProps = Object(_getAllKeys_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object),
+      objLength = objProps.length,
+      othProps = Object(_getAllKeys_js__WEBPACK_IMPORTED_MODULE_0__["default"])(other),
+      othLength = othProps.length;
+
+  if (objLength != othLength && !isPartial) {
+    return false;
+  }
+  var index = objLength;
+  while (index--) {
+    var key = objProps[index];
+    if (!(isPartial ? key in other : hasOwnProperty.call(other, key))) {
+      return false;
+    }
+  }
+  // Assume cyclic values are equal.
+  var stacked = stack.get(object);
+  if (stacked && stack.get(other)) {
+    return stacked == other;
+  }
+  var result = true;
+  stack.set(object, other);
+  stack.set(other, object);
+
+  var skipCtor = isPartial;
+  while (++index < objLength) {
+    key = objProps[index];
+    var objValue = object[key],
+        othValue = other[key];
+
+    if (customizer) {
+      var compared = isPartial
+        ? customizer(othValue, objValue, key, other, object, stack)
+        : customizer(objValue, othValue, key, object, other, stack);
+    }
+    // Recursively compare objects (susceptible to call stack limits).
+    if (!(compared === undefined
+          ? (objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack))
+          : compared
+        )) {
+      result = false;
+      break;
+    }
+    skipCtor || (skipCtor = key == 'constructor');
+  }
+  if (result && !skipCtor) {
+    var objCtor = object.constructor,
+        othCtor = other.constructor;
+
+    // Non `Object` object instances with different constructors are not equal.
+    if (objCtor != othCtor &&
+        ('constructor' in object && 'constructor' in other) &&
+        !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
+          typeof othCtor == 'function' && othCtor instanceof othCtor)) {
+      result = false;
+    }
+  }
+  stack['delete'](object);
+  stack['delete'](other);
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (equalObjects);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_freeGlobal.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_freeGlobal.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+/* harmony default export */ __webpack_exports__["default"] = (freeGlobal);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "../../node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getAllKeys.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getAllKeys.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseGetAllKeys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseGetAllKeys.js */ "../../node_modules/lodash-es/_baseGetAllKeys.js");
+/* harmony import */ var _getSymbols_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_getSymbols.js */ "../../node_modules/lodash-es/_getSymbols.js");
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./keys.js */ "../../node_modules/lodash-es/keys.js");
+
+
+
+
+/**
+ * Creates an array of own enumerable property names and symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function getAllKeys(object) {
+  return Object(_baseGetAllKeys_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, _keys_js__WEBPACK_IMPORTED_MODULE_2__["default"], _getSymbols_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getAllKeys);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getMapData.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getMapData.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isKeyable_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_isKeyable.js */ "../../node_modules/lodash-es/_isKeyable.js");
+
+
+/**
+ * Gets the data for `map`.
+ *
+ * @private
+ * @param {Object} map The map to query.
+ * @param {string} key The reference key.
+ * @returns {*} Returns the map data.
+ */
+function getMapData(map, key) {
+  var data = map.__data__;
+  return Object(_isKeyable_js__WEBPACK_IMPORTED_MODULE_0__["default"])(key)
+    ? data[typeof key == 'string' ? 'string' : 'hash']
+    : data.map;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getMapData);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getMatchData.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getMatchData.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isStrictComparable_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_isStrictComparable.js */ "../../node_modules/lodash-es/_isStrictComparable.js");
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./keys.js */ "../../node_modules/lodash-es/keys.js");
+
+
+
+/**
+ * Gets the property names, values, and compare flags of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the match data of `object`.
+ */
+function getMatchData(object) {
+  var result = Object(_keys_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object),
+      length = result.length;
+
+  while (length--) {
+    var key = result[length],
+        value = object[key];
+
+    result[length] = [key, value, Object(_isStrictComparable_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)];
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getMatchData);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getNative.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getNative.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseIsNative_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseIsNative.js */ "../../node_modules/lodash-es/_baseIsNative.js");
+/* harmony import */ var _getValue_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_getValue.js */ "../../node_modules/lodash-es/_getValue.js");
+
+
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = Object(_getValue_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object, key);
+  return Object(_baseIsNative_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value) ? value : undefined;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getNative);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getPrototype.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getPrototype.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _overArg_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_overArg.js */ "../../node_modules/lodash-es/_overArg.js");
+
+
+/** Built-in value references. */
+var getPrototype = Object(_overArg_js__WEBPACK_IMPORTED_MODULE_0__["default"])(Object.getPrototypeOf, Object);
+
+/* harmony default export */ __webpack_exports__["default"] = (getPrototype);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getRawTag.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getRawTag.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Symbol.js */ "../../node_modules/lodash-es/_Symbol.js");
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Built-in value references. */
+var symToStringTag = _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"].toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getRawTag);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getSymbols.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getSymbols.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _arrayFilter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayFilter.js */ "../../node_modules/lodash-es/_arrayFilter.js");
+/* harmony import */ var _stubArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stubArray.js */ "../../node_modules/lodash-es/stubArray.js");
+
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Built-in value references. */
+var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeGetSymbols = Object.getOwnPropertySymbols;
+
+/**
+ * Creates an array of the own enumerable symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of symbols.
+ */
+var getSymbols = !nativeGetSymbols ? _stubArray_js__WEBPACK_IMPORTED_MODULE_1__["default"] : function(object) {
+  if (object == null) {
+    return [];
+  }
+  object = Object(object);
+  return Object(_arrayFilter_js__WEBPACK_IMPORTED_MODULE_0__["default"])(nativeGetSymbols(object), function(symbol) {
+    return propertyIsEnumerable.call(object, symbol);
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getSymbols);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getTag.js":
+/*!***************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getTag.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DataView_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_DataView.js */ "../../node_modules/lodash-es/_DataView.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_Map.js */ "../../node_modules/lodash-es/_Map.js");
+/* harmony import */ var _Promise_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_Promise.js */ "../../node_modules/lodash-es/_Promise.js");
+/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_Set.js */ "../../node_modules/lodash-es/_Set.js");
+/* harmony import */ var _WeakMap_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_WeakMap.js */ "../../node_modules/lodash-es/_WeakMap.js");
+/* harmony import */ var _baseGetTag_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_baseGetTag.js */ "../../node_modules/lodash-es/_baseGetTag.js");
+/* harmony import */ var _toSource_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_toSource.js */ "../../node_modules/lodash-es/_toSource.js");
+
+
+
+
+
+
+
+
+/** `Object#toString` result references. */
+var mapTag = '[object Map]',
+    objectTag = '[object Object]',
+    promiseTag = '[object Promise]',
+    setTag = '[object Set]',
+    weakMapTag = '[object WeakMap]';
+
+var dataViewTag = '[object DataView]';
+
+/** Used to detect maps, sets, and weakmaps. */
+var dataViewCtorString = Object(_toSource_js__WEBPACK_IMPORTED_MODULE_6__["default"])(_DataView_js__WEBPACK_IMPORTED_MODULE_0__["default"]),
+    mapCtorString = Object(_toSource_js__WEBPACK_IMPORTED_MODULE_6__["default"])(_Map_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
+    promiseCtorString = Object(_toSource_js__WEBPACK_IMPORTED_MODULE_6__["default"])(_Promise_js__WEBPACK_IMPORTED_MODULE_2__["default"]),
+    setCtorString = Object(_toSource_js__WEBPACK_IMPORTED_MODULE_6__["default"])(_Set_js__WEBPACK_IMPORTED_MODULE_3__["default"]),
+    weakMapCtorString = Object(_toSource_js__WEBPACK_IMPORTED_MODULE_6__["default"])(_WeakMap_js__WEBPACK_IMPORTED_MODULE_4__["default"]);
+
+/**
+ * Gets the `toStringTag` of `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+var getTag = _baseGetTag_js__WEBPACK_IMPORTED_MODULE_5__["default"];
+
+// Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
+if ((_DataView_js__WEBPACK_IMPORTED_MODULE_0__["default"] && getTag(new _DataView_js__WEBPACK_IMPORTED_MODULE_0__["default"](new ArrayBuffer(1))) != dataViewTag) ||
+    (_Map_js__WEBPACK_IMPORTED_MODULE_1__["default"] && getTag(new _Map_js__WEBPACK_IMPORTED_MODULE_1__["default"]) != mapTag) ||
+    (_Promise_js__WEBPACK_IMPORTED_MODULE_2__["default"] && getTag(_Promise_js__WEBPACK_IMPORTED_MODULE_2__["default"].resolve()) != promiseTag) ||
+    (_Set_js__WEBPACK_IMPORTED_MODULE_3__["default"] && getTag(new _Set_js__WEBPACK_IMPORTED_MODULE_3__["default"]) != setTag) ||
+    (_WeakMap_js__WEBPACK_IMPORTED_MODULE_4__["default"] && getTag(new _WeakMap_js__WEBPACK_IMPORTED_MODULE_4__["default"]) != weakMapTag)) {
+  getTag = function(value) {
+    var result = Object(_baseGetTag_js__WEBPACK_IMPORTED_MODULE_5__["default"])(value),
+        Ctor = result == objectTag ? value.constructor : undefined,
+        ctorString = Ctor ? Object(_toSource_js__WEBPACK_IMPORTED_MODULE_6__["default"])(Ctor) : '';
+
+    if (ctorString) {
+      switch (ctorString) {
+        case dataViewCtorString: return dataViewTag;
+        case mapCtorString: return mapTag;
+        case promiseCtorString: return promiseTag;
+        case setCtorString: return setTag;
+        case weakMapCtorString: return weakMapTag;
+      }
+    }
+    return result;
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getTag);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_getValue.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_getValue.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Gets the value at `key` of `object`.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function getValue(object, key) {
+  return object == null ? undefined : object[key];
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getValue);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_hasPath.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_hasPath.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _castPath_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_castPath.js */ "../../node_modules/lodash-es/_castPath.js");
+/* harmony import */ var _isArguments_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isArguments.js */ "../../node_modules/lodash-es/isArguments.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+/* harmony import */ var _isIndex_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_isIndex.js */ "../../node_modules/lodash-es/_isIndex.js");
+/* harmony import */ var _isLength_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./isLength.js */ "../../node_modules/lodash-es/isLength.js");
+/* harmony import */ var _toKey_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_toKey.js */ "../../node_modules/lodash-es/_toKey.js");
+
+
+
+
+
+
+
+/**
+ * Checks if `path` exists on `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path to check.
+ * @param {Function} hasFunc The function to check properties.
+ * @returns {boolean} Returns `true` if `path` exists, else `false`.
+ */
+function hasPath(object, path, hasFunc) {
+  path = Object(_castPath_js__WEBPACK_IMPORTED_MODULE_0__["default"])(path, object);
+
+  var index = -1,
+      length = path.length,
+      result = false;
+
+  while (++index < length) {
+    var key = Object(_toKey_js__WEBPACK_IMPORTED_MODULE_5__["default"])(path[index]);
+    if (!(result = object != null && hasFunc(object, key))) {
+      break;
+    }
+    object = object[key];
+  }
+  if (result || ++index != length) {
+    return result;
+  }
+  length = object == null ? 0 : object.length;
+  return !!length && Object(_isLength_js__WEBPACK_IMPORTED_MODULE_4__["default"])(length) && Object(_isIndex_js__WEBPACK_IMPORTED_MODULE_3__["default"])(key, length) &&
+    (Object(_isArray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(object) || Object(_isArguments_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (hasPath);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_hashClear.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_hashClear.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_nativeCreate.js */ "../../node_modules/lodash-es/_nativeCreate.js");
+
+
+/**
+ * Removes all key-value entries from the hash.
+ *
+ * @private
+ * @name clear
+ * @memberOf Hash
+ */
+function hashClear() {
+  this.__data__ = _nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? Object(_nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__["default"])(null) : {};
+  this.size = 0;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (hashClear);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_hashDelete.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_hashDelete.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Removes `key` and its value from the hash.
+ *
+ * @private
+ * @name delete
+ * @memberOf Hash
+ * @param {Object} hash The hash to modify.
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function hashDelete(key) {
+  var result = this.has(key) && delete this.__data__[key];
+  this.size -= result ? 1 : 0;
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (hashDelete);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_hashGet.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_hashGet.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_nativeCreate.js */ "../../node_modules/lodash-es/_nativeCreate.js");
+
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Gets the hash value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Hash
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function hashGet(key) {
+  var data = this.__data__;
+  if (_nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__["default"]) {
+    var result = data[key];
+    return result === HASH_UNDEFINED ? undefined : result;
+  }
+  return hasOwnProperty.call(data, key) ? data[key] : undefined;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (hashGet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_hashHas.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_hashHas.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_nativeCreate.js */ "../../node_modules/lodash-es/_nativeCreate.js");
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Checks if a hash value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Hash
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function hashHas(key) {
+  var data = this.__data__;
+  return _nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? (data[key] !== undefined) : hasOwnProperty.call(data, key);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (hashHas);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_hashSet.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_hashSet.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_nativeCreate.js */ "../../node_modules/lodash-es/_nativeCreate.js");
+
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/**
+ * Sets the hash `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Hash
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the hash instance.
+ */
+function hashSet(key, value) {
+  var data = this.__data__;
+  this.size += this.has(key) ? 0 : 1;
+  data[key] = (_nativeCreate_js__WEBPACK_IMPORTED_MODULE_0__["default"] && value === undefined) ? HASH_UNDEFINED : value;
+  return this;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (hashSet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_initCloneObject.js":
+/*!************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_initCloneObject.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseCreate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseCreate.js */ "../../node_modules/lodash-es/_baseCreate.js");
+/* harmony import */ var _getPrototype_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_getPrototype.js */ "../../node_modules/lodash-es/_getPrototype.js");
+/* harmony import */ var _isPrototype_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_isPrototype.js */ "../../node_modules/lodash-es/_isPrototype.js");
+
+
+
+
+/**
+ * Initializes an object clone.
+ *
+ * @private
+ * @param {Object} object The object to clone.
+ * @returns {Object} Returns the initialized clone.
+ */
+function initCloneObject(object) {
+  return (typeof object.constructor == 'function' && !Object(_isPrototype_js__WEBPACK_IMPORTED_MODULE_2__["default"])(object))
+    ? Object(_baseCreate_js__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_getPrototype_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object))
+    : {};
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (initCloneObject);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_isIndex.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_isIndex.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  var type = typeof value;
+  length = length == null ? MAX_SAFE_INTEGER : length;
+
+  return !!length &&
+    (type == 'number' ||
+      (type != 'symbol' && reIsUint.test(value))) &&
+        (value > -1 && value % 1 == 0 && value < length);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isIndex);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_isIterateeCall.js":
+/*!***********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_isIterateeCall.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _eq_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./eq.js */ "../../node_modules/lodash-es/eq.js");
+/* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isArrayLike.js */ "../../node_modules/lodash-es/isArrayLike.js");
+/* harmony import */ var _isIndex_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_isIndex.js */ "../../node_modules/lodash-es/_isIndex.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+
+
+
+
+
+/**
+ * Checks if the given arguments are from an iteratee call.
+ *
+ * @private
+ * @param {*} value The potential iteratee value argument.
+ * @param {*} index The potential iteratee index or key argument.
+ * @param {*} object The potential iteratee object argument.
+ * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+ *  else `false`.
+ */
+function isIterateeCall(value, index, object) {
+  if (!Object(_isObject_js__WEBPACK_IMPORTED_MODULE_3__["default"])(object)) {
+    return false;
+  }
+  var type = typeof index;
+  if (type == 'number'
+        ? (Object(_isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object) && Object(_isIndex_js__WEBPACK_IMPORTED_MODULE_2__["default"])(index, object.length))
+        : (type == 'string' && index in object)
+      ) {
+    return Object(_eq_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object[index], value);
+  }
+  return false;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isIterateeCall);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_isKey.js":
+/*!**************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_isKey.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isSymbol.js */ "../../node_modules/lodash-es/isSymbol.js");
+
+
+
+/** Used to match property names within property paths. */
+var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
+    reIsPlainProp = /^\w*$/;
+
+/**
+ * Checks if `value` is a property name and not a property path.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {Object} [object] The object to query keys on.
+ * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
+ */
+function isKey(value, object) {
+  if (Object(_isArray_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+    return false;
+  }
+  var type = typeof value;
+  if (type == 'number' || type == 'symbol' || type == 'boolean' ||
+      value == null || Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+    return true;
+  }
+  return reIsPlainProp.test(value) || !reIsDeepProp.test(value) ||
+    (object != null && value in Object(object));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isKey);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_isKeyable.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_isKeyable.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Checks if `value` is suitable for use as unique object key.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+ */
+function isKeyable(value) {
+  var type = typeof value;
+  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+    ? (value !== '__proto__')
+    : (value === null);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isKeyable);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_isMasked.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_isMasked.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _coreJsData_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_coreJsData.js */ "../../node_modules/lodash-es/_coreJsData.js");
+
+
+/** Used to detect methods masquerading as native. */
+var maskSrcKey = (function() {
+  var uid = /[^.]+$/.exec(_coreJsData_js__WEBPACK_IMPORTED_MODULE_0__["default"] && _coreJsData_js__WEBPACK_IMPORTED_MODULE_0__["default"].keys && _coreJsData_js__WEBPACK_IMPORTED_MODULE_0__["default"].keys.IE_PROTO || '');
+  return uid ? ('Symbol(src)_1.' + uid) : '';
+}());
+
+/**
+ * Checks if `func` has its source masked.
+ *
+ * @private
+ * @param {Function} func The function to check.
+ * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+ */
+function isMasked(func) {
+  return !!maskSrcKey && (maskSrcKey in func);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isMasked);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_isPrototype.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_isPrototype.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Checks if `value` is likely a prototype object.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+ */
+function isPrototype(value) {
+  var Ctor = value && value.constructor,
+      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+
+  return value === proto;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isPrototype);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_isStrictComparable.js":
+/*!***************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_isStrictComparable.js ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+
+
+/**
+ * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` if suitable for strict
+ *  equality comparisons, else `false`.
+ */
+function isStrictComparable(value) {
+  return value === value && !Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isStrictComparable);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_listCacheClear.js":
+/*!***********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_listCacheClear.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Removes all key-value entries from the list cache.
+ *
+ * @private
+ * @name clear
+ * @memberOf ListCache
+ */
+function listCacheClear() {
+  this.__data__ = [];
+  this.size = 0;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (listCacheClear);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_listCacheDelete.js":
+/*!************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_listCacheDelete.js ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assocIndexOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_assocIndexOf.js */ "../../node_modules/lodash-es/_assocIndexOf.js");
+
+
+/** Used for built-in method references. */
+var arrayProto = Array.prototype;
+
+/** Built-in value references. */
+var splice = arrayProto.splice;
+
+/**
+ * Removes `key` and its value from the list cache.
+ *
+ * @private
+ * @name delete
+ * @memberOf ListCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function listCacheDelete(key) {
+  var data = this.__data__,
+      index = Object(_assocIndexOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(data, key);
+
+  if (index < 0) {
+    return false;
+  }
+  var lastIndex = data.length - 1;
+  if (index == lastIndex) {
+    data.pop();
+  } else {
+    splice.call(data, index, 1);
+  }
+  --this.size;
+  return true;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (listCacheDelete);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_listCacheGet.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_listCacheGet.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assocIndexOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_assocIndexOf.js */ "../../node_modules/lodash-es/_assocIndexOf.js");
+
+
+/**
+ * Gets the list cache value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf ListCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function listCacheGet(key) {
+  var data = this.__data__,
+      index = Object(_assocIndexOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(data, key);
+
+  return index < 0 ? undefined : data[index][1];
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (listCacheGet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_listCacheHas.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_listCacheHas.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assocIndexOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_assocIndexOf.js */ "../../node_modules/lodash-es/_assocIndexOf.js");
+
+
+/**
+ * Checks if a list cache value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf ListCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function listCacheHas(key) {
+  return Object(_assocIndexOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(this.__data__, key) > -1;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (listCacheHas);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_listCacheSet.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_listCacheSet.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assocIndexOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_assocIndexOf.js */ "../../node_modules/lodash-es/_assocIndexOf.js");
+
+
+/**
+ * Sets the list cache `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf ListCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the list cache instance.
+ */
+function listCacheSet(key, value) {
+  var data = this.__data__,
+      index = Object(_assocIndexOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(data, key);
+
+  if (index < 0) {
+    ++this.size;
+    data.push([key, value]);
+  } else {
+    data[index][1] = value;
+  }
+  return this;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (listCacheSet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_mapCacheClear.js":
+/*!**********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_mapCacheClear.js ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Hash_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Hash.js */ "../../node_modules/lodash-es/_Hash.js");
+/* harmony import */ var _ListCache_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_ListCache.js */ "../../node_modules/lodash-es/_ListCache.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_Map.js */ "../../node_modules/lodash-es/_Map.js");
+
+
+
+
+/**
+ * Removes all key-value entries from the map.
+ *
+ * @private
+ * @name clear
+ * @memberOf MapCache
+ */
+function mapCacheClear() {
+  this.size = 0;
+  this.__data__ = {
+    'hash': new _Hash_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+    'map': new (_Map_js__WEBPACK_IMPORTED_MODULE_2__["default"] || _ListCache_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
+    'string': new _Hash_js__WEBPACK_IMPORTED_MODULE_0__["default"]
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (mapCacheClear);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_mapCacheDelete.js":
+/*!***********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_mapCacheDelete.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getMapData_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getMapData.js */ "../../node_modules/lodash-es/_getMapData.js");
+
+
+/**
+ * Removes `key` and its value from the map.
+ *
+ * @private
+ * @name delete
+ * @memberOf MapCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function mapCacheDelete(key) {
+  var result = Object(_getMapData_js__WEBPACK_IMPORTED_MODULE_0__["default"])(this, key)['delete'](key);
+  this.size -= result ? 1 : 0;
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (mapCacheDelete);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_mapCacheGet.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_mapCacheGet.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getMapData_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getMapData.js */ "../../node_modules/lodash-es/_getMapData.js");
+
+
+/**
+ * Gets the map value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf MapCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function mapCacheGet(key) {
+  return Object(_getMapData_js__WEBPACK_IMPORTED_MODULE_0__["default"])(this, key).get(key);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (mapCacheGet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_mapCacheHas.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_mapCacheHas.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getMapData_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getMapData.js */ "../../node_modules/lodash-es/_getMapData.js");
+
+
+/**
+ * Checks if a map value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf MapCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function mapCacheHas(key) {
+  return Object(_getMapData_js__WEBPACK_IMPORTED_MODULE_0__["default"])(this, key).has(key);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (mapCacheHas);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_mapCacheSet.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_mapCacheSet.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getMapData_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getMapData.js */ "../../node_modules/lodash-es/_getMapData.js");
+
+
+/**
+ * Sets the map `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf MapCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the map cache instance.
+ */
+function mapCacheSet(key, value) {
+  var data = Object(_getMapData_js__WEBPACK_IMPORTED_MODULE_0__["default"])(this, key),
+      size = data.size;
+
+  data.set(key, value);
+  this.size += data.size == size ? 0 : 1;
+  return this;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (mapCacheSet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_mapToArray.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_mapToArray.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Converts `map` to its key-value pairs.
+ *
+ * @private
+ * @param {Object} map The map to convert.
+ * @returns {Array} Returns the key-value pairs.
+ */
+function mapToArray(map) {
+  var index = -1,
+      result = Array(map.size);
+
+  map.forEach(function(value, key) {
+    result[++index] = [key, value];
+  });
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (mapToArray);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_matchesStrictComparable.js":
+/*!********************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_matchesStrictComparable.js ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * A specialized version of `matchesProperty` for source values suitable
+ * for strict equality comparisons, i.e. `===`.
+ *
+ * @private
+ * @param {string} key The key of the property to get.
+ * @param {*} srcValue The value to match.
+ * @returns {Function} Returns the new spec function.
+ */
+function matchesStrictComparable(key, srcValue) {
+  return function(object) {
+    if (object == null) {
+      return false;
+    }
+    return object[key] === srcValue &&
+      (srcValue !== undefined || (key in Object(object)));
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (matchesStrictComparable);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_memoizeCapped.js":
+/*!**********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_memoizeCapped.js ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _memoize_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./memoize.js */ "../../node_modules/lodash-es/memoize.js");
+
+
+/** Used as the maximum memoize cache size. */
+var MAX_MEMOIZE_SIZE = 500;
+
+/**
+ * A specialized version of `_.memoize` which clears the memoized function's
+ * cache when it exceeds `MAX_MEMOIZE_SIZE`.
+ *
+ * @private
+ * @param {Function} func The function to have its output memoized.
+ * @returns {Function} Returns the new memoized function.
+ */
+function memoizeCapped(func) {
+  var result = Object(_memoize_js__WEBPACK_IMPORTED_MODULE_0__["default"])(func, function(key) {
+    if (cache.size === MAX_MEMOIZE_SIZE) {
+      cache.clear();
+    }
+    return key;
+  });
+
+  var cache = result.cache;
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (memoizeCapped);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_nativeCreate.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_nativeCreate.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getNative_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_getNative.js */ "../../node_modules/lodash-es/_getNative.js");
+
+
+/* Built-in method references that are verified to be native. */
+var nativeCreate = Object(_getNative_js__WEBPACK_IMPORTED_MODULE_0__["default"])(Object, 'create');
+
+/* harmony default export */ __webpack_exports__["default"] = (nativeCreate);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_nativeKeys.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_nativeKeys.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _overArg_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_overArg.js */ "../../node_modules/lodash-es/_overArg.js");
+
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeKeys = Object(_overArg_js__WEBPACK_IMPORTED_MODULE_0__["default"])(Object.keys, Object);
+
+/* harmony default export */ __webpack_exports__["default"] = (nativeKeys);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_nativeKeysIn.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_nativeKeysIn.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * This function is like
+ * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * except that it includes inherited enumerable properties.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function nativeKeysIn(object) {
+  var result = [];
+  if (object != null) {
+    for (var key in Object(object)) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (nativeKeysIn);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_nodeUtil.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_nodeUtil.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_freeGlobal.js */ "../../node_modules/lodash-es/_freeGlobal.js");
+
+
+/** Detect free variable `exports`. */
+var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/** Detect free variable `process` from Node.js. */
+var freeProcess = moduleExports && _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__["default"].process;
+
+/** Used to access faster Node.js helpers. */
+var nodeUtil = (function() {
+  try {
+    // Use `util.types` for Node.js 10+.
+    var types = freeModule && freeModule.require && freeModule.require('util').types;
+
+    if (types) {
+      return types;
+    }
+
+    // Legacy `process.binding('util')` for Node.js < 10.
+    return freeProcess && freeProcess.binding && freeProcess.binding('util');
+  } catch (e) {}
+}());
+
+/* harmony default export */ __webpack_exports__["default"] = (nodeUtil);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/harmony-module.js */ "../../node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_objectToString.js":
+/*!***********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_objectToString.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (objectToString);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_overArg.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_overArg.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function(arg) {
+    return func(transform(arg));
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (overArg);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_overRest.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_overRest.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _apply_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_apply.js */ "../../node_modules/lodash-es/_apply.js");
+
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max;
+
+/**
+ * A specialized version of `baseRest` which transforms the rest array.
+ *
+ * @private
+ * @param {Function} func The function to apply a rest parameter to.
+ * @param {number} [start=func.length-1] The start position of the rest parameter.
+ * @param {Function} transform The rest array transform.
+ * @returns {Function} Returns the new function.
+ */
+function overRest(func, start, transform) {
+  start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+  return function() {
+    var args = arguments,
+        index = -1,
+        length = nativeMax(args.length - start, 0),
+        array = Array(length);
+
+    while (++index < length) {
+      array[index] = args[start + index];
+    }
+    index = -1;
+    var otherArgs = Array(start + 1);
+    while (++index < start) {
+      otherArgs[index] = args[index];
+    }
+    otherArgs[start] = transform(array);
+    return Object(_apply_js__WEBPACK_IMPORTED_MODULE_0__["default"])(func, this, otherArgs);
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (overRest);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_root.js":
+/*!*************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_root.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_freeGlobal.js */ "../../node_modules/lodash-es/_freeGlobal.js");
+
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__["default"] || freeSelf || Function('return this')();
+
+/* harmony default export */ __webpack_exports__["default"] = (root);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_safeGet.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_safeGet.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function safeGet(object, key) {
+  if (key === 'constructor' && typeof object[key] === 'function') {
+    return;
+  }
+
+  if (key == '__proto__') {
+    return;
+  }
+
+  return object[key];
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (safeGet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_setCacheAdd.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_setCacheAdd.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/**
+ * Adds `value` to the array cache.
+ *
+ * @private
+ * @name add
+ * @memberOf SetCache
+ * @alias push
+ * @param {*} value The value to cache.
+ * @returns {Object} Returns the cache instance.
+ */
+function setCacheAdd(value) {
+  this.__data__.set(value, HASH_UNDEFINED);
+  return this;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (setCacheAdd);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_setCacheHas.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_setCacheHas.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Checks if `value` is in the array cache.
+ *
+ * @private
+ * @name has
+ * @memberOf SetCache
+ * @param {*} value The value to search for.
+ * @returns {number} Returns `true` if `value` is found, else `false`.
+ */
+function setCacheHas(value) {
+  return this.__data__.has(value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (setCacheHas);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_setToArray.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_setToArray.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Converts `set` to an array of its values.
+ *
+ * @private
+ * @param {Object} set The set to convert.
+ * @returns {Array} Returns the values.
+ */
+function setToArray(set) {
+  var index = -1,
+      result = Array(set.size);
+
+  set.forEach(function(value) {
+    result[++index] = value;
+  });
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (setToArray);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_setToString.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_setToString.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseSetToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseSetToString.js */ "../../node_modules/lodash-es/_baseSetToString.js");
+/* harmony import */ var _shortOut_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_shortOut.js */ "../../node_modules/lodash-es/_shortOut.js");
+
+
+
+/**
+ * Sets the `toString` method of `func` to return `string`.
+ *
+ * @private
+ * @param {Function} func The function to modify.
+ * @param {Function} string The `toString` result.
+ * @returns {Function} Returns `func`.
+ */
+var setToString = Object(_shortOut_js__WEBPACK_IMPORTED_MODULE_1__["default"])(_baseSetToString_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (setToString);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_shortOut.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_shortOut.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used to detect hot functions by number of calls within a span of milliseconds. */
+var HOT_COUNT = 800,
+    HOT_SPAN = 16;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeNow = Date.now;
+
+/**
+ * Creates a function that'll short out and invoke `identity` instead
+ * of `func` when it's called `HOT_COUNT` or more times in `HOT_SPAN`
+ * milliseconds.
+ *
+ * @private
+ * @param {Function} func The function to restrict.
+ * @returns {Function} Returns the new shortable function.
+ */
+function shortOut(func) {
+  var count = 0,
+      lastCalled = 0;
+
+  return function() {
+    var stamp = nativeNow(),
+        remaining = HOT_SPAN - (stamp - lastCalled);
+
+    lastCalled = stamp;
+    if (remaining > 0) {
+      if (++count >= HOT_COUNT) {
+        return arguments[0];
+      }
+    } else {
+      count = 0;
+    }
+    return func.apply(undefined, arguments);
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (shortOut);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_stackClear.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_stackClear.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListCache_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_ListCache.js */ "../../node_modules/lodash-es/_ListCache.js");
+
+
+/**
+ * Removes all key-value entries from the stack.
+ *
+ * @private
+ * @name clear
+ * @memberOf Stack
+ */
+function stackClear() {
+  this.__data__ = new _ListCache_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+  this.size = 0;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (stackClear);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_stackDelete.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_stackDelete.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Removes `key` and its value from the stack.
+ *
+ * @private
+ * @name delete
+ * @memberOf Stack
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function stackDelete(key) {
+  var data = this.__data__,
+      result = data['delete'](key);
+
+  this.size = data.size;
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (stackDelete);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_stackGet.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_stackGet.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Gets the stack value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Stack
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function stackGet(key) {
+  return this.__data__.get(key);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (stackGet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_stackHas.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_stackHas.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Checks if a stack value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Stack
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function stackHas(key) {
+  return this.__data__.has(key);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (stackHas);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_stackSet.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_stackSet.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListCache_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_ListCache.js */ "../../node_modules/lodash-es/_ListCache.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_Map.js */ "../../node_modules/lodash-es/_Map.js");
+/* harmony import */ var _MapCache_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_MapCache.js */ "../../node_modules/lodash-es/_MapCache.js");
+
+
+
+
+/** Used as the size to enable large array optimizations. */
+var LARGE_ARRAY_SIZE = 200;
+
+/**
+ * Sets the stack `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Stack
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the stack cache instance.
+ */
+function stackSet(key, value) {
+  var data = this.__data__;
+  if (data instanceof _ListCache_js__WEBPACK_IMPORTED_MODULE_0__["default"]) {
+    var pairs = data.__data__;
+    if (!_Map_js__WEBPACK_IMPORTED_MODULE_1__["default"] || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+      pairs.push([key, value]);
+      this.size = ++data.size;
+      return this;
+    }
+    data = this.__data__ = new _MapCache_js__WEBPACK_IMPORTED_MODULE_2__["default"](pairs);
+  }
+  data.set(key, value);
+  this.size = data.size;
+  return this;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (stackSet);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_stringToPath.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_stringToPath.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _memoizeCapped_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_memoizeCapped.js */ "../../node_modules/lodash-es/_memoizeCapped.js");
+
+
+/** Used to match property names within property paths. */
+var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+
+/** Used to match backslashes in property paths. */
+var reEscapeChar = /\\(\\)?/g;
+
+/**
+ * Converts `string` to a property path array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the property path array.
+ */
+var stringToPath = Object(_memoizeCapped_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function(string) {
+  var result = [];
+  if (string.charCodeAt(0) === 46 /* . */) {
+    result.push('');
+  }
+  string.replace(rePropName, function(match, number, quote, subString) {
+    result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
+  });
+  return result;
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (stringToPath);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_toKey.js":
+/*!**************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_toKey.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isSymbol.js */ "../../node_modules/lodash-es/isSymbol.js");
+
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0;
+
+/**
+ * Converts `value` to a string key if it's not a string or symbol.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @returns {string|symbol} Returns the key.
+ */
+function toKey(value) {
+  if (typeof value == 'string' || Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+    return value;
+  }
+  var result = (value + '');
+  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (toKey);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/_toSource.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/_toSource.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used for built-in method references. */
+var funcProto = Function.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to convert.
+ * @returns {string} Returns the source code.
+ */
+function toSource(func) {
+  if (func != null) {
+    try {
+      return funcToString.call(func);
+    } catch (e) {}
+    try {
+      return (func + '');
+    } catch (e) {}
+  }
+  return '';
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (toSource);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/constant.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/constant.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Creates a function that returns `value`.
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Util
+ * @param {*} value The value to return from the new function.
+ * @returns {Function} Returns the new constant function.
+ * @example
+ *
+ * var objects = _.times(2, _.constant({ 'a': 1 }));
+ *
+ * console.log(objects);
+ * // => [{ 'a': 1 }, { 'a': 1 }]
+ *
+ * console.log(objects[0] === objects[1]);
+ * // => true
+ */
+function constant(value) {
+  return function() {
+    return value;
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (constant);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/debounce.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/debounce.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+/* harmony import */ var _now_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./now.js */ "../../node_modules/lodash-es/now.js");
+/* harmony import */ var _toNumber_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toNumber.js */ "../../node_modules/lodash-es/toNumber.js");
+
+
+
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = Object(_toNumber_js__WEBPACK_IMPORTED_MODULE_2__["default"])(wait) || 0;
+  if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(Object(_toNumber_js__WEBPACK_IMPORTED_MODULE_2__["default"])(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        timeWaiting = wait - timeSinceLastCall;
+
+    return maxing
+      ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
+      : timeWaiting;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+  }
+
+  function timerExpired() {
+    var time = Object(_now_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(Object(_now_js__WEBPACK_IMPORTED_MODULE_1__["default"])());
+  }
+
+  function debounced() {
+    var time = Object(_now_js__WEBPACK_IMPORTED_MODULE_1__["default"])(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        clearTimeout(timerId);
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (debounce);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/each.js":
+/*!************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/each.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _forEach_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./forEach.js */ "../../node_modules/lodash-es/forEach.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _forEach_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/eq.js":
+/*!**********************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/eq.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || (value !== value && other !== other);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (eq);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/forEach.js":
+/*!***************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/forEach.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _arrayEach_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayEach.js */ "../../node_modules/lodash-es/_arrayEach.js");
+/* harmony import */ var _baseEach_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseEach.js */ "../../node_modules/lodash-es/_baseEach.js");
+/* harmony import */ var _castFunction_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_castFunction.js */ "../../node_modules/lodash-es/_castFunction.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+
+
+
+
+
+/**
+ * Iterates over elements of `collection` and invokes `iteratee` for each element.
+ * The iteratee is invoked with three arguments: (value, index|key, collection).
+ * Iteratee functions may exit iteration early by explicitly returning `false`.
+ *
+ * **Note:** As with other "Collections" methods, objects with a "length"
+ * property are iterated like arrays. To avoid this behavior use `_.forIn`
+ * or `_.forOwn` for object iteration.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @alias each
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array|Object} Returns `collection`.
+ * @see _.forEachRight
+ * @example
+ *
+ * _.forEach([1, 2], function(value) {
+ *   console.log(value);
+ * });
+ * // => Logs `1` then `2`.
+ *
+ * _.forEach({ 'a': 1, 'b': 2 }, function(value, key) {
+ *   console.log(key);
+ * });
+ * // => Logs 'a' then 'b' (iteration order is not guaranteed).
+ */
+function forEach(collection, iteratee) {
+  var func = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(collection) ? _arrayEach_js__WEBPACK_IMPORTED_MODULE_0__["default"] : _baseEach_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+  return func(collection, Object(_castFunction_js__WEBPACK_IMPORTED_MODULE_2__["default"])(iteratee));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (forEach);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/get.js":
+/*!***********************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/get.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseGet_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseGet.js */ "../../node_modules/lodash-es/_baseGet.js");
+
+
+/**
+ * Gets the value at `path` of `object`. If the resolved value is
+ * `undefined`, the `defaultValue` is returned in its place.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.7.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path of the property to get.
+ * @param {*} [defaultValue] The value returned for `undefined` resolved values.
+ * @returns {*} Returns the resolved value.
+ * @example
+ *
+ * var object = { 'a': [{ 'b': { 'c': 3 } }] };
+ *
+ * _.get(object, 'a[0].b.c');
+ * // => 3
+ *
+ * _.get(object, ['a', '0', 'b', 'c']);
+ * // => 3
+ *
+ * _.get(object, 'a.b.c', 'default');
+ * // => 'default'
+ */
+function get(object, path, defaultValue) {
+  var result = object == null ? undefined : Object(_baseGet_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, path);
+  return result === undefined ? defaultValue : result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (get);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/hasIn.js":
+/*!*************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/hasIn.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseHasIn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseHasIn.js */ "../../node_modules/lodash-es/_baseHasIn.js");
+/* harmony import */ var _hasPath_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_hasPath.js */ "../../node_modules/lodash-es/_hasPath.js");
+
+
+
+/**
+ * Checks if `path` is a direct or inherited property of `object`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path to check.
+ * @returns {boolean} Returns `true` if `path` exists, else `false`.
+ * @example
+ *
+ * var object = _.create({ 'a': _.create({ 'b': 2 }) });
+ *
+ * _.hasIn(object, 'a');
+ * // => true
+ *
+ * _.hasIn(object, 'a.b');
+ * // => true
+ *
+ * _.hasIn(object, ['a', 'b']);
+ * // => true
+ *
+ * _.hasIn(object, 'b');
+ * // => false
+ */
+function hasIn(object, path) {
+  return object != null && Object(_hasPath_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object, path, _baseHasIn_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (hasIn);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/identity.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/identity.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * This method returns the first argument it receives.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Util
+ * @param {*} value Any value.
+ * @returns {*} Returns `value`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ *
+ * console.log(_.identity(object) === object);
+ * // => true
+ */
+function identity(value) {
+  return value;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (identity);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isArguments.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isArguments.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseIsArguments_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseIsArguments.js */ "../../node_modules/lodash-es/_baseIsArguments.js");
+/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObjectLike.js */ "../../node_modules/lodash-es/isObjectLike.js");
+
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Built-in value references. */
+var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+
+/**
+ * Checks if `value` is likely an `arguments` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArguments(function() { return arguments; }());
+ * // => true
+ *
+ * _.isArguments([1, 2, 3]);
+ * // => false
+ */
+var isArguments = Object(_baseIsArguments_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function() { return arguments; }()) ? _baseIsArguments_js__WEBPACK_IMPORTED_MODULE_0__["default"] : function(value) {
+  return Object(_isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value) && hasOwnProperty.call(value, 'callee') &&
+    !propertyIsEnumerable.call(value, 'callee');
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (isArguments);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isArray.js":
+/*!***************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isArray.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+/* harmony default export */ __webpack_exports__["default"] = (isArray);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isArrayLike.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isArrayLike.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isFunction.js */ "../../node_modules/lodash-es/isFunction.js");
+/* harmony import */ var _isLength_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isLength.js */ "../../node_modules/lodash-es/isLength.js");
+
+
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null && Object(_isLength_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value.length) && !Object(_isFunction_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isArrayLike);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isArrayLikeObject.js":
+/*!*************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isArrayLikeObject.js ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isArrayLike.js */ "../../node_modules/lodash-es/isArrayLike.js");
+/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObjectLike.js */ "../../node_modules/lodash-es/isObjectLike.js");
+
+
+
+/**
+ * This method is like `_.isArrayLike` except that it also checks if `value`
+ * is an object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array-like object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArrayLikeObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLikeObject(document.body.children);
+ * // => true
+ *
+ * _.isArrayLikeObject('abc');
+ * // => false
+ *
+ * _.isArrayLikeObject(_.noop);
+ * // => false
+ */
+function isArrayLikeObject(value) {
+  return Object(_isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value) && Object(_isArrayLike_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isArrayLikeObject);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isBuffer.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isBuffer.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+/* harmony import */ var _stubFalse_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stubFalse.js */ "../../node_modules/lodash-es/stubFalse.js");
+
+
+
+/** Detect free variable `exports`. */
+var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/** Built-in value references. */
+var Buffer = moduleExports ? _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Buffer : undefined;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
+
+/**
+ * Checks if `value` is a buffer.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+ * @example
+ *
+ * _.isBuffer(new Buffer(2));
+ * // => true
+ *
+ * _.isBuffer(new Uint8Array(2));
+ * // => false
+ */
+var isBuffer = nativeIsBuffer || _stubFalse_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+
+/* harmony default export */ __webpack_exports__["default"] = (isBuffer);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/harmony-module.js */ "../../node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isFunction.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isFunction.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseGetTag.js */ "../../node_modules/lodash-es/_baseGetTag.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+
+
+
+/** `Object#toString` result references. */
+var asyncTag = '[object AsyncFunction]',
+    funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]',
+    proxyTag = '[object Proxy]';
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  if (!Object(_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+    return false;
+  }
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 9 which returns 'object' for typed arrays and other constructors.
+  var tag = Object(_baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value);
+  return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isFunction);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isLength.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isLength.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' &&
+    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isLength);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isObject.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isObject.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return value != null && (type == 'object' || type == 'function');
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isObject);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isObjectLike.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isObjectLike.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isObjectLike);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isPlainObject.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isPlainObject.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseGetTag.js */ "../../node_modules/lodash-es/_baseGetTag.js");
+/* harmony import */ var _getPrototype_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_getPrototype.js */ "../../node_modules/lodash-es/_getPrototype.js");
+/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isObjectLike.js */ "../../node_modules/lodash-es/isObjectLike.js");
+
+
+
+
+/** `Object#toString` result references. */
+var objectTag = '[object Object]';
+
+/** Used for built-in method references. */
+var funcProto = Function.prototype,
+    objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to infer the `Object` constructor. */
+var objectCtorString = funcToString.call(Object);
+
+/**
+ * Checks if `value` is a plain object, that is, an object created by the
+ * `Object` constructor or one with a `[[Prototype]]` of `null`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.8.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ * }
+ *
+ * _.isPlainObject(new Foo);
+ * // => false
+ *
+ * _.isPlainObject([1, 2, 3]);
+ * // => false
+ *
+ * _.isPlainObject({ 'x': 0, 'y': 0 });
+ * // => true
+ *
+ * _.isPlainObject(Object.create(null));
+ * // => true
+ */
+function isPlainObject(value) {
+  if (!Object(_isObjectLike_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value) || Object(_baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value) != objectTag) {
+    return false;
+  }
+  var proto = Object(_getPrototype_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value);
+  if (proto === null) {
+    return true;
+  }
+  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+    funcToString.call(Ctor) == objectCtorString;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isPlainObject);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isSymbol.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isSymbol.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseGetTag.js */ "../../node_modules/lodash-es/_baseGetTag.js");
+/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObjectLike.js */ "../../node_modules/lodash-es/isObjectLike.js");
+
+
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (Object(_isObjectLike_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value) && Object(_baseGetTag_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value) == symbolTag);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isSymbol);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isTypedArray.js":
+/*!********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isTypedArray.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseIsTypedArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseIsTypedArray.js */ "../../node_modules/lodash-es/_baseIsTypedArray.js");
+/* harmony import */ var _baseUnary_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseUnary.js */ "../../node_modules/lodash-es/_baseUnary.js");
+/* harmony import */ var _nodeUtil_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_nodeUtil.js */ "../../node_modules/lodash-es/_nodeUtil.js");
+
+
+
+
+/* Node.js helper references. */
+var nodeIsTypedArray = _nodeUtil_js__WEBPACK_IMPORTED_MODULE_2__["default"] && _nodeUtil_js__WEBPACK_IMPORTED_MODULE_2__["default"].isTypedArray;
+
+/**
+ * Checks if `value` is classified as a typed array.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ * @example
+ *
+ * _.isTypedArray(new Uint8Array);
+ * // => true
+ *
+ * _.isTypedArray([]);
+ * // => false
+ */
+var isTypedArray = nodeIsTypedArray ? Object(_baseUnary_js__WEBPACK_IMPORTED_MODULE_1__["default"])(nodeIsTypedArray) : _baseIsTypedArray_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+/* harmony default export */ __webpack_exports__["default"] = (isTypedArray);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/isUndefined.js":
+/*!*******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/isUndefined.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Checks if `value` is `undefined`.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is `undefined`, else `false`.
+ * @example
+ *
+ * _.isUndefined(void 0);
+ * // => true
+ *
+ * _.isUndefined(null);
+ * // => false
+ */
+function isUndefined(value) {
+  return value === undefined;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (isUndefined);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/keys.js":
+/*!************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/keys.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _arrayLikeKeys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayLikeKeys.js */ "../../node_modules/lodash-es/_arrayLikeKeys.js");
+/* harmony import */ var _baseKeys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseKeys.js */ "../../node_modules/lodash-es/_baseKeys.js");
+/* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isArrayLike.js */ "../../node_modules/lodash-es/isArrayLike.js");
+
+
+
+
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */
+function keys(object) {
+  return Object(_isArrayLike_js__WEBPACK_IMPORTED_MODULE_2__["default"])(object) ? Object(_arrayLikeKeys_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object) : Object(_baseKeys_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (keys);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/keysIn.js":
+/*!**************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/keysIn.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _arrayLikeKeys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayLikeKeys.js */ "../../node_modules/lodash-es/_arrayLikeKeys.js");
+/* harmony import */ var _baseKeysIn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseKeysIn.js */ "../../node_modules/lodash-es/_baseKeysIn.js");
+/* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isArrayLike.js */ "../../node_modules/lodash-es/isArrayLike.js");
+
+
+
+
+/**
+ * Creates an array of the own and inherited enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keysIn(new Foo);
+ * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+ */
+function keysIn(object) {
+  return Object(_isArrayLike_js__WEBPACK_IMPORTED_MODULE_2__["default"])(object) ? Object(_arrayLikeKeys_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, true) : Object(_baseKeysIn_js__WEBPACK_IMPORTED_MODULE_1__["default"])(object);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (keysIn);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/map.js":
+/*!***********************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/map.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _arrayMap_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayMap.js */ "../../node_modules/lodash-es/_arrayMap.js");
+/* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseIteratee.js */ "../../node_modules/lodash-es/_baseIteratee.js");
+/* harmony import */ var _baseMap_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseMap.js */ "../../node_modules/lodash-es/_baseMap.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./isArray.js */ "../../node_modules/lodash-es/isArray.js");
+
+
+
+
+
+/**
+ * Creates an array of values by running each element in `collection` thru
+ * `iteratee`. The iteratee is invoked with three arguments:
+ * (value, index|key, collection).
+ *
+ * Many lodash methods are guarded to work as iteratees for methods like
+ * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+ *
+ * The guarded methods are:
+ * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
+ * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
+ * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
+ * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ * @example
+ *
+ * function square(n) {
+ *   return n * n;
+ * }
+ *
+ * _.map([4, 8], square);
+ * // => [16, 64]
+ *
+ * _.map({ 'a': 4, 'b': 8 }, square);
+ * // => [16, 64] (iteration order is not guaranteed)
+ *
+ * var users = [
+ *   { 'user': 'barney' },
+ *   { 'user': 'fred' }
+ * ];
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.map(users, 'user');
+ * // => ['barney', 'fred']
+ */
+function map(collection, iteratee) {
+  var func = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(collection) ? _arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"] : _baseMap_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+  return func(collection, Object(_baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__["default"])(iteratee, 3));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (map);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/memoize.js":
+/*!***************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/memoize.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MapCache_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_MapCache.js */ "../../node_modules/lodash-es/_MapCache.js");
+
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a function that memoizes the result of `func`. If `resolver` is
+ * provided, it determines the cache key for storing the result based on the
+ * arguments provided to the memoized function. By default, the first argument
+ * provided to the memoized function is used as the map cache key. The `func`
+ * is invoked with the `this` binding of the memoized function.
+ *
+ * **Note:** The cache is exposed as the `cache` property on the memoized
+ * function. Its creation may be customized by replacing the `_.memoize.Cache`
+ * constructor with one whose instances implement the
+ * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
+ * method interface of `clear`, `delete`, `get`, `has`, and `set`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to have its output memoized.
+ * @param {Function} [resolver] The function to resolve the cache key.
+ * @returns {Function} Returns the new memoized function.
+ * @example
+ *
+ * var object = { 'a': 1, 'b': 2 };
+ * var other = { 'c': 3, 'd': 4 };
+ *
+ * var values = _.memoize(_.values);
+ * values(object);
+ * // => [1, 2]
+ *
+ * values(other);
+ * // => [3, 4]
+ *
+ * object.a = 2;
+ * values(object);
+ * // => [1, 2]
+ *
+ * // Modify the result cache.
+ * values.cache.set(object, ['a', 'b']);
+ * values(object);
+ * // => ['a', 'b']
+ *
+ * // Replace `_.memoize.Cache`.
+ * _.memoize.Cache = WeakMap;
+ */
+function memoize(func, resolver) {
+  if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  var memoized = function() {
+    var args = arguments,
+        key = resolver ? resolver.apply(this, args) : args[0],
+        cache = memoized.cache;
+
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+    var result = func.apply(this, args);
+    memoized.cache = cache.set(key, result) || cache;
+    return result;
+  };
+  memoized.cache = new (memoize.Cache || _MapCache_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  return memoized;
+}
+
+// Expose `MapCache`.
+memoize.Cache = _MapCache_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+/* harmony default export */ __webpack_exports__["default"] = (memoize);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/merge.js":
+/*!*************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/merge.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseMerge_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseMerge.js */ "../../node_modules/lodash-es/_baseMerge.js");
+/* harmony import */ var _createAssigner_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_createAssigner.js */ "../../node_modules/lodash-es/_createAssigner.js");
+
+
+
+/**
+ * This method is like `_.assign` except that it recursively merges own and
+ * inherited enumerable string keyed properties of source objects into the
+ * destination object. Source properties that resolve to `undefined` are
+ * skipped if a destination value exists. Array and plain object properties
+ * are merged recursively. Other objects and value types are overridden by
+ * assignment. Source objects are applied from left to right. Subsequent
+ * sources overwrite property assignments of previous sources.
+ *
+ * **Note:** This method mutates `object`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.5.0
+ * @category Object
+ * @param {Object} object The destination object.
+ * @param {...Object} [sources] The source objects.
+ * @returns {Object} Returns `object`.
+ * @example
+ *
+ * var object = {
+ *   'a': [{ 'b': 2 }, { 'd': 4 }]
+ * };
+ *
+ * var other = {
+ *   'a': [{ 'c': 3 }, { 'e': 5 }]
+ * };
+ *
+ * _.merge(object, other);
+ * // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
+ */
+var merge = Object(_createAssigner_js__WEBPACK_IMPORTED_MODULE_1__["default"])(function(object, source, srcIndex) {
+  Object(_baseMerge_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object, source, srcIndex);
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (merge);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/now.js":
+/*!***********************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/now.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "../../node_modules/lodash-es/_root.js");
+
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function() {
+  return _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Date.now();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (now);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/property.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/property.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseProperty_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseProperty.js */ "../../node_modules/lodash-es/_baseProperty.js");
+/* harmony import */ var _basePropertyDeep_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_basePropertyDeep.js */ "../../node_modules/lodash-es/_basePropertyDeep.js");
+/* harmony import */ var _isKey_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_isKey.js */ "../../node_modules/lodash-es/_isKey.js");
+/* harmony import */ var _toKey_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_toKey.js */ "../../node_modules/lodash-es/_toKey.js");
+
+
+
+
+
+/**
+ * Creates a function that returns the value at `path` of a given object.
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Util
+ * @param {Array|string} path The path of the property to get.
+ * @returns {Function} Returns the new accessor function.
+ * @example
+ *
+ * var objects = [
+ *   { 'a': { 'b': 2 } },
+ *   { 'a': { 'b': 1 } }
+ * ];
+ *
+ * _.map(objects, _.property('a.b'));
+ * // => [2, 1]
+ *
+ * _.map(_.sortBy(objects, _.property(['a', 'b'])), 'a.b');
+ * // => [1, 2]
+ */
+function property(path) {
+  return Object(_isKey_js__WEBPACK_IMPORTED_MODULE_2__["default"])(path) ? Object(_baseProperty_js__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_toKey_js__WEBPACK_IMPORTED_MODULE_3__["default"])(path)) : Object(_basePropertyDeep_js__WEBPACK_IMPORTED_MODULE_1__["default"])(path);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (property);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/stubArray.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/stubArray.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * This method returns a new empty array.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {Array} Returns the new empty array.
+ * @example
+ *
+ * var arrays = _.times(2, _.stubArray);
+ *
+ * console.log(arrays);
+ * // => [[], []]
+ *
+ * console.log(arrays[0] === arrays[1]);
+ * // => false
+ */
+function stubArray() {
+  return [];
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (stubArray);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/stubFalse.js":
+/*!*****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/stubFalse.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * This method returns `false`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {boolean} Returns `false`.
+ * @example
+ *
+ * _.times(2, _.stubFalse);
+ * // => [false, false]
+ */
+function stubFalse() {
+  return false;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (stubFalse);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/throttle.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/throttle.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _debounce_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./debounce.js */ "../../node_modules/lodash-es/debounce.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+
+
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a throttled function that only invokes `func` at most once per
+ * every `wait` milliseconds. The throttled function comes with a `cancel`
+ * method to cancel delayed `func` invocations and a `flush` method to
+ * immediately invoke them. Provide `options` to indicate whether `func`
+ * should be invoked on the leading and/or trailing edge of the `wait`
+ * timeout. The `func` is invoked with the last arguments provided to the
+ * throttled function. Subsequent calls to the throttled function return the
+ * result of the last `func` invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the throttled function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.throttle` and `_.debounce`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to throttle.
+ * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=true]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new throttled function.
+ * @example
+ *
+ * // Avoid excessively updating the position while scrolling.
+ * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
+ *
+ * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+ * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
+ * jQuery(element).on('click', throttled);
+ *
+ * // Cancel the trailing throttled invocation.
+ * jQuery(window).on('popstate', throttled.cancel);
+ */
+function throttle(func, wait, options) {
+  var leading = true,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(options)) {
+    leading = 'leading' in options ? !!options.leading : leading;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+  return Object(_debounce_js__WEBPACK_IMPORTED_MODULE_0__["default"])(func, wait, {
+    'leading': leading,
+    'maxWait': wait,
+    'trailing': trailing
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (throttle);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/toNumber.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/toNumber.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "../../node_modules/lodash-es/isObject.js");
+/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isSymbol.js */ "../../node_modules/lodash-es/isSymbol.js");
+
+
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+    return NAN;
+  }
+  if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (toNumber);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/toPlainObject.js":
+/*!*********************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/toPlainObject.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _copyObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_copyObject.js */ "../../node_modules/lodash-es/_copyObject.js");
+/* harmony import */ var _keysIn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./keysIn.js */ "../../node_modules/lodash-es/keysIn.js");
+
+
+
+/**
+ * Converts `value` to a plain object flattening inherited enumerable string
+ * keyed properties of `value` to own properties of the plain object.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {Object} Returns the converted plain object.
+ * @example
+ *
+ * function Foo() {
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.assign({ 'a': 1 }, new Foo);
+ * // => { 'a': 1, 'b': 2 }
+ *
+ * _.assign({ 'a': 1 }, _.toPlainObject(new Foo));
+ * // => { 'a': 1, 'b': 2, 'c': 3 }
+ */
+function toPlainObject(value) {
+  return Object(_copyObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value, Object(_keysIn_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (toPlainObject);
+
+
+/***/ }),
+
+/***/ "../../node_modules/lodash-es/toString.js":
+/*!****************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash-es/toString.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _baseToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseToString.js */ "../../node_modules/lodash-es/_baseToString.js");
+
+
+/**
+ * Converts `value` to a string. An empty string is returned for `null`
+ * and `undefined` values. The sign of `-0` is preserved.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ * @example
+ *
+ * _.toString(null);
+ * // => ''
+ *
+ * _.toString(-0);
+ * // => '-0'
+ *
+ * _.toString([1, 2, 3]);
+ * // => '1,2,3'
+ */
+function toString(value) {
+  return value == null ? '' : Object(_baseToString_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (toString);
+
+
+/***/ }),
+
 /***/ "../../node_modules/lodash/_DataView.js":
 /*!**************************************************************************!*\
   !*** /home/quentin/Projects/Babylon.js/node_modules/lodash/_DataView.js ***!
@@ -17062,208 +23988,6 @@ module.exports = constant;
 
 /***/ }),
 
-/***/ "../../node_modules/lodash/debounce.js":
-/*!*************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash/debounce.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ./isObject */ "../../node_modules/lodash/isObject.js"),
-    now = __webpack_require__(/*! ./now */ "../../node_modules/lodash/now.js"),
-    toNumber = __webpack_require__(/*! ./toNumber */ "../../node_modules/lodash/toNumber.js");
-
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMax = Math.max,
-    nativeMin = Math.min;
-
-/**
- * Creates a debounced function that delays invoking `func` until after `wait`
- * milliseconds have elapsed since the last time the debounced function was
- * invoked. The debounced function comes with a `cancel` method to cancel
- * delayed `func` invocations and a `flush` method to immediately invoke them.
- * Provide `options` to indicate whether `func` should be invoked on the
- * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
- * with the last arguments provided to the debounced function. Subsequent
- * calls to the debounced function return the result of the last `func`
- * invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the debounced function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.debounce` and `_.throttle`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to debounce.
- * @param {number} [wait=0] The number of milliseconds to delay.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=false]
- *  Specify invoking on the leading edge of the timeout.
- * @param {number} [options.maxWait]
- *  The maximum time `func` is allowed to be delayed before it's invoked.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new debounced function.
- * @example
- *
- * // Avoid costly calculations while the window size is in flux.
- * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
- *
- * // Invoke `sendMail` when clicked, debouncing subsequent calls.
- * jQuery(element).on('click', _.debounce(sendMail, 300, {
- *   'leading': true,
- *   'trailing': false
- * }));
- *
- * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
- * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
- * var source = new EventSource('/stream');
- * jQuery(source).on('message', debounced);
- *
- * // Cancel the trailing debounced invocation.
- * jQuery(window).on('popstate', debounced.cancel);
- */
-function debounce(func, wait, options) {
-  var lastArgs,
-      lastThis,
-      maxWait,
-      result,
-      timerId,
-      lastCallTime,
-      lastInvokeTime = 0,
-      leading = false,
-      maxing = false,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  wait = toNumber(wait) || 0;
-  if (isObject(options)) {
-    leading = !!options.leading;
-    maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-
-  function invokeFunc(time) {
-    var args = lastArgs,
-        thisArg = lastThis;
-
-    lastArgs = lastThis = undefined;
-    lastInvokeTime = time;
-    result = func.apply(thisArg, args);
-    return result;
-  }
-
-  function leadingEdge(time) {
-    // Reset any `maxWait` timer.
-    lastInvokeTime = time;
-    // Start the timer for the trailing edge.
-    timerId = setTimeout(timerExpired, wait);
-    // Invoke the leading edge.
-    return leading ? invokeFunc(time) : result;
-  }
-
-  function remainingWait(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime,
-        timeWaiting = wait - timeSinceLastCall;
-
-    return maxing
-      ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
-      : timeWaiting;
-  }
-
-  function shouldInvoke(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime;
-
-    // Either this is the first call, activity has stopped and we're at the
-    // trailing edge, the system time has gone backwards and we're treating
-    // it as the trailing edge, or we've hit the `maxWait` limit.
-    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
-      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
-  }
-
-  function timerExpired() {
-    var time = now();
-    if (shouldInvoke(time)) {
-      return trailingEdge(time);
-    }
-    // Restart the timer.
-    timerId = setTimeout(timerExpired, remainingWait(time));
-  }
-
-  function trailingEdge(time) {
-    timerId = undefined;
-
-    // Only invoke if we have `lastArgs` which means `func` has been
-    // debounced at least once.
-    if (trailing && lastArgs) {
-      return invokeFunc(time);
-    }
-    lastArgs = lastThis = undefined;
-    return result;
-  }
-
-  function cancel() {
-    if (timerId !== undefined) {
-      clearTimeout(timerId);
-    }
-    lastInvokeTime = 0;
-    lastArgs = lastCallTime = lastThis = timerId = undefined;
-  }
-
-  function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
-  }
-
-  function debounced() {
-    var time = now(),
-        isInvoking = shouldInvoke(time);
-
-    lastArgs = arguments;
-    lastThis = this;
-    lastCallTime = time;
-
-    if (isInvoking) {
-      if (timerId === undefined) {
-        return leadingEdge(lastCallTime);
-      }
-      if (maxing) {
-        // Handle invocations in a tight loop.
-        clearTimeout(timerId);
-        timerId = setTimeout(timerExpired, wait);
-        return invokeFunc(lastCallTime);
-      }
-    }
-    if (timerId === undefined) {
-      timerId = setTimeout(timerExpired, wait);
-    }
-    return result;
-  }
-  debounced.cancel = cancel;
-  debounced.flush = flush;
-  return debounced;
-}
-
-module.exports = debounce;
-
-
-/***/ }),
-
 /***/ "../../node_modules/lodash/defaults.js":
 /*!*************************************************************************!*\
   !*** /home/quentin/Projects/Babylon.js/node_modules/lodash/defaults.js ***!
@@ -19651,86 +26375,6 @@ module.exports = stubFalse;
 
 /***/ }),
 
-/***/ "../../node_modules/lodash/throttle.js":
-/*!*************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/lodash/throttle.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var debounce = __webpack_require__(/*! ./debounce */ "../../node_modules/lodash/debounce.js"),
-    isObject = __webpack_require__(/*! ./isObject */ "../../node_modules/lodash/isObject.js");
-
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/**
- * Creates a throttled function that only invokes `func` at most once per
- * every `wait` milliseconds. The throttled function comes with a `cancel`
- * method to cancel delayed `func` invocations and a `flush` method to
- * immediately invoke them. Provide `options` to indicate whether `func`
- * should be invoked on the leading and/or trailing edge of the `wait`
- * timeout. The `func` is invoked with the last arguments provided to the
- * throttled function. Subsequent calls to the throttled function return the
- * result of the last `func` invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the throttled function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.throttle` and `_.debounce`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to throttle.
- * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=true]
- *  Specify invoking on the leading edge of the timeout.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new throttled function.
- * @example
- *
- * // Avoid excessively updating the position while scrolling.
- * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
- *
- * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
- * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
- * jQuery(element).on('click', throttled);
- *
- * // Cancel the trailing throttled invocation.
- * jQuery(window).on('popstate', throttled.cancel);
- */
-function throttle(func, wait, options) {
-  var leading = true,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  if (isObject(options)) {
-    leading = 'leading' in options ? !!options.leading : leading;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-  return debounce(func, wait, {
-    'leading': leading,
-    'maxWait': wait,
-    'trailing': trailing
-  });
-}
-
-module.exports = throttle;
-
-
-/***/ }),
-
 /***/ "../../node_modules/lodash/toFinite.js":
 /*!*************************************************************************!*\
   !*** /home/quentin/Projects/Babylon.js/node_modules/lodash/toFinite.js ***!
@@ -21377,40 +28021,31 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/alpha/Alpha.js":
-/*!************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/alpha/Alpha.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/alpha/Alpha.js":
+/*!***********************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/alpha/Alpha.js ***!
+  \***********************************************************************************************/
+/*! exports provided: AlphaPicker, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AlphaPicker = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlphaPicker", function() { return AlphaPicker; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _AlphaPointer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AlphaPointer */ "../../node_modules/react-color/es/components/alpha/AlphaPointer.js");
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
 
-var _AlphaPointer = __webpack_require__(/*! ./AlphaPointer */ "../../node_modules/react-color/lib/components/alpha/AlphaPointer.js");
 
-var _AlphaPointer2 = _interopRequireDefault(_AlphaPointer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var AlphaPicker = exports.AlphaPicker = function AlphaPicker(_ref) {
+var AlphaPicker = function AlphaPicker(_ref) {
   var rgb = _ref.rgb,
       hsl = _ref.hsl,
       width = _ref.width,
@@ -21423,7 +28058,7 @@ var AlphaPicker = exports.AlphaPicker = function AlphaPicker(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       picker: {
         position: 'relative',
@@ -21437,10 +28072,10 @@ var AlphaPicker = exports.AlphaPicker = function AlphaPicker(_ref) {
     }
   });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.picker, className: 'alpha-picker ' + className },
-    _react2.default.createElement(_common.Alpha, _extends({}, styles.alpha, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_2__["Alpha"], _extends({}, styles.alpha, {
       rgb: rgb,
       hsl: hsl,
       pointer: pointer,
@@ -21455,42 +28090,34 @@ AlphaPicker.defaultProps = {
   width: '316px',
   height: '16px',
   direction: 'horizontal',
-  pointer: _AlphaPointer2.default
+  pointer: _AlphaPointer__WEBPACK_IMPORTED_MODULE_3__["default"]
 };
 
-exports.default = (0, _common.ColorWrap)(AlphaPicker);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_2__["ColorWrap"])(AlphaPicker));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/alpha/AlphaPointer.js":
-/*!*******************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/alpha/AlphaPointer.js ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/alpha/AlphaPointer.js":
+/*!******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/alpha/AlphaPointer.js ***!
+  \******************************************************************************************************/
+/*! exports provided: AlphaPointer, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlphaPointer", function() { return AlphaPointer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AlphaPointer = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var AlphaPointer = exports.AlphaPointer = function AlphaPointer(_ref) {
+var AlphaPointer = function AlphaPointer(_ref) {
   var direction = _ref.direction;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       picker: {
         width: '18px',
@@ -21508,57 +28135,43 @@ var AlphaPointer = exports.AlphaPointer = function AlphaPointer(_ref) {
     }
   }, { vertical: direction === 'vertical' });
 
-  return _react2.default.createElement('div', { style: styles.picker });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.picker });
 };
 
-exports.default = AlphaPointer;
+/* harmony default export */ __webpack_exports__["default"] = (AlphaPointer);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/block/Block.js":
-/*!************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/block/Block.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/block/Block.js":
+/*!***********************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/block/Block.js ***!
+  \***********************************************************************************************/
+/*! exports provided: Block, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Block", function() { return Block; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _BlockSwatches__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./BlockSwatches */ "../../node_modules/react-color/es/components/block/BlockSwatches.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Block = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _BlockSwatches = __webpack_require__(/*! ./BlockSwatches */ "../../node_modules/react-color/lib/components/block/BlockSwatches.js");
-
-var _BlockSwatches2 = _interopRequireDefault(_BlockSwatches);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Block = exports.Block = function Block(_ref) {
+var Block = function Block(_ref) {
   var onChange = _ref.onChange,
       onSwatchHover = _ref.onSwatchHover,
       hex = _ref.hex,
@@ -21572,13 +28185,13 @@ var Block = exports.Block = function Block(_ref) {
 
   var transparent = hex === 'transparent';
   var handleChange = function handleChange(hexCode, e) {
-    _color2.default.isValidHex(hexCode) && onChange({
+    _helpers_color__WEBPACK_IMPORTED_MODULE_4__["isValidHex"](hexCode) && onChange({
       hex: hexCode,
       source: 'hex'
     }, e);
   };
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__["default"])({
     'default': {
       card: {
         width: width,
@@ -21601,7 +28214,7 @@ var Block = exports.Block = function Block(_ref) {
       },
       label: {
         fontSize: '18px',
-        color: _color2.default.getContrastingColor(hex),
+        color: _helpers_color__WEBPACK_IMPORTED_MODULE_4__["getContrastingColor"](hex),
         position: 'relative'
       },
       triangle: {
@@ -21635,25 +28248,25 @@ var Block = exports.Block = function Block(_ref) {
     }
   }, passedStyles), { 'hide-triangle': triangle === 'hide' });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.card, className: 'block-picker ' + className },
-    _react2.default.createElement('div', { style: styles.triangle }),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.triangle }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.head },
-      transparent && _react2.default.createElement(_common.Checkboard, { borderRadius: '6px 6px 0 0' }),
-      _react2.default.createElement(
+      transparent && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_5__["Checkboard"], { borderRadius: '6px 6px 0 0' }),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.label },
         hex
       )
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.body },
-      _react2.default.createElement(_BlockSwatches2.default, { colors: colors, onClick: handleChange, onSwatchHover: onSwatchHover }),
-      _react2.default.createElement(_common.EditableInput, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BlockSwatches__WEBPACK_IMPORTED_MODULE_6__["default"], { colors: colors, onClick: handleChange, onSwatchHover: onSwatchHover }),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_5__["EditableInput"], {
         style: { input: styles.input },
         value: hex,
         onChange: handleChange
@@ -21663,10 +28276,10 @@ var Block = exports.Block = function Block(_ref) {
 };
 
 Block.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
-  triangle: _propTypes2.default.oneOf(['top', 'hide']),
-  styles: _propTypes2.default.object
+  width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  colors: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string),
+  triangle: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['top', 'hide']),
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
 Block.defaultProps = {
@@ -21676,47 +28289,38 @@ Block.defaultProps = {
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Block);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_5__["ColorWrap"])(Block));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/block/BlockSwatches.js":
-/*!********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/block/BlockSwatches.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/block/BlockSwatches.js":
+/*!*******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/block/BlockSwatches.js ***!
+  \*******************************************************************************************************/
+/*! exports provided: BlockSwatches, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlockSwatches", function() { return BlockSwatches; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_es_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash-es/map */ "../../node_modules/lodash-es/map.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BlockSwatches = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _map = __webpack_require__(/*! lodash/map */ "../../node_modules/lodash/map.js");
-
-var _map2 = _interopRequireDefault(_map);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BlockSwatches = exports.BlockSwatches = function BlockSwatches(_ref) {
+var BlockSwatches = function BlockSwatches(_ref) {
   var colors = _ref.colors,
       onClick = _ref.onClick,
       onSwatchHover = _ref.onSwatchHover;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       swatches: {
         marginRight: '-10px'
@@ -21735,11 +28339,11 @@ var BlockSwatches = exports.BlockSwatches = function BlockSwatches(_ref) {
     }
   });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.swatches },
-    (0, _map2.default)(colors, function (c) {
-      return _react2.default.createElement(_common.Swatch, {
+    Object(lodash_es_map__WEBPACK_IMPORTED_MODULE_2__["default"])(colors, function (c) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["Swatch"], {
         key: c,
         color: c,
         style: styles.swatch,
@@ -21750,62 +28354,46 @@ var BlockSwatches = exports.BlockSwatches = function BlockSwatches(_ref) {
         }
       });
     }),
-    _react2.default.createElement('div', { style: styles.clear })
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.clear })
   );
 };
 
-exports.default = BlockSwatches;
+/* harmony default export */ __webpack_exports__["default"] = (BlockSwatches);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/chrome/Chrome.js":
-/*!**************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/chrome/Chrome.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/chrome/Chrome.js":
+/*!*************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/chrome/Chrome.js ***!
+  \*************************************************************************************************/
+/*! exports provided: Chrome, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Chrome", function() { return Chrome; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _ChromeFields__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChromeFields */ "../../node_modules/react-color/es/components/chrome/ChromeFields.js");
+/* harmony import */ var _ChromePointer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChromePointer */ "../../node_modules/react-color/es/components/chrome/ChromePointer.js");
+/* harmony import */ var _ChromePointerCircle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ChromePointerCircle */ "../../node_modules/react-color/es/components/chrome/ChromePointerCircle.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Chrome = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
 
-var _merge2 = _interopRequireDefault(_merge);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _ChromeFields = __webpack_require__(/*! ./ChromeFields */ "../../node_modules/react-color/lib/components/chrome/ChromeFields.js");
-
-var _ChromeFields2 = _interopRequireDefault(_ChromeFields);
-
-var _ChromePointer = __webpack_require__(/*! ./ChromePointer */ "../../node_modules/react-color/lib/components/chrome/ChromePointer.js");
-
-var _ChromePointer2 = _interopRequireDefault(_ChromePointer);
-
-var _ChromePointerCircle = __webpack_require__(/*! ./ChromePointerCircle */ "../../node_modules/react-color/lib/components/chrome/ChromePointerCircle.js");
-
-var _ChromePointerCircle2 = _interopRequireDefault(_ChromePointerCircle);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Chrome = exports.Chrome = function Chrome(_ref) {
+var Chrome = function Chrome(_ref) {
   var width = _ref.width,
       onChange = _ref.onChange,
       disableAlpha = _ref.disableAlpha,
@@ -21820,7 +28408,7 @@ var Chrome = exports.Chrome = function Chrome(_ref) {
       className = _ref$className === undefined ? '' : _ref$className,
       defaultView = _ref.defaultView;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__["default"])({
     'default': {
       picker: {
         width: width,
@@ -21901,64 +28489,64 @@ var Chrome = exports.Chrome = function Chrome(_ref) {
     }
   }, passedStyles), { disableAlpha: disableAlpha });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.picker, className: 'chrome-picker ' + className },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.saturation },
-      _react2.default.createElement(_common.Saturation, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Saturation"], {
         style: styles.Saturation,
         hsl: hsl,
         hsv: hsv,
-        pointer: _ChromePointerCircle2.default,
+        pointer: _ChromePointerCircle__WEBPACK_IMPORTED_MODULE_7__["default"],
         onChange: onChange
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.body },
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.controls, className: 'flexbox-fix' },
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.color },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.swatch },
-            _react2.default.createElement('div', { style: styles.active }),
-            _react2.default.createElement(_common.Checkboard, { renderers: renderers })
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.active }),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Checkboard"], { renderers: renderers })
           )
         ),
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.toggles },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.hue },
-            _react2.default.createElement(_common.Hue, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Hue"], {
               style: styles.Hue,
               hsl: hsl,
-              pointer: _ChromePointer2.default,
+              pointer: _ChromePointer__WEBPACK_IMPORTED_MODULE_6__["default"],
               onChange: onChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.alpha },
-            _react2.default.createElement(_common.Alpha, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Alpha"], {
               style: styles.Alpha,
               rgb: rgb,
               hsl: hsl,
-              pointer: _ChromePointer2.default,
+              pointer: _ChromePointer__WEBPACK_IMPORTED_MODULE_6__["default"],
               renderers: renderers,
               onChange: onChange
             })
           )
         )
       ),
-      _react2.default.createElement(_ChromeFields2.default, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChromeFields__WEBPACK_IMPORTED_MODULE_5__["default"], {
         rgb: rgb,
         hsl: hsl,
         hex: hex,
@@ -21971,10 +28559,10 @@ var Chrome = exports.Chrome = function Chrome(_ref) {
 };
 
 Chrome.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  disableAlpha: _propTypes2.default.bool,
-  styles: _propTypes2.default.object,
-  defaultView: _propTypes2.default.oneOf(["hex", "rgb", "hsl"])
+  width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  disableAlpha: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object,
+  defaultView: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(["hex", "rgb", "hsl"])
 };
 
 Chrome.defaultProps = {
@@ -21983,58 +28571,48 @@ Chrome.defaultProps = {
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Chrome);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_4__["ColorWrap"])(Chrome));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/chrome/ChromeFields.js":
-/*!********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/chrome/ChromeFields.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/chrome/ChromeFields.js":
+/*!*******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/chrome/ChromeFields.js ***!
+  \*******************************************************************************************************/
+/*! exports provided: ChromeFields, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ChromeFields = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChromeFields", function() { return ChromeFields; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var lodash_es_isUndefined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/isUndefined */ "../../node_modules/lodash-es/isUndefined.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _icons_material_UnfoldMoreHorizontalIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @icons/material/UnfoldMoreHorizontalIcon */ "../../node_modules/@icons/material/UnfoldMoreHorizontalIcon.js");
+/* harmony import */ var _icons_material_UnfoldMoreHorizontalIcon__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_icons_material_UnfoldMoreHorizontalIcon__WEBPACK_IMPORTED_MODULE_5__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _isUndefined = __webpack_require__(/*! lodash/isUndefined */ "../../node_modules/lodash/isUndefined.js");
-
-var _isUndefined2 = _interopRequireDefault(_isUndefined);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _UnfoldMoreHorizontalIcon = __webpack_require__(/*! @icons/material/UnfoldMoreHorizontalIcon */ "../../node_modules/@icons/material/UnfoldMoreHorizontalIcon.js");
-
-var _UnfoldMoreHorizontalIcon2 = _interopRequireDefault(_UnfoldMoreHorizontalIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable react/no-did-mount-set-state, no-param-reassign */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ChromeFields = exports.ChromeFields = function (_React$Component) {
+/* eslint-disable react/no-did-mount-set-state, no-param-reassign */
+
+
+
+
+
+
+
+
+
+var ChromeFields = function (_React$Component) {
   _inherits(ChromeFields, _React$Component);
 
   function ChromeFields(props) {
@@ -22058,7 +28636,7 @@ var ChromeFields = exports.ChromeFields = function (_React$Component) {
 
     _this.handleChange = function (data, e) {
       if (data.hex) {
-        _color2.default.isValidHex(data.hex) && _this.props.onChange({
+        _helpers_color__WEBPACK_IMPORTED_MODULE_2__["isValidHex"](data.hex) && _this.props.onChange({
           hex: data.hex,
           source: 'hex'
         }, e);
@@ -22101,8 +28679,8 @@ var ChromeFields = exports.ChromeFields = function (_React$Component) {
 
         _this.props.onChange({
           h: data.h || _this.props.hsl.h,
-          s: Number(!(0, _isUndefined2.default)(data.s) ? data.s : _this.props.hsl.s),
-          l: Number(!(0, _isUndefined2.default)(data.l) ? data.l : _this.props.hsl.l),
+          s: Number(!Object(lodash_es_isUndefined__WEBPACK_IMPORTED_MODULE_3__["default"])(data.s) ? data.s : _this.props.hsl.s),
+          l: Number(!Object(lodash_es_isUndefined__WEBPACK_IMPORTED_MODULE_3__["default"])(data.l) ? data.l : _this.props.hsl.l),
           source: 'hsl'
         }, e);
       }
@@ -22133,7 +28711,7 @@ var ChromeFields = exports.ChromeFields = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var styles = (0, _reactcss2.default)({
+      var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
         'default': {
           wrap: {
             paddingTop: '16px',
@@ -22209,13 +28787,13 @@ var ChromeFields = exports.ChromeFields = function (_React$Component) {
 
       var fields = void 0;
       if (this.state.view === 'hex') {
-        fields = _react2.default.createElement(
+        fields = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.fields, className: 'flexbox-fix' },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.field },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 'hex', value: this.props.hex,
               onChange: this.handleChange
@@ -22223,43 +28801,43 @@ var ChromeFields = exports.ChromeFields = function (_React$Component) {
           )
         );
       } else if (this.state.view === 'rgb') {
-        fields = _react2.default.createElement(
+        fields = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.fields, className: 'flexbox-fix' },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.field },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 'r',
               value: this.props.rgb.r,
               onChange: this.handleChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.field },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 'g',
               value: this.props.rgb.g,
               onChange: this.handleChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.field },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 'b',
               value: this.props.rgb.b,
               onChange: this.handleChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.alpha },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 'a',
               value: this.props.rgb.a,
@@ -22269,43 +28847,43 @@ var ChromeFields = exports.ChromeFields = function (_React$Component) {
           )
         );
       } else if (this.state.view === 'hsl') {
-        fields = _react2.default.createElement(
+        fields = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.fields, className: 'flexbox-fix' },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.field },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 'h',
               value: Math.round(this.props.hsl.h),
               onChange: this.handleChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.field },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 's',
               value: Math.round(this.props.hsl.s * 100) + '%',
               onChange: this.handleChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.field },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 'l',
               value: Math.round(this.props.hsl.l * 100) + '%',
               onChange: this.handleChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.alpha },
-            _react2.default.createElement(_common.EditableInput, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
               style: { input: styles.input, label: styles.label },
               label: 'a',
               value: this.props.hsl.a,
@@ -22316,19 +28894,19 @@ var ChromeFields = exports.ChromeFields = function (_React$Component) {
         );
       }
 
-      return _react2.default.createElement(
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.wrap, className: 'flexbox-fix' },
         fields,
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.toggle },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.icon, onClick: this.toggleViews, ref: function ref(icon) {
                 return _this2.icon = icon;
               } },
-            _react2.default.createElement(_UnfoldMoreHorizontalIcon2.default, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_material_UnfoldMoreHorizontalIcon__WEBPACK_IMPORTED_MODULE_5___default.a, {
               style: styles.svg,
               onMouseOver: this.showHighlight,
               onMouseEnter: this.showHighlight,
@@ -22349,43 +28927,35 @@ var ChromeFields = exports.ChromeFields = function (_React$Component) {
   }]);
 
   return ChromeFields;
-}(_react2.default.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ChromeFields.defaultProps = {
   view: "hex"
 };
 
-exports.default = ChromeFields;
+/* harmony default export */ __webpack_exports__["default"] = (ChromeFields);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/chrome/ChromePointer.js":
-/*!*********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/chrome/ChromePointer.js ***!
-  \*********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/chrome/ChromePointer.js":
+/*!********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/chrome/ChromePointer.js ***!
+  \********************************************************************************************************/
+/*! exports provided: ChromePointer, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChromePointer", function() { return ChromePointer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ChromePointer = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ChromePointer = exports.ChromePointer = function ChromePointer() {
-  var styles = (0, _reactcss2.default)({
+var ChromePointer = function ChromePointer() {
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       picker: {
         width: '12px',
@@ -22398,40 +28968,32 @@ var ChromePointer = exports.ChromePointer = function ChromePointer() {
     }
   });
 
-  return _react2.default.createElement('div', { style: styles.picker });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.picker });
 };
 
-exports.default = ChromePointer;
+/* harmony default export */ __webpack_exports__["default"] = (ChromePointer);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/chrome/ChromePointerCircle.js":
-/*!***************************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/chrome/ChromePointerCircle.js ***!
-  \***************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/chrome/ChromePointerCircle.js":
+/*!**************************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/chrome/ChromePointerCircle.js ***!
+  \**************************************************************************************************************/
+/*! exports provided: ChromePointerCircle, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChromePointerCircle", function() { return ChromePointerCircle; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ChromePointerCircle = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ChromePointerCircle = exports.ChromePointerCircle = function ChromePointerCircle() {
-  var styles = (0, _reactcss2.default)({
+var ChromePointerCircle = function ChromePointerCircle() {
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       picker: {
         width: '12px',
@@ -22443,63 +29005,45 @@ var ChromePointerCircle = exports.ChromePointerCircle = function ChromePointerCi
     }
   });
 
-  return _react2.default.createElement('div', { style: styles.picker });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.picker });
 };
 
-exports.default = ChromePointerCircle;
+/* harmony default export */ __webpack_exports__["default"] = (ChromePointerCircle);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/circle/Circle.js":
-/*!**************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/circle/Circle.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/circle/Circle.js":
+/*!*************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/circle/Circle.js ***!
+  \*************************************************************************************************/
+/*! exports provided: Circle, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Circle", function() { return Circle; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/map */ "../../node_modules/lodash-es/map.js");
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var material_colors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! material-colors */ "../../node_modules/material-colors/dist/colors.es2015.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _CircleSwatch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CircleSwatch */ "../../node_modules/react-color/es/components/circle/CircleSwatch.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Circle = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _map = __webpack_require__(/*! lodash/map */ "../../node_modules/lodash/map.js");
 
-var _map2 = _interopRequireDefault(_map);
-
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _materialColors = __webpack_require__(/*! material-colors */ "../../node_modules/material-colors/dist/colors.es2015.js");
-
-var material = _interopRequireWildcard(_materialColors);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _CircleSwatch = __webpack_require__(/*! ./CircleSwatch */ "../../node_modules/react-color/lib/components/circle/CircleSwatch.js");
-
-var _CircleSwatch2 = _interopRequireDefault(_CircleSwatch);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Circle = exports.Circle = function Circle(_ref) {
+var Circle = function Circle(_ref) {
   var width = _ref.width,
       onChange = _ref.onChange,
       onSwatchHover = _ref.onSwatchHover,
@@ -22512,7 +29056,7 @@ var Circle = exports.Circle = function Circle(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__["default"])({
     'default': {
       card: {
         width: width,
@@ -22528,11 +29072,11 @@ var Circle = exports.Circle = function Circle(_ref) {
     return onChange({ hex: hexCode, source: 'hex' }, e);
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.card, className: 'circle-picker ' + className },
-    (0, _map2.default)(colors, function (c) {
-      return _react2.default.createElement(_CircleSwatch2.default, {
+    Object(lodash_es_map__WEBPACK_IMPORTED_MODULE_3__["default"])(colors, function (c) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CircleSwatch__WEBPACK_IMPORTED_MODULE_7__["default"], {
         key: c,
         color: c,
         onClick: handleChange,
@@ -22546,52 +29090,45 @@ var Circle = exports.Circle = function Circle(_ref) {
 };
 
 Circle.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  circleSize: _propTypes2.default.number,
-  circleSpacing: _propTypes2.default.number,
-  styles: _propTypes2.default.object
+  width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  circleSize: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  circleSpacing: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
 Circle.defaultProps = {
   width: 252,
   circleSize: 28,
   circleSpacing: 14,
-  colors: [material.red['500'], material.pink['500'], material.purple['500'], material.deepPurple['500'], material.indigo['500'], material.blue['500'], material.lightBlue['500'], material.cyan['500'], material.teal['500'], material.green['500'], material.lightGreen['500'], material.lime['500'], material.yellow['500'], material.amber['500'], material.orange['500'], material.deepOrange['500'], material.brown['500'], material.blueGrey['500']],
+  colors: [material_colors__WEBPACK_IMPORTED_MODULE_5__["red"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["pink"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["purple"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepPurple"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["indigo"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blue"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightBlue"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["cyan"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["teal"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["green"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightGreen"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lime"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["yellow"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["amber"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["orange"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepOrange"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["brown"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blueGrey"]['500']],
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Circle);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_6__["ColorWrap"])(Circle));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/circle/CircleSwatch.js":
-/*!********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/circle/CircleSwatch.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/circle/CircleSwatch.js":
+/*!*******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/circle/CircleSwatch.js ***!
+  \*******************************************************************************************************/
+/*! exports provided: CircleSwatch, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CircleSwatch", function() { return CircleSwatch; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CircleSwatch = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CircleSwatch = exports.CircleSwatch = function CircleSwatch(_ref) {
+var CircleSwatch = function CircleSwatch(_ref) {
   var color = _ref.color,
       onClick = _ref.onClick,
       onSwatchHover = _ref.onSwatchHover,
@@ -22600,7 +29137,7 @@ var CircleSwatch = exports.CircleSwatch = function CircleSwatch(_ref) {
       circleSize = _ref.circleSize,
       circleSpacing = _ref.circleSpacing;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       swatch: {
         width: circleSize,
@@ -22629,10 +29166,10 @@ var CircleSwatch = exports.CircleSwatch = function CircleSwatch(_ref) {
     }
   }, { hover: hover, active: active });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.swatch },
-    _react2.default.createElement(_common.Swatch, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_2__["Swatch"], {
       style: styles.Swatch,
       color: color,
       onClick: onClick,
@@ -22647,48 +29184,29 @@ CircleSwatch.defaultProps = {
   circleSpacing: 14
 };
 
-exports.default = (0, _reactcss.handleHover)(CircleSwatch);
+/* harmony default export */ __webpack_exports__["default"] = (Object(reactcss__WEBPACK_IMPORTED_MODULE_1__["handleHover"])(CircleSwatch));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/Alpha.js":
-/*!*************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/Alpha.js ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/Alpha.js":
+/*!************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/Alpha.js ***!
+  \************************************************************************************************/
+/*! exports provided: Alpha, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Alpha = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Alpha", function() { return Alpha; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_alpha__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/alpha */ "../../node_modules/react-color/es/helpers/alpha.js");
+/* harmony import */ var _Checkboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Checkboard */ "../../node_modules/react-color/es/components/common/Checkboard.js");
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _alpha = __webpack_require__(/*! ../../helpers/alpha */ "../../node_modules/react-color/lib/helpers/alpha.js");
-
-var alpha = _interopRequireWildcard(_alpha);
-
-var _Checkboard = __webpack_require__(/*! ./Checkboard */ "../../node_modules/react-color/lib/components/common/Checkboard.js");
-
-var _Checkboard2 = _interopRequireDefault(_Checkboard);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22696,7 +29214,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Alpha = exports.Alpha = function (_ref) {
+
+
+
+
+
+
+var Alpha = function (_ref) {
   _inherits(Alpha, _ref);
 
   function Alpha() {
@@ -22711,7 +29235,7 @@ var Alpha = exports.Alpha = function (_ref) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = Alpha.__proto__ || Object.getPrototypeOf(Alpha)).call.apply(_ref2, [this].concat(args))), _this), _this.handleChange = function (e) {
-      var change = alpha.calculateChange(e, _this.props.hsl, _this.props.direction, _this.props.a, _this.container);
+      var change = _helpers_alpha__WEBPACK_IMPORTED_MODULE_2__["calculateChange"](e, _this.props.hsl, _this.props.direction, _this.props.a, _this.container);
       change && typeof _this.props.onChange === 'function' && _this.props.onChange(change, e);
     }, _this.handleMouseDown = function (e) {
       _this.handleChange(e);
@@ -22736,7 +29260,7 @@ var Alpha = exports.Alpha = function (_ref) {
       var _this2 = this;
 
       var rgb = this.props.rgb;
-      var styles = (0, _reactcss2.default)({
+      var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
         'default': {
           alpha: {
             absolute: '0px 0px 0px 0px',
@@ -22787,16 +29311,16 @@ var Alpha = exports.Alpha = function (_ref) {
         overwrite: true
       });
 
-      return _react2.default.createElement(
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.alpha },
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.checkboard },
-          _react2.default.createElement(_Checkboard2.default, { renderers: this.props.renderers })
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Checkboard__WEBPACK_IMPORTED_MODULE_3__["default"], { renderers: this.props.renderers })
         ),
-        _react2.default.createElement('div', { style: styles.gradient }),
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.gradient }),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           {
             style: styles.container,
@@ -22807,10 +29331,10 @@ var Alpha = exports.Alpha = function (_ref) {
             onTouchMove: this.handleChange,
             onTouchStart: this.handleChange
           },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.pointer },
-            this.props.pointer ? _react2.default.createElement(this.props.pointer, this.props) : _react2.default.createElement('div', { style: styles.slider })
+            this.props.pointer ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(this.props.pointer, this.props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.slider })
           )
         )
       );
@@ -22818,46 +29342,34 @@ var Alpha = exports.Alpha = function (_ref) {
   }]);
 
   return Alpha;
-}(_react.PureComponent || _react.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"] || react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-exports.default = Alpha;
+/* harmony default export */ __webpack_exports__["default"] = (Alpha);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/Checkboard.js":
-/*!******************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/Checkboard.js ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/Checkboard.js":
+/*!*****************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/Checkboard.js ***!
+  \*****************************************************************************************************/
+/*! exports provided: Checkboard, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Checkboard = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Checkboard", function() { return Checkboard; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_checkboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/checkboard */ "../../node_modules/react-color/es/helpers/checkboard.js");
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _checkboard = __webpack_require__(/*! ../../helpers/checkboard */ "../../node_modules/react-color/lib/helpers/checkboard.js");
-
-var checkboard = _interopRequireWildcard(_checkboard);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Checkboard = exports.Checkboard = function Checkboard(_ref) {
+var Checkboard = function Checkboard(_ref) {
   var white = _ref.white,
       grey = _ref.grey,
       size = _ref.size,
@@ -22866,17 +29378,17 @@ var Checkboard = exports.Checkboard = function Checkboard(_ref) {
       boxShadow = _ref.boxShadow,
       children = _ref.children;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       grid: {
         borderRadius: borderRadius,
         boxShadow: boxShadow,
         absolute: '0px 0px 0px 0px',
-        background: 'url(' + checkboard.get(white, grey, size, renderers.canvas) + ') center left'
+        background: 'url(' + _helpers_checkboard__WEBPACK_IMPORTED_MODULE_2__["get"](white, grey, size, renderers.canvas) + ') center left'
       }
     }
   });
-  return (0, _react.isValidElement)(children) ? _react2.default.cloneElement(children, _extends({}, children.props, { style: _extends({}, children.props.style, styles.grid) })) : _react2.default.createElement('div', { style: styles.grid });
+  return Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(children) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(children, _extends({}, children.props, { style: _extends({}, children.props.style, styles.grid) })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.grid });
 };
 
 Checkboard.defaultProps = {
@@ -22886,42 +29398,27 @@ Checkboard.defaultProps = {
   renderers: {}
 };
 
-exports.default = Checkboard;
+/* harmony default export */ __webpack_exports__["default"] = (Checkboard);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/ColorWrap.js":
-/*!*****************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/ColorWrap.js ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/ColorWrap.js":
+/*!****************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/ColorWrap.js ***!
+  \****************************************************************************************************/
+/*! exports provided: ColorWrap, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ColorWrap = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColorWrap", function() { return ColorWrap; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_es_debounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash-es/debounce */ "../../node_modules/lodash-es/debounce.js");
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _debounce = __webpack_require__(/*! lodash/debounce */ "../../node_modules/lodash/debounce.js");
-
-var _debounce2 = _interopRequireDefault(_debounce);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22929,7 +29426,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ColorWrap = exports.ColorWrap = function ColorWrap(Picker) {
+
+
+
+
+var ColorWrap = function ColorWrap(Picker) {
   var ColorPicker = function (_ref) {
     _inherits(ColorPicker, _ref);
 
@@ -22939,9 +29440,9 @@ var ColorWrap = exports.ColorWrap = function ColorWrap(Picker) {
       var _this = _possibleConstructorReturn(this, (ColorPicker.__proto__ || Object.getPrototypeOf(ColorPicker)).call(this));
 
       _this.handleChange = function (data, event) {
-        var isValidColor = _color2.default.simpleCheckForValidColor(data);
+        var isValidColor = _helpers_color__WEBPACK_IMPORTED_MODULE_2__["simpleCheckForValidColor"](data);
         if (isValidColor) {
-          var colors = _color2.default.toState(data, data.h || _this.state.oldHue);
+          var colors = _helpers_color__WEBPACK_IMPORTED_MODULE_2__["toState"](data, data.h || _this.state.oldHue);
           _this.setState(colors);
           _this.props.onChangeComplete && _this.debounce(_this.props.onChangeComplete, colors, event);
           _this.props.onChange && _this.props.onChange(colors, event);
@@ -22949,16 +29450,16 @@ var ColorWrap = exports.ColorWrap = function ColorWrap(Picker) {
       };
 
       _this.handleSwatchHover = function (data, event) {
-        var isValidColor = _color2.default.simpleCheckForValidColor(data);
+        var isValidColor = _helpers_color__WEBPACK_IMPORTED_MODULE_2__["simpleCheckForValidColor"](data);
         if (isValidColor) {
-          var colors = _color2.default.toState(data, data.h || _this.state.oldHue);
+          var colors = _helpers_color__WEBPACK_IMPORTED_MODULE_2__["toState"](data, data.h || _this.state.oldHue);
           _this.props.onSwatchHover && _this.props.onSwatchHover(colors, event);
         }
       };
 
-      _this.state = _extends({}, _color2.default.toState(props.color, 0));
+      _this.state = _extends({}, _helpers_color__WEBPACK_IMPORTED_MODULE_2__["toState"](props.color, 0));
 
-      _this.debounce = (0, _debounce2.default)(function (fn, data, event) {
+      _this.debounce = Object(lodash_es_debounce__WEBPACK_IMPORTED_MODULE_1__["default"])(function (fn, data, event) {
         fn(data, event);
       }, 100);
       return _this;
@@ -22972,19 +29473,19 @@ var ColorWrap = exports.ColorWrap = function ColorWrap(Picker) {
           optionalEvents.onSwatchHover = this.handleSwatchHover;
         }
 
-        return _react2.default.createElement(Picker, _extends({}, this.props, this.state, {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Picker, _extends({}, this.props, this.state, {
           onChange: this.handleChange
         }, optionalEvents));
       }
     }], [{
       key: 'getDerivedStateFromProps',
       value: function getDerivedStateFromProps(nextProps, state) {
-        return _extends({}, _color2.default.toState(nextProps.color, state.oldHue));
+        return _extends({}, _helpers_color__WEBPACK_IMPORTED_MODULE_2__["toState"](nextProps.color, state.oldHue));
       }
     }]);
 
     return ColorPicker;
-  }(_react.PureComponent || _react.Component);
+  }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"] || react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
   ColorPicker.propTypes = _extends({}, Picker.propTypes);
 
@@ -23000,36 +29501,25 @@ var ColorWrap = exports.ColorWrap = function ColorWrap(Picker) {
   return ColorPicker;
 };
 
-exports.default = ColorWrap;
+/* harmony default export */ __webpack_exports__["default"] = (ColorWrap);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/EditableInput.js":
-/*!*********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/EditableInput.js ***!
-  \*********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/EditableInput.js":
+/*!********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/EditableInput.js ***!
+  \********************************************************************************************************/
+/*! exports provided: EditableInput, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.EditableInput = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditableInput", function() { return EditableInput; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -23038,6 +29528,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
 
 var DEFAULT_ARROW_OFFSET = 1;
 
@@ -23051,7 +29544,9 @@ var getNumberValue = function getNumberValue(value) {
   return Number(String(value).replace(/%/g, ''));
 };
 
-var EditableInput = exports.EditableInput = function (_ref) {
+var idCounter = 1;
+
+var EditableInput = function (_ref) {
   _inherits(EditableInput, _ref);
 
   function EditableInput(props) {
@@ -23113,6 +29608,8 @@ var EditableInput = exports.EditableInput = function (_ref) {
       value: String(props.value).toUpperCase(),
       blurValue: String(props.value).toUpperCase()
     };
+
+    _this.inputId = 'rc-editable-input-' + idCounter++;
     return _this;
   }
 
@@ -23155,7 +29652,7 @@ var EditableInput = exports.EditableInput = function (_ref) {
     value: function render() {
       var _this2 = this;
 
-      var styles = (0, _reactcss2.default)({
+      var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
         'default': {
           wrap: {
             position: 'relative'
@@ -23175,10 +29672,11 @@ var EditableInput = exports.EditableInput = function (_ref) {
         'user-override': true
       }, this.props);
 
-      return _react2.default.createElement(
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.wrap },
-        _react2.default.createElement('input', {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', {
+          id: this.inputId,
           style: styles.input,
           ref: function ref(input) {
             return _this2.input = input;
@@ -23190,9 +29688,13 @@ var EditableInput = exports.EditableInput = function (_ref) {
           placeholder: this.props.placeholder,
           spellCheck: 'false'
         }),
-        this.props.label && !this.props.hideLabel ? _react2.default.createElement(
-          'span',
-          { style: styles.label, onMouseDown: this.handleMouseDown },
+        this.props.label && !this.props.hideLabel ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'label',
+          {
+            htmlFor: this.inputId,
+            style: styles.label,
+            onMouseDown: this.handleMouseDown
+          },
           this.props.label
         ) : null
       );
@@ -23200,44 +29702,28 @@ var EditableInput = exports.EditableInput = function (_ref) {
   }]);
 
   return EditableInput;
-}(_react.PureComponent || _react.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"] || react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-exports.default = EditableInput;
+/* harmony default export */ __webpack_exports__["default"] = (EditableInput);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/Hue.js":
-/*!***********************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/Hue.js ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/Hue.js":
+/*!**********************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/Hue.js ***!
+  \**********************************************************************************************/
+/*! exports provided: Hue, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Hue = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hue", function() { return Hue; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_hue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/hue */ "../../node_modules/react-color/es/helpers/hue.js");
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _hue = __webpack_require__(/*! ../../helpers/hue */ "../../node_modules/react-color/lib/helpers/hue.js");
-
-var hue = _interopRequireWildcard(_hue);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23245,7 +29731,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Hue = exports.Hue = function (_ref) {
+
+
+
+
+var Hue = function (_ref) {
   _inherits(Hue, _ref);
 
   function Hue() {
@@ -23260,7 +29750,7 @@ var Hue = exports.Hue = function (_ref) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = Hue.__proto__ || Object.getPrototypeOf(Hue)).call.apply(_ref2, [this].concat(args))), _this), _this.handleChange = function (e) {
-      var change = hue.calculateChange(e, _this.props.direction, _this.props.hsl, _this.container);
+      var change = _helpers_hue__WEBPACK_IMPORTED_MODULE_2__["calculateChange"](e, _this.props.direction, _this.props.hsl, _this.container);
       change && typeof _this.props.onChange === 'function' && _this.props.onChange(change, e);
     }, _this.handleMouseDown = function (e) {
       _this.handleChange(e);
@@ -23291,7 +29781,7 @@ var Hue = exports.Hue = function (_ref) {
           direction = _props$direction === undefined ? 'horizontal' : _props$direction;
 
 
-      var styles = (0, _reactcss2.default)({
+      var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
         'default': {
           hue: {
             absolute: '0px 0px 0px 0px',
@@ -23326,10 +29816,10 @@ var Hue = exports.Hue = function (_ref) {
         }
       }, { vertical: direction === 'vertical' });
 
-      return _react2.default.createElement(
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.hue },
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           {
             className: 'hue-' + direction,
@@ -23341,15 +29831,15 @@ var Hue = exports.Hue = function (_ref) {
             onTouchMove: this.handleChange,
             onTouchStart: this.handleChange
           },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'style',
             null,
             '\n            .hue-horizontal {\n              background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0\n                33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);\n              background: -webkit-linear-gradient(to right, #f00 0%, #ff0\n                17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);\n            }\n\n            .hue-vertical {\n              background: linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%,\n                #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);\n              background: -webkit-linear-gradient(to top, #f00 0%, #ff0 17%,\n                #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);\n            }\n          '
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.pointer },
-            this.props.pointer ? _react2.default.createElement(this.props.pointer, this.props) : _react2.default.createElement('div', { style: styles.slider })
+            this.props.pointer ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(this.props.pointer, this.props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.slider })
           )
         )
       );
@@ -23357,46 +29847,35 @@ var Hue = exports.Hue = function (_ref) {
   }]);
 
   return Hue;
-}(_react.PureComponent || _react.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"] || react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-exports.default = Hue;
+/* harmony default export */ __webpack_exports__["default"] = (Hue);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/Raised.js":
-/*!**************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/Raised.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/Raised.js":
+/*!*************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/Raised.js ***!
+  \*************************************************************************************************/
+/*! exports provided: Raised, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Raised", function() { return Raised; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Raised = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Raised = exports.Raised = function Raised(_ref) {
+var Raised = function Raised(_ref) {
   var zDepth = _ref.zDepth,
       radius = _ref.radius,
       background = _ref.background,
@@ -23404,7 +29883,7 @@ var Raised = exports.Raised = function Raised(_ref) {
       _ref$styles = _ref.styles,
       passedStyles = _ref$styles === undefined ? {} : _ref$styles;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__["default"])({
     'default': {
       wrap: {
         position: 'relative',
@@ -23463,11 +29942,11 @@ var Raised = exports.Raised = function Raised(_ref) {
     }
   }, passedStyles), { 'zDepth-1': zDepth === 1 });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.wrap },
-    _react2.default.createElement('div', { style: styles.bg }),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.bg }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.content },
       children
@@ -23476,10 +29955,10 @@ var Raised = exports.Raised = function Raised(_ref) {
 };
 
 Raised.propTypes = {
-  background: _propTypes2.default.string,
-  zDepth: _propTypes2.default.oneOf([0, 1, 2, 3, 4, 5]),
-  radius: _propTypes2.default.number,
-  styles: _propTypes2.default.object
+  background: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  zDepth: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf([0, 1, 2, 3, 4, 5]),
+  radius: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
 Raised.defaultProps = {
@@ -23489,46 +29968,27 @@ Raised.defaultProps = {
   styles: {}
 };
 
-exports.default = Raised;
+/* harmony default export */ __webpack_exports__["default"] = (Raised);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/Saturation.js":
-/*!******************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/Saturation.js ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/Saturation.js":
+/*!*****************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/Saturation.js ***!
+  \*****************************************************************************************************/
+/*! exports provided: Saturation, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Saturation = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Saturation", function() { return Saturation; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_es_throttle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash-es/throttle */ "../../node_modules/lodash-es/throttle.js");
+/* harmony import */ var _helpers_saturation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/saturation */ "../../node_modules/react-color/es/helpers/saturation.js");
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _throttle = __webpack_require__(/*! lodash/throttle */ "../../node_modules/lodash/throttle.js");
-
-var _throttle2 = _interopRequireDefault(_throttle);
-
-var _saturation = __webpack_require__(/*! ../../helpers/saturation */ "../../node_modules/react-color/lib/helpers/saturation.js");
-
-var saturation = _interopRequireWildcard(_saturation);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23536,7 +29996,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Saturation = exports.Saturation = function (_ref) {
+
+
+
+
+
+var Saturation = function (_ref) {
   _inherits(Saturation, _ref);
 
   function Saturation(props) {
@@ -23545,20 +30010,21 @@ var Saturation = exports.Saturation = function (_ref) {
     var _this = _possibleConstructorReturn(this, (Saturation.__proto__ || Object.getPrototypeOf(Saturation)).call(this, props));
 
     _this.handleChange = function (e) {
-      typeof _this.props.onChange === 'function' && _this.throttle(_this.props.onChange, saturation.calculateChange(e, _this.props.hsl, _this.container), e);
+      typeof _this.props.onChange === 'function' && _this.throttle(_this.props.onChange, _helpers_saturation__WEBPACK_IMPORTED_MODULE_3__["calculateChange"](e, _this.props.hsl, _this.container), e);
     };
 
     _this.handleMouseDown = function (e) {
       _this.handleChange(e);
-      window.addEventListener('mousemove', _this.handleChange);
-      window.addEventListener('mouseup', _this.handleMouseUp);
+      var renderWindow = _this.getContainerRenderWindow();
+      renderWindow.addEventListener('mousemove', _this.handleChange);
+      renderWindow.addEventListener('mouseup', _this.handleMouseUp);
     };
 
     _this.handleMouseUp = function () {
       _this.unbindEventListeners();
     };
 
-    _this.throttle = (0, _throttle2.default)(function (fn, data, e) {
+    _this.throttle = Object(lodash_es_throttle__WEBPACK_IMPORTED_MODULE_2__["default"])(function (fn, data, e) {
       fn(data, e);
     }, 50);
     return _this;
@@ -23571,10 +30037,22 @@ var Saturation = exports.Saturation = function (_ref) {
       this.unbindEventListeners();
     }
   }, {
+    key: 'getContainerRenderWindow',
+    value: function getContainerRenderWindow() {
+      var container = this.container;
+
+      var renderWindow = window;
+      while (!renderWindow.document.contains(container) && renderWindow.parent !== renderWindow) {
+        renderWindow = renderWindow.parent;
+      }
+      return renderWindow;
+    }
+  }, {
     key: 'unbindEventListeners',
     value: function unbindEventListeners() {
-      window.removeEventListener('mousemove', this.handleChange);
-      window.removeEventListener('mouseup', this.handleMouseUp);
+      var renderWindow = this.getContainerRenderWindow();
+      renderWindow.removeEventListener('mousemove', this.handleChange);
+      renderWindow.removeEventListener('mouseup', this.handleMouseUp);
     }
   }, {
     key: 'render',
@@ -23588,7 +30066,7 @@ var Saturation = exports.Saturation = function (_ref) {
           pointer = _ref2.pointer,
           circle = _ref2.circle;
 
-      var styles = (0, _reactcss2.default)({
+      var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
         'default': {
           color: {
             absolute: '0px 0px 0px 0px',
@@ -23628,7 +30106,7 @@ var Saturation = exports.Saturation = function (_ref) {
         }
       }, { 'custom': !!this.props.style });
 
-      return _react2.default.createElement(
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         {
           style: styles.color,
@@ -23639,19 +30117,19 @@ var Saturation = exports.Saturation = function (_ref) {
           onTouchMove: this.handleChange,
           onTouchStart: this.handleChange
         },
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'style',
           null,
           '\n          .saturation-white {\n            background: -webkit-linear-gradient(to right, #fff, rgba(255,255,255,0));\n            background: linear-gradient(to right, #fff, rgba(255,255,255,0));\n          }\n          .saturation-black {\n            background: -webkit-linear-gradient(to top, #000, rgba(0,0,0,0));\n            background: linear-gradient(to top, #000, rgba(0,0,0,0));\n          }\n        '
         ),
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.white, className: 'saturation-white' },
-          _react2.default.createElement('div', { style: styles.black, className: 'saturation-black' }),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.black, className: 'saturation-black' }),
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.pointer },
-            this.props.pointer ? _react2.default.createElement(this.props.pointer, this.props) : _react2.default.createElement('div', { style: styles.circle })
+            this.props.pointer ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(this.props.pointer, this.props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.circle })
           )
         )
       );
@@ -23659,48 +30137,39 @@ var Saturation = exports.Saturation = function (_ref) {
   }]);
 
   return Saturation;
-}(_react.PureComponent || _react.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"] || react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-exports.default = Saturation;
+/* harmony default export */ __webpack_exports__["default"] = (Saturation);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/Swatch.js":
-/*!**************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/Swatch.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/Swatch.js":
+/*!*************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/Swatch.js ***!
+  \*************************************************************************************************/
+/*! exports provided: Swatch, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Swatch = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Swatch", function() { return Swatch; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_interaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/interaction */ "../../node_modules/react-color/es/helpers/interaction.js");
+/* harmony import */ var _Checkboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Checkboard */ "../../node_modules/react-color/es/components/common/Checkboard.js");
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _interaction = __webpack_require__(/*! ../../helpers/interaction */ "../../node_modules/react-color/lib/helpers/interaction.js");
 
-var _Checkboard = __webpack_require__(/*! ./Checkboard */ "../../node_modules/react-color/lib/components/common/Checkboard.js");
-
-var _Checkboard2 = _interopRequireDefault(_Checkboard);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ENTER = 13;
 
-var Swatch = exports.Swatch = function Swatch(_ref) {
+var Swatch = function Swatch(_ref) {
   var color = _ref.color,
       style = _ref.style,
       _ref$onClick = _ref.onClick,
@@ -23714,7 +30183,7 @@ var Swatch = exports.Swatch = function Swatch(_ref) {
       focusStyle = _ref$focusStyle === undefined ? {} : _ref$focusStyle;
 
   var transparent = color === 'transparent';
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     default: {
       swatch: _extends({
         background: color,
@@ -23742,7 +30211,7 @@ var Swatch = exports.Swatch = function Swatch(_ref) {
     optionalEvents.onMouseOver = handleHover;
   }
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     _extends({
       style: styles.swatch,
@@ -23752,159 +30221,95 @@ var Swatch = exports.Swatch = function Swatch(_ref) {
       onKeyDown: handleKeyDown
     }, optionalEvents),
     children,
-    transparent && _react2.default.createElement(_Checkboard2.default, {
+    transparent && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Checkboard__WEBPACK_IMPORTED_MODULE_3__["default"], {
       borderRadius: styles.swatch.borderRadius,
       boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1)'
     })
   );
 };
 
-exports.default = (0, _interaction.handleFocus)(Swatch);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_helpers_interaction__WEBPACK_IMPORTED_MODULE_2__["handleFocus"])(Swatch));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/common/index.js":
-/*!*************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/common/index.js ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/common/index.js":
+/*!************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/common/index.js ***!
+  \************************************************************************************************/
+/*! exports provided: Alpha, Checkboard, EditableInput, Hue, Raised, Saturation, ColorWrap, Swatch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Alpha__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Alpha */ "../../node_modules/react-color/es/components/common/Alpha.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Alpha", function() { return _Alpha__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _Checkboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Checkboard */ "../../node_modules/react-color/es/components/common/Checkboard.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Checkboard", function() { return _Checkboard__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _EditableInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditableInput */ "../../node_modules/react-color/es/components/common/EditableInput.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EditableInput", function() { return _EditableInput__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _Hue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Hue */ "../../node_modules/react-color/es/components/common/Hue.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Hue", function() { return _Hue__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _Raised__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Raised */ "../../node_modules/react-color/es/components/common/Raised.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Raised", function() { return _Raised__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _Saturation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Saturation */ "../../node_modules/react-color/es/components/common/Saturation.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Saturation", function() { return _Saturation__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _ColorWrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ColorWrap */ "../../node_modules/react-color/es/components/common/ColorWrap.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ColorWrap", function() { return _ColorWrap__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _Swatch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Swatch */ "../../node_modules/react-color/es/components/common/Swatch.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Swatch", function() { return _Swatch__WEBPACK_IMPORTED_MODULE_7__["default"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
-var _Alpha = __webpack_require__(/*! ./Alpha */ "../../node_modules/react-color/lib/components/common/Alpha.js");
 
-Object.defineProperty(exports, 'Alpha', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Alpha).default;
-  }
-});
 
-var _Checkboard = __webpack_require__(/*! ./Checkboard */ "../../node_modules/react-color/lib/components/common/Checkboard.js");
 
-Object.defineProperty(exports, 'Checkboard', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Checkboard).default;
-  }
-});
 
-var _EditableInput = __webpack_require__(/*! ./EditableInput */ "../../node_modules/react-color/lib/components/common/EditableInput.js");
 
-Object.defineProperty(exports, 'EditableInput', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_EditableInput).default;
-  }
-});
 
-var _Hue = __webpack_require__(/*! ./Hue */ "../../node_modules/react-color/lib/components/common/Hue.js");
-
-Object.defineProperty(exports, 'Hue', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Hue).default;
-  }
-});
-
-var _Raised = __webpack_require__(/*! ./Raised */ "../../node_modules/react-color/lib/components/common/Raised.js");
-
-Object.defineProperty(exports, 'Raised', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Raised).default;
-  }
-});
-
-var _Saturation = __webpack_require__(/*! ./Saturation */ "../../node_modules/react-color/lib/components/common/Saturation.js");
-
-Object.defineProperty(exports, 'Saturation', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Saturation).default;
-  }
-});
-
-var _ColorWrap = __webpack_require__(/*! ./ColorWrap */ "../../node_modules/react-color/lib/components/common/ColorWrap.js");
-
-Object.defineProperty(exports, 'ColorWrap', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_ColorWrap).default;
-  }
-});
-
-var _Swatch = __webpack_require__(/*! ./Swatch */ "../../node_modules/react-color/lib/components/common/Swatch.js");
-
-Object.defineProperty(exports, 'Swatch', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Swatch).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/compact/Compact.js":
-/*!****************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/compact/Compact.js ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/compact/Compact.js":
+/*!***************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/compact/Compact.js ***!
+  \***************************************************************************************************/
+/*! exports provided: Compact, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Compact", function() { return Compact; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/map */ "../../node_modules/lodash-es/map.js");
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _CompactColor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CompactColor */ "../../node_modules/react-color/es/components/compact/CompactColor.js");
+/* harmony import */ var _CompactFields__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CompactFields */ "../../node_modules/react-color/es/components/compact/CompactFields.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Compact = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _map = __webpack_require__(/*! lodash/map */ "../../node_modules/lodash/map.js");
 
-var _map2 = _interopRequireDefault(_map);
 
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _CompactColor = __webpack_require__(/*! ./CompactColor */ "../../node_modules/react-color/lib/components/compact/CompactColor.js");
-
-var _CompactColor2 = _interopRequireDefault(_CompactColor);
-
-var _CompactFields = __webpack_require__(/*! ./CompactFields */ "../../node_modules/react-color/lib/components/compact/CompactFields.js");
-
-var _CompactFields2 = _interopRequireDefault(_CompactFields);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Compact = exports.Compact = function Compact(_ref) {
+var Compact = function Compact(_ref) {
   var onChange = _ref.onChange,
       onSwatchHover = _ref.onSwatchHover,
       colors = _ref.colors,
@@ -23915,7 +30320,7 @@ var Compact = exports.Compact = function Compact(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__["default"])({
     'default': {
       Compact: {
         background: '#f6f6f6',
@@ -23935,7 +30340,7 @@ var Compact = exports.Compact = function Compact(_ref) {
 
   var handleChange = function handleChange(data, e) {
     if (data.hex) {
-      _color2.default.isValidHex(data.hex) && onChange({
+      _helpers_color__WEBPACK_IMPORTED_MODULE_5__["isValidHex"](data.hex) && onChange({
         hex: data.hex,
         source: 'hex'
       }, e);
@@ -23944,17 +30349,17 @@ var Compact = exports.Compact = function Compact(_ref) {
     }
   };
 
-  return _react2.default.createElement(
-    _common.Raised,
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    _common__WEBPACK_IMPORTED_MODULE_6__["Raised"],
     { style: styles.Compact, styles: passedStyles },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.compact, className: 'compact-picker ' + className },
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         null,
-        (0, _map2.default)(colors, function (c) {
-          return _react2.default.createElement(_CompactColor2.default, {
+        Object(lodash_es_map__WEBPACK_IMPORTED_MODULE_3__["default"])(colors, function (c) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CompactColor__WEBPACK_IMPORTED_MODULE_7__["default"], {
             key: c,
             color: c,
             active: c.toLowerCase() === hex,
@@ -23962,16 +30367,16 @@ var Compact = exports.Compact = function Compact(_ref) {
             onSwatchHover: onSwatchHover
           });
         }),
-        _react2.default.createElement('div', { style: styles.clear })
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.clear })
       ),
-      _react2.default.createElement(_CompactFields2.default, { hex: hex, rgb: rgb, onChange: handleChange })
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CompactFields__WEBPACK_IMPORTED_MODULE_8__["default"], { hex: hex, rgb: rgb, onChange: handleChange })
     )
   );
 };
 
 Compact.propTypes = {
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
-  styles: _propTypes2.default.object
+  colors: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string),
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
 Compact.defaultProps = {
@@ -23979,49 +30384,40 @@ Compact.defaultProps = {
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Compact);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_6__["ColorWrap"])(Compact));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/compact/CompactColor.js":
-/*!*********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/compact/CompactColor.js ***!
-  \*********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/compact/CompactColor.js":
+/*!********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/compact/CompactColor.js ***!
+  \********************************************************************************************************/
+/*! exports provided: CompactColor, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompactColor", function() { return CompactColor; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CompactColor = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CompactColor = exports.CompactColor = function CompactColor(_ref) {
+var CompactColor = function CompactColor(_ref) {
   var color = _ref.color,
       _ref$onClick = _ref.onClick,
       onClick = _ref$onClick === undefined ? function () {} : _ref$onClick,
       onSwatchHover = _ref.onSwatchHover,
       active = _ref.active;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       color: {
         background: color,
@@ -24035,7 +30431,7 @@ var CompactColor = exports.CompactColor = function CompactColor(_ref) {
       },
       dot: {
         absolute: '5px 5px 5px 5px',
-        background: _color2.default.getContrastingColor(color),
+        background: _helpers_color__WEBPACK_IMPORTED_MODULE_2__["getContrastingColor"](color),
         borderRadius: '50%',
         opacity: '0'
       }
@@ -24060,8 +30456,8 @@ var CompactColor = exports.CompactColor = function CompactColor(_ref) {
     }
   }, { active: active, 'color-#FFFFFF': color === '#FFFFFF', 'transparent': color === 'transparent' });
 
-  return _react2.default.createElement(
-    _common.Swatch,
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    _common__WEBPACK_IMPORTED_MODULE_3__["Swatch"],
     {
       style: styles.color,
       color: color,
@@ -24069,47 +30465,40 @@ var CompactColor = exports.CompactColor = function CompactColor(_ref) {
       onHover: onSwatchHover,
       focusStyle: { boxShadow: '0 0 4px ' + color }
     },
-    _react2.default.createElement('div', { style: styles.dot })
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.dot })
   );
 };
 
-exports.default = CompactColor;
+/* harmony default export */ __webpack_exports__["default"] = (CompactColor);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/compact/CompactFields.js":
-/*!**********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/compact/CompactFields.js ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/compact/CompactFields.js":
+/*!*********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/compact/CompactFields.js ***!
+  \*********************************************************************************************************/
+/*! exports provided: CompactFields, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompactFields", function() { return CompactFields; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CompactFields = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CompactFields = exports.CompactFields = function CompactFields(_ref) {
+var CompactFields = function CompactFields(_ref) {
   var hex = _ref.hex,
       rgb = _ref.rgb,
       onChange = _ref.onChange;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       fields: {
         display: 'flex',
@@ -24186,29 +30575,29 @@ var CompactFields = exports.CompactFields = function CompactFields(_ref) {
     }
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.fields, className: 'flexbox-fix' },
-    _react2.default.createElement('div', { style: styles.active }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.active }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_2__["EditableInput"], {
       style: { wrap: styles.HEXwrap, input: styles.HEXinput, label: styles.HEXlabel },
       label: 'hex',
       value: hex,
       onChange: handleChange
     }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_2__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 'r',
       value: rgb.r,
       onChange: handleChange
     }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_2__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 'g',
       value: rgb.g,
       onChange: handleChange
     }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_2__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 'b',
       value: rgb.b,
@@ -24217,54 +30606,40 @@ var CompactFields = exports.CompactFields = function CompactFields(_ref) {
   );
 };
 
-exports.default = CompactFields;
+/* harmony default export */ __webpack_exports__["default"] = (CompactFields);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/github/Github.js":
-/*!**************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/github/Github.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/github/Github.js":
+/*!*************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/github/Github.js ***!
+  \*************************************************************************************************/
+/*! exports provided: Github, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Github", function() { return Github; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/map */ "../../node_modules/lodash-es/map.js");
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _GithubSwatch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GithubSwatch */ "../../node_modules/react-color/es/components/github/GithubSwatch.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Github = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _map = __webpack_require__(/*! lodash/map */ "../../node_modules/lodash/map.js");
-
-var _map2 = _interopRequireDefault(_map);
-
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _GithubSwatch = __webpack_require__(/*! ./GithubSwatch */ "../../node_modules/react-color/lib/components/github/GithubSwatch.js");
-
-var _GithubSwatch2 = _interopRequireDefault(_GithubSwatch);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Github = exports.Github = function Github(_ref) {
+var Github = function Github(_ref) {
   var width = _ref.width,
       colors = _ref.colors,
       onChange = _ref.onChange,
@@ -24275,7 +30650,7 @@ var Github = exports.Github = function Github(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__["default"])({
     'default': {
       card: {
         width: width,
@@ -24363,13 +30738,13 @@ var Github = exports.Github = function Github(_ref) {
     return onChange({ hex: hex, source: 'hex' }, e);
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.card, className: 'github-picker ' + className },
-    _react2.default.createElement('div', { style: styles.triangleShadow }),
-    _react2.default.createElement('div', { style: styles.triangle }),
-    (0, _map2.default)(colors, function (c) {
-      return _react2.default.createElement(_GithubSwatch2.default, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.triangleShadow }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.triangle }),
+    Object(lodash_es_map__WEBPACK_IMPORTED_MODULE_3__["default"])(colors, function (c) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GithubSwatch__WEBPACK_IMPORTED_MODULE_6__["default"], {
         color: c,
         key: c,
         onClick: handleChange,
@@ -24380,10 +30755,10 @@ var Github = exports.Github = function Github(_ref) {
 };
 
 Github.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
-  triangle: _propTypes2.default.oneOf(['hide', 'top-left', 'top-right', 'bottom-left', 'bottom-right']),
-  styles: _propTypes2.default.object
+  width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  colors: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string),
+  triangle: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['hide', 'top-left', 'top-right', 'bottom-left', 'bottom-right']),
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
 Github.defaultProps = {
@@ -24393,38 +30768,31 @@ Github.defaultProps = {
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Github);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_5__["ColorWrap"])(Github));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/github/GithubSwatch.js":
-/*!********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/github/GithubSwatch.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/github/GithubSwatch.js":
+/*!*******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/github/GithubSwatch.js ***!
+  \*******************************************************************************************************/
+/*! exports provided: GithubSwatch, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GithubSwatch", function() { return GithubSwatch; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GithubSwatch = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var GithubSwatch = exports.GithubSwatch = function GithubSwatch(_ref) {
+var GithubSwatch = function GithubSwatch(_ref) {
   var hover = _ref.hover,
       color = _ref.color,
       onClick = _ref.onClick,
@@ -24437,7 +30805,7 @@ var GithubSwatch = exports.GithubSwatch = function GithubSwatch(_ref) {
     boxShadow: '0 0 5px 2px rgba(0,0,0,0.25)'
   };
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       swatch: {
         width: '25px',
@@ -24450,10 +30818,10 @@ var GithubSwatch = exports.GithubSwatch = function GithubSwatch(_ref) {
     }
   }, { hover: hover });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.swatch },
-    _react2.default.createElement(_common.Swatch, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_2__["Swatch"], {
       color: color,
       onClick: onClick,
       onHover: onSwatchHover,
@@ -24462,52 +30830,539 @@ var GithubSwatch = exports.GithubSwatch = function GithubSwatch(_ref) {
   );
 };
 
-exports.default = (0, _reactcss.handleHover)(GithubSwatch);
+/* harmony default export */ __webpack_exports__["default"] = (Object(reactcss__WEBPACK_IMPORTED_MODULE_1__["handleHover"])(GithubSwatch));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/hue/Hue.js":
-/*!********************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/hue/Hue.js ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/google/Google.js":
+/*!*************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/google/Google.js ***!
+  \*************************************************************************************************/
+/*! exports provided: Google, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Google", function() { return Google; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _GooglePointerCircle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GooglePointerCircle */ "../../node_modules/react-color/es/components/google/GooglePointerCircle.js");
+/* harmony import */ var _GooglePointer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GooglePointer */ "../../node_modules/react-color/es/components/google/GooglePointer.js");
+/* harmony import */ var _GoogleFields__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GoogleFields */ "../../node_modules/react-color/es/components/google/GoogleFields.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.HuePicker = undefined;
 
+
+
+
+
+
+
+
+var Google = function Google(_ref) {
+  var width = _ref.width,
+      onChange = _ref.onChange,
+      rgb = _ref.rgb,
+      hsl = _ref.hsl,
+      hsv = _ref.hsv,
+      hex = _ref.hex,
+      header = _ref.header,
+      _ref$styles = _ref.styles,
+      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
+      _ref$className = _ref.className,
+      className = _ref$className === undefined ? '' : _ref$className;
+
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__["default"])({
+    'default': {
+      picker: {
+        width: width,
+        background: '#fff',
+        border: '1px solid #dfe1e5',
+        boxSizing: 'initial',
+        display: 'flex',
+        flexWrap: 'wrap',
+        borderRadius: '8px 8px 0px 0px'
+      },
+      head: {
+        height: '57px',
+        width: '100%',
+        paddingTop: '16px',
+        paddingBottom: '16px',
+        paddingLeft: '16px',
+        fontSize: '20px',
+        boxSizing: 'border-box',
+        fontFamily: 'Roboto-Regular,HelveticaNeue,Arial,sans-serif'
+      },
+      saturation: {
+        width: '70%',
+        padding: '0px',
+        position: 'relative',
+        overflow: 'hidden'
+      },
+      swatch: {
+        width: '30%',
+        height: '228px',
+        padding: '0px',
+        background: 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 1)',
+        position: 'relative',
+        overflow: 'hidden'
+      },
+      body: {
+        margin: 'auto',
+        width: '95%'
+      },
+      controls: {
+        display: 'flex',
+        boxSizing: 'border-box',
+        height: '52px',
+        paddingTop: '22px'
+      },
+      color: {
+        width: '32px'
+      },
+      hue: {
+        height: '8px',
+        position: 'relative',
+        margin: '0px 16px 0px 16px',
+        width: '100%'
+      },
+      Hue: {
+        radius: '2px'
+      }
+    }
+  }, passedStyles));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    'div',
+    { style: styles.picker, className: 'google-picker ' + className },
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      'div',
+      { style: styles.head },
+      header
+    ),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.swatch }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      'div',
+      { style: styles.saturation },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Saturation"], {
+        hsl: hsl,
+        hsv: hsv,
+        pointer: _GooglePointerCircle__WEBPACK_IMPORTED_MODULE_5__["default"],
+        onChange: onChange
+      })
+    ),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      'div',
+      { style: styles.body },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        'div',
+        { style: styles.controls, className: 'flexbox-fix' },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'div',
+          { style: styles.hue },
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Hue"], {
+            style: styles.Hue,
+            hsl: hsl,
+            radius: '4px',
+            pointer: _GooglePointer__WEBPACK_IMPORTED_MODULE_6__["default"],
+            onChange: onChange
+          })
+        )
+      ),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GoogleFields__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        rgb: rgb,
+        hsl: hsl,
+        hex: hex,
+        hsv: hsv,
+        onChange: onChange
+      })
+    )
+  );
+};
+
+Google.propTypes = {
+  width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object,
+  header: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
+
+};
+
+Google.defaultProps = {
+  width: 652,
+  styles: {},
+  header: 'Color picker'
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_4__["ColorWrap"])(Google));
+
+/***/ }),
+
+/***/ "../../node_modules/react-color/es/components/google/GoogleFields.js":
+/*!*******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/google/GoogleFields.js ***!
+  \*******************************************************************************************************/
+/*! exports provided: GoogleFields, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GoogleFields", function() { return GoogleFields; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+
+
+
+
+
+var GoogleFields = function GoogleFields(_ref) {
+  var onChange = _ref.onChange,
+      rgb = _ref.rgb,
+      hsl = _ref.hsl,
+      hex = _ref.hex,
+      hsv = _ref.hsv;
+
+
+  var handleChange = function handleChange(data, e) {
+    if (data.hex) {
+      _helpers_color__WEBPACK_IMPORTED_MODULE_2__["isValidHex"](data.hex) && onChange({
+        hex: data.hex,
+        source: 'hex'
+      }, e);
+    } else if (data.rgb) {
+      var values = data.rgb.split(',');
+      _helpers_color__WEBPACK_IMPORTED_MODULE_2__["isvalidColorString"](data.rgb, 'rgb') && onChange({
+        r: values[0],
+        g: values[1],
+        b: values[2],
+        a: 1,
+        source: 'rgb'
+      }, e);
+    } else if (data.hsv) {
+      var _values = data.hsv.split(',');
+      if (_helpers_color__WEBPACK_IMPORTED_MODULE_2__["isvalidColorString"](data.hsv, 'hsv')) {
+        _values[2] = _values[2].replace('%', '');
+        _values[1] = _values[1].replace('%', '');
+        _values[0] = _values[0].replace('°', '');
+        if (_values[1] == 1) {
+          _values[1] = 0.01;
+        } else if (_values[2] == 1) {
+          _values[2] = 0.01;
+        }
+        onChange({
+          h: Number(_values[0]),
+          s: Number(_values[1]),
+          v: Number(_values[2]),
+          source: 'hsv'
+        }, e);
+      }
+    } else if (data.hsl) {
+      var _values2 = data.hsl.split(',');
+      if (_helpers_color__WEBPACK_IMPORTED_MODULE_2__["isvalidColorString"](data.hsl, 'hsl')) {
+        _values2[2] = _values2[2].replace('%', '');
+        _values2[1] = _values2[1].replace('%', '');
+        _values2[0] = _values2[0].replace('°', '');
+        if (hsvValue[1] == 1) {
+          hsvValue[1] = 0.01;
+        } else if (hsvValue[2] == 1) {
+          hsvValue[2] = 0.01;
+        }
+        onChange({
+          h: Number(_values2[0]),
+          s: Number(_values2[1]),
+          v: Number(_values2[2]),
+          source: 'hsl'
+        }, e);
+      }
+    }
+  };
+
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
+    'default': {
+      wrap: {
+        display: 'flex',
+        height: '100px',
+        marginTop: '4px'
+      },
+      fields: {
+        width: '100%'
+      },
+      column: {
+        paddingTop: '10px',
+        display: 'flex',
+        justifyContent: 'space-between'
+      },
+      double: {
+        padding: '0px 4.4px',
+        boxSizing: 'border-box'
+      },
+      input: {
+        width: '100%',
+        height: '38px',
+        boxSizing: 'border-box',
+        padding: '4px 10% 3px',
+        textAlign: 'center',
+        border: '1px solid #dadce0',
+        fontSize: '11px',
+        textTransform: 'lowercase',
+        borderRadius: '5px',
+        outline: 'none',
+        fontFamily: 'Roboto,Arial,sans-serif'
+      },
+      input2: {
+        height: '38px',
+        width: '100%',
+        border: '1px solid #dadce0',
+        boxSizing: 'border-box',
+        fontSize: '11px',
+        textTransform: 'lowercase',
+        borderRadius: '5px',
+        outline: 'none',
+        paddingLeft: '10px',
+        fontFamily: 'Roboto,Arial,sans-serif'
+      },
+      label: {
+        textAlign: 'center',
+        fontSize: '12px',
+        background: '#fff',
+        position: 'absolute',
+        textTransform: 'uppercase',
+        color: '#3c4043',
+        width: '35px',
+        top: '-6px',
+        left: '0',
+        right: '0',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        fontFamily: 'Roboto,Arial,sans-serif'
+      },
+      label2: {
+        left: '10px',
+        textAlign: 'center',
+        fontSize: '12px',
+        background: '#fff',
+        position: 'absolute',
+        textTransform: 'uppercase',
+        color: '#3c4043',
+        width: '32px',
+        top: '-6px',
+        fontFamily: 'Roboto,Arial,sans-serif'
+      },
+      single: {
+        flexGrow: '1',
+        margin: '0px 4.4px'
+      }
+    }
+  });
+
+  var rgbValue = rgb.r + ', ' + rgb.g + ', ' + rgb.b;
+  var hslValue = Math.round(hsl.h) + '\xB0, ' + Math.round(hsl.s * 100) + '%, ' + Math.round(hsl.l * 100) + '%';
+  var hsvValue = Math.round(hsv.h) + '\xB0, ' + Math.round(hsv.s * 100) + '%, ' + Math.round(hsv.v * 100) + '%';
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    'div',
+    { style: styles.wrap, className: 'flexbox-fix' },
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      'div',
+      { style: styles.fields },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        'div',
+        { style: styles.double },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
+          style: { input: styles.input, label: styles.label },
+          label: 'hex',
+          value: hex,
+          onChange: handleChange
+        })
+      ),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        'div',
+        { style: styles.column },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'div',
+          { style: styles.single },
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
+            style: { input: styles.input2, label: styles.label2 },
+            label: 'rgb',
+            value: rgbValue,
+            onChange: handleChange
+          })
+        ),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'div',
+          { style: styles.single },
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
+            style: { input: styles.input2, label: styles.label2 },
+            label: 'hsv',
+            value: hsvValue,
+            onChange: handleChange
+          })
+        ),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'div',
+          { style: styles.single },
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
+            style: { input: styles.input2, label: styles.label2 },
+            label: 'hsl',
+            value: hslValue,
+            onChange: handleChange
+          })
+        )
+      )
+    )
+  );
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (GoogleFields);
+
+/***/ }),
+
+/***/ "../../node_modules/react-color/es/components/google/GooglePointer.js":
+/*!********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/google/GooglePointer.js ***!
+  \********************************************************************************************************/
+/*! exports provided: GooglePointer, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GooglePointer", function() { return GooglePointer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var GooglePointer = function GooglePointer(props) {
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
+    'default': {
+      picker: {
+        width: '20px',
+        height: '20px',
+        borderRadius: '22px',
+        transform: 'translate(-10px, -7px)',
+        background: 'hsl(' + Math.round(props.hsl.h) + ', 100%, 50%)',
+        border: '2px white solid'
+      }
+    }
+  });
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.picker });
+};
+
+GooglePointer.propTypes = {
+  hsl: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.shape({
+    h: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+    s: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+    l: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+    a: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number
+  })
+};
+
+GooglePointer.defaultProps = {
+  hsl: { a: 1, h: 249.94, l: 0.2, s: 0.50 }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (GooglePointer);
+
+/***/ }),
+
+/***/ "../../node_modules/react-color/es/components/google/GooglePointerCircle.js":
+/*!**************************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/google/GooglePointerCircle.js ***!
+  \**************************************************************************************************************/
+/*! exports provided: GooglePointerCircle, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GooglePointerCircle", function() { return GooglePointerCircle; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var GooglePointerCircle = function GooglePointerCircle(props) {
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
+    'default': {
+      picker: {
+        width: '20px',
+        height: '20px',
+        borderRadius: '22px',
+        border: '2px #fff solid',
+        transform: 'translate(-12px, -13px)',
+        background: 'hsl(' + Math.round(props.hsl.h) + ', ' + Math.round(props.hsl.s * 100) + '%, ' + Math.round(props.hsl.l * 100) + '%)'
+      }
+    }
+  });
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.picker });
+};
+
+GooglePointerCircle.propTypes = {
+  hsl: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.shape({
+    h: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+    s: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+    l: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+    a: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number
+  })
+};
+
+GooglePointerCircle.defaultProps = {
+  hsl: { a: 1, h: 249.94, l: 0.2, s: 0.50 }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (GooglePointerCircle);
+
+/***/ }),
+
+/***/ "../../node_modules/react-color/es/components/hue/Hue.js":
+/*!*******************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/hue/Hue.js ***!
+  \*******************************************************************************************/
+/*! exports provided: HuePicker, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HuePicker", function() { return HuePicker; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _HuePointer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./HuePointer */ "../../node_modules/react-color/es/components/hue/HuePointer.js");
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
 
-var _merge2 = _interopRequireDefault(_merge);
 
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _HuePointer = __webpack_require__(/*! ./HuePointer */ "../../node_modules/react-color/lib/components/hue/HuePointer.js");
-
-var _HuePointer2 = _interopRequireDefault(_HuePointer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var HuePicker = exports.HuePicker = function HuePicker(_ref) {
+var HuePicker = function HuePicker(_ref) {
   var width = _ref.width,
       height = _ref.height,
       onChange = _ref.onChange,
@@ -24519,7 +31374,7 @@ var HuePicker = exports.HuePicker = function HuePicker(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__["default"])({
     'default': {
       picker: {
         position: 'relative',
@@ -24537,10 +31392,10 @@ var HuePicker = exports.HuePicker = function HuePicker(_ref) {
     return onChange({ a: 1, h: data.h, l: 0.5, s: 1 });
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.picker, className: 'hue-picker ' + className },
-    _react2.default.createElement(_common.Hue, _extends({}, styles.hue, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Hue"], _extends({}, styles.hue, {
       hsl: hsl,
       pointer: pointer,
       onChange: handleChange,
@@ -24550,49 +31405,41 @@ var HuePicker = exports.HuePicker = function HuePicker(_ref) {
 };
 
 HuePicker.propTypes = {
-  styles: _propTypes2.default.object
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 HuePicker.defaultProps = {
   width: '316px',
   height: '16px',
   direction: 'horizontal',
-  pointer: _HuePointer2.default,
+  pointer: _HuePointer__WEBPACK_IMPORTED_MODULE_5__["default"],
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(HuePicker);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_4__["ColorWrap"])(HuePicker));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/hue/HuePointer.js":
-/*!***************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/hue/HuePointer.js ***!
-  \***************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/hue/HuePointer.js":
+/*!**************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/hue/HuePointer.js ***!
+  \**************************************************************************************************/
+/*! exports provided: SliderPointer, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SliderPointer", function() { return SliderPointer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SliderPointer = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SliderPointer = exports.SliderPointer = function SliderPointer(_ref) {
+var SliderPointer = function SliderPointer(_ref) {
   var direction = _ref.direction;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       picker: {
         width: '18px',
@@ -24610,49 +31457,38 @@ var SliderPointer = exports.SliderPointer = function SliderPointer(_ref) {
     }
   }, { vertical: direction === 'vertical' });
 
-  return _react2.default.createElement('div', { style: styles.picker });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.picker });
 };
 
-exports.default = SliderPointer;
+/* harmony default export */ __webpack_exports__["default"] = (SliderPointer);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/material/Material.js":
-/*!******************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/material/Material.js ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/material/Material.js":
+/*!*****************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/material/Material.js ***!
+  \*****************************************************************************************************/
+/*! exports provided: Material, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Material", function() { return Material; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Material = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Material = exports.Material = function Material(_ref) {
+var Material = function Material(_ref) {
   var onChange = _ref.onChange,
       hex = _ref.hex,
       rgb = _ref.rgb,
@@ -24661,7 +31497,7 @@ var Material = exports.Material = function Material(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_2__["default"])({
     'default': {
       material: {
         width: '98px',
@@ -24730,7 +31566,7 @@ var Material = exports.Material = function Material(_ref) {
 
   var handleChange = function handleChange(data, e) {
     if (data.hex) {
-      _color2.default.isValidHex(data.hex) && onChange({
+      _helpers_color__WEBPACK_IMPORTED_MODULE_3__["isValidHex"](data.hex) && onChange({
         hex: data.hex,
         source: 'hex'
       }, e);
@@ -24744,44 +31580,44 @@ var Material = exports.Material = function Material(_ref) {
     }
   };
 
-  return _react2.default.createElement(
-    _common.Raised,
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    _common__WEBPACK_IMPORTED_MODULE_4__["Raised"],
     { styles: passedStyles },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.material, className: 'material-picker ' + className },
-      _react2.default.createElement(_common.EditableInput, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
         style: { wrap: styles.HEXwrap, input: styles.HEXinput, label: styles.HEXlabel },
         label: 'hex',
         value: hex,
         onChange: handleChange
       }),
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.split, className: 'flexbox-fix' },
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.third },
-          _react2.default.createElement(_common.EditableInput, {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
             style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
             label: 'r', value: rgb.r,
             onChange: handleChange
           })
         ),
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.third },
-          _react2.default.createElement(_common.EditableInput, {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
             style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
             label: 'g',
             value: rgb.g,
             onChange: handleChange
           })
         ),
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.third },
-          _react2.default.createElement(_common.EditableInput, {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["EditableInput"], {
             style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
             label: 'b',
             value: rgb.b,
@@ -24793,66 +31629,34 @@ var Material = exports.Material = function Material(_ref) {
   );
 };
 
-exports.default = (0, _common.ColorWrap)(Material);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_4__["ColorWrap"])(Material));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/photoshop/Photoshop.js":
-/*!********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/photoshop/Photoshop.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/photoshop/Photoshop.js":
+/*!*******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/photoshop/Photoshop.js ***!
+  \*******************************************************************************************************/
+/*! exports provided: Photoshop, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Photoshop = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Photoshop", function() { return Photoshop; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _PhotoshopFields__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PhotoshopFields */ "../../node_modules/react-color/es/components/photoshop/PhotoshopFields.js");
+/* harmony import */ var _PhotoshopPointerCircle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PhotoshopPointerCircle */ "../../node_modules/react-color/es/components/photoshop/PhotoshopPointerCircle.js");
+/* harmony import */ var _PhotoshopPointer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PhotoshopPointer */ "../../node_modules/react-color/es/components/photoshop/PhotoshopPointer.js");
+/* harmony import */ var _PhotoshopButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./PhotoshopButton */ "../../node_modules/react-color/es/components/photoshop/PhotoshopButton.js");
+/* harmony import */ var _PhotoshopPreviews__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./PhotoshopPreviews */ "../../node_modules/react-color/es/components/photoshop/PhotoshopPreviews.js");
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _PhotoshopFields = __webpack_require__(/*! ./PhotoshopFields */ "../../node_modules/react-color/lib/components/photoshop/PhotoshopFields.js");
-
-var _PhotoshopFields2 = _interopRequireDefault(_PhotoshopFields);
-
-var _PhotoshopPointerCircle = __webpack_require__(/*! ./PhotoshopPointerCircle */ "../../node_modules/react-color/lib/components/photoshop/PhotoshopPointerCircle.js");
-
-var _PhotoshopPointerCircle2 = _interopRequireDefault(_PhotoshopPointerCircle);
-
-var _PhotoshopPointer = __webpack_require__(/*! ./PhotoshopPointer */ "../../node_modules/react-color/lib/components/photoshop/PhotoshopPointer.js");
-
-var _PhotoshopPointer2 = _interopRequireDefault(_PhotoshopPointer);
-
-var _PhotoshopButton = __webpack_require__(/*! ./PhotoshopButton */ "../../node_modules/react-color/lib/components/photoshop/PhotoshopButton.js");
-
-var _PhotoshopButton2 = _interopRequireDefault(_PhotoshopButton);
-
-var _PhotoshopPreviews = __webpack_require__(/*! ./PhotoshopPreviews */ "../../node_modules/react-color/lib/components/photoshop/PhotoshopPreviews.js");
-
-var _PhotoshopPreviews2 = _interopRequireDefault(_PhotoshopPreviews);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24860,7 +31664,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Photoshop = exports.Photoshop = function (_React$Component) {
+
+
+
+
+
+
+
+
+
+
+
+
+var Photoshop = function (_React$Component) {
   _inherits(Photoshop, _React$Component);
 
   function Photoshop(props) {
@@ -24883,7 +31699,7 @@ var Photoshop = exports.Photoshop = function (_React$Component) {
           _props$className = _props.className,
           className = _props$className === undefined ? '' : _props$className;
 
-      var styles = (0, _reactcss2.default)((0, _merge2.default)({
+      var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__["default"])({
         'default': {
           picker: {
             background: '#DCDCDC',
@@ -24940,57 +31756,57 @@ var Photoshop = exports.Photoshop = function (_React$Component) {
         }
       }, passedStyles));
 
-      return _react2.default.createElement(
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.picker, className: 'photoshop-picker ' + className },
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.head },
           this.props.header
         ),
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.body, className: 'flexbox-fix' },
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.saturation },
-            _react2.default.createElement(_common.Saturation, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Saturation"], {
               hsl: this.props.hsl,
               hsv: this.props.hsv,
-              pointer: _PhotoshopPointerCircle2.default,
+              pointer: _PhotoshopPointerCircle__WEBPACK_IMPORTED_MODULE_6__["default"],
               onChange: this.props.onChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.hue },
-            _react2.default.createElement(_common.Hue, {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Hue"], {
               direction: 'vertical',
               hsl: this.props.hsl,
-              pointer: _PhotoshopPointer2.default,
+              pointer: _PhotoshopPointer__WEBPACK_IMPORTED_MODULE_7__["default"],
               onChange: this.props.onChange
             })
           ),
-          _react2.default.createElement(
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             'div',
             { style: styles.controls },
-            _react2.default.createElement(
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
               'div',
               { style: styles.top, className: 'flexbox-fix' },
-              _react2.default.createElement(
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                 'div',
                 { style: styles.previews },
-                _react2.default.createElement(_PhotoshopPreviews2.default, {
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PhotoshopPreviews__WEBPACK_IMPORTED_MODULE_9__["default"], {
                   rgb: this.props.rgb,
                   currentColor: this.state.currentColor
                 })
               ),
-              _react2.default.createElement(
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                 'div',
                 { style: styles.actions },
-                _react2.default.createElement(_PhotoshopButton2.default, { label: 'OK', onClick: this.props.onAccept, active: true }),
-                _react2.default.createElement(_PhotoshopButton2.default, { label: 'Cancel', onClick: this.props.onCancel }),
-                _react2.default.createElement(_PhotoshopFields2.default, {
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PhotoshopButton__WEBPACK_IMPORTED_MODULE_8__["default"], { label: 'OK', onClick: this.props.onAccept, active: true }),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PhotoshopButton__WEBPACK_IMPORTED_MODULE_8__["default"], { label: 'Cancel', onClick: this.props.onCancel }),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PhotoshopFields__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   onChange: this.props.onChange,
                   rgb: this.props.rgb,
                   hsv: this.props.hsv,
@@ -25005,11 +31821,11 @@ var Photoshop = exports.Photoshop = function (_React$Component) {
   }]);
 
   return Photoshop;
-}(_react2.default.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 Photoshop.propTypes = {
-  header: _propTypes2.default.string,
-  styles: _propTypes2.default.object
+  header: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
 Photoshop.defaultProps = {
@@ -25017,42 +31833,34 @@ Photoshop.defaultProps = {
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Photoshop);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_4__["ColorWrap"])(Photoshop));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/photoshop/PhotoshopButton.js":
-/*!**************************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/photoshop/PhotoshopButton.js ***!
-  \**************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/photoshop/PhotoshopButton.js":
+/*!*************************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/photoshop/PhotoshopButton.js ***!
+  \*************************************************************************************************************/
+/*! exports provided: PhotoshopButton, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoshopButton", function() { return PhotoshopButton; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopButton = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopButton = exports.PhotoshopButton = function PhotoshopButton(_ref) {
+var PhotoshopButton = function PhotoshopButton(_ref) {
   var onClick = _ref.onClick,
       label = _ref.label,
       children = _ref.children,
       active = _ref.active;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       button: {
         backgroundImage: 'linear-gradient(-180deg, #FFFFFF 0%, #E6E6E6 100%)',
@@ -25075,55 +31883,46 @@ var PhotoshopButton = exports.PhotoshopButton = function PhotoshopButton(_ref) {
     }
   }, { active: active });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.button, onClick: onClick },
     label || children
   );
 };
 
-exports.default = PhotoshopButton;
+/* harmony default export */ __webpack_exports__["default"] = (PhotoshopButton);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/photoshop/PhotoshopFields.js":
-/*!**************************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/photoshop/PhotoshopFields.js ***!
-  \**************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/photoshop/PhotoshopFields.js":
+/*!*************************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/photoshop/PhotoshopFields.js ***!
+  \*************************************************************************************************************/
+/*! exports provided: PhotoshopPicker, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoshopPicker", function() { return PhotoshopPicker; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopPicker = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopPicker = exports.PhotoshopPicker = function PhotoshopPicker(_ref) {
+var PhotoshopPicker = function PhotoshopPicker(_ref) {
   var onChange = _ref.onChange,
       rgb = _ref.rgb,
       hsv = _ref.hsv,
       hex = _ref.hex;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       fields: {
         paddingTop: '5px',
@@ -25150,6 +31949,7 @@ var PhotoshopPicker = exports.PhotoshopPicker = function PhotoshopPicker(_ref) {
       },
       RGBlabel: {
         left: '0px',
+        top: '0px',
         width: '34px',
         textTransform: 'uppercase',
         fontSize: '13px',
@@ -25196,7 +31996,7 @@ var PhotoshopPicker = exports.PhotoshopPicker = function PhotoshopPicker(_ref) {
 
   var handleChange = function handleChange(data, e) {
     if (data['#']) {
-      _color2.default.isValidHex(data['#']) && onChange({
+      _helpers_color__WEBPACK_IMPORTED_MODULE_2__["isValidHex"](data['#']) && onChange({
         hex: data['#'],
         source: 'hex'
       }, e);
@@ -25217,67 +32017,67 @@ var PhotoshopPicker = exports.PhotoshopPicker = function PhotoshopPicker(_ref) {
     }
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.fields },
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 'h',
       value: Math.round(hsv.h),
       onChange: handleChange
     }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 's',
       value: Math.round(hsv.s * 100),
       onChange: handleChange
     }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 'v',
       value: Math.round(hsv.v * 100),
       onChange: handleChange
     }),
-    _react2.default.createElement('div', { style: styles.divider }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.divider }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 'r',
       value: rgb.r,
       onChange: handleChange
     }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 'g',
       value: rgb.g,
       onChange: handleChange
     }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
       style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
       label: 'b',
       value: rgb.b,
       onChange: handleChange
     }),
-    _react2.default.createElement('div', { style: styles.divider }),
-    _react2.default.createElement(_common.EditableInput, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.divider }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
       style: { wrap: styles.HEXwrap, input: styles.HEXinput, label: styles.HEXlabel },
       label: '#',
       value: hex.replace('#', ''),
       onChange: handleChange
     }),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.fieldSymbols },
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.symbol },
         '\xB0'
       ),
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.symbol },
         '%'
       ),
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.symbol },
         '%'
@@ -25286,37 +32086,29 @@ var PhotoshopPicker = exports.PhotoshopPicker = function PhotoshopPicker(_ref) {
   );
 };
 
-exports.default = PhotoshopPicker;
+/* harmony default export */ __webpack_exports__["default"] = (PhotoshopPicker);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/photoshop/PhotoshopPointer.js":
-/*!***************************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/photoshop/PhotoshopPointer.js ***!
-  \***************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/photoshop/PhotoshopPointer.js":
+/*!**************************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/photoshop/PhotoshopPointer.js ***!
+  \**************************************************************************************************************/
+/*! exports provided: PhotoshopPointerCircle, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoshopPointerCircle", function() { return PhotoshopPointerCircle; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopPointerCircle = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopPointerCircle = exports.PhotoshopPointerCircle = function PhotoshopPointerCircle() {
-  var styles = (0, _reactcss2.default)({
+var PhotoshopPointerCircle = function PhotoshopPointerCircle() {
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       triangle: {
         width: 0,
@@ -25356,55 +32148,47 @@ var PhotoshopPointerCircle = exports.PhotoshopPointerCircle = function Photoshop
     }
   });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.pointer },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.left },
-      _react2.default.createElement('div', { style: styles.leftInside })
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.leftInside })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.right },
-      _react2.default.createElement('div', { style: styles.rightInside })
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.rightInside })
     )
   );
 };
 
-exports.default = PhotoshopPointerCircle;
+/* harmony default export */ __webpack_exports__["default"] = (PhotoshopPointerCircle);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/photoshop/PhotoshopPointerCircle.js":
-/*!*********************************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/photoshop/PhotoshopPointerCircle.js ***!
-  \*********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/photoshop/PhotoshopPointerCircle.js":
+/*!********************************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/photoshop/PhotoshopPointerCircle.js ***!
+  \********************************************************************************************************************/
+/*! exports provided: PhotoshopPointerCircle, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoshopPointerCircle", function() { return PhotoshopPointerCircle; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopPointerCircle = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopPointerCircle = exports.PhotoshopPointerCircle = function PhotoshopPointerCircle(_ref) {
+var PhotoshopPointerCircle = function PhotoshopPointerCircle(_ref) {
   var hsl = _ref.hsl;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       picker: {
         width: '12px',
@@ -25421,43 +32205,35 @@ var PhotoshopPointerCircle = exports.PhotoshopPointerCircle = function Photoshop
     }
   }, { 'black-outline': hsl.l > 0.5 });
 
-  return _react2.default.createElement('div', { style: styles.picker });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.picker });
 };
 
-exports.default = PhotoshopPointerCircle;
+/* harmony default export */ __webpack_exports__["default"] = (PhotoshopPointerCircle);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/photoshop/PhotoshopPreviews.js":
-/*!****************************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/photoshop/PhotoshopPreviews.js ***!
-  \****************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/photoshop/PhotoshopPreviews.js":
+/*!***************************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/photoshop/PhotoshopPreviews.js ***!
+  \***************************************************************************************************************/
+/*! exports provided: PhotoshopPreviews, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoshopPreviews", function() { return PhotoshopPreviews; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopPreviews = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopPreviews = exports.PhotoshopPreviews = function PhotoshopPreviews(_ref) {
+var PhotoshopPreviews = function PhotoshopPreviews(_ref) {
   var rgb = _ref.rgb,
       currentColor = _ref.currentColor;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       swatches: {
         border: '1px solid #B3B3B3',
@@ -25483,21 +32259,21 @@ var PhotoshopPreviews = exports.PhotoshopPreviews = function PhotoshopPreviews(_
     }
   });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     null,
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.label },
       'new'
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.swatches },
-      _react2.default.createElement('div', { style: styles.new }),
-      _react2.default.createElement('div', { style: styles.current })
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.new }),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.current })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.label },
       'current'
@@ -25505,56 +32281,42 @@ var PhotoshopPreviews = exports.PhotoshopPreviews = function PhotoshopPreviews(_
   );
 };
 
-exports.default = PhotoshopPreviews;
+/* harmony default export */ __webpack_exports__["default"] = (PhotoshopPreviews);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/sketch/Sketch.js":
-/*!**************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/sketch/Sketch.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/sketch/Sketch.js":
+/*!*************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/sketch/Sketch.js ***!
+  \*************************************************************************************************/
+/*! exports provided: Sketch, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Sketch = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sketch", function() { return Sketch; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _SketchFields__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SketchFields */ "../../node_modules/react-color/es/components/sketch/SketchFields.js");
+/* harmony import */ var _SketchPresetColors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SketchPresetColors */ "../../node_modules/react-color/es/components/sketch/SketchPresetColors.js");
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
 
-var _merge2 = _interopRequireDefault(_merge);
 
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
 
-var _SketchFields = __webpack_require__(/*! ./SketchFields */ "../../node_modules/react-color/lib/components/sketch/SketchFields.js");
-
-var _SketchFields2 = _interopRequireDefault(_SketchFields);
-
-var _SketchPresetColors = __webpack_require__(/*! ./SketchPresetColors */ "../../node_modules/react-color/lib/components/sketch/SketchPresetColors.js");
-
-var _SketchPresetColors2 = _interopRequireDefault(_SketchPresetColors);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Sketch = exports.Sketch = function Sketch(_ref) {
+var Sketch = function Sketch(_ref) {
   var width = _ref.width,
       rgb = _ref.rgb,
       hex = _ref.hex,
@@ -25570,7 +32332,7 @@ var Sketch = exports.Sketch = function Sketch(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__["default"])({
     'default': _extends({
       picker: {
         width: width,
@@ -25645,38 +32407,38 @@ var Sketch = exports.Sketch = function Sketch(_ref) {
     }
   }, passedStyles), { disableAlpha: disableAlpha });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.picker, className: 'sketch-picker ' + className },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.saturation },
-      _react2.default.createElement(_common.Saturation, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Saturation"], {
         style: styles.Saturation,
         hsl: hsl,
         hsv: hsv,
         onChange: onChange
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.controls, className: 'flexbox-fix' },
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.sliders },
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.hue },
-          _react2.default.createElement(_common.Hue, {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Hue"], {
             style: styles.Hue,
             hsl: hsl,
             onChange: onChange
           })
         ),
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.alpha },
-          _react2.default.createElement(_common.Alpha, {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Alpha"], {
             style: styles.Alpha,
             rgb: rgb,
             hsl: hsl,
@@ -25685,21 +32447,21 @@ var Sketch = exports.Sketch = function Sketch(_ref) {
           })
         )
       ),
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.color },
-        _react2.default.createElement(_common.Checkboard, null),
-        _react2.default.createElement('div', { style: styles.activeColor })
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Checkboard"], null),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.activeColor })
       )
     ),
-    _react2.default.createElement(_SketchFields2.default, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SketchFields__WEBPACK_IMPORTED_MODULE_5__["default"], {
       rgb: rgb,
       hsl: hsl,
       hex: hex,
       onChange: onChange,
       disableAlpha: disableAlpha
     }),
-    _react2.default.createElement(_SketchPresetColors2.default, {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SketchPresetColors__WEBPACK_IMPORTED_MODULE_6__["default"], {
       colors: presetColors,
       onClick: onChange,
       onSwatchHover: onSwatchHover
@@ -25708,9 +32470,9 @@ var Sketch = exports.Sketch = function Sketch(_ref) {
 };
 
 Sketch.propTypes = {
-  disableAlpha: _propTypes2.default.bool,
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  styles: _propTypes2.default.object
+  disableAlpha: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
 Sketch.defaultProps = {
@@ -25720,51 +32482,42 @@ Sketch.defaultProps = {
   presetColors: ['#D0021B', '#F5A623', '#F8E71C', '#8B572A', '#7ED321', '#417505', '#BD10E0', '#9013FE', '#4A90E2', '#50E3C2', '#B8E986', '#000000', '#4A4A4A', '#9B9B9B', '#FFFFFF']
 };
 
-exports.default = (0, _common.ColorWrap)(Sketch);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_4__["ColorWrap"])(Sketch));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/sketch/SketchFields.js":
-/*!********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/sketch/SketchFields.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/sketch/SketchFields.js":
+/*!*******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/sketch/SketchFields.js ***!
+  \*******************************************************************************************************/
+/*! exports provided: SketchFields, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SketchFields = undefined;
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SketchFields", function() { return SketchFields; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 /* eslint-disable no-param-reassign */
 
-var SketchFields = exports.SketchFields = function SketchFields(_ref) {
+
+
+
+
+
+
+var SketchFields = function SketchFields(_ref) {
   var onChange = _ref.onChange,
       rgb = _ref.rgb,
       hsl = _ref.hsl,
       hex = _ref.hex,
       disableAlpha = _ref.disableAlpha;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       fields: {
         display: 'flex',
@@ -25807,7 +32560,7 @@ var SketchFields = exports.SketchFields = function SketchFields(_ref) {
 
   var handleChange = function handleChange(data, e) {
     if (data.hex) {
-      _color2.default.isValidHex(data.hex) && onChange({
+      _helpers_color__WEBPACK_IMPORTED_MODULE_2__["isValidHex"](data.hex) && onChange({
         hex: data.hex,
         source: 'hex'
       }, e);
@@ -25837,23 +32590,23 @@ var SketchFields = exports.SketchFields = function SketchFields(_ref) {
     }
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.fields, className: 'flexbox-fix' },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.double },
-      _react2.default.createElement(_common.EditableInput, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
         style: { input: styles.input, label: styles.label },
         label: 'hex',
         value: hex.replace('#', ''),
         onChange: handleChange
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.single },
-      _react2.default.createElement(_common.EditableInput, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
         style: { input: styles.input, label: styles.label },
         label: 'r',
         value: rgb.r,
@@ -25862,10 +32615,10 @@ var SketchFields = exports.SketchFields = function SketchFields(_ref) {
         dragMax: '255'
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.single },
-      _react2.default.createElement(_common.EditableInput, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
         style: { input: styles.input, label: styles.label },
         label: 'g',
         value: rgb.g,
@@ -25874,10 +32627,10 @@ var SketchFields = exports.SketchFields = function SketchFields(_ref) {
         dragMax: '255'
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.single },
-      _react2.default.createElement(_common.EditableInput, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
         style: { input: styles.input, label: styles.label },
         label: 'b',
         value: rgb.b,
@@ -25886,10 +32639,10 @@ var SketchFields = exports.SketchFields = function SketchFields(_ref) {
         dragMax: '255'
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.alpha },
-      _react2.default.createElement(_common.EditableInput, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["EditableInput"], {
         style: { input: styles.input, label: styles.label },
         label: 'a',
         value: Math.round(rgb.a * 100),
@@ -25901,50 +32654,42 @@ var SketchFields = exports.SketchFields = function SketchFields(_ref) {
   );
 };
 
-exports.default = SketchFields;
+/* harmony default export */ __webpack_exports__["default"] = (SketchFields);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/sketch/SketchPresetColors.js":
-/*!**************************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/sketch/SketchPresetColors.js ***!
-  \**************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/sketch/SketchPresetColors.js":
+/*!*************************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/sketch/SketchPresetColors.js ***!
+  \*************************************************************************************************************/
+/*! exports provided: SketchPresetColors, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SketchPresetColors = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SketchPresetColors", function() { return SketchPresetColors; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SketchPresetColors = exports.SketchPresetColors = function SketchPresetColors(_ref) {
+var SketchPresetColors = function SketchPresetColors(_ref) {
   var colors = _ref.colors,
       _ref$onClick = _ref.onClick,
       onClick = _ref$onClick === undefined ? function () {} : _ref$onClick,
       onSwatchHover = _ref.onSwatchHover;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()({
     'default': {
       colors: {
         margin: '0 -10px',
@@ -25980,16 +32725,16 @@ var SketchPresetColors = exports.SketchPresetColors = function SketchPresetColor
     }, e);
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.colors, className: 'flexbox-fix' },
     colors.map(function (colorObjOrString) {
       var c = typeof colorObjOrString === 'string' ? { color: colorObjOrString } : colorObjOrString;
       var key = '' + c.color + (c.title || '');
-      return _react2.default.createElement(
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { key: key, style: styles.swatchWrap },
-        _react2.default.createElement(_common.Swatch, _extends({}, c, {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_3__["Swatch"], _extends({}, c, {
           style: styles.swatch,
           onClick: handleClick,
           onHover: onSwatchHover,
@@ -26003,60 +32748,46 @@ var SketchPresetColors = exports.SketchPresetColors = function SketchPresetColor
 };
 
 SketchPresetColors.propTypes = {
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
-    color: _propTypes2.default.string,
-    title: _propTypes2.default.string
+  colors: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+    color: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+    title: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
   })])).isRequired
 };
 
-exports.default = SketchPresetColors;
+/* harmony default export */ __webpack_exports__["default"] = (SketchPresetColors);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/slider/Slider.js":
-/*!**************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/slider/Slider.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/slider/Slider.js":
+/*!*************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/slider/Slider.js ***!
+  \*************************************************************************************************/
+/*! exports provided: Slider, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Slider", function() { return Slider; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _SliderSwatches__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SliderSwatches */ "../../node_modules/react-color/es/components/slider/SliderSwatches.js");
+/* harmony import */ var _SliderPointer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SliderPointer */ "../../node_modules/react-color/es/components/slider/SliderPointer.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Slider = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _SliderSwatches = __webpack_require__(/*! ./SliderSwatches */ "../../node_modules/react-color/lib/components/slider/SliderSwatches.js");
-
-var _SliderSwatches2 = _interopRequireDefault(_SliderSwatches);
-
-var _SliderPointer = __webpack_require__(/*! ./SliderPointer */ "../../node_modules/react-color/lib/components/slider/SliderPointer.js");
-
-var _SliderPointer2 = _interopRequireDefault(_SliderPointer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Slider = exports.Slider = function Slider(_ref) {
+var Slider = function Slider(_ref) {
   var hsl = _ref.hsl,
       onChange = _ref.onChange,
       pointer = _ref.pointer,
@@ -26065,7 +32796,7 @@ var Slider = exports.Slider = function Slider(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__["default"])({
     'default': {
       hue: {
         height: '12px',
@@ -26077,66 +32808,58 @@ var Slider = exports.Slider = function Slider(_ref) {
     }
   }, passedStyles));
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.wrap || {}, className: 'slider-picker ' + className },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.hue },
-      _react2.default.createElement(_common.Hue, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_4__["Hue"], {
         style: styles.Hue,
         hsl: hsl,
         pointer: pointer,
         onChange: onChange
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.swatches },
-      _react2.default.createElement(_SliderSwatches2.default, { hsl: hsl, onClick: onChange })
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SliderSwatches__WEBPACK_IMPORTED_MODULE_5__["default"], { hsl: hsl, onClick: onChange })
     )
   );
 };
 
 Slider.propTypes = {
-  styles: _propTypes2.default.object
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 Slider.defaultProps = {
-  pointer: _SliderPointer2.default,
+  pointer: _SliderPointer__WEBPACK_IMPORTED_MODULE_6__["default"],
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Slider);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_4__["ColorWrap"])(Slider));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/slider/SliderPointer.js":
-/*!*********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/slider/SliderPointer.js ***!
-  \*********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/slider/SliderPointer.js":
+/*!********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/slider/SliderPointer.js ***!
+  \********************************************************************************************************/
+/*! exports provided: SliderPointer, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SliderPointer", function() { return SliderPointer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SliderPointer = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SliderPointer = exports.SliderPointer = function SliderPointer() {
-  var styles = (0, _reactcss2.default)({
+var SliderPointer = function SliderPointer() {
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       picker: {
         width: '14px',
@@ -26149,39 +32872,31 @@ var SliderPointer = exports.SliderPointer = function SliderPointer() {
     }
   });
 
-  return _react2.default.createElement('div', { style: styles.picker });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.picker });
 };
 
-exports.default = SliderPointer;
+/* harmony default export */ __webpack_exports__["default"] = (SliderPointer);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/slider/SliderSwatch.js":
-/*!********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/slider/SliderSwatch.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/slider/SliderSwatch.js":
+/*!*******************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/slider/SliderSwatch.js ***!
+  \*******************************************************************************************************/
+/*! exports provided: SliderSwatch, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SliderSwatch", function() { return SliderSwatch; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SliderSwatch = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SliderSwatch = exports.SliderSwatch = function SliderSwatch(_ref) {
+var SliderSwatch = function SliderSwatch(_ref) {
   var hsl = _ref.hsl,
       offset = _ref.offset,
       _ref$onClick = _ref.onClick,
@@ -26190,7 +32905,7 @@ var SliderSwatch = exports.SliderSwatch = function SliderSwatch(_ref) {
       first = _ref.first,
       last = _ref.last;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       swatch: {
         height: '12px',
@@ -26225,47 +32940,38 @@ var SliderSwatch = exports.SliderSwatch = function SliderSwatch(_ref) {
     }, e);
   };
 
-  return _react2.default.createElement('div', { style: styles.swatch, onClick: handleClick });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.swatch, onClick: handleClick });
 };
 
-exports.default = SliderSwatch;
+/* harmony default export */ __webpack_exports__["default"] = (SliderSwatch);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/slider/SliderSwatches.js":
-/*!**********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/slider/SliderSwatches.js ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/slider/SliderSwatches.js":
+/*!*********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/slider/SliderSwatches.js ***!
+  \*********************************************************************************************************/
+/*! exports provided: SliderSwatches, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SliderSwatches", function() { return SliderSwatches; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _SliderSwatch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SliderSwatch */ "../../node_modules/react-color/es/components/slider/SliderSwatch.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SliderSwatches = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
-
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _SliderSwatch = __webpack_require__(/*! ./SliderSwatch */ "../../node_modules/react-color/lib/components/slider/SliderSwatch.js");
-
-var _SliderSwatch2 = _interopRequireDefault(_SliderSwatch);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SliderSwatches = exports.SliderSwatches = function SliderSwatches(_ref) {
+var SliderSwatches = function SliderSwatches(_ref) {
   var onClick = _ref.onClick,
       hsl = _ref.hsl;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       swatches: {
         marginTop: '20px'
@@ -26285,13 +32991,13 @@ var SliderSwatches = exports.SliderSwatches = function SliderSwatches(_ref) {
   // Acceptible difference in floating point equality
   var epsilon = 0.1;
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.swatches },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SliderSwatch__WEBPACK_IMPORTED_MODULE_2__["default"], {
         hsl: hsl,
         offset: '.80',
         active: Math.abs(hsl.l - 0.80) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
@@ -26299,40 +33005,40 @@ var SliderSwatches = exports.SliderSwatches = function SliderSwatches(_ref) {
         first: true
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SliderSwatch__WEBPACK_IMPORTED_MODULE_2__["default"], {
         hsl: hsl,
         offset: '.65',
         active: Math.abs(hsl.l - 0.65) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
         onClick: onClick
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SliderSwatch__WEBPACK_IMPORTED_MODULE_2__["default"], {
         hsl: hsl,
         offset: '.50',
         active: Math.abs(hsl.l - 0.50) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
         onClick: onClick
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SliderSwatch__WEBPACK_IMPORTED_MODULE_2__["default"], {
         hsl: hsl,
         offset: '.35',
         active: Math.abs(hsl.l - 0.35) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
         onClick: onClick
       })
     ),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SliderSwatch__WEBPACK_IMPORTED_MODULE_2__["default"], {
         hsl: hsl,
         offset: '.20',
         active: Math.abs(hsl.l - 0.20) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
@@ -26340,64 +33046,46 @@ var SliderSwatches = exports.SliderSwatches = function SliderSwatches(_ref) {
         last: true
       })
     ),
-    _react2.default.createElement('div', { style: styles.clear })
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.clear })
   );
 };
 
-exports.default = SliderSwatches;
+/* harmony default export */ __webpack_exports__["default"] = (SliderSwatches);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/swatches/Swatches.js":
-/*!******************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/swatches/Swatches.js ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/swatches/Swatches.js":
+/*!*****************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/swatches/Swatches.js ***!
+  \*****************************************************************************************************/
+/*! exports provided: Swatches, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Swatches", function() { return Swatches; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/map */ "../../node_modules/lodash-es/map.js");
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var material_colors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! material-colors */ "../../node_modules/material-colors/dist/colors.es2015.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _SwatchesGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SwatchesGroup */ "../../node_modules/react-color/es/components/swatches/SwatchesGroup.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Swatches = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _map = __webpack_require__(/*! lodash/map */ "../../node_modules/lodash/map.js");
 
-var _map2 = _interopRequireDefault(_map);
-
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _materialColors = __webpack_require__(/*! material-colors */ "../../node_modules/material-colors/dist/colors.es2015.js");
-
-var material = _interopRequireWildcard(_materialColors);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _SwatchesGroup = __webpack_require__(/*! ./SwatchesGroup */ "../../node_modules/react-color/lib/components/swatches/SwatchesGroup.js");
-
-var _SwatchesGroup2 = _interopRequireDefault(_SwatchesGroup);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Swatches = exports.Swatches = function Swatches(_ref) {
+var Swatches = function Swatches(_ref) {
   var width = _ref.width,
       height = _ref.height,
       onChange = _ref.onChange,
@@ -26409,7 +33097,7 @@ var Swatches = exports.Swatches = function Swatches(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__["default"])({
     'default': {
       picker: {
         width: width,
@@ -26432,20 +33120,20 @@ var Swatches = exports.Swatches = function Swatches(_ref) {
     return onChange({ hex: data, source: 'hex' }, e);
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.picker, className: 'swatches-picker ' + className },
-    _react2.default.createElement(
-      _common.Raised,
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      _common__WEBPACK_IMPORTED_MODULE_6__["Raised"],
       null,
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.overflow },
-        _react2.default.createElement(
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           { style: styles.body },
-          (0, _map2.default)(colors, function (group) {
-            return _react2.default.createElement(_SwatchesGroup2.default, {
+          Object(lodash_es_map__WEBPACK_IMPORTED_MODULE_3__["default"])(colors, function (group) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SwatchesGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
               key: group.toString(),
               group: group,
               active: hex,
@@ -26453,7 +33141,7 @@ var Swatches = exports.Swatches = function Swatches(_ref) {
               onSwatchHover: onSwatchHover
             });
           }),
-          _react2.default.createElement('div', { style: styles.clear })
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.clear })
         )
       )
     )
@@ -26461,59 +33149,49 @@ var Swatches = exports.Swatches = function Swatches(_ref) {
 };
 
 Swatches.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.arrayOf(_propTypes2.default.string)),
-  styles: _propTypes2.default.object
+  width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  height: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  colors: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string)),
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 
   /* eslint-disable max-len */
 };Swatches.defaultProps = {
   width: 320,
   height: 240,
-  colors: [[material.red['900'], material.red['700'], material.red['500'], material.red['300'], material.red['100']], [material.pink['900'], material.pink['700'], material.pink['500'], material.pink['300'], material.pink['100']], [material.purple['900'], material.purple['700'], material.purple['500'], material.purple['300'], material.purple['100']], [material.deepPurple['900'], material.deepPurple['700'], material.deepPurple['500'], material.deepPurple['300'], material.deepPurple['100']], [material.indigo['900'], material.indigo['700'], material.indigo['500'], material.indigo['300'], material.indigo['100']], [material.blue['900'], material.blue['700'], material.blue['500'], material.blue['300'], material.blue['100']], [material.lightBlue['900'], material.lightBlue['700'], material.lightBlue['500'], material.lightBlue['300'], material.lightBlue['100']], [material.cyan['900'], material.cyan['700'], material.cyan['500'], material.cyan['300'], material.cyan['100']], [material.teal['900'], material.teal['700'], material.teal['500'], material.teal['300'], material.teal['100']], ['#194D33', material.green['700'], material.green['500'], material.green['300'], material.green['100']], [material.lightGreen['900'], material.lightGreen['700'], material.lightGreen['500'], material.lightGreen['300'], material.lightGreen['100']], [material.lime['900'], material.lime['700'], material.lime['500'], material.lime['300'], material.lime['100']], [material.yellow['900'], material.yellow['700'], material.yellow['500'], material.yellow['300'], material.yellow['100']], [material.amber['900'], material.amber['700'], material.amber['500'], material.amber['300'], material.amber['100']], [material.orange['900'], material.orange['700'], material.orange['500'], material.orange['300'], material.orange['100']], [material.deepOrange['900'], material.deepOrange['700'], material.deepOrange['500'], material.deepOrange['300'], material.deepOrange['100']], [material.brown['900'], material.brown['700'], material.brown['500'], material.brown['300'], material.brown['100']], [material.blueGrey['900'], material.blueGrey['700'], material.blueGrey['500'], material.blueGrey['300'], material.blueGrey['100']], ['#000000', '#525252', '#969696', '#D9D9D9', '#FFFFFF']],
+  colors: [[material_colors__WEBPACK_IMPORTED_MODULE_5__["red"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["red"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["red"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["red"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["red"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["pink"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["pink"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["pink"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["pink"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["pink"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["purple"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["purple"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["purple"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["purple"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["purple"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["deepPurple"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepPurple"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepPurple"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepPurple"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepPurple"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["indigo"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["indigo"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["indigo"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["indigo"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["indigo"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["blue"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blue"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blue"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blue"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blue"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["lightBlue"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightBlue"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightBlue"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightBlue"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightBlue"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["cyan"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["cyan"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["cyan"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["cyan"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["cyan"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["teal"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["teal"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["teal"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["teal"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["teal"]['100']], ['#194D33', material_colors__WEBPACK_IMPORTED_MODULE_5__["green"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["green"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["green"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["green"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["lightGreen"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightGreen"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightGreen"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightGreen"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lightGreen"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["lime"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lime"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lime"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lime"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["lime"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["yellow"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["yellow"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["yellow"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["yellow"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["yellow"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["amber"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["amber"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["amber"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["amber"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["amber"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["orange"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["orange"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["orange"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["orange"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["orange"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["deepOrange"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepOrange"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepOrange"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepOrange"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["deepOrange"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["brown"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["brown"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["brown"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["brown"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["brown"]['100']], [material_colors__WEBPACK_IMPORTED_MODULE_5__["blueGrey"]['900'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blueGrey"]['700'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blueGrey"]['500'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blueGrey"]['300'], material_colors__WEBPACK_IMPORTED_MODULE_5__["blueGrey"]['100']], ['#000000', '#525252', '#969696', '#D9D9D9', '#FFFFFF']],
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Swatches);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_6__["ColorWrap"])(Swatches));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/swatches/SwatchesColor.js":
-/*!***********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/swatches/SwatchesColor.js ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/swatches/SwatchesColor.js":
+/*!**********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/swatches/SwatchesColor.js ***!
+  \**********************************************************************************************************/
+/*! exports provided: SwatchesColor, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SwatchesColor", function() { return SwatchesColor; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
+/* harmony import */ var _icons_material_CheckIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @icons/material/CheckIcon */ "../../node_modules/@icons/material/CheckIcon.js");
+/* harmony import */ var _icons_material_CheckIcon__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_icons_material_CheckIcon__WEBPACK_IMPORTED_MODULE_4__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SwatchesColor = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-var _CheckIcon = __webpack_require__(/*! @icons/material/CheckIcon */ "../../node_modules/@icons/material/CheckIcon.js");
-
-var _CheckIcon2 = _interopRequireDefault(_CheckIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SwatchesColor = exports.SwatchesColor = function SwatchesColor(_ref) {
+var SwatchesColor = function SwatchesColor(_ref) {
   var color = _ref.color,
       _ref$onClick = _ref.onClick,
       onClick = _ref$onClick === undefined ? function () {} : _ref$onClick,
@@ -26522,7 +33200,7 @@ var SwatchesColor = exports.SwatchesColor = function SwatchesColor(_ref) {
       last = _ref.last,
       active = _ref.active;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       color: {
         width: '40px',
@@ -26532,7 +33210,7 @@ var SwatchesColor = exports.SwatchesColor = function SwatchesColor(_ref) {
         marginBottom: '1px'
       },
       check: {
-        color: _color2.default.getContrastingColor(color),
+        color: _helpers_color__WEBPACK_IMPORTED_MODULE_2__["getContrastingColor"](color),
         marginLeft: '8px',
         display: 'none'
       }
@@ -26575,8 +33253,8 @@ var SwatchesColor = exports.SwatchesColor = function SwatchesColor(_ref) {
     'transparent': color === 'transparent'
   });
 
-  return _react2.default.createElement(
-    _common.Swatch,
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    _common__WEBPACK_IMPORTED_MODULE_3__["Swatch"],
     {
       color: color,
       style: styles.color,
@@ -26584,58 +33262,47 @@ var SwatchesColor = exports.SwatchesColor = function SwatchesColor(_ref) {
       onHover: onSwatchHover,
       focusStyle: { boxShadow: '0 0 4px ' + color }
     },
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.check },
-      _react2.default.createElement(_CheckIcon2.default, null)
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_material_CheckIcon__WEBPACK_IMPORTED_MODULE_4___default.a, null)
     )
   );
 };
 
-exports.default = SwatchesColor;
+/* harmony default export */ __webpack_exports__["default"] = (SwatchesColor);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/swatches/SwatchesGroup.js":
-/*!***********************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/swatches/SwatchesGroup.js ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/swatches/SwatchesGroup.js":
+/*!**********************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/swatches/SwatchesGroup.js ***!
+  \**********************************************************************************************************/
+/*! exports provided: SwatchesGroup, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SwatchesGroup", function() { return SwatchesGroup; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_es_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash-es/map */ "../../node_modules/lodash-es/map.js");
+/* harmony import */ var _SwatchesColor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SwatchesColor */ "../../node_modules/react-color/es/components/swatches/SwatchesColor.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SwatchesGroup = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
-
-var _map = __webpack_require__(/*! lodash/map */ "../../node_modules/lodash/map.js");
-
-var _map2 = _interopRequireDefault(_map);
-
-var _SwatchesColor = __webpack_require__(/*! ./SwatchesColor */ "../../node_modules/react-color/lib/components/swatches/SwatchesColor.js");
-
-var _SwatchesColor2 = _interopRequireDefault(_SwatchesColor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SwatchesGroup = exports.SwatchesGroup = function SwatchesGroup(_ref) {
+var SwatchesGroup = function SwatchesGroup(_ref) {
   var onClick = _ref.onClick,
       onSwatchHover = _ref.onSwatchHover,
       group = _ref.group,
       active = _ref.active;
 
-  var styles = (0, _reactcss2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_1___default()({
     'default': {
       group: {
         paddingBottom: '10px',
@@ -26646,11 +33313,11 @@ var SwatchesGroup = exports.SwatchesGroup = function SwatchesGroup(_ref) {
     }
   });
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.group },
-    (0, _map2.default)(group, function (color, i) {
-      return _react2.default.createElement(_SwatchesColor2.default, {
+    Object(lodash_es_map__WEBPACK_IMPORTED_MODULE_2__["default"])(group, function (color, i) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SwatchesColor__WEBPACK_IMPORTED_MODULE_3__["default"], {
         key: color,
         color: color,
         active: color.toLowerCase() === active,
@@ -26663,54 +33330,40 @@ var SwatchesGroup = exports.SwatchesGroup = function SwatchesGroup(_ref) {
   );
 };
 
-exports.default = SwatchesGroup;
+/* harmony default export */ __webpack_exports__["default"] = (SwatchesGroup);
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/components/twitter/Twitter.js":
-/*!****************************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/components/twitter/Twitter.js ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/components/twitter/Twitter.js":
+/*!***************************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/components/twitter/Twitter.js ***!
+  \***************************************************************************************************/
+/*! exports provided: Twitter, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Twitter", function() { return Twitter; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
+/* harmony import */ var reactcss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactcss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash-es/map */ "../../node_modules/lodash-es/map.js");
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash-es/merge */ "../../node_modules/lodash-es/merge.js");
+/* harmony import */ var _helpers_color__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/es/helpers/color.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../common */ "../../node_modules/react-color/es/components/common/index.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Twitter = undefined;
 
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 
-var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactcss = __webpack_require__(/*! reactcss */ "../../node_modules/reactcss/lib/index.js");
 
-var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _map = __webpack_require__(/*! lodash/map */ "../../node_modules/lodash/map.js");
-
-var _map2 = _interopRequireDefault(_map);
-
-var _merge = __webpack_require__(/*! lodash/merge */ "../../node_modules/lodash/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-var _color = __webpack_require__(/*! ../../helpers/color */ "../../node_modules/react-color/lib/helpers/color.js");
-
-var _color2 = _interopRequireDefault(_color);
-
-var _common = __webpack_require__(/*! ../common */ "../../node_modules/react-color/lib/components/common/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Twitter = exports.Twitter = function Twitter(_ref) {
+var Twitter = function Twitter(_ref) {
   var onChange = _ref.onChange,
       onSwatchHover = _ref.onSwatchHover,
       hex = _ref.hex,
@@ -26722,7 +33375,7 @@ var Twitter = exports.Twitter = function Twitter(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === undefined ? '' : _ref$className;
 
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
+  var styles = reactcss__WEBPACK_IMPORTED_MODULE_2___default()(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_4__["default"])({
     'default': {
       card: {
         width: width,
@@ -26825,22 +33478,22 @@ var Twitter = exports.Twitter = function Twitter(_ref) {
   });
 
   var handleChange = function handleChange(hexcode, e) {
-    _color2.default.isValidHex(hexcode) && onChange({
+    _helpers_color__WEBPACK_IMPORTED_MODULE_5__["isValidHex"](hexcode) && onChange({
       hex: hexcode,
       source: 'hex'
     }, e);
   };
 
-  return _react2.default.createElement(
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     'div',
     { style: styles.card, className: 'twitter-picker ' + className },
-    _react2.default.createElement('div', { style: styles.triangleShadow }),
-    _react2.default.createElement('div', { style: styles.triangle }),
-    _react2.default.createElement(
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.triangleShadow }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.triangle }),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
       'div',
       { style: styles.body },
-      (0, _map2.default)(colors, function (c, i) {
-        return _react2.default.createElement(_common.Swatch, {
+      Object(lodash_es_map__WEBPACK_IMPORTED_MODULE_3__["default"])(colors, function (c, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_6__["Swatch"], {
           key: i,
           color: c,
           hex: c,
@@ -26852,27 +33505,27 @@ var Twitter = exports.Twitter = function Twitter(_ref) {
           }
         });
       }),
-      _react2.default.createElement(
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
         'div',
         { style: styles.hash },
         '#'
       ),
-      _react2.default.createElement(_common.EditableInput, {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common__WEBPACK_IMPORTED_MODULE_6__["EditableInput"], {
         label: null,
         style: { input: styles.input },
         value: hex.replace('#', ''),
         onChange: handleChange
       }),
-      _react2.default.createElement('div', { style: styles.clear })
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('div', { style: styles.clear })
     )
   );
 };
 
 Twitter.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  triangle: _propTypes2.default.oneOf(['hide', 'top-left', 'top-right']),
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
-  styles: _propTypes2.default.object
+  width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
+  triangle: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['hide', 'top-left', 'top-right']),
+  colors: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string),
+  styles: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
 };
 
 Twitter.defaultProps = {
@@ -26882,24 +33535,21 @@ Twitter.defaultProps = {
   styles: {}
 };
 
-exports.default = (0, _common.ColorWrap)(Twitter);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_common__WEBPACK_IMPORTED_MODULE_6__["ColorWrap"])(Twitter));
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/helpers/alpha.js":
-/*!***************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/helpers/alpha.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/helpers/alpha.js":
+/*!**************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/helpers/alpha.js ***!
+  \**************************************************************************************/
+/*! exports provided: calculateChange */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var calculateChange = exports.calculateChange = function calculateChange(e, hsl, direction, initialA, container) {
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateChange", function() { return calculateChange; });
+var calculateChange = function calculateChange(e, hsl, direction, initialA, container) {
   var containerWidth = container.clientWidth;
   var containerHeight = container.clientHeight;
   var x = typeof e.pageX === 'number' ? e.pageX : e.touches[0].pageX;
@@ -26951,22 +33601,20 @@ var calculateChange = exports.calculateChange = function calculateChange(e, hsl,
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/helpers/checkboard.js":
-/*!********************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/helpers/checkboard.js ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/helpers/checkboard.js":
+/*!*******************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/helpers/checkboard.js ***!
+  \*******************************************************************************************/
+/*! exports provided: render, get */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get", function() { return get; });
 var checkboardCache = {};
 
-var render = exports.render = function render(c1, c2, size, serverCanvas) {
+var render = function render(c1, c2, size, serverCanvas) {
   if (typeof document === 'undefined' && !serverCanvas) {
     return null;
   }
@@ -26986,7 +33634,7 @@ var render = exports.render = function render(c1, c2, size, serverCanvas) {
   return canvas.toDataURL();
 };
 
-var get = exports.get = function get(c1, c2, size, serverCanvas) {
+var get = function get(c1, c2, size, serverCanvas) {
   var key = c1 + '-' + c2 + '-' + size + (serverCanvas ? '-server' : '');
 
   if (checkboardCache[key]) {
@@ -27000,36 +33648,32 @@ var get = exports.get = function get(c1, c2, size, serverCanvas) {
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/helpers/color.js":
-/*!***************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/helpers/color.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/helpers/color.js":
+/*!**************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/helpers/color.js ***!
+  \**************************************************************************************/
+/*! exports provided: simpleCheckForValidColor, toState, isValidHex, getContrastingColor, red, isvalidColorString */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "simpleCheckForValidColor", function() { return simpleCheckForValidColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toState", function() { return toState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isValidHex", function() { return isValidHex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getContrastingColor", function() { return getContrastingColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "red", function() { return red; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isvalidColorString", function() { return isvalidColorString; });
+/* harmony import */ var lodash_es_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash-es/each */ "../../node_modules/lodash-es/each.js");
+/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tinycolor2 */ "../../node_modules/tinycolor2/tinycolor.js");
+/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tinycolor2__WEBPACK_IMPORTED_MODULE_1__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.red = exports.getContrastingColor = exports.isValidHex = exports.toState = exports.simpleCheckForValidColor = undefined;
 
-var _each = __webpack_require__(/*! lodash/each */ "../../node_modules/lodash/each.js");
-
-var _each2 = _interopRequireDefault(_each);
-
-var _tinycolor = __webpack_require__(/*! tinycolor2 */ "../../node_modules/tinycolor2/tinycolor.js");
-
-var _tinycolor2 = _interopRequireDefault(_tinycolor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var simpleCheckForValidColor = exports.simpleCheckForValidColor = function simpleCheckForValidColor(data) {
+var simpleCheckForValidColor = function simpleCheckForValidColor(data) {
   var keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
   var checked = 0;
   var passed = 0;
-  (0, _each2.default)(keysToCheck, function (letter) {
+  Object(lodash_es_each__WEBPACK_IMPORTED_MODULE_0__["default"])(keysToCheck, function (letter) {
     if (data[letter]) {
       checked += 1;
       if (!isNaN(data[letter])) {
@@ -27046,8 +33690,8 @@ var simpleCheckForValidColor = exports.simpleCheckForValidColor = function simpl
   return checked === passed ? data : false;
 };
 
-var toState = exports.toState = function toState(data, oldHue) {
-  var color = data.hex ? (0, _tinycolor2.default)(data.hex) : (0, _tinycolor2.default)(data);
+var toState = function toState(data, oldHue) {
+  var color = data.hex ? tinycolor2__WEBPACK_IMPORTED_MODULE_1___default()(data.hex) : tinycolor2__WEBPACK_IMPORTED_MODULE_1___default()(data);
   var hsl = color.toHsl();
   var hsv = color.toHsv();
   var rgb = color.toRgb();
@@ -27068,13 +33712,16 @@ var toState = exports.toState = function toState(data, oldHue) {
   };
 };
 
-var isValidHex = exports.isValidHex = function isValidHex(hex) {
+var isValidHex = function isValidHex(hex) {
+  if (hex === 'transparent') {
+    return true;
+  }
   // disable hex4 and hex8
   var lh = String(hex).charAt(0) === '#' ? 1 : 0;
-  return hex.length !== 4 + lh && hex.length < 7 + lh && (0, _tinycolor2.default)(hex).isValid();
+  return hex.length !== 4 + lh && hex.length < 7 + lh && tinycolor2__WEBPACK_IMPORTED_MODULE_1___default()(hex).isValid();
 };
 
-var getContrastingColor = exports.getContrastingColor = function getContrastingColor(data) {
+var getContrastingColor = function getContrastingColor(data) {
   if (!data) {
     return '#fff';
   }
@@ -27086,31 +33733,31 @@ var getContrastingColor = exports.getContrastingColor = function getContrastingC
   return yiq >= 128 ? '#000' : '#fff';
 };
 
-var red = exports.red = {
+var red = {
   hsl: { a: 1, h: 0, l: 0.5, s: 1 },
   hex: '#ff0000',
   rgb: { r: 255, g: 0, b: 0, a: 1 },
   hsv: { h: 0, s: 1, v: 1, a: 1 }
 };
 
-exports.default = exports;
+var isvalidColorString = function isvalidColorString(string, type) {
+  var stringWithoutDegree = string.replace('°', '');
+  return tinycolor2__WEBPACK_IMPORTED_MODULE_1___default()(type + ' (' + stringWithoutDegree + ')')._ok;
+};
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/helpers/hue.js":
-/*!*************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/helpers/hue.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/helpers/hue.js":
+/*!************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/helpers/hue.js ***!
+  \************************************************************************************/
+/*! exports provided: calculateChange */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var calculateChange = exports.calculateChange = function calculateChange(e, direction, hsl, container) {
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateChange", function() { return calculateChange; });
+var calculateChange = function calculateChange(e, direction, hsl, container) {
   var containerWidth = container.clientWidth;
   var containerHeight = container.clientHeight;
   var x = typeof e.pageX === 'number' ? e.pageX : e.touches[0].pageX;
@@ -27164,39 +33811,32 @@ var calculateChange = exports.calculateChange = function calculateChange(e, dire
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/helpers/interaction.js":
-/*!*********************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/helpers/interaction.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/helpers/interaction.js":
+/*!********************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/helpers/interaction.js ***!
+  \********************************************************************************************/
+/*! exports provided: handleFocus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.handleFocus = undefined;
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleFocus", function() { return handleFocus; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable no-invalid-this */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/* eslint-disable no-invalid-this */
 
 
-var handleFocus = exports.handleFocus = function handleFocus(Component) {
+var handleFocus = function handleFocus(Component) {
   var Span = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'span';
   return function (_React$Component) {
     _inherits(Focus, _React$Component);
@@ -27222,34 +33862,31 @@ var handleFocus = exports.handleFocus = function handleFocus(Component) {
     _createClass(Focus, [{
       key: 'render',
       value: function render() {
-        return _react2.default.createElement(
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           Span,
           { onFocus: this.handleFocus, onBlur: this.handleBlur },
-          _react2.default.createElement(Component, _extends({}, this.props, this.state))
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, _extends({}, this.props, this.state))
         );
       }
     }]);
 
     return Focus;
-  }(_react2.default.Component);
+  }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 };
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/helpers/saturation.js":
-/*!********************************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/helpers/saturation.js ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/helpers/saturation.js":
+/*!*******************************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/helpers/saturation.js ***!
+  \*******************************************************************************************/
+/*! exports provided: calculateChange */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var calculateChange = exports.calculateChange = function calculateChange(e, hsl, container) {
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateChange", function() { return calculateChange; });
+var calculateChange = function calculateChange(e, hsl, container) {
   var _container$getBoundin = container.getBoundingClientRect(),
       containerWidth = _container$getBoundin.width,
       containerHeight = _container$getBoundin.height;
@@ -27285,152 +33922,80 @@ var calculateChange = exports.calculateChange = function calculateChange(e, hsl,
 
 /***/ }),
 
-/***/ "../../node_modules/react-color/lib/index.js":
-/*!*******************************************************************************!*\
-  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/lib/index.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "../../node_modules/react-color/es/index.js":
+/*!******************************************************************************!*\
+  !*** /home/quentin/Projects/Babylon.js/node_modules/react-color/es/index.js ***!
+  \******************************************************************************/
+/*! exports provided: AlphaPicker, BlockPicker, CirclePicker, default, ChromePicker, CompactPicker, GithubPicker, HuePicker, MaterialPicker, PhotoshopPicker, SketchPicker, SliderPicker, SwatchesPicker, TwitterPicker, GooglePicker, CustomPicker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_alpha_Alpha__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/alpha/Alpha */ "../../node_modules/react-color/es/components/alpha/Alpha.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AlphaPicker", function() { return _components_alpha_Alpha__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _components_block_Block__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/block/Block */ "../../node_modules/react-color/es/components/block/Block.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BlockPicker", function() { return _components_block_Block__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _components_circle_Circle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/circle/Circle */ "../../node_modules/react-color/es/components/circle/Circle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CirclePicker", function() { return _components_circle_Circle__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _components_chrome_Chrome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/chrome/Chrome */ "../../node_modules/react-color/es/components/chrome/Chrome.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _components_chrome_Chrome__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ChromePicker", function() { return _components_chrome_Chrome__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _components_compact_Compact__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/compact/Compact */ "../../node_modules/react-color/es/components/compact/Compact.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CompactPicker", function() { return _components_compact_Compact__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _components_github_Github__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/github/Github */ "../../node_modules/react-color/es/components/github/Github.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GithubPicker", function() { return _components_github_Github__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _components_hue_Hue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/hue/Hue */ "../../node_modules/react-color/es/components/hue/Hue.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HuePicker", function() { return _components_hue_Hue__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _components_material_Material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/material/Material */ "../../node_modules/react-color/es/components/material/Material.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MaterialPicker", function() { return _components_material_Material__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _components_photoshop_Photoshop__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/photoshop/Photoshop */ "../../node_modules/react-color/es/components/photoshop/Photoshop.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PhotoshopPicker", function() { return _components_photoshop_Photoshop__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _components_sketch_Sketch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/sketch/Sketch */ "../../node_modules/react-color/es/components/sketch/Sketch.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SketchPicker", function() { return _components_sketch_Sketch__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+/* harmony import */ var _components_slider_Slider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/slider/Slider */ "../../node_modules/react-color/es/components/slider/Slider.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SliderPicker", function() { return _components_slider_Slider__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
+/* harmony import */ var _components_swatches_Swatches__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/swatches/Swatches */ "../../node_modules/react-color/es/components/swatches/Swatches.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SwatchesPicker", function() { return _components_swatches_Swatches__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+
+/* harmony import */ var _components_twitter_Twitter__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/twitter/Twitter */ "../../node_modules/react-color/es/components/twitter/Twitter.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TwitterPicker", function() { return _components_twitter_Twitter__WEBPACK_IMPORTED_MODULE_12__["default"]; });
+
+/* harmony import */ var _components_google_Google__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/google/Google */ "../../node_modules/react-color/es/components/google/Google.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GooglePicker", function() { return _components_google_Google__WEBPACK_IMPORTED_MODULE_13__["default"]; });
+
+/* harmony import */ var _components_common_ColorWrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/common/ColorWrap */ "../../node_modules/react-color/es/components/common/ColorWrap.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CustomPicker", function() { return _components_common_ColorWrap__WEBPACK_IMPORTED_MODULE_14__["default"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CustomPicker = exports.TwitterPicker = exports.SwatchesPicker = exports.SliderPicker = exports.SketchPicker = exports.PhotoshopPicker = exports.MaterialPicker = exports.HuePicker = exports.GithubPicker = exports.CompactPicker = exports.ChromePicker = exports.default = exports.CirclePicker = exports.BlockPicker = exports.AlphaPicker = undefined;
 
-var _Alpha = __webpack_require__(/*! ./components/alpha/Alpha */ "../../node_modules/react-color/lib/components/alpha/Alpha.js");
 
-Object.defineProperty(exports, 'AlphaPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Alpha).default;
-  }
-});
 
-var _Block = __webpack_require__(/*! ./components/block/Block */ "../../node_modules/react-color/lib/components/block/Block.js");
 
-Object.defineProperty(exports, 'BlockPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Block).default;
-  }
-});
 
-var _Circle = __webpack_require__(/*! ./components/circle/Circle */ "../../node_modules/react-color/lib/components/circle/Circle.js");
 
-Object.defineProperty(exports, 'CirclePicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Circle).default;
-  }
-});
 
-var _Chrome = __webpack_require__(/*! ./components/chrome/Chrome */ "../../node_modules/react-color/lib/components/chrome/Chrome.js");
 
-Object.defineProperty(exports, 'ChromePicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Chrome).default;
-  }
-});
 
-var _Compact = __webpack_require__(/*! ./components/compact/Compact */ "../../node_modules/react-color/lib/components/compact/Compact.js");
 
-Object.defineProperty(exports, 'CompactPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Compact).default;
-  }
-});
 
-var _Github = __webpack_require__(/*! ./components/github/Github */ "../../node_modules/react-color/lib/components/github/Github.js");
 
-Object.defineProperty(exports, 'GithubPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Github).default;
-  }
-});
 
-var _Hue = __webpack_require__(/*! ./components/hue/Hue */ "../../node_modules/react-color/lib/components/hue/Hue.js");
 
-Object.defineProperty(exports, 'HuePicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Hue).default;
-  }
-});
 
-var _Material = __webpack_require__(/*! ./components/material/Material */ "../../node_modules/react-color/lib/components/material/Material.js");
 
-Object.defineProperty(exports, 'MaterialPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Material).default;
-  }
-});
 
-var _Photoshop = __webpack_require__(/*! ./components/photoshop/Photoshop */ "../../node_modules/react-color/lib/components/photoshop/Photoshop.js");
-
-Object.defineProperty(exports, 'PhotoshopPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Photoshop).default;
-  }
-});
-
-var _Sketch = __webpack_require__(/*! ./components/sketch/Sketch */ "../../node_modules/react-color/lib/components/sketch/Sketch.js");
-
-Object.defineProperty(exports, 'SketchPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Sketch).default;
-  }
-});
-
-var _Slider = __webpack_require__(/*! ./components/slider/Slider */ "../../node_modules/react-color/lib/components/slider/Slider.js");
-
-Object.defineProperty(exports, 'SliderPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Slider).default;
-  }
-});
-
-var _Swatches = __webpack_require__(/*! ./components/swatches/Swatches */ "../../node_modules/react-color/lib/components/swatches/Swatches.js");
-
-Object.defineProperty(exports, 'SwatchesPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Swatches).default;
-  }
-});
-
-var _Twitter = __webpack_require__(/*! ./components/twitter/Twitter */ "../../node_modules/react-color/lib/components/twitter/Twitter.js");
-
-Object.defineProperty(exports, 'TwitterPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Twitter).default;
-  }
-});
-
-var _ColorWrap = __webpack_require__(/*! ./components/common/ColorWrap */ "../../node_modules/react-color/lib/components/common/ColorWrap.js");
-
-Object.defineProperty(exports, 'CustomPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_ColorWrap).default;
-  }
-});
-
-var _Chrome2 = _interopRequireDefault(_Chrome);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Chrome2.default;
 
 /***/ }),
 
@@ -57851,7 +64416,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_RESULT__;// TinyColor v1.4.1
+var __WEBPACK_AMD_DEFINE_RESULT__;// TinyColor v1.4.2
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
 
@@ -59330,6 +65895,41 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ "../../node_modules/webpack/buildin/harmony-module.js":
+/*!*******************************************!*\
+  !*** (webpack)/buildin/harmony-module.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if (!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
 
 
 /***/ }),
@@ -67453,8 +74053,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var babylonjs_Maths_math_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! babylonjs/Maths/math.color */ "babylonjs/Misc/dataStorage");
 /* harmony import */ var babylonjs_Maths_math_color__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Maths_math_color__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-color */ "../../node_modules/react-color/lib/index.js");
-/* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_color__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-color */ "../../node_modules/react-color/es/index.js");
 
 
 
