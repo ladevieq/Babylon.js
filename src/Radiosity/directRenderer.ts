@@ -702,7 +702,7 @@ export class DirectRenderer {
                 light.depthMapSize.height
             );
 
-            engine.clear(new Color4(0, 0, 0, 0), true, true);
+            engine.clear(new Color4(0, 0, 0, 1), true, true);
 
             for (const mesh of this.meshes) {
                 for (const subMesh of mesh.subMeshes) {

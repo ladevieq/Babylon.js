@@ -203,7 +203,7 @@ export class ThinEngine {
     public preventCacheWipeBetweenFrames = false;
 
     /** Gets or sets a boolean indicating if the engine should validate programs after compilation */
-    public validateShaderPrograms = false;
+    public  validateShaderPrograms = false;
 
     /**
      * Gets or sets a boolean indicating if depth buffer should be reverse, going from far to near.
@@ -2141,34 +2141,34 @@ export class ThinEngine {
         const fragmentShader = pipelineContext.fragmentShader!;
         const program = pipelineContext.program!;
 
-        var linked = context.getProgramParameter(program, context.LINK_STATUS);
-        if (!linked) { // Get more info
-            // Vertex
-            if (!this._gl.getShaderParameter(vertexShader, this._gl.COMPILE_STATUS)) {
-                const log = this._gl.getShaderInfoLog(vertexShader);
-                if (log) {
-                    pipelineContext.vertexCompilationError = log;
-                    throw new Error("VERTEX SHADER " + log);
-                }
-            }
-
-            // Fragment
-            if (!this._gl.getShaderParameter(fragmentShader, this._gl.COMPILE_STATUS)) {
-                const log = this._gl.getShaderInfoLog(fragmentShader);
-                if (log) {
-                    pipelineContext.fragmentCompilationError = log;
-                    throw new Error("FRAGMENT SHADER " + log);
-                }
-            }
-
-            var error = context.getProgramInfoLog(program);
-            if (error) {
-                pipelineContext.programLinkError = error;
-                throw new Error(error);
-            }
-        }
-
         if (this.validateShaderPrograms) {
+            var linked = context.getProgramParameter(program, context.LINK_STATUS);
+            if (!linked) { // Get more info
+                // Vertex
+                if (!this._gl.getShaderParameter(vertexShader, this._gl.COMPILE_STATUS)) {
+                    const log = this._gl.getShaderInfoLog(vertexShader);
+                    if (log) {
+                        pipelineContext.vertexCompilationError = log;
+                        throw new Error("VERTEX SHADER " + log);
+                    }
+                }
+
+                // Fragment
+                if (!this._gl.getShaderParameter(fragmentShader, this._gl.COMPILE_STATUS)) {
+                    const log = this._gl.getShaderInfoLog(fragmentShader);
+                    if (log) {
+                        pipelineContext.fragmentCompilationError = log;
+                        throw new Error("FRAGMENT SHADER " + log);
+                    }
+                }
+
+                var error = context.getProgramInfoLog(program);
+                if (error) {
+                    pipelineContext.programLinkError = error;
+                    throw new Error(error);
+                }
+            }
+
             context.validateProgram(program);
             var validated = context.getProgramParameter(program, context.VALIDATE_STATUS);
 
